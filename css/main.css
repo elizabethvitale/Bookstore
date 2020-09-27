@@ -22,7 +22,6 @@ header {
   color: white;
   height: 70px;
   display: flex;
-  padding: 0px 200px;
 }
 
 header h2 {
@@ -53,15 +52,34 @@ header section {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
-nav ul li {
+header > div {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding: 15px 0;
+}
+
+nav > ul li {
   list-style: none;
   display: inline-block;
   padding: 10px;
 }
 
-nav ul {
+nav > ul {
   display: flex;
   align-items: center;
+}
+
+nav .auth-dropdown {
+  border: 1px solid #6d6d6d;
+  background-color: #fff;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 45px;
+  left: -20px;
+  border-radius: 5px;
+  display:none;
 }
 
 .searchbox-container {
@@ -76,7 +94,7 @@ nav ul {
   display: flex;
 }
 
-.searchbox input {
+input {
   padding: 4px;
   background-color: #f6f5f7;
   border: none;
@@ -95,7 +113,10 @@ nav ul {
 }
 
 main {
-  min-height: calc(100vh - (70px) - (132px));
+  width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  min-height: calc(100vh - (70px) - (169px));
 }
 
 .button {
@@ -116,7 +137,7 @@ footer {
 }
 
 footer > div {
-  max-width: 800px;
+  width: 1000px;
   margin: 0 auto;
   display: flex;
   padding: 15px 0;
