@@ -118,6 +118,11 @@ main {
   padding: 10px;
   min-height: calc(100vh - (70px) - (169px));
 }
+.books {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
 
 .button {
   background: black;
