@@ -13,7 +13,7 @@
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <button type="button"><img src="../image/search.svg"></button>
+            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -38,7 +38,7 @@
                     <a href="editprofile.html">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="index.html">Logout</a>
+                    <a href="logout.html">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -51,13 +51,14 @@
       <section id='authBox'>
         <h1>Edit Profile</h1>
         <div class="tab">
-          <button class="tablinks" onclick="editProfile(event, 'Edit Personal Info')" id="defaultOpen">Edit Personal Info</button>
-          <button class="tablinks" onclick="editProfile(event, 'Change Password')">Change Password</button>
+          <button class="tablinks" onclick="editProfile(event, 'EditPersonalInfo')" id="defaultOpen">Edit Personal Info</button>
+          <button class="tablinks" onclick="editProfile(event, 'ChangePassword')">Change Password</button>
           <button class="tablinks" onclick="editProfile(event, 'Address')">Address</button>
-          <button class="tablinks" onclick="editProfile(event, 'Payment Info')">Payment Info</button>
+          <button class="tablinks" onclick="editProfile(event, 'PaymentInfo')">Payment Info</button>
+          <button class="tablinks" onclick="editProfile(event, 'OrderHistory')">Order History</button>
         </div>
         <form action="" method="post">
-          <div id="Edit Personal Info" class="tabcontent">
+          <div id="EditPersonalInfo" class="tabcontent">
             <h3>Personal Info</h3>
               <div>
                 <label>Name</label>
@@ -81,7 +82,7 @@
             </div>
           </form>
           <form action="" method="post">
-            <div id="Change Password" class="tabcontent">
+            <div id="ChangePassword" class="tabcontent">
               <h3>Change Password</h3>
               <div>
                <label>Current Password</label>
@@ -105,7 +106,7 @@
             </div>
           </form>
           <form action="" method="post">
-            <div id="Payment Info" class="tabcontent">
+            <div id="PaymentInfo" class="tabcontent">
               <h3>Payment Info</h3>
               <div>
                 <label>Card type*</label>
@@ -153,7 +154,7 @@
           </div>
         </form>
         <form action="" method="post">
-          <div id="Payment Info" class="tabcontent">
+          <div id="Personal Info" class="tabcontent">
             <h3>Personal Info</h3>
             <div>
              <label>Name</label>
@@ -174,6 +175,18 @@
             </div>
             <br>
             <button type="submit">Update</button>
+          </div>
+        </form>
+        <form action="" method="post">
+          <div id="OrderHistory" class="tabcontent">
+            <div>
+              <img src="../image/books/theEveningandtheMorning.jpg">
+              <h2>Order confirmation number: 98362043</h2>
+              <h2>Total Price: 31.08</h2>
+              <h2>Date Purchased: 9/31/2020</h2>
+              <button type="button">Reorder</button>
+            </div>
+            </div>
           </div>
         </form>
       </section>
