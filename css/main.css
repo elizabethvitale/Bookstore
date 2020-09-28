@@ -170,3 +170,11 @@ footer section div h2 {
   align-items: center;
   display: flex;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
