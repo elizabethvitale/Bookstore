@@ -49,6 +49,16 @@
     <main>
       <div>
         <h1>Search for " "</h1>
+        <form action="/action_page.php">
+          <label for="books">Sort by:</label>
+          <select name="books" id="books">
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="priceLowHigh">Price: Low to High</option>
+              <option value="priceHighLow">Price: High to Low</option>
+          </select>
+          <br><br>
+        </form>
         <a href="bookDetail.html"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
         <a href="bookDetail.html"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
         <a href="bookDetail.html"><img class="books" src="image/books/totalpower.jpg"></a>
