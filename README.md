@@ -1,1 +1,1 @@
-# Bookstore
+# UGA Bookstore
