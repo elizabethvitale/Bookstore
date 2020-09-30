@@ -10,8 +10,12 @@ body,html {
     height: 100%;
 }
 
-body, h2, h4 {
+body {
   margin: 0;
+  padding: 0;
+}
+
+ul {
   padding: 0;
 }
 
@@ -96,7 +100,7 @@ nav .auth-dropdown {
 
 input {
   padding: 4px;
-  background-color: #f6f5f7;
+  background-color: white;
   border: none;
   flex-grow: 2;
   margin-right: 5px;
@@ -112,11 +116,15 @@ input {
   color: grey;
 }
 
+.searchbox input {
+  background-color: #f6f5f7;
+}
+
 main {
   width: 1000px;
   margin: 0 auto;
   padding: 10px;
-  min-height: calc(100vh - (70px) - (169px));
+  min-height: calc(100vh - (70px) - (181px));
 }
 .books {
   width: 100px;
@@ -154,11 +162,8 @@ footer section {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
-footer ul {
-  margin: 0;
-  padding: 0;
+footer {
   line-height: 18px;
-  margin-bottom: 20px;
 }
 
 footer section ul li{
@@ -169,11 +174,18 @@ footer section ul li{
   font-weight: 600;
 }
 
-footer section div h2 {
+footer h2 {
   font-family: 'Peddana', serif;
   font-size: 38px;
   align-items: center;
   display: flex;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+footer h4 {
+  font-size: 18px;
+  margin: 10px 0 20px;
 }
 
 .row {

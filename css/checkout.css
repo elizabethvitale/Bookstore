@@ -1,0 +1,79 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+table img {
+    width: 125px;
+}
+
+nav ul {
+    margin-bottom: 0;
+}
+
+table td {
+    vertical-align: top;
+}
+
+.checkoutButtons {
+    background: black;
+    color: white;
+    border: 1px solid #272727;
+    border-radius: 15px;
+    padding: 6px 18px;
+    outline: none;
+    font-weight: bold;
+}
+
+.tracker {
+    margin-bottom: 1em;
+}
+
+.tracker ul {
+    text-align: center;
+}
+
+.tracker li:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.tracker li:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.tracker li {
+    display: inline-block;
+    list-style: none;
+    width: 25%;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-left: -5px;
+}
+
+.tracker li.active {
+    color: white;
+    background-color: var(--primary-color);
+}
+
+.storedMethods {
+    background-color: #dedede;
+    margin-bottom: 20px;
+    padding: 12px;
+}
+
+.storedMethods .method {
+    background-color: white;
+    padding-left: 20px;
+    color: grey;
+    display: flex;
+}
+
+.storedMethods button {
+    border: none;
+    background-color: #b3011c;
+    color: white;
+
+}
