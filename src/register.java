@@ -26,6 +26,15 @@ public class register extends HttpServlet {
         String email = request.getParameter("email");
 	String number = request.getParameter("number");
 	String pwd = request.getParameter("password");
+	String street = request.getParameter("street");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
+        String zip = request.getParameter("zip");
+        String ctype = request.getParameter("ctype");
+        String cnum = request.getParameter("cnum");
+        String exd = request.getParameter("exd");
+
+
 	if(name=="" || email=="" || number =="" || pwd==""){
 	//account for other formatting issues too.
 	//throw error
