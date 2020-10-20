@@ -9,7 +9,7 @@
   <body>
     <header>
       <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
@@ -29,16 +29,16 @@
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.html">Login</a>
+                    <a href="login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.html">Register</a>
+                    <a href="register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.html">Logout</a>
+                    <a href="logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -49,31 +49,38 @@
     </header>
     <main>
       <section id='authBox'>
-        <h1>Login as Existing Customer</h1>
-        <form action="../index.html" method="post">
+        <h1>New Customer</h1>
+        <form action="/register" method="post">
           <div>
-            <label for="acctID">Account ID/Email Address</label>
+            <label>Name*</label>
             <br>
-            <input type="text" id="acctID">
+            <input type="text" id="name"required>
           </div>
           <br>
           <div>
-            <label for="pwd">Password</label>
+            <label>Phone number*</label>
             <br>
-            <input type="text" id="pwd">
+            <input type="text" id="number" required>
           </div>
           <br>
-
-          <button type="submit">Login</button>
-        </form>
-        <br>
-        <form action="../admin/index.html" method="post">
-          <button type="submit">Login (as Admin)</button>
+          <div>
+            <label>Email Address*</label>
+            <br>
+            <input type="text" id="email" required>
+          </div>
+          <br>
+          <div>
+            <label>Password*</label>
+            <br>
+            <input type="text" id="password" required>
+          </div>
+          <br>
+          <button type="submit">Register</button>
         </form>
       </section>
     </main>
     <footer>
-      <div>
+        <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -93,8 +100,8 @@
             </li>
           </ul>
           <div>
-            <button class="button" style="margin-right: 10px;">LOGIN</button>
-            <button class="button">REGISTER</button>
+          <button class="button" style="margin-right: 10px;">LOGIN</button>
+          <button class="button">REGISTER</button>
           </div>
         </section>
         <section style="flex-grow: 1;align-items: baseline;">

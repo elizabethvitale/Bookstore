@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<%@ page session="false" %>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
@@ -7,9 +9,21 @@
     <link rel="stylesheet" href="../css/auth.css">
   </head>
   <body>
+
+<%
+	String message = "";
+       HttpSession session=request.getSession(false);  
+        if(session!=null){  
+        message="User is already logged in. Log out?";  
+}%>
+<p><%=message%></p>
+
+
+
+
     <header>
       <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
@@ -29,16 +43,16 @@
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.html">Login</a>
+                    <a href="login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.html">Register</a>
+                    <a href="register.jsp">Register</a>
                   </li>
                   <li>
                     <a href="editprofile.html">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.html">Logout</a>
+                    <a href="logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -49,38 +63,31 @@
     </header>
     <main>
       <section id='authBox'>
-        <h1>New Customer</h1>
-        <form action="registrationconfirm.html" method="post">
+        <h1>Login as Existing Customer</h1>
+        <form action="/userLogin" method="post">
           <div>
-            <label>Name*</label>
+            <label for="acctID">Account ID/Email Address</label>
             <br>
-            <input type="text" required>
+            <input type="text" name="acctID" id="acctID">
           </div>
           <br>
           <div>
-            <label>Phone number*</label>
+            <label for="pwd">Password</label>
             <br>
-            <input type="text" required>
+            <input type="text" id="pwd" name="pwd">
           </div>
           <br>
-          <div>
-            <label>Email Address*</label>
-            <br>
-            <input type="text" required>
-          </div>
-          <br>
-          <div>
-            <label>Password*</label>
-            <br>
-            <input type="text" required>
-          </div>
-          <br>
-          <button type="submit">Register</button>
+
+          <button type="submit">Login</button>
+        </form>
+        <br>
+        <form action="../admin/index.html" method="post">
+          <button type="submit">Login (as Admin)</button>
         </form>
       </section>
     </main>
     <footer>
-        <div>
+      <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -100,8 +107,8 @@
             </li>
           </ul>
           <div>
-          <button class="button" style="margin-right: 10px;">LOGIN</button>
-          <button class="button">REGISTER</button>
+            <button class="button" style="margin-right: 10px;">LOGIN</button>
+            <button class="button">REGISTER</button>
           </div>
         </section>
         <section style="flex-grow: 1;align-items: baseline;">
