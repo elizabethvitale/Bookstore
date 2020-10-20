@@ -75,6 +75,53 @@
             <input type="text" id="password" required>
           </div>
           <br>
+	  <h3>Shipping Information</h3>
+          <div>
+            <label>Street</label>
+            <br>
+            <input type="text" id="street">
+          </div>
+          <br>
+          <div>
+            <label>City</label>
+            <br>
+            <input type="text" id="city">
+          </div>
+          <br>
+          <div>
+            <label>State</label>
+            <br>
+            <input type="text" id="state">
+          </div>
+          <br>
+          <div>
+            <label>Zip Code</label>
+            <br>
+		<input type="text" id="zip">
+          </div>
+          <br>
+	<h3>Payment Info</h3>
+          <div>
+            <label>Card Type</label>
+            <br>
+            <input type="text" id="ctype">
+          </div>
+          <br>
+          <div>
+            <label>Number</label>
+            <br>
+            <input type="text" id="cnum">
+          </div>
+          <br>
+          <div>
+            <label>Expiration Date</label>
+            <br>
+            <input type="text" id="exd">
+          </div>
+          <br>
+
+
+
           <button type="submit">Register</button>
         </form>
       </section>

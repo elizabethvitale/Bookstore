@@ -11,13 +11,13 @@
   <body>
 
 <%
-	String message = "";
-       HttpSession session=request.getSession(false);  
-        if(session!=null){  
-        message="User is already logged in. Log out?";  
-}%>
-<p><%=message%></p>
 
+
+	String message = "";
+	HttpSession session=request.getSession(false);  
+        if(session!=null){  
+        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";  
+}%>
 
 
 
@@ -76,18 +76,18 @@
             <br>
             <input type="text" id="pwd" name="pwd">
           </div>
-          <br>
+	<p><%=message%></p>
 
-          <button type="submit">Login</button>
+
+          <button id="formsub" type="submit">Login</button>
         </form>
-        <br>
-        <form action="../admin/index.html" method="post">
+       <form action="../admin/index.html" method="post">
           <button type="submit">Login (as Admin)</button>
         </form>
       </section>
     </main>
     <footer>
-      <div>
+	      <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -126,6 +126,14 @@
         </section>
       </div>
     </footer>
+
+    <script language="javascript">
+        var s = "<%=message%>";
+        if(s!==""){
+                document.getElementById("formsub").disabled = true;
+        }
+    </script>
+
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
