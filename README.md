@@ -17,7 +17,7 @@ To get this working, you need a tomcat server.
 	
 	7. This is where you need to use the command git clone https://github.com/elizabethvitale/Bookstore.git . 
 	
-	If there are issues, try making sure /ROOT is empty, and you can try using the 'git init' command.
+		If there are issues, try making sure /ROOT is empty, and you can try using the 'git init' command.
 	
 	8. Make sure not to forget the '.' - this should ensure you clone the repo into the directory itself and not into a /ROOT/Bookstore directory. This will break the build 
 	
