@@ -50,8 +50,30 @@ public class User{
 	public boolean getEnroll(){
 		return enrolled;
 	}
-	
-
+	 public void setID(int actID){
+                this.actID = actID;
+        }	
+         public void setFirstName(String name){
+                this.firstName = name;
+        }
+         public void setLastName(String lastName){
+                this.lastName = lastName;
+        }
+         public void setEmail(String email){
+                this.email = email;
+        }
+         public void setPassword(String password){
+                this.password = password;
+        }
+         public void setPhoneNumber(String number){
+                this.phoneNumber = number;
+        }
+         public void setStatus(String status){
+                this.status = status;
+        }
+         public void setEnrolled(boolean enroll){
+                this.enrolled = enroll;
+        }
 
 
 }

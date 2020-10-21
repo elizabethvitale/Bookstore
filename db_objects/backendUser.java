@@ -37,10 +37,8 @@ public class backendUser{
 				
 			}
 			customerid = customerid + 1;
-			System.out.println(customerid);
 			stmt = con.createStatement();
 			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
-			System.out.println(query);
 			result=stmt.executeUpdate(query);
 		} catch(SQLException err){
 			System.out.println("ERROR: " + err.getMessage());
@@ -51,36 +49,55 @@ public class backendUser{
 	}
 
 
-	/*public User login(String acctID){
-		Statement stmt = null;
-		try{
-		stmt = con.createStatement();
-		}catch(SQLException err){
-                        System.out.println(err.getMessage());
-                }
-		String query = "select customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes from customerwhere customerid=" + acctID;
-		User user = new User();
-		ResultSet rs = null;
-		try{
-			rs = stmt.executeQuery(query);
-                }catch(SQLException err){
-                        System.out.println(err.getMessage());
-                }
+	public User login(String acctID_or_email, String pwd){
+                User user = new User();
+                try{
+                        
+                        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+                        Statement stmt = null;
+                        stmt = con.createStatement();
+                        String query = "select * from customer where customerid='" + acctID_or_email + "' or email='" + acctID_or_email+"';";
+                        
+			System.out.println(query);
+			ResultSet rs=stmt.executeQuery(query);
+                                if(rs.next()) {
+                                        user.setID(rs.getInt("customerid"));
+                                        user.setFirstName(rs.getString("firstname"));
+                                        user.setLastName(rs.getString("lastname"));
+                                        user.setEmail(rs.getString("email"));
+                                        user.setPassword(rs.getString("password"));
+                                        user.setPhoneNumber(rs.getString("phone"));
+                                        user.setStatus(rs.getString("status"));
+                                        user.setEnrolled(rs.getBoolean("enroll_for_promotes"));
+
+                                }else{
+					System.out.println("catch1");
+                                        user = null;
+                                        return user;
+                                }
+                                if(user.getPassword().equals(pwd)){ 
+				return user;
+				}
+                                user=null;
+                                return user;
+
+                        }catch(SQLException err){
+                                user = null;
+                                System.out.println(err.getMessage());
+                                return user;
+                        }catch(Exception e){
+				user = null;
+				System.out.println(e.getMessage());
+				return user;
+			}
 
 
-		try{
-		if(rs.next()){
-			
-			//set all this crap.
+        }
 
-		}else{
-		user = null;
-		}}catch(SQLException err){
-			user=null;
-			System.out.println(err.getMessage());
-		}
-		return user;
-	}*/
 
+
+
+	
 
 } 
