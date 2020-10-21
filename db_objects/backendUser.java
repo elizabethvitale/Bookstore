@@ -9,36 +9,35 @@ import com.ugabookstore.*;
 
 public class backendUser{
 	Connection con;
-	public Connection connect(){
+	int result = 1;
+
+	public int register(User user) {
+		String fname = "Shit";
+		String lname = "Scott";
+		String email = "ses95990@uga.edu";
+		String phone = "4782391911";
+		String password = "root";
+		String status = "ACTIVE";
+		
+		
 		try{
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
-			Class.forName("com.mysql.jdbc.Driver").newInstance();	
-		}catch(SQLException err){
-			System.out.println(err.getMessage());
-		}catch(Exception e){
-			e.printStackTrace();
+			Statement stmt=null;
+            stmt = con.createStatement();
+			String query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(00003,'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
+			//System.out.println(query);
+			result=stmt.executeUpdate(query);
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
 		}
-		return con;
-	}
-
-	public int register(User user){
-		con=connect();
-		Statement stmt;
-                if(con!=null){
-		try{
-                stmt = con.createStatement();
-                }catch(SQLException err){
-                        System.out.println(err.getMessage());
-                }}
-		String query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + user.getID() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getEmail() + "," + user.getPassword() + "," +user.getPhone() + "," + user.getStatus() + "," + user.getEnroll() + ");";
 		return 0;
-
-
 	}
 
 
-	public User login(String acctID){
-                con=connect();
+	/*public User login(String acctID){
 		Statement stmt = null;
 		try{
 		stmt = con.createStatement();
@@ -67,7 +66,7 @@ public class backendUser{
 			System.out.println(err.getMessage());
 		}
 		return user;
-	}
+	}*/
 
 
 } 
