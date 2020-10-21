@@ -12,21 +12,35 @@ public class backendUser{
 	int result = 1;
 
 	public int register(User user) {
-		String fname = "Shit";
-		String lname = "Scott";
-		String email = "ses95990@uga.edu";
-		String phone = "4782391911";
-		String password = "root";
-		String status = "ACTIVE";
+		//String fname = "Shit";
+		String fname = user.getFirstName();
+		String lname = user.getLastName();;
+		String email = user.getEmail();
+		String phone = user.getPhone();
+		String password = user.getPassword();
+		String status = user.getStatus();
 		
 		
 		try{
+			
+
+
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			Statement stmt=null;
-            stmt = con.createStatement();
-			String query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(00003,'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
-			//System.out.println(query);
+            		int customerid= 0;
+			stmt = con.createStatement();
+			String query = "select max(customerid) from customer;";
+			ResultSet rs=stmt.executeQuery(query);
+			while(rs.next()) {
+				customerid = rs.getInt("max(customerid)");
+				
+			}
+			customerid = customerid + 1;
+			System.out.println(customerid);
+			stmt = con.createStatement();
+			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
+			System.out.println(query);
 			result=stmt.executeUpdate(query);
 		} catch(SQLException err){
 			System.out.println("ERROR: " + err.getMessage());

@@ -55,75 +55,75 @@
           <div>
             <label>First Name*</label>
             <br>
-            <input type="text" id="fname" required>
+            <input type="text" name="fname" required>
           </div>
           <br>
 	  <div>
 	    <label>Last Name*</label>
 	<br>
-	<input type="text" id="lname" required>
+	<input type="text" name="lname" required>
 	</div>
 	<br>
           <div>
             <label>Phone number*</label>
             <br>
-            <input type="text" id="number" required>
+            <input type="text" name="number" required>
           </div>
           <br>
           <div>
             <label>Email Address*</label>
             <br>
-            <input type="text" id="email" required>
+            <input type="text" name="email" required>
           </div>
           <br>
           <div>
             <label>Password*</label>
             <br>
-            <input type="text" id="password" required>
+            <input type="text" name="password" required>
           </div>
           <br>
 	  <h3>Shipping Information</h3>
           <div>
             <label>Street</label>
             <br>
-            <input type="text" id="street">
+            <input type="text" name="street">
           </div>
           <br>
           <div>
             <label>City</label>
             <br>
-            <input type="text" id="city">
+            <input type="text" name="city">
           </div>
           <br>
           <div>
             <label>State</label>
             <br>
-            <input type="text" id="state">
+            <input type="text" name="state">
           </div>
           <br>
           <div>
             <label>Zip Code</label>
             <br>
-		<input type="text" id="zip">
+		<input type="text" name="zip">
           </div>
           <br>
 	<h3>Payment Info</h3>
           <div>
             <label>Card Type</label>
             <br>
-            <input type="text" id="ctype">
+            <input type="text" name="ctype">
           </div>
           <br>
           <div>
             <label>Number</label>
             <br>
-            <input type="text" id="cnum">
+            <input type="text" name="cnum">
           </div>
           <br>
           <div>
             <label>Expiration Date</label>
             <br>
-            <input type="text" id="exd">
+            <input type="text" name="exd">
           </div>
           <br>
 

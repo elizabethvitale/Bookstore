@@ -24,6 +24,7 @@ public class User{
 		this.phoneNumber = phoneNumber;
 		this.status = status;
 		this.enrolled = enrolled;
+		System.out.println(firstName);
 	}
 	public int getID(){
 		return actID;
