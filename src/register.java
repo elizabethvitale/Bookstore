@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import javax.activation.*;
-
+import com.ugabookstore.*;
+import java.util.Random;
 import java.io.IOException;
 import java.io.PrintWriter;
  
@@ -22,7 +23,8 @@ public class register extends HttpServlet {
          
 
 	//add optional signup options.
-        String name = request.getParameter("name");
+        String fname = request.getParameter("fname");
+	String lname = request.getParameter("lname");
         String email = request.getParameter("email");
 	String number = request.getParameter("number");
 	String pwd = request.getParameter("password");
@@ -33,9 +35,19 @@ public class register extends HttpServlet {
         String ctype = request.getParameter("ctype");
         String cnum = request.getParameter("cnum");
         String exd = request.getParameter("exd");
+	int min = 1000;
+	int max = 9999;
+	Random rand = new Random();
+	int randomNum = rand.nextInt((max - min) + 1) + min;
+	//would need to make sql call to ensure email is unique.
+	//would need to make sql call to get unique r id value by max(all user ids) + 1
+
+	User new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false);
+	int register_user = new backendUser().register(new_user);	
 
 
-	if(name=="" || email=="" || number =="" || pwd==""){
+
+	if(fname=="" || email=="" || number =="" || pwd==""){
 	//account for other formatting issues too.
 	//throw error
 	}else{

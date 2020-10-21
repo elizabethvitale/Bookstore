@@ -51,7 +51,7 @@
 <%
 	String message = "";
        HttpSession session=request.getSession(false);  
-        if(session!=null){  
+        if(session!=null){ 
         message="Welcome, " + (String)session.getAttribute("acctID");  
 }%>
 <p><%=message%></p>

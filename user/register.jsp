@@ -52,11 +52,17 @@
         <h1>New Customer</h1>
         <form action="/register" method="post">
           <div>
-            <label>Name*</label>
+            <label>First Name*</label>
             <br>
-            <input type="text" id="name"required>
+            <input type="text" id="fname" required>
           </div>
           <br>
+	  <div>
+	    <label>Last Name*</label>
+	<br>
+	<input type="text" id="lname" required>
+	</div>
+	<br>
           <div>
             <label>Phone number*</label>
             <br>
