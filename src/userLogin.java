@@ -38,7 +38,10 @@ public class userLogin extends HttpServlet {
 		//login fails
 	}else{
 		//login works...!
-
+	if(user.getStatus().equals("Inactive"){
+	response.sendRedirect("/user/confirm.jsp");
+	}
+	
 	//ON SUCESSFUL LOGIN:REDIRECT HERE 
 	HttpSession oldSession = request.getSession(false);
 	if (oldSession != null) {

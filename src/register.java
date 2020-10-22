@@ -76,7 +76,7 @@ public class register extends HttpServlet {
 	
 
 	//hash password
-	response.sendRedirect("/index.jsp");
+	response.sendRedirect("/user/registrationconfirm.html");
 	}
 }
 	public static void sendEmail(String emailAdd,String body){

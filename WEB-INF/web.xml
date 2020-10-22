@@ -25,4 +25,14 @@
                 <servlet-name>register</servlet-name>
                 <url-pattern>/register</url-pattern>
         </servlet-mapping>
+
+        <servlet>
+                <servlet-name>confirm</servlet-name>
+                <servlet-class>com.ugabookstore.confirm</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>confirm</servlet-name>
+                <url-pattern>/confirm</url-pattern>
+        </servlet-mapping>
+
 </web-app>
