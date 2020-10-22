@@ -57,11 +57,14 @@ public class register extends HttpServlet {
 	int randomNum = rand.nextInt((max - min) + 1) + min;
 	//would need to make sql call to ensure email is unique.
 	//would need to make sql call to get unique r id value by max(all user ids) + 1
+	//I HAVE DONE THE ABOVE..THIS NUMBER IS USED FOR EMAIL CONFIRMATION NOW 
 
 	User new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false);
 	int register_user = new backendUser().register(new_user);	
+	String body = "Thank you for signing up for UGABOOKSTORE.COM!!!\nYour confirmation number is: " + randomNum + "\nPlease enter this on our website!!!";
+
 	if(register_user == 0){
-		sendEmail(email,"test");
+		sendEmail(email,body);
 	}
 
 
@@ -93,7 +96,7 @@ public class register extends HttpServlet {
 	      	msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
 		msg.setFrom(new InternetAddress("ugabookstore2020@gmail.com"));
 		msg.setSubject("Registration Email Confirmation", "UTF-8");
-		msg.setText("tester", "UTF-8");
+		msg.setText(body, "UTF-8");
 		msg.setSentDate(new Date());
 	      	msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAdd, false));
 	      	System.out.println("Message is ready");
