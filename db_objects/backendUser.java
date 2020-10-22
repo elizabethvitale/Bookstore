@@ -42,8 +42,10 @@ public class backendUser{
 			result=stmt.executeUpdate(query);
 		} catch(SQLException err){
 			System.out.println("ERROR: " + err.getMessage());
+			return 1;
 		} catch(Exception e){
 			System.out.println("ERROR: " + e.getMessage());
+			return 1;
 		}
 		return 0;
 	}
