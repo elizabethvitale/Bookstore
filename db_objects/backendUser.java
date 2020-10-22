@@ -60,7 +60,6 @@ public class backendUser{
                         stmt = con.createStatement();
                         String query = "select * from customer where customerid='" + acctID_or_email + "' or email='" + acctID_or_email+"';";
                         
-			System.out.println(query);
 			ResultSet rs=stmt.executeQuery(query);
                                 if(rs.next()) {
                                         user.setID(rs.getInt("customerid"));
@@ -80,6 +79,7 @@ public class backendUser{
                                 if(user.getPassword().equals(pwd)){ 
 				return user;
 				}
+				System.out.println(user.getStatus());
                                 user=null;
                                 return user;
 

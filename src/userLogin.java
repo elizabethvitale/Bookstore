@@ -18,12 +18,8 @@ public class userLogin extends HttpServlet {
  
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-	System.out.print("entered");         
         String acctID = request.getParameter("acctID");
         String password = request.getParameter("pwd");
-        //we need to find a way to check if the acctID and pwd match w the database
-	//requires database connection for any verification here.
-	System.out.println(acctID + password);
 	//i refuse to add an ajax call in here.....
 	//on failed login........rose needs to make jsp error pages w these specficiations
 	if((acctID=="") || (password=="")){
@@ -34,12 +30,14 @@ public class userLogin extends HttpServlet {
 	User user  = new backendUser().login(acctID, password);	
 	if(user == null){
 		System.out.println("login has failed....");
-		response.sendRedirect("/login.jsp");
+		response.sendRedirect("user/login.jsp");
 		//login fails
+		return;
 	}else{
-		//login works...!
-	if(user.getStatus().equals("Inactive"){
+	if(user.getStatus().equals("Inactive")){
+	
 	response.sendRedirect("/user/confirm.jsp");
+	return;
 	}
 	
 	//ON SUCESSFUL LOGIN:REDIRECT HERE 
@@ -52,5 +50,5 @@ public class userLogin extends HttpServlet {
 	session.setAttribute("acctID", acctID);
 	response.sendRedirect("/index.jsp");
 
-}}
 }
+}}
