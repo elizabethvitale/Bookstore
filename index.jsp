@@ -35,7 +35,7 @@
                     <a href="user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="user/editprofile.html">Edit Profile</a>
+                    <a href="user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
                     <a href="user/logout.jsp">Logout</a>

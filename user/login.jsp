@@ -49,7 +49,7 @@
                     <a href="register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
                     <a href="logout.jsp">Logout</a>

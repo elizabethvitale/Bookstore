@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import com.ugabookstore.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class backendUser{
 	Connection con;
@@ -35,6 +38,10 @@ public class backendUser{
 			//	customerid = rs.getInt("max(customerid)");
 				
 			//}
+
+			password = getSha1(password);
+
+			
 			//customerid = customerid + 1;
 			stmt = con.createStatement();
 			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
@@ -59,10 +66,11 @@ public class backendUser{
                         Statement stmt = null;
                         stmt = con.createStatement();
                         String query = "select * from customer where customerid='" + acctID_or_email + "' or email='" + acctID_or_email+"';";
-                        
+                       	pwd = getSha1(pwd); 
 			ResultSet rs=stmt.executeQuery(query);
                                 if(rs.next()) {
-                                        user.setID(rs.getInt("customerid"));
+                                        
+					user.setID(rs.getInt("customerid"));
                                         user.setFirstName(rs.getString("firstname"));
                                         user.setLastName(rs.getString("lastname"));
                                         user.setEmail(rs.getString("email"));
@@ -97,8 +105,23 @@ public class backendUser{
         }
 
 
+	public static String getSha1(String input) {
+		try {
+			MessageDigest m = MessageDigest.getInstance("SHA-1");
+			byte[] messageDigest = m.digest(input.getBytes());
+			
+			BigInteger no = new BigInteger(1, messageDigest);
+			String hashtext = no.toString(16);
+			
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+			return hashtext;
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-
-	
+		
 
 } 
