@@ -9,6 +9,7 @@
   <body>
 <%@ page session="false" %> 
 
+
     <header>
       <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>

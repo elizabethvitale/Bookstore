@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 public class userLogin extends HttpServlet {
  
     public void doPost(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
+        HttpServletResponse response) throws ServletException, IOException {
         String acctID = request.getParameter("acctID");
         String password = request.getParameter("pwd");
 	//i refuse to add an ajax call in here.....
@@ -48,6 +48,7 @@ public class userLogin extends HttpServlet {
 	HttpSession session = request.getSession(true);
 	session.setMaxInactiveInterval(15*60);
 	session.setAttribute("acctID", acctID);
+	request.getSession().setAttribute("user", user);
 	response.sendRedirect("/index.jsp");
 
 }

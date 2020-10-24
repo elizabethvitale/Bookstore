@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<%@ page session="false" %>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
@@ -9,18 +7,7 @@
     <link rel="stylesheet" href="../css/auth.css">
   </head>
   <body>
-
-<%
-
-
-	String message = "";
-	HttpSession session=request.getSession(false);  
-        if(session!=null){  
-        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";  
-}%>
-
-
-
+<%@ page session="false" %>
     <header>
       <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
@@ -63,35 +50,19 @@
     </header>
     <main>
       <section id='authBox'>
-        <h1>Login as Existing Customer</h1>
-        <form action="/userLogin" method="post">
-          <div>
-            <label for="acctID">Account ID/Email Address</label>
-            <br>
-            <input type="text" name="acctID" id="acctID">
-          </div>
-          <br>
-          <div>
-            <label for="pwd">Password</label>
-            <br>
-            <input type="text" id="pwd" name="pwd">
-          </div>
-	<p><%=message%></p>
-
-
-          <button id="formsub" type="submit">Login</button>
-        </form>
-	<br>
-	<a href="/user/forgotpwd.jsp">Forgot your password? Click here to reset it</a>
-
-
-       <form action="../admin/index.html" method="post">
-          <button type="submit">Login as admin?</button>
-        </form>
-      </section>
+      
+        <h1>Reset your password below</h1>
+	<h3>Please enter the email address associated with your account</h3>
+	<form action="/reset" method="post">
+	<label for="email">Email:</label>
+	<input type="text" name="email" id="email">
+	<br><br>
+	<button id="submit" type="submit">Send Password Reset</button>
+	</form>
+	</section>
     </main>
     <footer>
-	      <div>
+        <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -130,14 +101,6 @@
         </section>
       </div>
     </footer>
-
-    <script language="javascript">
-        var s = "<%=message%>";
-        if(s!==""){
-                document.getElementById("formsub").disabled = true;
-        }
-    </script>
-
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
