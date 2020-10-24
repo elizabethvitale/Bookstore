@@ -48,7 +48,7 @@ public class userLogin extends HttpServlet {
 	HttpSession session = request.getSession(true);
 	session.setMaxInactiveInterval(15*60);
 	session.setAttribute("acctID", acctID);
-	request.getSession().setAttribute("user", user);
+	request.getSession(true).setAttribute("user", user);
 	response.sendRedirect("/index.jsp");
 
 }
