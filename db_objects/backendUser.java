@@ -30,19 +30,12 @@ public class backendUser{
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			Statement stmt=null;
-            		//int customerid= 0;
 			stmt = con.createStatement();
 			String query = "select max(customerid) from customer;";
-			//ResultSet rs=stmt.executeQuery(query);
-			//while(rs.next()) {
-			//	customerid = rs.getInt("max(customerid)");
-				
-			//}
 
 			password = getSha1(password);
 
 			
-			//customerid = customerid + 1;
 			stmt = con.createStatement();
 			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
 			result=stmt.executeUpdate(query);

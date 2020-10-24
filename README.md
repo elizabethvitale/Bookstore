@@ -20,5 +20,8 @@ To get this working, you need a tomcat server.
 		If there are issues, try making sure /ROOT is empty, and you can try using the 'git init' command.
 	
 	8. Make sure not to forget the '.' - this should ensure you clone the repo into the directory itself and not into a /ROOT/Bookstore directory. This will break the build 
+
+		THIS IS NOT A JOKE. USE THE COMMAND "git clone https://github.com/elizabethvitale/Bookstore.git ." IN IT'S ENTIRETY
+		THERE SHOULD BE TWO PERIODS IN THE COMMAND. ONE AFTER GITHUB and ONE at the END OF THE COMMAND
 	
 	9. At this point, you should be able to access tomcat via localhost:8080 in your web browser. If you see the Bookstore, everything is set up correctly...except for some broken links here and there. If you see a "you have sucessfully created a tomcat server!"-themed webpage, you did not delete the original index.jsp page provided by tomcat, so you'll need to delete the ROOT directly (rm -rf ROOT), recreate an empty one, and pull again.
