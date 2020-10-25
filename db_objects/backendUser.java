@@ -30,12 +30,19 @@ public class backendUser{
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			Statement stmt=null;
+            		//int customerid= 0;
 			stmt = con.createStatement();
 			String query = "select max(customerid) from customer;";
+			//ResultSet rs=stmt.executeQuery(query);
+			//while(rs.next()) {
+			//	customerid = rs.getInt("max(customerid)");
+				
+			//}
 
 			password = getSha1(password);
 
 			
+			//customerid = customerid + 1;
 			stmt = con.createStatement();
 			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
 			result=stmt.executeUpdate(query);
@@ -113,6 +120,92 @@ public class backendUser{
 		} catch (NoSuchAlgorithmException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public int retrieveIdFromEmail(String email) {
+		int userId = -1;
+		try {
+
+			ResultSet rset = null;
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			Statement stmt = null;
+			stmt = con.createStatement();
+			String query = "select * from customer where email='" + email + "';";
+			rset = stmt.executeQuery(query);
+			if (rset.next()) {
+				userId = rset.getInt("customerid");
+			} 
+			return userId;
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return userId;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return userId;
+		}
+	}
+
+	public ResultSet retrieveInfo(int customerId) {	
+		ResultSet rset = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			Statement stmt = null;
+			stmt = con.createStatement();
+			String query = "select * from customer where customerid='" + customerId + "';";
+			rset = stmt.executeQuery(query);
+			return rset;
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return rset;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return rset;
+		}
+
+	} //retrieveInfo
+
+	public String retrieveName(int customerId) {
+		String resultString = null;
+		try {
+			ResultSet rs = retrieveInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultString = "" + rs.getString("firstname") + " " + rs.getString("lastname");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return null;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return null;
+		}
+		return resultString;
+	}
+
+	public String retrievePhone(int customerId) {
+		String resultString = null;
+		try {
+			ResultSet rs = retrieveInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultString = rs.getString("phone");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return null;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return null;
+		}
+		return resultString;
 	}
 
 		
