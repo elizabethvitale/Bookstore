@@ -11,7 +11,6 @@
   <body>
 <%@ page session="false" %> 
 <%
-backendUser retriever = new backendUser();
 HttpSession httpSession = request.getSession();
 String firstName = "";
 String lastName = "";
@@ -25,11 +24,7 @@ String city = "";
 String state = "";
 int zipcode = -1;
 int userId = -1;
-try {
-	userId = Integer.parseInt(String.valueOf(httpSession.getAttribute("acctID")));
-} catch (NumberFormatException e) {
-	userId = retriever.retrieveIdFromEmail(String.valueOf(httpSession.getAttribute("acctID")));
-}
+
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
 phone = String.valueOf(httpSession.getAttribute("phone"));
