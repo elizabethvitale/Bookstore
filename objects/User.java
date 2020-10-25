@@ -11,6 +11,13 @@ public class User{
 	private String phoneNumber;
 	private String status; 
 	private boolean enrolled;
+	private String street;
+	private String city;
+	private String state;
+	private int zip;
+	private int cardNumber;
+	private String type;
+	private String expirationDate;
 
 	public User(){
 
@@ -26,6 +33,51 @@ public class User{
 		this.enrolled = enrolled;
 		System.out.println(firstName);
 	}
+	        public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String street, String city, String state, int zip){
+		this.actID = actID;
+                this.password = password;//hash this
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.email = email;
+                this.phoneNumber = phoneNumber;
+                this.status = status;
+                this.enrolled = enrolled;
+		this.street = street;
+		this.city = city;
+		this.state=state;
+		this.zip = zip;			
+	}
+	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String street, String city, String state, int zip, int cardNumber, String type, String expirationDate){
+		this.actID = actID;
+                this.password = password;//hash this
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.email = email;
+                this.phoneNumber = phoneNumber;
+                this.status = status;
+                this.enrolled = enrolled;
+                this.street = street;
+                this.city = city;
+                this.state=state;
+                this.zip = zip;
+		this.cardNumber = cardNumber;
+		this.type=type;
+		this.expirationDate = expirationDate;	
+	}
+	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, int cardNumber, String type, String expirationDate){
+                this.actID = actID;
+                this.password = password;//hash this
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.email = email;
+                this.phoneNumber = phoneNumber;
+                this.status = status;
+                this.enrolled = enrolled;
+
+		this.cardNumber = cardNumber;
+                this.type=type;
+                this.expirationDate = expirationDate;
+}
 	public int getID(){
 		return actID;
 	}
@@ -50,6 +102,21 @@ public class User{
 	public boolean getEnroll(){
 		return enrolled;
 	}
+        public String getCity(){
+                return city;
+        }
+        public String getStreet(){
+                return street;
+        }
+        public String getState(){
+                return state;
+        }
+        public int getZip(){
+                return zip;
+        }
+
+
+
 	 public void setID(int actID){
                 this.actID = actID;
         }	
@@ -74,6 +141,22 @@ public class User{
          public void setEnrolled(boolean enroll){
                 this.enrolled = enroll;
         }
+         public void setCity(String city){
+                this.city = city;
+        }
+
+         public void setStreet(String street){
+                this.street = street;
+        }
+
+         public void setZip(int zip){
+                this.zip = zip;
+        }
+
+         public void setState(String state){
+                this.state = state;
+        }
+
 
 
 }

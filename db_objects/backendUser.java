@@ -22,7 +22,11 @@ public class backendUser{
 		String password = user.getPassword();
 		String status = user.getStatus();
 		int customerid = user.getID();
-		
+		String street = user.getStreet();
+		String city = user.getCity();
+		int zip = user.getZip();
+		String state = user.getState();
+
 		try{
 			
 
@@ -46,6 +50,17 @@ public class backendUser{
 			stmt = con.createStatement();
 			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
 			result=stmt.executeUpdate(query);
+		
+			if(!street.equals(null) && !street.equals("")){
+			stmt = con.createStatement();
+			query = "insert into shipping_address(street, city, state, zipcode, shippingid) values('" + street + "','"+city+"','" + state + "','" + zip + "','" + customerid + "');";
+			System.out.println(query);
+			result = stmt.executeUpdate(query);			
+	
+		
+			}
+			
+
 		} catch(SQLException err){
 			System.out.println("ERROR: " + err.getMessage());
 			return 1;

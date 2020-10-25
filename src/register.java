@@ -47,9 +47,15 @@ public class register extends HttpServlet {
 	String street = request.getParameter("street");
         String city = request.getParameter("city");
         String state = request.getParameter("state");
-        String zip = request.getParameter("zip");
-        String ctype = request.getParameter("ctype");
-        String cnum = request.getParameter("cnum");
+        int zip =-1;
+	if(!street.equals("")){
+	zip = Integer.parseInt(request.getParameter("zip"));
+	}
+	String ctype = request.getParameter("ctype");
+	int cnum = -1;
+	if(!ctype.equals("")){
+	cnum = Integer.parseInt(request.getParameter("cnum"));
+	}
         String exd = request.getParameter("exd");
 	int min = 1000;
 	int max = 9999;
@@ -58,8 +64,19 @@ public class register extends HttpServlet {
 	//would need to make sql call to ensure email is unique.
 	//would need to make sql call to get unique r id value by max(all user ids) + 1
 	//I HAVE DONE THE ABOVE..THIS NUMBER IS USED FOR EMAIL CONFIRMATION NOW 
+	User new_user=null;
+	if(street.equals("") && ctype.equals("")){
+		System.out.println("first");
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false);
+	}else if(!street.equals("") && ctype.equals("")){
+		System.out.println("second");
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, street, city, state, zip);
+	}else if(street.equals("") && !ctype.equals("")){
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, cnum, ctype, exd);
+	}else if(!street.equals("") && !ctype.equals("")){
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, street, city, state, zip, cnum, ctype, exd);
+	}	
 
-	User new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false);
 	int register_user = new backendUser().register(new_user);	
 	String body = "Thank you for signing up for UGABOOKSTORE.COM!!!\nYour confirmation number is: " + randomNum + "\nPlease enter this on our website!!!";
 
