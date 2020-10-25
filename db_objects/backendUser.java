@@ -146,7 +146,7 @@ public class backendUser{
 		}
 	}
 
-	public ResultSet retrieveInfo(int customerId) {	
+	public ResultSet retrievePersonalInfo(int customerId) {	
 		ResultSet rset = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -169,7 +169,7 @@ public class backendUser{
 	public String retrieveName(int customerId) {
 		String resultString = null;
 		try {
-			ResultSet rs = retrieveInfo(customerId);
+			ResultSet rs = retrievePersonalInfo(customerId);
 			if (rs == null) {
 				System.out.println("ERROR: Retrieval from DB failed!");
 			} else {
@@ -190,7 +190,7 @@ public class backendUser{
 	public String retrievePhone(int customerId) {
 		String resultString = null;
 		try {
-			ResultSet rs = retrieveInfo(customerId);
+			ResultSet rs = retrievePersonalInfo(customerId);
 			if (rs == null) {
 				System.out.println("ERROR: Retrieval from DB failed!");
 			} else {
@@ -208,6 +208,193 @@ public class backendUser{
 		return resultString;
 	}
 
+	
+	public ResultSet retrievePaymentInfo(int customerId) {	
+		ResultSet rset = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			Statement stmt = null;
+			stmt = con.createStatement();
+			String query = "select * from payment_card where userid='" + customerId + "';";
+			rset = stmt.executeQuery(query);
+			return rset;
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return rset;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return rset;
+		}
+
+	} //retrievePayment
+
+	public int retrieveCardNumber(int customerId) {
+		int resultInt = -1;
+		try {
+			ResultSet rs = retrievePaymentInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultInt = rs.getInt("cardnumber");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return resultInt;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return resultInt;
+		}
+		return resultInt;
+	}
+
+	public String retrieveCardType(int customerId) {
+		String resultString = null;
+		try {
+			ResultSet rs = retrievePaymentInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultString = rs.getString("type");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return null;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return null;
+		}
+		return resultString;
+	}
+
+	public String retrieveExpDate(int customerId) {
+		String resultString = null;
+		try {
+			ResultSet rs = retrievePaymentInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultString = rs.getString("expdate");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return null;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return null;
+		}
+		return resultString;
+	}
+
+	public ResultSet retrieveShippingInfo(int customerId) {	
+		ResultSet rset = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			Statement stmt = null;
+			stmt = con.createStatement();
+			String query = "select * from shipping_address where shippingid='" + customerId + "';";
+			rset = stmt.executeQuery(query);
+			return rset;
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return rset;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return rset;
+		}
+
+	} //retrievePayment
+
+	public String retrieveStreet(int customerId) {
+		String resultString = null;
+		try {
+			ResultSet rs = retrieveShippingInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultString = rs.getString("street");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return null;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return null;
+		}
+		return resultString;
+	}
+
+	public String retrieveCity(int customerId) {
+		String resultString = null;
+		try {
+			ResultSet rs = retrieveShippingInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultString = rs.getString("city");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return null;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return null;
+		}
+		return resultString;
+	}
+
+	public String retrieveState(int customerId) {
+		String resultString = null;
+		try {
+			ResultSet rs = retrieveShippingInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultString = rs.getString("state");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return null;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return null;
+		}
+		return resultString;
+	}
+
+	public int retrieveZipcode(int customerId) {
+		int resultInt = -1;
+		try {
+			ResultSet rs = retrieveShippingInfo(customerId);
+			if (rs == null) {
+				System.out.println("ERROR: Retrieval from DB failed!");
+			} else {
+				if (rs.next()) {
+					resultInt = rs.getInt("zipcode");
+				}
+			}
+		} catch(SQLException err){
+			System.out.println("ERROR: " + err.getMessage());
+			return resultInt;
+		} catch(Exception e){
+			System.out.println("ERROR: " + e.getMessage());
+			return resultInt;
+		}
+		return resultInt;
+	}
 		
 
 } 
