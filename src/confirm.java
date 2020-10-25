@@ -64,6 +64,11 @@ public class confirm extends HttpServlet {
 			query = "update customer set customerid='" + newid + "', status='Active' where email='" + email +"';";	
 			System.out.println(query);
 			int result = stmt.executeUpdate(query);
+			//stmt = con.createStatement();
+			//query = "update shipping_address set shippingid='" + newid "' where shippingid=' + db_conf_code + "';";	
+			//result = stmt.executeUpdate(query);
+
+
 			response.sendRedirect("index.jsp");	
 	}catch(Exception e){
 	System.out.println(e.getMessage());

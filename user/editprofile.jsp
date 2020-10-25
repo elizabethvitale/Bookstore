@@ -22,23 +22,27 @@ String expDate= "";
 String street = "";
 String city = "";
 String state = "";
-int zipcode = -1;
+String zipcode = "";
 int userId = -1;
 
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
 phone = String.valueOf(httpSession.getAttribute("phone"));
 email = String.valueOf(httpSession.getAttribute("email"));
+city = String.valueOf(httpSession.getAttribute("city"));
+state = String.valueOf(httpSession.getAttribute("state"));
+zipcode = String.valueOf(httpSession.getAttribute("zip"));
+street = String.valueOf(httpSession.getAttribute("street"));
+if(street.equals("null")){
+	street = "";
+}if(city.equals("null")){
+        city = "";
+}if(state.equals("null")){
+        state = "";
+}if(zipcode.equals("null")){
+        zipcode = "";
+}
 
-
-
-//cardNum = retriever.retrieveCardNumber(userId);
-//cardType = retriever.retrieveCardType(userId);
-//expDate = retriever.retrieveExpDate(userId);
-//street = retriever.retrieveStreet(userId);
-//city  = retriever.retrieveCity(userId);
-//state = retriever.retrieveState(userId);
-//zipcode = retriever.retrieveZipcode(userId);
 
 %>
 
@@ -169,31 +173,31 @@ email = String.valueOf(httpSession.getAttribute("email"));
               <button type="submit">Update</button>
             </div>
           </form>
-          <form action="" method="post">
+          <form action="/updateAddress" method="post">
             <div id="Address" class="tabcontent">
               <h3>Address</h3>
               <div>
                 <label>Street*</label>
                 <br>
-                <input type="text" value="<%=street%>">
+                <input type="text" name="street" value="<%=street%>">
               </div>
               <br>
               <div>
                 <label>City*</label>
                 <br>
-                <input type="text" value="<%=city%>">
+                <input type="text" name="city" value="<%=city%>">
               </div>
               <br>
               <div>
                 <label>State*</label>
                 <br>
-                <input type="text" value="<%=state%>">
+                <input type="text" name="state" value="<%=state%>">
               </div>
               <br>
               <div>
                 <label>Zip code*</label>
                 <br>
-                <input type="text" value="<%=zipcode%>">
+                <input type="text" name="zip" value="<%=zipcode%>">
               </div>
               <br>
               <button type="submit">Update</button>

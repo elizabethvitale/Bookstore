@@ -81,6 +81,15 @@
                 <url-pattern>/adminLogin</url-pattern>
         </servlet-mapping>
 
+        <servlet>
+                <servlet-name>updateAddress</servlet-name>
+                <servlet-class>com.ugabookstore.updateAddress</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>updateAddress</servlet-name>
+                <url-pattern>/updateAddress</url-pattern>
+        </servlet-mapping>
+
 
 
 

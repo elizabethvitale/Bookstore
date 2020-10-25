@@ -54,6 +54,11 @@ public class userLogin extends HttpServlet {
 	session.setAttribute("customerid", user.getID());
 	session.setAttribute("phone", user.getPhone());
 	session.setAttribute("acctID", acctID);
+	session.setAttribute("street", user.getStreet());
+	session.setAttribute("city", user.getCity());
+	session.setAttribute("state", user.getState());
+	session.setAttribute("zip", user.getZip());
+
 	request.getSession(true).setAttribute("user", user);
 	response.sendRedirect("/index.jsp");
 
