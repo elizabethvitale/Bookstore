@@ -92,7 +92,7 @@ zipcode = retriever.retrieveZipcode(userId);
           <button class="tablinks" onclick="editProfile(event, 'PaymentInfo')">Payment Info</button>
           <button class="tablinks" onclick="editProfile(event, 'OrderHistory')">Order History</button>
         </div>
-        <form action="" method="post">
+        <form action="/updateUserInfo" method="post">
           <div id="EditPersonalInfo" class="tabcontent">
             <h3>Personal Info</h3>
               <div>

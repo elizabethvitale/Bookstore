@@ -53,6 +53,15 @@
         </servlet-mapping>
 
 
+        <servlet>
+                <servlet-name>updateUserInfo</servlet-name>
+                <servlet-class>com.ugabookstore.updateUserInfo</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>updateUserInfo</servlet-name>
+                <url-pattern>/updateUserInfo</url-pattern>
+        </servlet-mapping>
+
 
 
 </web-app>
