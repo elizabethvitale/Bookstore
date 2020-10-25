@@ -11,7 +11,7 @@
   <body>
 <%@ page session="false" %> 
 <%
-HttpSession httpSession = request.getSession();
+//HttpSession session = request.getSession(false);
 String firstName = "";
 String lastName = "";
 String phone = "";
@@ -25,6 +25,9 @@ String state = "";
 String zipcode = "";
 int userId = -1;
 
+
+if(request.getSession(false) != null){
+    HttpSession httpSession = request.getSession();
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
 phone = String.valueOf(httpSession.getAttribute("phone"));
@@ -42,7 +45,7 @@ if(street.equals("null")){
 }if(zipcode.equals("null")){
         zipcode = "";
 }
-
+}
 
 %>
 
