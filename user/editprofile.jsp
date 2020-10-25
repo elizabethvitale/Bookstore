@@ -13,14 +13,15 @@
 <%
 backendUser retriever = new backendUser();
 HttpSession httpSession = request.getSession();
-String name = null;
-String phone = null;
+String firstName = "";
+String lastName = "";
+String phone = "";
 int cardNum = -1;
-String cardType = null;
-String expDate= null;
-String street = null;
-String city = null;
-String state = null;
+String cardType = "";
+String expDate= "";
+String street = "";
+String city = "";
+String state = "";
 int zipcode = -1;
 int userId = -1;
 try {
@@ -28,8 +29,9 @@ try {
 } catch (NumberFormatException e) {
 	userId = retriever.retrieveIdFromEmail(String.valueOf(httpSession.getAttribute("acctID")));
 }
-name = retriever.retrieveName(userId);
-phone = retriever.retrievePhone(userId);
+firstName = String.valueOf(httpSession.getAttribute("firstName"));
+lastName = String.valueOf(httpSession.getAttribute("lastName"));
+phone = String.valueOf(httpSession.getAttribute("phone"));
 cardNum = retriever.retrieveCardNumber(userId);
 cardType = retriever.retrieveCardType(userId);
 expDate = retriever.retrieveExpDate(userId);
@@ -94,11 +96,19 @@ zipcode = retriever.retrieveZipcode(userId);
           <div id="EditPersonalInfo" class="tabcontent">
             <h3>Personal Info</h3>
               <div>
-                <label>Name</label>
+                <label>First Name</label>
                 <br>
-                <input type="text" name="name" value="<%=name%>">
+                <input type="text" name="firstName" value="<%=firstName%>">
               </div>
               <br>
+
+              <div>
+                <label>Last Name</label>
+                <br>
+                <input type="text" name="lastName" value="<%=lastName%>">
+              </div>
+              <br>
+
               <div>
                 <label>Phone number</label>
                 <br>
