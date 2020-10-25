@@ -13,18 +13,31 @@
 <%
 backendUser retriever = new backendUser();
 HttpSession httpSession = request.getSession();
-String name = "!!!Failure!!!";
-String phone = "!!!Failure!!!";
+String name = null;
+String phone = null;
+int cardNum = -1;
+String cardType = null;
+String expDate= null;
+String street = null;
+String city = null;
+String state = null;
+int zipcode = -1;
+int userId = -1;
 try {
-	int userId = Integer.parseInt(String.valueOf(httpSession.getAttribute("acctID")));
-	name = retriever.retrieveName(userId);
-	phone = retriever.retrievePhone(userId);
-	
+	userId = Integer.parseInt(String.valueOf(httpSession.getAttribute("acctID")));
 } catch (NumberFormatException e) {
-	int userId = retriever.retrieveIdFromEmail(String.valueOf(httpSession.getAttribute("acctID")));
-	name = retriever.retrieveName(userId);
-	phone = retriever.retrievePhone(userId);
+	userId = retriever.retrieveIdFromEmail(String.valueOf(httpSession.getAttribute("acctID")));
 }
+name = retriever.retrieveName(userId);
+phone = retriever.retrievePhone(userId);
+cardNum = retriever.retrieveCardNumber(userId);
+cardType = retriever.retrieveCardType(userId);
+expDate = retriever.retrieveExpDate(userId);
+street = retriever.retrieveStreet(userId);
+city  = retriever.retrieveCity(userId);
+state = retriever.retrieveState(userId);
+zipcode = retriever.retrieveZipcode(userId);
+
 %>
 
     <header>
@@ -125,13 +138,19 @@ try {
               <div>
                 <label>Card type*</label>
                 <br>
-                <input type="text">
+                <input type="text" value="<%=cardType%>">
               </div>
               <br>
               <div>
                 <label>Number*</label>
                 <br>
-                <input type="text">
+                <input type="text" value="<%=cardNum%>">
+              </div>
+              <br>
+              <div>
+                <label>Exp date*</label>
+                <br>
+                <input type="text" value="<%=expDate%>">
               </div>
               <br>
               <button type="submit">Update</button>
@@ -143,25 +162,25 @@ try {
               <div>
                 <label>Street*</label>
                 <br>
-                <input type="text">
+                <input type="text" value="<%=street%>">
               </div>
               <br>
               <div>
                 <label>City*</label>
                 <br>
-                <input type="text">
+                <input type="text" value="<%=city%>">
               </div>
               <br>
               <div>
                 <label>State*</label>
                 <br>
-                <input type="text">
+                <input type="text" value="<%=state%>">
               </div>
               <br>
               <div>
                 <label>Zip code*</label>
                 <br>
-                <input type="text">
+                <input type="text" value="<%=zipcode%>">
               </div>
               <br>
               <button type="submit">Update</button>
