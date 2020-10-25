@@ -100,12 +100,9 @@ email = String.valueOf(httpSession.getAttribute("email"));
         <form action="/updateUserInfo" method="post">
           <div id="EditPersonalInfo" class="tabcontent">
             <h3>Personal Info</h3>
-              <div>
-		<label>Email Address</label>
-		<br>
+		<p>Email Address</p>
 		<p><%=email%></p>
-		<br
-		</div>
+
 		<div>
                 <label>First Name</label>
                 <br>
