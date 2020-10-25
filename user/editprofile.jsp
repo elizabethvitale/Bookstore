@@ -32,13 +32,13 @@ try {
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
 phone = String.valueOf(httpSession.getAttribute("phone"));
-cardNum = retriever.retrieveCardNumber(userId);
-cardType = retriever.retrieveCardType(userId);
-expDate = retriever.retrieveExpDate(userId);
-street = retriever.retrieveStreet(userId);
-city  = retriever.retrieveCity(userId);
-state = retriever.retrieveState(userId);
-zipcode = retriever.retrieveZipcode(userId);
+//cardNum = retriever.retrieveCardNumber(userId);
+//cardType = retriever.retrieveCardType(userId);
+//expDate = retriever.retrieveExpDate(userId);
+//street = retriever.retrieveStreet(userId);
+//city  = retriever.retrieveCity(userId);
+//state = retriever.retrieveState(userId);
+//zipcode = retriever.retrieveZipcode(userId);
 
 %>
 
@@ -118,7 +118,7 @@ zipcode = retriever.retrieveZipcode(userId);
               <button type="submit">Update</button>
             </div>
           </form>
-          <form action="" method="post">
+          <form action="/loggedUpdatePwd" method="post">
             <div id="ChangePassword" class="tabcontent">
               <h3>Change Password</h3>
               <div>
