@@ -1,3 +1,5 @@
+<%@ page import="com.ugabookstore.User"%>
+<%@ page import="com.ugabookstore.backendUser"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +10,22 @@
   </head>
   <body>
 <%@ page session="false" %> 
-
+<%
+backendUser retriever = new backendUser();
+HttpSession httpSession = request.getSession();
+String name = "!!!Failure!!!";
+String phone = "!!!Failure!!!";
+try {
+	int userId = Integer.parseInt(String.valueOf(httpSession.getAttribute("acctID")));
+	name = retriever.retrieveName(userId);
+	phone = retriever.retrievePhone(userId);
+	
+} catch (NumberFormatException e) {
+	int userId = retriever.retrieveIdFromEmail(String.valueOf(httpSession.getAttribute("acctID")));
+	name = retriever.retrieveName(userId);
+	phone = retriever.retrievePhone(userId);
+}
+%>
 
     <header>
       <div>
@@ -66,13 +83,13 @@
               <div>
                 <label>Name</label>
                 <br>
-                <input type="text">
+                <input type="text" name="name" value="<%=name%>">
               </div>
               <br>
               <div>
                 <label>Phone number</label>
                 <br>
-                <input type="text">
+                <input type="text" name="phone" value="<%=phone%>">
               </div>
               <br>
               <button type="submit">Update</button>
@@ -84,19 +101,19 @@
               <div>
                <label>Current Password</label>
                 <br>
-                <input type="text">
+                <input type="text" name="currentPwd">
               </div>
               <br>
               <div>
                 <label>New Password</label>
                 <br>
-                <input type="text">
+                <input type="text" name="newPwd1">
               </div>
               <br>
               <div>
                 <label>Confirm New Password</label>
                 <br>
-                <input type="text">
+                <input type="text" name="newPwd2">
               </div>
               <br>
               <button type="submit">Update</button>
