@@ -1,3 +1,5 @@
+<%@ page import="com.ugabookstore.User"%>
+<%@ page import="com.ugabookstore.backendUser"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,20 +9,29 @@
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
+<%@ page session="false" %> 
+<%
+HttpSession session = request.getSession();
+String name = (String)session.getAttribute("firstName");
+String pass = String.valueOf(session.getAttribute("admin"));
+if(pass.equals(null) | !pass.equals("YES")){
+	response.sendRedirect("404error.jsp");
+}
+%>
 <header>
     <div>
-        <h2><div><a href="../admin/index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../admin/index.jsp">UGA Bookshop</a></div></h2>
         <section>
             <nav>
                 <ul>
                     <li>
-                        <a href="managebooks.html">Manage Books</a>
+                        <a href="managebooks.jsp">Manage Books</a>
                     </li>
                     <li>
-                        <a href="manageusers.html">Manage Users</a>
+                        <a href="manageusers.jsp">Manage Users</a>
                     </li>
                     <li>
-                        <a href="managepromotions.html">Manage Promotions</a>
+                        <a href="managepromotions.jsp">Manage Promotions</a>
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
@@ -45,7 +56,7 @@
     </div>
 </header>
 <main>
-    <h1>Welcome to the Admin Panel %name%</h1>
+    <h1>Welcome to the Admin Panel <%=name%></h1>
     <p></p>
 </main>
 <footer>

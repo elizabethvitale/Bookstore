@@ -56,6 +56,40 @@ public class backendUser{
 		return 0;
 	}
 
+	public Admin loginAdmin(String acctID_or_email, String pwd){
+		Admin admin = new Admin();
+		try{
+						
+                        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+                        Statement stmt = null;
+                        stmt = con.createStatement();
+                        String query = "select * from admin where adminid='" + acctID_or_email + "' or email='" + acctID_or_email+"';";
+                        pwd = getSha1(pwd);
+                        ResultSet rs=stmt.executeQuery(query);
+                                if(rs.next()) {
+
+                                        admin.setID(rs.getInt("adminid"));
+                                        admin.setFirstName(rs.getString("firstname"));
+                                        admin.setLastName(rs.getString("lastname"));
+                                        admin.setEmail(rs.getString("email"));
+                                        admin.setPassword(rs.getString("password"));
+				}
+                                if(admin.getPassword().equals(pwd)){
+                                return admin;
+                                }
+                                admin=null;
+                                return admin;
+
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			admin = null;
+			return admin;
+		}
+
+
+
+	}
 
 	public User login(String acctID_or_email, String pwd){
                 User user = new User();

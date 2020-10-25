@@ -63,10 +63,10 @@
     </header>
     <main>
       <section id='authBox'>
-        <h1>Login as Existing Customer</h1>
-        <form action="/userLogin" method="post">
+        <h1>Login as Admin</h1>
+        <form action="/adminLogin" method="post">
           <div>
-            <label for="acctID">Account ID/Email Address</label>
+            <label for="acctID">Admin ID/Email Address</label>
             <br>
             <input type="text" name="acctID" id="acctID">
           </div>
@@ -82,12 +82,11 @@
           <button id="formsub" type="submit">Login</button>
         </form>
 	<br>
-	<a href="/user/forgotpwd.jsp">Forgot your password? Click here to reset it</a>
 	<br><br><br>
 
      </section>
 	<br><br><br>
-<a href="/admin/login.jsp">Navigate to admin login?</a>
+	<a href="/user/login.jsp">Navigate to user login?</a>
     </main>
     <footer>
 	      <div>

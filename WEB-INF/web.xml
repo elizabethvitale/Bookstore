@@ -72,6 +72,17 @@
         </servlet-mapping>
 
 
+        <servlet>
+                <servlet-name>adminLogin</servlet-name>
+                <servlet-class>com.ugabookstore.adminLogin</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>adminLogin</servlet-name>
+                <url-pattern>/adminLogin</url-pattern>
+        </servlet-mapping>
+
+
+
 
 
 
