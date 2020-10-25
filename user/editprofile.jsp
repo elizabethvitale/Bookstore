@@ -16,6 +16,7 @@ HttpSession httpSession = request.getSession();
 String firstName = "";
 String lastName = "";
 String phone = "";
+String email="";
 int cardNum = -1;
 String cardType = "";
 String expDate= "";
@@ -32,6 +33,10 @@ try {
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
 phone = String.valueOf(httpSession.getAttribute("phone"));
+email = String.valueOf(httpSession.getAttribute("email"));
+
+
+
 //cardNum = retriever.retrieveCardNumber(userId);
 //cardType = retriever.retrieveCardType(userId);
 //expDate = retriever.retrieveExpDate(userId);
@@ -96,6 +101,12 @@ phone = String.valueOf(httpSession.getAttribute("phone"));
           <div id="EditPersonalInfo" class="tabcontent">
             <h3>Personal Info</h3>
               <div>
+		<label>Email Address</label>
+		<br>
+		<p><%=email%></p>
+		<br
+		</div>
+		<div>
                 <label>First Name</label>
                 <br>
                 <input type="text" name="firstName" value="<%=firstName%>">
