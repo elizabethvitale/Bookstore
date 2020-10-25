@@ -114,7 +114,7 @@ public class backendUser{
                         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
                         Statement stmt = null;
                         stmt = con.createStatement();
-                        String query = "select * from customer where customerid='" + acctID_or_email + "' or email='" + acctID_or_email+"';";
+			String query = "select * from customer where customerid='" + acctID_or_email + "' or email='" + acctID_or_email+"';";
                        	pwd = getSha1(pwd); 
 			ResultSet rs=stmt.executeQuery(query);
                                 if(rs.next()) {
@@ -127,6 +127,17 @@ public class backendUser{
                                         user.setPhoneNumber(rs.getString("phone"));
                                         user.setStatus(rs.getString("status"));
                                         user.setEnrolled(rs.getBoolean("enroll_for_promotes"));
+					stmt = con.createStatement();
+					query = "select * from shipping_address where shippingid='" + rs.getInt("customerid") + "';";
+					ResultSet ra =stmt.executeQuery(query);
+					if(ra.next()) {
+						user.setCity(ra.getString("city"));	
+                                                user.setStreet(ra.getString("street"));  
+                                                user.setZip(Integer.parseInt(ra.getString("zipcode")));  
+                                                user.setState(ra.getString("state"));  			
+					}
+	
+
 
                                 }else{
 					System.out.println("catch1");
