@@ -160,25 +160,25 @@ if(street.equals("null")){
               <button type="submit">Update</button>
             </div>
           </form>
-          <form action="" method="post">
+          <form action="/updateCard" method="post">
             <div id="PaymentInfo" class="tabcontent">
               <h3>Payment Info</h3>
               <div>
                 <label>Card type*</label>
                 <br>
-                <input type="text" value="<%=cardType%>">
+                <input type="text" name="cardType" value="<%=cardType%>">
               </div>
               <br>
               <div>
                 <label>Number*</label>
                 <br>
-                <input type="text" value="<%=cardNum%>">
+                <input type="text" name="cardNum" value="<%=cardNum%>">
               </div>
               <br>
               <div>
                 <label>Exp date*</label>
                 <br>
-                <input type="text" value="<%=expDate%>">
+                <input type="text" name="expirationDate" value="<%=expDate%>">
               </div>
               <br>
               <button type="submit">Update</button>

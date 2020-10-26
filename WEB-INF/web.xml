@@ -91,7 +91,14 @@
         </servlet-mapping>
 
 
-
+       <servlet>
+             	<servlet-name>updateCard</servlet-name>
+                <servlet-class>com.ugabookstore.updateCard</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>updateCard</servlet-name>
+                <url-pattern>/updateCard</url-pattern>
+        </servlet-mapping>
 
 
 
