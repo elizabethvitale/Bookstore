@@ -56,7 +56,7 @@ if(street.equals("null")){
 }
 }
 %>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <header>
       <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
@@ -160,8 +160,9 @@ if(street.equals("null")){
               <button type="submit">Update</button>
             </div>
           </form>
+
+	<div id="PaymentInfo" class="tabcontent">
           <form action="/updateCard" method="post">
-            <div id="PaymentInfo" class="tabcontent">
               <h3>Payment Info</h3>
               <div>
                 <label>Card type*</label>
@@ -182,8 +183,27 @@ if(street.equals("null")){
               </div>
               <br>
               <button type="submit">Update</button>
-            </div>
-          </form>
+	</form>
+       <br><br>
+		<div>
+                <button name="addCard" id="addCard">Add Additional Card</button>
+	  	</div>
+		 </div>
+<script>
+$(document).ready(function() {
+       
+    $("button[name='addCard']").click(function() {
+       var domElement = $('<form action="/addCard" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType" value=""></div><br><div><label>Number*</label><br><input type="text" name="cardNum" value=""></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate" value=""></div><br><button type="submit">Update</button></form><br><br>');
+        $(this).after(domElement);
+    	var oldButton = document.getElementById("addCard");
+	oldButton.remove();
+	});
+    
+});
+
+
+</script>	
+
           <form action="/updateAddress" method="post">
             <div id="Address" class="tabcontent">
               <h3>Address</h3>
@@ -212,7 +232,9 @@ if(street.equals("null")){
               </div>
               <br>
               <button type="submit">Update</button>
-          </div>
+  
+	
+	</div>
         </form>
         <form action="" method="post">
           <div id="Personal Info" class="tabcontent">

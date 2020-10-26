@@ -100,6 +100,15 @@
                 <url-pattern>/updateCard</url-pattern>
         </servlet-mapping>
 
+       <servlet>
+                <servlet-name>addCard</servlet-name>
+                <servlet-class>com.ugabookstore.addCard</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>addCard</servlet-name>
+                <url-pattern>/addCard</url-pattern>
+        </servlet-mapping>
+
 
 
 </web-app>

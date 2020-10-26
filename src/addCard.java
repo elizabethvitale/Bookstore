@@ -29,8 +29,8 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
  
-@WebServlet("/updateCard")
-public class updateCard extends HttpServlet {
+@WebServlet("/addCard")
+public class addCard extends HttpServlet {
  
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -39,14 +39,8 @@ public class updateCard extends HttpServlet {
 			int id = (Integer) session.getAttribute("customerid");
 			String expirationDate = request.getParameter("expirationDate");
 			String cardNumber = request.getParameter("cardNum");
-			System.out.println(cardNumber);
-			System.out.println(expirationDate);
-			System.out.println(cardType);
-			if(!cardNumber.equals("**** **** **** ****")){
-				cardNumber = getSha1(cardNumber);
-			}else{
-				cardNumber = "";
-			}
+			
+			cardNumber = getSha1(cardNumber);
 
 			Connection con;
 			try{
@@ -55,28 +49,13 @@ public class updateCard extends HttpServlet {
 				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 				Statement stmt=null;
 				stmt = con.createStatement();
-				String query = "select * from payment_card where userid='" + id + "';";
-				ResultSet rs =stmt.executeQuery(query);
+				String query = "insert into payment_card (cardnumber, type, expdate, userid) values ('" + cardNumber + "','" + cardType + "','" + expirationDate + "','" + id + "');";
 				System.out.println(query);
-				if(rs.next()) {
-				if(!cardNumber.equals("")){
-				query = "update payment_card set cardnumber='" + cardNumber + "', type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "';";      
-                		}else{
-				query = "update payment_card set type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "';";
-				}
-				System.out.println(query); 
-                                int result = stmt.executeUpdate(query);	
-				}else{
-				query = "insert into payment_card (cardnumber, type, expdate, userid) values ('" + cardNumber + "','" + cardType + "','" + expirationDate + "','" + id + "');";
 				int result = stmt.executeUpdate(query);
-				System.out.println("into second");
-				}
 				response.sendRedirect("index.jsp");
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}
-		session.setAttribute("expirationDate", expirationDate); 
-		session.setAttribute("cardType", cardType); 
 }
 
         public static String getSha1(String input) {
