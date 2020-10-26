@@ -1,18 +1,33 @@
 <!DOCTYPE html>
+<%@ page session="false" %>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/auth.css">
   </head>
   <body>
+
+<%
+
+
+	String message = "";
+	HttpSession session=request.getSession(false);  
+        if(session!=null){  
+        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";  
+}%>
+
+
+
     <header>
       <div>
-        <h2><div><a href="index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <a href="search.html"><button type="button"><img src="image/search.svg"></button></a>
+            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -22,22 +37,22 @@
                 BROWSE
               </li>
               <li>
-                <a href="checkout/cart.html"><img src="image/shoppingcart.svg"></a>
+                <a href="../checkout/cart.html"><img src="../image/shoppingcartblack.svg"></a>
               </li>
               <li style='position: relative;'>
-                <img id="auth-dropdown-toggle" src="image/account.svg">
+                <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="user/login.html">Login</a>
+                    <a href="login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="user/register.html">Register</a>
+                    <a href="register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="user/editprofile.html">Edit Profile</a>
+                    <a href="editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="user/logout.html">Logout</a>
+                    <a href="logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -47,23 +62,34 @@
       </div>
     </header>
     <main>
-      <div>
-        <h1>Topseller Books</h1>
-        <a href="bookDetail.html"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/totalpower.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/troubledBlood.jpg"></a>
-      </div>
-      <div>
-        <h1>Featured Books</h1>
-        <a href="bookDetail.html"><img class="books" src="image/books/theMidwifeMurders.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/thenShewasGone.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/thisTenderland.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/whatHappensinParadise.jpeg"></a>
-      </div>
+      <section id='authBox'>
+        <h1>Login as Admin</h1>
+        <form action="/adminLogin" method="post">
+          <div>
+            <label for="acctID">Admin ID/Email Address</label>
+            <br>
+            <input type="text" name="acctID" id="acctID">
+          </div>
+          <br>
+          <div>
+            <label for="pwd">Password</label>
+            <br>
+            <input type="text" id="pwd" name="pwd">
+          </div>
+	<p><%=message%></p>
+
+
+          <button id="formsub" type="submit">Login</button>
+        </form>
+	<br>
+	<br><br><br>
+
+     </section>
+	<br><br><br>
+	<a href="/user/login.jsp">Navigate to user login?</a>
     </main>
     <footer>
-      <div>
+	      <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -102,8 +128,16 @@
         </section>
       </div>
     </footer>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+
+    <script language="javascript">
+        var s = "<%=message%>";
+        if(s!==""){
+                document.getElementById("formsub").disabled = true;
+        }
+    </script>
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
   </body>
 </html>

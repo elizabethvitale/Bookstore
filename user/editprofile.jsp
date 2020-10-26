@@ -1,3 +1,5 @@
+<%@ page import="com.ugabookstore.User"%>
+<%@ page import="com.ugabookstore.backendUser"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,9 +9,57 @@
     <link rel="stylesheet" href="../css/auth.css">
   </head>
   <body>
+<%@ page session="false" %> 
+<%
+//HttpSession session = request.getSession(false);
+String firstName = "";
+String lastName = "";
+String phone = "";
+String email="";
+String cardNum = "";
+String cardType = "";
+String expDate= "";
+String street = "";
+String city = "";
+String state = "";
+String zipcode = "";
+int userId = -1;
+
+
+if(request.getSession(false) != null){
+    HttpSession httpSession = request.getSession();
+firstName = String.valueOf(httpSession.getAttribute("firstName"));
+lastName = String.valueOf(httpSession.getAttribute("lastName"));
+phone = String.valueOf(httpSession.getAttribute("phone"));
+email = String.valueOf(httpSession.getAttribute("email"));
+city = String.valueOf(httpSession.getAttribute("city"));
+state = String.valueOf(httpSession.getAttribute("state"));
+zipcode = String.valueOf(httpSession.getAttribute("zip"));
+street = String.valueOf(httpSession.getAttribute("street"));
+expDate = String.valueOf(httpSession.getAttribute("expirationDate"));
+cardType = String.valueOf(httpSession.getAttribute("cardType"));
+if(!cardType.equals("null")){
+	cardNum= "**** **** **** ****";
+}else{
+	expDate="";
+}if(cardType.equals("null")){
+	cardType="";
+}
+if(street.equals("null")){
+	street = "";
+}if(city.equals("null")){
+        city = "";
+}if(state.equals("null")){
+        state = "";
+}if(zipcode.equals("null")){
+        zipcode = "";
+}
+}
+%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <header>
       <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
@@ -29,16 +79,16 @@
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.html">Login</a>
+                    <a href="login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.html">Register</a>
+                    <a href="register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.html">Logout</a>
+                    <a href="logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -57,101 +107,134 @@
           <button class="tablinks" onclick="editProfile(event, 'PaymentInfo')">Payment Info</button>
           <button class="tablinks" onclick="editProfile(event, 'OrderHistory')">Order History</button>
         </div>
-        <form action="" method="post">
+        <form action="/updateUserInfo" method="post">
           <div id="EditPersonalInfo" class="tabcontent">
             <h3>Personal Info</h3>
-              <div>
-                <label>Name</label>
+		<p>Email Address</p>
+		<p><%=email%></p>
+
+		<div>
+                <label>First Name</label>
                 <br>
-                <input type="text">
+                <input type="text" name="firstName" value="<%=firstName%>">
               </div>
               <br>
+
+              <div>
+                <label>Last Name</label>
+                <br>
+                <input type="text" name="lastName" value="<%=lastName%>">
+              </div>
+              <br>
+
               <div>
                 <label>Phone number</label>
                 <br>
-                <input type="text">
-              </div>
-              <br>
-              <div>
-                <label>Email address</label>
-                <br>
-                <input type="text">
+                <input type="text" name="phone" value="<%=phone%>">
               </div>
               <br>
               <button type="submit">Update</button>
             </div>
           </form>
-          <form action="" method="post">
+          <form action="/loggedUpdatePwd" method="post">
             <div id="ChangePassword" class="tabcontent">
               <h3>Change Password</h3>
               <div>
                <label>Current Password</label>
                 <br>
-                <input type="text">
+                <input type="text" name="currentPwd">
               </div>
               <br>
               <div>
                 <label>New Password</label>
                 <br>
-                <input type="text">
+                <input type="text" name="newPwd1">
               </div>
               <br>
               <div>
                 <label>Confirm New Password</label>
                 <br>
-                <input type="text">
+                <input type="text" name="newPwd2">
               </div>
               <br>
               <button type="submit">Update</button>
             </div>
           </form>
-          <form action="" method="post">
-            <div id="PaymentInfo" class="tabcontent">
+
+	<div id="PaymentInfo" class="tabcontent">
+          <form action="/updateCard" method="post">
               <h3>Payment Info</h3>
               <div>
                 <label>Card type*</label>
                 <br>
-                <input type="text">
+                <input type="text" name="cardType" value="<%=cardType%>">
               </div>
               <br>
               <div>
                 <label>Number*</label>
                 <br>
-                <input type="text">
+                <input type="text" name="cardNum" value="<%=cardNum%>">
+              </div>
+              <br>
+              <div>
+                <label>Exp date*</label>
+                <br>
+                <input type="text" name="expirationDate" value="<%=expDate%>">
               </div>
               <br>
               <button type="submit">Update</button>
-            </div>
-          </form>
-          <form action="" method="post">
+	</form>
+       <br><br>
+		<div>
+                <button name="addCard" id="addCard">Add Additional Card</button>
+	  	</div>
+		 </div>
+<script>
+$(document).ready(function() {
+       
+    $("button[name='addCard']").click(function() {
+       var domElement = $('<form action="/addCard" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType" value=""></div><br><div><label>Number*</label><br><input type="text" name="cardNum" value=""></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate" value=""></div><br><button type="submit">Update</button></form><br><br>');
+        $(this).after(domElement);
+    	var oldButton = document.getElementById("addCard");
+	oldButton.remove();
+	});
+    
+});
+
+
+</script>	
+
+          <form action="/updateAddress" method="post">
             <div id="Address" class="tabcontent">
               <h3>Address</h3>
               <div>
                 <label>Street*</label>
                 <br>
-                <input type="text">
+                <input type="text" name="street" value="<%=street%>">
               </div>
               <br>
               <div>
                 <label>City*</label>
                 <br>
-                <input type="text">
+                <input type="text" name="city" value="<%=city%>">
               </div>
               <br>
               <div>
                 <label>State*</label>
                 <br>
-                <input type="text">
+                <input type="text" name="state" value="<%=state%>">
               </div>
               <br>
               <div>
                 <label>Zip code*</label>
                 <br>
-                <input type="text">
+                <input type="text" name="zip" value="<%=zipcode%>">
               </div>
               <br>
               <button type="submit">Update</button>
-          </div>
+  
+	
+	</div>
         </form>
         <form action="" method="post">
           <div id="Personal Info" class="tabcontent">

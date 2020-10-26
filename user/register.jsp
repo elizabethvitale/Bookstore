@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="../css/auth.css">
   </head>
   <body>
+<%@ page session="false" %>
     <header>
       <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
@@ -29,16 +30,16 @@
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.html">Login</a>
+                    <a href="login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.html">Register</a>
+                    <a href="register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.html">Logout</a>
+                    <a href="logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -49,31 +50,91 @@
     </header>
     <main>
       <section id='authBox'>
-        <h1>Login as Existing Customer</h1>
-        <form action="../index.html" method="post">
+        <h1>New Customer</h1>
+        <form action="/register" method="post">
           <div>
-            <label>Account ID/Email Address</label>
+            <label>First Name*</label>
             <br>
-            <input type="text" required>
+            <input type="text" name="fname" required>
+          </div>
+          <br>
+	  <div>
+	    <label>Last Name*</label>
+	<br>
+	<input type="text" name="lname" required>
+	</div>
+	<br>
+          <div>
+            <label>Phone number*</label>
+            <br>
+            <input type="text" name="number" required>
           </div>
           <br>
           <div>
-            <label>Password</label>
+            <label>Email Address*</label>
             <br>
-            <input type="text" required>
+            <input type="text" name="email" required>
+          </div>
+          <br>
+          <div>
+            <label>Password*</label>
+            <br>
+            <input type="text" name="password" required>
+          </div>
+          <br>
+	  <h3>Shipping Information</h3>
+          <div>
+            <label>Street</label>
+            <br>
+            <input type="text" name="street">
+          </div>
+          <br>
+          <div>
+            <label>City</label>
+            <br>
+            <input type="text" name="city">
+          </div>
+          <br>
+          <div>
+            <label>State</label>
+            <br>
+            <input type="text" name="state">
+          </div>
+          <br>
+          <div>
+            <label>Zip Code</label>
+            <br>
+		<input type="text" name="zip">
+          </div>
+          <br>
+	<h3>Payment Info</h3>
+          <div>
+            <label>Card Type</label>
+            <br>
+            <input type="text" name="ctype">
+          </div>
+          <br>
+          <div>
+            <label>Number</label>
+            <br>
+            <input type="text" name="cnum">
+          </div>
+          <br>
+          <div>
+            <label>Expiration Date</label>
+            <br>
+            <input type="text" name="exd">
           </div>
           <br>
 
-          <button type="submit">Login</button>
-        </form>
-        <br>
-        <form action="../admin/index.html" method="post">
-          <button type="submit">Login (as Admin)</button>
+
+
+          <button type="submit">Register</button>
         </form>
       </section>
     </main>
     <footer>
-      <div>
+        <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -93,8 +154,8 @@
             </li>
           </ul>
           <div>
-            <button class="button" style="margin-right: 10px;">LOGIN</button>
-            <button class="button">REGISTER</button>
+          <button class="button" style="margin-right: 10px;">LOGIN</button>
+          <button class="button">REGISTER</button>
           </div>
         </section>
         <section style="flex-grow: 1;align-items: baseline;">

@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <header>
+<%@ page session="false" %>  
+  <header>
       <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+            <a href="search.html"><button type="button"><img src="image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -23,22 +23,22 @@
                 BROWSE
               </li>
               <li>
-                <a href="../checkout/cart.html"><img src="../image/shoppingcartblack.svg"></a>
+                <a href="checkout/cart.html"><img src="image/shoppingcart.svg"></a>
               </li>
               <li style='position: relative;'>
-                <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
+                <img id="auth-dropdown-toggle" src="image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.html">Login</a>
+                    <a href="user/login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.html">Register</a>
+                    <a href="user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.html">Logout</a>
+                    <a href="user/logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -47,40 +47,34 @@
         </section>
       </div>
     </header>
+
+<%
+	String message = "";
+       HttpSession session=request.getSession(false);  
+        if(session!=null){ 
+        message="Welcome, " + (String)session.getAttribute("acctID");  
+}%>
+<p><%=message%></p>
+
+
     <main>
-      <section id='authBox'>
-        <h1>New Customer</h1>
-        <form action="registrationconfirm.html" method="post">
-          <div>
-            <label>Name*</label>
-            <br>
-            <input type="text" required>
-          </div>
-          <br>
-          <div>
-            <label>Phone number*</label>
-            <br>
-            <input type="text" required>
-          </div>
-          <br>
-          <div>
-            <label>Email Address*</label>
-            <br>
-            <input type="text" required>
-          </div>
-          <br>
-          <div>
-            <label>Password*</label>
-            <br>
-            <input type="text" required>
-          </div>
-          <br>
-          <button type="submit">Register</button>
-        </form>
-      </section>
+      <div>
+        <h1>Topseller Books</h1>
+        <a href="bookDetail.html"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        <a href="bookDetail.html"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
+        <a href="bookDetail.html"><img class="books" src="image/books/totalpower.jpg"></a>
+        <a href="bookDetail.html"><img class="books" src="image/books/troubledBlood.jpg"></a>
+      </div>
+      <div>
+        <h1>Featured Books</h1>
+        <a href="bookDetail.html"><img class="books" src="image/books/theMidwifeMurders.jpeg"></a>
+        <a href="bookDetail.html"><img class="books" src="image/books/thenShewasGone.jpeg"></a>
+        <a href="bookDetail.html"><img class="books" src="image/books/thisTenderland.jpeg"></a>
+        <a href="bookDetail.html"><img class="books" src="image/books/whatHappensinParadise.jpeg"></a>
+      </div>
     </main>
     <footer>
-        <div>
+      <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -100,8 +94,8 @@
             </li>
           </ul>
           <div>
-          <button class="button" style="margin-right: 10px;">LOGIN</button>
-          <button class="button">REGISTER</button>
+            <button class="button" style="margin-right: 10px;">LOGIN</button>
+            <button class="button">REGISTER</button>
           </div>
         </section>
         <section style="flex-grow: 1;align-items: baseline;">
@@ -119,8 +113,8 @@
         </section>
       </div>
     </footer>
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
   </body>
 </html>

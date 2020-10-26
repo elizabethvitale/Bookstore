@@ -1,3 +1,7 @@
+<%@ page import="com.ugabookstore.User"%>
+<%@ page import="com.ugabookstore.backendUser"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,20 +11,28 @@
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
+<%@ page session="false" %> 
+<%
+HttpSession session = request.getSession();
+String pass = String.valueOf(session.getAttribute("admin"));
+if(pass.equals(null) | !pass.equals("YES")){
+        response.sendRedirect("404error.jsp");
+}
+%>
 <header>
     <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../admin/index.jsp">UGA Bookshop</a></div></h2>
         <section>
             <nav>
                 <ul>
                     <li>
-                        <a href="managebooks.html">Manage Books</a>
+                        <a href="managebooks.jsp">Manage Books</a>
                     </li>
                     <li>
-                        <a href="manageusers.html">Manage Users</a>
+                        <a href="manageusers.jsp">Manage Users</a>
                     </li>
                     <li>
-                        <a href="managepromotions.html">Manage Promotions</a>
+                        <a href="managepromotions.jsp">Manage Promotions</a>
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
@@ -45,31 +57,15 @@
     </div>
 </header>
 <main>
-    <h1>Editing "The Evening and the Morning"</h1>
+    <h1>Manage Books</h1>
     <section class="book">
         <img class="image" src="../image/books/theEveningandtheMorning.jpg">
         <div class="details">
-            <form action="" method="post">
-                <div>
-                    <label>Title: </label>
-                    <input type="text" value="The Evening and the Morning" />
-                </div>
-                <div>
-                    <label>Author: </label>
-                    <input type="text" value="Ken Follett" />
-                </div>
-                <div>
-                    <label>Price (in USD): </label>
-                    <input type="number" min="0" max="1000"  value="29.99" />
-                </div>
-                <div>
-                    <label>Description:</label>
-                    <textarea>
-                        From the #1 New York Times bestselling author, a thrilling and addictive new novel—a prequel to The Pillars of the Earth—set in England at the dawn of a new era: the Middle Age. It is 997 CE, the end of the Dark Ages. England is facing attacks from the Welsh in the west and the Vikings in the east. Those in power bend justice according to their will, regardless of ordinary people and often in conflict with the king. Without a clear rule of law, chaos reigns. In these turbulent times, three characters find their lives intertwined. A young boatbuilder's life is turned upside down when the only home he's ever known is raided by Vikings, forcing him and his family to move and start their lives anew in a small hamlet where he does not fit in. . . . A Norman noblewoman marries for love, following her husband across the sea to a new land, but the customs of her husband's homeland are shockingly different, and as she begins to realize that everyone around her is engaged in a constant, brutal battle for power, it becomes clear that a single misstep could be catastrophic. . . . A monk dreams of transforming his humble abbey into a center of learning that will be admired throughout Europe. And each in turn comes into dangerous conflict with a clever and ruthless bishop who will do anything to increase his wealth and power. Thirty years ago, Ken Follett published his most popular novel, The Pillars of the Earth. Now, Follett's masterful new prequel The Evening and the Morning takes us on an epic journey into a historical past rich with ambition and rivalry, death and birth, love and hate, that will end where The Pillars of the Earth begins.
-                    </textarea>
-                </div>
-                <button type="submit">Edit Book</button>
-            </form>
+            <h3>The Evening and the Morning | Ken Follett</h3>
+            <span>$29.99</span>
+            <p>From the #1 New York Times bestselling author, a thrilling and addictive new novel—a prequel to The Pillars of the Earth—set in England at the dawn of a new era: the Middle Ages
+                It is 997 CE, the end of the Dark Ages. England is facing attacks from the Welsh in the west and the Vikings in the east. Those in power bend justice according to their will, regardless of ordinary people and often in conflict with the king. Without a clear rule of law, chaos reigns. In these turbulent times, three characters find their lives intertwined. A young boatbuilder's life is turned upside down when the only home he's ever known is raided by Vikings, forcing him and his family to move and start their lives anew in a small hamlet where he does not fit in. . . . A Norman noblewoman marries for love, following her husband across the sea to a new land, but the customs of her husband's homeland are shockingly different, and as she begins to realize that everyone around her is engaged in a constant, brutal battle for power, it becomes clear that a single misstep could be catastrophic. . . . A monk dreams of transforming his humble abbey into a center of learning that will be admired throughout Europe. And each in turn comes into dangerous conflict with a clever and ruthless bishop who will do anything to increase his wealth and power. Thirty years ago, Ken Follett published his most popular novel, The Pillars of the Earth. Now, Follett's masterful new prequel The Evening and the Morning takes us on an epic journey into a historical past rich with ambition and rivalry, death and birth, love and hate, that will end where The Pillars of the Earth begins.</p>
+            <a href="editbook.jsp">Edit Book Details</a>
         </div>
     </section>
 </main>
