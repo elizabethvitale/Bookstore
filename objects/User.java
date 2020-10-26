@@ -15,7 +15,7 @@ public class User{
 	private String city;
 	private String state;
 	private int zip;
-	private int cardNumber;
+	private String cardNumber;
 	private String type;
 	private String expirationDate;
 
@@ -47,7 +47,7 @@ public class User{
 		this.state=state;
 		this.zip = zip;			
 	}
-	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String street, String city, String state, int zip, int cardNumber, String type, String expirationDate){
+	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String street, String city, String state, int zip, String cardNumber, String type, String expirationDate){
 		this.actID = actID;
                 this.password = password;//hash this
                 this.firstName = firstName;
@@ -64,7 +64,7 @@ public class User{
 		this.type=type;
 		this.expirationDate = expirationDate;	
 	}
-	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, int cardNumber, String type, String expirationDate){
+	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String cardNumber, String type, String expirationDate){
                 this.actID = actID;
                 this.password = password;//hash this
                 this.firstName = firstName;
@@ -114,9 +114,26 @@ public class User{
         public int getZip(){
                 return zip;
         }
+	public String getCardNumber(){
+		return cardNumber;
+	}
+	public void setCardNumber(String cardNumber){
+		this.cardNumber = cardNumber;
+	}
+	public void setCardType(String type){
+		this.type = type;
 
-
-
+	}
+	public void setExpirationDate(String expirationDate){
+		this.expirationDate = expirationDate;
+	}
+	public String getCardType(){
+		return type;
+	}
+	public String getExpirationDate(){
+		return expirationDate;
+	}
+	
 	 public void setID(int actID){
                 this.actID = actID;
         }	

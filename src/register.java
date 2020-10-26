@@ -52,10 +52,7 @@ public class register extends HttpServlet {
 	zip = Integer.parseInt(request.getParameter("zip"));
 	}
 	String ctype = request.getParameter("ctype");
-	int cnum = -1;
-	if(!ctype.equals("")){
-	cnum = Integer.parseInt(request.getParameter("cnum"));
-	}
+	String cnum = request.getParameter("cnum");
         String exd = request.getParameter("exd");
 	int min = 1000;
 	int max = 9999;

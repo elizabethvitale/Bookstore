@@ -16,7 +16,7 @@ String firstName = "";
 String lastName = "";
 String phone = "";
 String email="";
-int cardNum = -1;
+String cardNum = "";
 String cardType = "";
 String expDate= "";
 String street = "";
@@ -36,6 +36,15 @@ city = String.valueOf(httpSession.getAttribute("city"));
 state = String.valueOf(httpSession.getAttribute("state"));
 zipcode = String.valueOf(httpSession.getAttribute("zip"));
 street = String.valueOf(httpSession.getAttribute("street"));
+expDate = String.valueOf(httpSession.getAttribute("expirationDate"));
+cardType = String.valueOf(httpSession.getAttribute("cardType"));
+if(!cardType.equals("null")){
+	cardNum= "**** **** **** ****";
+}else{
+	expDate="";
+}if(cardType.equals("null")){
+	cardType="";
+}
 if(street.equals("null")){
 	street = "";
 }if(city.equals("null")){
@@ -46,7 +55,6 @@ if(street.equals("null")){
         zipcode = "";
 }
 }
-
 %>
 
     <header>

@@ -58,7 +58,10 @@ public class userLogin extends HttpServlet {
 	session.setAttribute("city", user.getCity());
 	session.setAttribute("state", user.getState());
 	session.setAttribute("zip", user.getZip());
-
+	System.out.println(user.getCardType());
+	System.out.println(user.getExpirationDate());
+	session.setAttribute("cardType", user.getCardType());
+	session.setAttribute("expirationDate", user.getExpirationDate());
 	request.getSession(true).setAttribute("user", user);
 	response.sendRedirect("/index.jsp");
 

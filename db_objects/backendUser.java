@@ -26,11 +26,11 @@ public class backendUser{
 		String city = user.getCity();
 		int zip = user.getZip();
 		String state = user.getState();
-
+		String cardType = user.getCardType();
+		String expirationDate = user.getExpirationDate();
+		String cardNumber = user.getCardNumber();
 		try{
 			
-
-
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			Statement stmt=null;
@@ -56,8 +56,14 @@ public class backendUser{
 			query = "insert into shipping_address(street, city, state, zipcode, shippingid) values('" + street + "','"+city+"','" + state + "','" + zip + "','" + customerid + "');";
 			System.out.println(query);
 			result = stmt.executeUpdate(query);			
-	
-		
+			}
+			if(!cardType.equals(null) && !cardType.equals("")){
+			stmt = con.createStatement();
+			String card = getSha1(cardNumber);
+			query = "insert into payment_card(cardnumber, userid, type, expdate) values('" + card + "','" + customerid + "','" + cardType + "','" + expirationDate + "');";
+			
+			System.out.println(query);
+			result = stmt.executeUpdate(query);
 			}
 			
 
@@ -136,7 +142,13 @@ public class backendUser{
                                                 user.setZip(Integer.parseInt(ra.getString("zipcode")));  
                                                 user.setState(ra.getString("state"));  			
 					}
-	
+					query = "select * from payment_card where userid='" + rs.getInt("customerid") + "';";
+					ResultSet rb = stmt.executeQuery(query);
+					System.out.println(query);
+					if(rb.next()){
+						user.setExpirationDate(rb.getString("expdate"));
+						user.setCardType(rb.getString("type"));
+					}	
 
 
                                 }else{
