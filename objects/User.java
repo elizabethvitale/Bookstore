@@ -18,6 +18,10 @@ public class User{
 	private String cardNumber;
 	private String type;
 	private String expirationDate;
+	private String type2;
+	private String type3;
+	private String expirationDate2;
+	private String expirationDate3;
 
 	public User(){
 
@@ -133,6 +137,41 @@ public class User{
 	public String getExpirationDate(){
 		return expirationDate;
 	}
+
+
+
+
+        
+        public void setCardType2(String type2){
+                this.type2 = type2;
+
+        }
+        public void setExpirationDate2(String expirationDate2){
+                this.expirationDate2 = expirationDate2;
+        }
+        public String getCardType2(){
+                return type2;
+        }
+        public String getExpirationDate2(){
+                return expirationDate2;
+        }
+
+        
+        public void setCardType3(String type3){
+                this.type3 = type3;
+
+        }
+        public void setExpirationDate3(String expirationDate3){
+                this.expirationDate3 = expirationDate3;
+        }
+        public String getCardType3(){
+                return type3;
+        }
+        public String getExpirationDate3(){
+                return expirationDate3;
+        }
+
+
 	
 	 public void setID(int actID){
                 this.actID = actID;

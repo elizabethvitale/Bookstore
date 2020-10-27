@@ -148,8 +148,13 @@ public class backendUser{
 					if(rb.next()){
 						user.setExpirationDate(rb.getString("expdate"));
 						user.setCardType(rb.getString("type"));
-					}	
-
+					}if(rb.next()){
+						user.setExpirationDate2(rb.getString("expdate"));
+						user.setCardType2(rb.getString("type"));
+					}if(rb.next()){
+						user.setExpirationDate3(rb.getString("expdate"));
+						user.setCardType3(rb.getString("type"));
+					}
 
                                 }else{
 					System.out.println("catch1");
