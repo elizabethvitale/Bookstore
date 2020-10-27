@@ -64,7 +64,9 @@ public class userLogin extends HttpServlet {
         session.setAttribute("expirationDate2", user.getExpirationDate2());
         session.setAttribute("cardType3", user.getCardType3());
         session.setAttribute("expirationDate3", user.getExpirationDate3());
-
+	session.setAttribute("cardNumber", user.getCardNumber());
+	session.setAttribute("cardNumber2", user.getCardNumber2());
+	session.setAttribute("cardNumber3", user.getCardNumber3());
 
 	request.getSession(true).setAttribute("user", user);
 	response.sendRedirect("/index.jsp");

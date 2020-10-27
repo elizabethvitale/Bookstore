@@ -207,7 +207,7 @@ var div = document.getElementById('second');
 div.innerHTML += '<form action="/updateCard2" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType2" value="<%=cardType2%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum2" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate2" value="<%=expDate2%>"></div><br><button type="submit">Update</button></form><br><br>';
 
 var div = document.getElementById('third');
-div.innerHTML += '<form action="/updateCard" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType" value="<%=cardType3%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate" value="<%=expDate3%>"></div><br><button type="submit">Update</button></form><br><br>';
+div.innerHTML += '<form action="/updateCard3" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType3" value="<%=cardType3%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum3" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate3" value="<%=expDate3%>"></div><br><button type="submit">Update</button></form><br><br>';
 </script>
 
 <script>

@@ -22,7 +22,8 @@ public class User{
 	private String type3;
 	private String expirationDate2;
 	private String expirationDate3;
-
+	private String cardNumber2;
+	private String cardNumber3;
 	public User(){
 
 	}
@@ -124,6 +125,22 @@ public class User{
 	public void setCardNumber(String cardNumber){
 		this.cardNumber = cardNumber;
 	}
+
+
+
+        public String getCardNumber2(){
+                return cardNumber2;
+        }
+        public void setCardNumber2(String cardNumber2){
+                this.cardNumber2 = cardNumber2;
+        }
+        public String getCardNumber3(){
+                return cardNumber3;
+        }
+        public void setCardNumber3(String cardNumber3){
+                this.cardNumber3 = cardNumber3;
+        }
+
 	public void setCardType(String type){
 		this.type = type;
 

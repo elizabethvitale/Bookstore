@@ -1,14 +1,35 @@
 package com.ugabookstore;
 
+import java.io.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
+import javax.activation.*;
+import com.ugabookstore.*;
+import java.util.Random;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import com.ugabookstore.*;
+import javax.servlet.http.HttpSession;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 
 public class backendUser{
 	Connection con;
@@ -146,12 +167,15 @@ public class backendUser{
 					ResultSet rb = stmt.executeQuery(query);
 					System.out.println(query);
 					if(rb.next()){
+						user.setCardNumber(rb.getString("cardnumber"));
 						user.setExpirationDate(rb.getString("expdate"));
 						user.setCardType(rb.getString("type"));
 					}if(rb.next()){
+						user.setCardNumber2(rb.getString("cardnumber"));
 						user.setExpirationDate2(rb.getString("expdate"));
 						user.setCardType2(rb.getString("type"));
 					}if(rb.next()){
+						user.setCardNumber3(rb.getString("cardnumber"));
 						user.setExpirationDate3(rb.getString("expdate"));
 						user.setCardType3(rb.getString("type"));
 					}
