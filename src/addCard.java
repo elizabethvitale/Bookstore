@@ -49,10 +49,29 @@ public class addCard extends HttpServlet {
 				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 				Statement stmt=null;
 				stmt = con.createStatement();
-				String query = "insert into payment_card (cardnumber, type, expdate, userid) values ('" + cardNumber + "','" + cardType + "','" + expirationDate + "','" + id + "');";
+				String query = "select count(userid) as num from payment_card where userid='" + id + "';";
+				System.out.println(query);
+				ResultSet rs = stmt.executeQuery(query);
+				int counter=0;
+				if(rs.next()){
+					System.out.println(rs.getString("num"));
+					counter = rs.getInt("num");
+				}
+				query = "insert into payment_card (cardnumber, type, expdate, userid) values ('" + cardNumber + "','" + cardType + "','" + expirationDate + "','" + id + "');";
 				System.out.println(query);
 				int result = stmt.executeUpdate(query);
+				if(counter == 1){
+				session.setAttribute("cardType2",cardType);
+				session.setAttribute("expirationDate2",expirationDate);
+				}
+				if(counter == 2){
+				session.setAttribute("cardType3",cardType);
+                                session.setAttribute("expirationDate3",expirationDate);
+				}
 				response.sendRedirect("index.jsp");
+	
+
+
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}
