@@ -109,7 +109,8 @@ public class backendUser{
                         Statement stmt = null;
                         stmt = con.createStatement();
                         String query = "select * from admin where adminid='" + acctID_or_email + "' or email='" + acctID_or_email+"';";
-                        pwd = getSha1(pwd);
+                        System.out.println(query);
+			pwd = getSha1(pwd);
                         ResultSet rs=stmt.executeQuery(query);
                                 if(rs.next()) {
 

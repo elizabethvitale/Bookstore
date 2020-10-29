@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
@@ -11,12 +12,18 @@
 <body>
 <%@ page session="false" %> 
 <%
-HttpSession session = request.getSession();
-String name = (String)session.getAttribute("firstName");
-String pass = String.valueOf(session.getAttribute("admin"));
-if(pass.equals(null) | !pass.equals("YES")){
-	response.sendRedirect("404error.jsp");
+String name="";
+String pass="";
+HttpSession session = request.getSession(false);
+if(session == null){
+response.sendRedirect("/errorpages/404.jsp");
 }
+else{
+name = (String)session.getAttribute("firstName");
+pass = String.valueOf(session.getAttribute("admin"));
+if(pass.equals(null) | !pass.equals("YES")){
+	response.sendRedirect("/errorpages/404.jsp");
+}}
 %>
 <header>
     <div>
@@ -46,7 +53,7 @@ if(pass.equals(null) | !pass.equals("YES")){
                                 <a href="../user/editprofile.html">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.html">Logout</a>
+                                <a href="../user/logout.jsp">Logout</a>
                             </li>
                         </ul>
                     </li>

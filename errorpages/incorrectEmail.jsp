@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
@@ -22,6 +23,7 @@
     </style>
   </head>
   <body>
+<%@ page session="false" %>
     <header>
       <div>
         <h2><div><a href="index.html">UGA Bookshop</a></div></h2>

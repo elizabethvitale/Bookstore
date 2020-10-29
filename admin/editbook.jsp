@@ -15,7 +15,7 @@
 HttpSession session = request.getSession();
 String pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
-        response.sendRedirect("404error.jsp");
+        response.sendRedirect("/errorpages/404.jsp");
 }
 %>
 
