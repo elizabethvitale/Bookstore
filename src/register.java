@@ -76,7 +76,7 @@ public class register extends HttpServlet {
 
 	int register_user = new backendUser().register(new_user);	
 	String body = "Thank you for signing up for UGABOOKSTORE.COM!!!\nYour confirmation number is: " + randomNum + "\nPlease enter this on our website!!!";
-
+	System.out.println(register_user);
 	if(register_user == 0){
 		sendEmail(email,body);
 	}
@@ -95,6 +95,8 @@ public class register extends HttpServlet {
 }
 	public static void sendEmail(String emailAdd,String body){
 		String host = "smtp.gmail.com";
+		System.out.println(emailAdd);
+		System.out.println(body);
 		final String username="ugabookstore2020@gmail.com";
 		final String password="Ugabookstore1!";
 		Properties properties = System.getProperties();
