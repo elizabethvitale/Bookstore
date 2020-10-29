@@ -41,6 +41,12 @@ public class addCard extends HttpServlet {
 			String cardNumber = request.getParameter("cardNum");
 			
 			cardNumber = getSha1(cardNumber);
+/*
+	if (cardType.isBlank() || expirationDate.isBlank() || cardNumber.isBlank()) {
+	//print message
+	}
+copy and paste the rest of the card requirements code here
+*/
 
 			Connection con;
 			try{

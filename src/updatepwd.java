@@ -35,7 +35,13 @@ public class updatepwd extends HttpServlet {
 			response.sendRedirect("/error.jsp"); //doesnt exist...
 			return;
 		}
+/*
+	if (pwd1.isBlank() || pwd2.isBlank() || email.isBlank() || code.isBlank()) {
+	//print message
+	}
 
+	COPY & PASTE THE PASSWORD REQUIREMENTS INTO HERE AS WELL!!! DO NOT FORGET. THIS IS NOT A JOKE!!
+*/
 		Connection con;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();

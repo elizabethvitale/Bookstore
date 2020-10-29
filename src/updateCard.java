@@ -47,6 +47,7 @@ public class updateCard extends HttpServlet {
 			}else{
 				cardNumber = "";
 			}
+//card number requirements, c&p here
 
 			Connection con;
 			try{

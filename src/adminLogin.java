@@ -22,11 +22,30 @@ public class adminLogin extends HttpServlet {
 
         String acctID = request.getParameter("acctID");
         String password = request.getParameter("pwd");
+	boolean spaceFlag == false;
 	//i refuse to add an ajax call in here.....
 	//on failed login........rose needs to make jsp error pages w these specficiations
 	if((acctID=="") || (password=="")){
 	//response.sendRedirect("/loginError.jsp?errFlag=empty"); if a field is missing
 	}
+
+/*
+	//checking to make sure the length of password is 8+
+	if (password.length() < 8) {
+	//redirect to an error page or show error message!
+	}
+
+	//checking to make sure there are no white spaces in the pw
+	for (int i = 0; i < password.length(); i++) {
+		if (password.charAt(i) == ' ') {
+			spaceFlag = true;
+			break;
+		}
+	}
+	if (spaceFlag == true) {
+	//redirect to an error page or show message
+	}
+*/
 
 
 	Admin admin  = new backendUser().loginAdmin(acctID, password);	
