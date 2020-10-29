@@ -15,8 +15,10 @@
 String name="";
 String pass="";
 HttpSession session = request.getSession(false);
+System.out.println("here");
 if(session == null){
 response.sendRedirect("/errorpages/404.jsp");
+System.out.println("entered");
 }
 else{
 name = (String)session.getAttribute("firstName");
