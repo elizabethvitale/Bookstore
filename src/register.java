@@ -74,6 +74,86 @@ public class register extends HttpServlet {
 		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, street, city, state, zip, cnum, ctype, exd);
 	}	
 
+/*
+	//missing card info
+	if ( (ctype.isBlank() == false) && (cnum.isBlank() == true) && (exd.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (ctype.isBlank() == true) && (cnum.isBlank() == false) && (exd.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (ctype.isBlank() == true) && (cnum.isBlank() == true) && (exd.isBlank() == false) ) {
+		//print error message
+	}
+	if ( (ctype.isBlank() == false) && (cnum.isBlank() == false) && (exd.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (ctype.isBlank() == false) && (cnum.isBlank() == true) && (exd.isBlank() == false) ) {
+		//print error message
+	}
+	if ( (ctype.isBlank() == true) && (cnum.isBlank() == false) && (exd.isBlank() == false) ) {
+		//print error message
+	}
+
+	//cardNum isn't 16 digits
+	if (cnum.length() != 16) {
+	//print error message
+	}
+
+	//cardType isn't a string
+	if (card.matches("[a-zA-Z]+") == false) {
+	//print error message
+	}
+
+	//card exp date format is incorrect
+	if ( (exd.charAt(2) != '/') || (exd.length() != 5) ) {
+	//PRINT ERROR MESSAGE
+	}
+	if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
+	//print error message
+	}
+
+	//missing address info
+	if ( (street.isBlank() == false) && (city.isBlank() == true) && (state.isBlank() == true) && (zip.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == false) && (city.isBlank() == false) && (state.isBlank() == true) && (zip.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == false) && (city.isBlank() == false) && (state.isBlank() == false) && (zip.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == true) && (city.isBlank() == false) && (state.isBlank() == false) && (zip.isBlank() == false) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == true) && (city.isBlank() == true) && (state.isBlank() == false) && (zip.isBlank() == false) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == true) && (city.isBlank() == true) && (state.isBlank() == true) && (zip.isBlank() == false) ) {
+		//print error message
+	}	
+	if ( (street.isBlank() == false) && (city.isBlank() == true) && (state.isBlank() == false) && (zip.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == true) && (city.isBlank() == false) && (state.isBlank() == true) && (zip.isBlank() == false) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == true) && (city.isBlank() == false) && (state.isBlank() == false) && (zip.isBlank() == true) ) {
+		//print error message
+	}
+	if ( (street.isBlank() == false) && (city.isBlank() == true) && (state.isBlank() == true) && (zip.isBlank() == false) ) {
+		//print error message
+	}
+
+	//email is incorrect
+	String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+	if (email.matches(regex) == false) {
+	//print message
+	}
+
+
+*/	
+
 	int register_user = new backendUser().register(new_user);	
 	String body = "Thank you for signing up for UGABOOKSTORE.COM!!!\nYour confirmation number is: " + randomNum + "\nPlease enter this on our website!!!";
 	System.out.println(register_user);

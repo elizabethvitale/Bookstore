@@ -33,7 +33,14 @@ public class updateAddress extends HttpServlet {
 			String street = request.getParameter("street");
 			String state = request.getParameter("state");
 			Connection con;
-			try{
+
+//can some of these be blank if people only have to update the zip or something??
+	/* if (zip.isBlank() || city.isBlank() || street.isBlank() || state.isBlank()) {
+		//print msg
+	}
+
+	*/
+		try{
 				System.out.println(id);
 				//dont forget to update user object
 				Class.forName("com.mysql.cj.jdbc.Driver").newInstance();

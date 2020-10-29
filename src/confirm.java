@@ -31,7 +31,18 @@ public class confirm extends HttpServlet {
 		HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String customerID = request.getParameter("confirmID");
+
+/*
+	if (email.isBlank() || customerId.isBlank()) {
+	//print msg
+	}
+//copy and paste code to make sure it's an email!
+*/
+
+
+
 		Connection con;
+
 	try{
 			//CONFIRMS IT MATCHES THE DATABASE
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();

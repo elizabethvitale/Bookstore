@@ -46,6 +46,14 @@ public class reset extends HttpServlet{
 
 		String email = request.getParameter("email");	
 		String temp_code = "";
+
+/*
+	if (email.isBlank()) {
+	//print msg
+}
+//check that it is an email as well! c&p here!
+*/
+
 		Connection con;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();

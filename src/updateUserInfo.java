@@ -33,6 +33,26 @@ public class updateUserInfo extends HttpServlet {
 			String lastName = request.getParameter("lastName");
 			String phone = request.getParameter("phone");
 			Connection con;
+
+/*
+CAN THE OTHER VARIABLES BE BLANK? OR DO THEY ALL HAVE TO BE FILLED IN??
+			//checks if names or phone is blank
+			if ( (firstName.isBlank()) || (lastName.isBlank()) || (phone.isBlank()) ){
+			//print error message
+			}
+
+			//if phone number is a digit
+			if (phone.matches("-?\\d+(\\d+)?") == false) {
+			//print error message
+			}
+
+			//if phone is not 10 digits
+			if (phone.length() != 10) {
+			//print error message
+			}
+
+*/
+
 			try{
 				//dont forget to update user object
 				Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
