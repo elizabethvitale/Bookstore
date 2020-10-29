@@ -48,7 +48,16 @@ public class updateCard extends HttpServlet {
 			}else{
 				cardNumber = "";
 			}
+
+/*
 //card number requirements, c&p here
+if (cardType.isBlank() || expirationDate.isBlank() || cardNumber.isBlank()) {
+	//print message here
+}
+*/
+
+
+
 
 			Connection con;
 			try{

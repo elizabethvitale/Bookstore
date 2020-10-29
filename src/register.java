@@ -151,6 +151,12 @@ public class register extends HttpServlet {
 	//print message
 	}
 
+	if (zip.length() != 5) {
+	//print error message
+	}
+
+	
+
 
 */	
 

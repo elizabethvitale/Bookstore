@@ -35,7 +35,6 @@ public class updateUserInfo extends HttpServlet {
 			Connection con;
 
 /*
-CAN THE OTHER VARIABLES BE BLANK? OR DO THEY ALL HAVE TO BE FILLED IN??
 			//checks if names or phone is blank
 			if ( (firstName.isBlank()) || (lastName.isBlank()) || (phone.isBlank()) ){
 			//print error message
