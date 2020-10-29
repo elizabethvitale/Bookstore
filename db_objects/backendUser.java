@@ -71,14 +71,15 @@ public class backendUser{
 			stmt = con.createStatement();
 			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
 			result=stmt.executeUpdate(query);
-		
-			if(!street.equals(null) && !street.equals("")){
+			if(street != null && !street.equals("")){
 			stmt = con.createStatement();
 			query = "insert into shipping_address(street, city, state, zipcode, shippingid) values('" + street + "','"+city+"','" + state + "','" + zip + "','" + customerid + "');";
 			System.out.println(query);
-			result = stmt.executeUpdate(query);			
+			result = stmt.executeUpdate(query);
 			}
-			if(!cardType.equals(null) && !cardType.equals("")){
+			System.out.println(cardType);
+			if(cardType!=null && !cardType.equals("")){
+			System.out.println("HEERE");
 			stmt = con.createStatement();
 			String card = getSha1(cardNumber);
 			query = "insert into payment_card(cardnumber, userid, type, expdate) values('" + card + "','" + customerid + "','" + cardType + "','" + expirationDate + "');";
@@ -87,12 +88,13 @@ public class backendUser{
 			result = stmt.executeUpdate(query);
 			}
 			
-
+			System.out.println("6");
 		} catch(SQLException err){
-			System.out.println("ERROR: " + err.getMessage());
+			System.out.println("ERROR: " + err.getMessage() + "SQL EXECPTION");
 			return 1;
 		} catch(Exception e){
-			System.out.println("ERROR: " + e.getMessage());
+			e.printStackTrace(System.out);	
+			System.out.println("ERROR: " + e.getMessage() + "gen messg");
 			return 1;
 		}
 		return 0;

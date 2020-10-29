@@ -22,7 +22,7 @@ public class adminLogin extends HttpServlet {
 
         String acctID = request.getParameter("acctID");
         String password = request.getParameter("pwd");
-	boolean spaceFlag == false;
+	boolean spaceFlag = false;
 	//i refuse to add an ajax call in here.....
 	//on failed login........rose needs to make jsp error pages w these specficiations
 	if((acctID=="") || (password=="")){

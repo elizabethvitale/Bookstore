@@ -45,6 +45,25 @@ public class addCard extends HttpServlet {
 	if (cardType.isBlank() || expirationDate.isBlank() || cardNumber.isBlank()) {
 	//print message
 	}
+
+	//cardNum isn't 16 digits
+	if (cardNumber.length() != 16) {
+	//print error message
+	}
+
+	//cardType isn't a string
+	if (cardType.matches("[a-zA-Z]+") == false) {
+	//print error message
+	}
+
+	//card exp date format is incorrect
+	if ( (expirationDate.charAt(2) != '/') || (expierationDate.length() != 5) ) {
+	//PRINT ERROR MESSAGE
+	}
+	if ( (Character.isDigit(expirationDate.charAt(0)) == false) || (Character.isDigit(expirationDate.charAt(1)) == false) || (Character.isDigit(expirationDate.charAt(3)) == false) ||(Character.isDigit(expirationDate.charAt(4)) == false) ) {
+	//print error message
+	}
+
 copy and paste the rest of the card requirements code here
 */
 

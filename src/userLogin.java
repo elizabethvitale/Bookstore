@@ -26,10 +26,10 @@ public class userLogin extends HttpServlet {
 	//response.sendRedirect("/loginError.jsp?errFlag=empty"); if a field is missing
 	}
 
-/*
+
 	//checking to make sure the length of password is 8+
 	if (password.length() < 8) {
-	//redirect to an error page or show error message!
+	response.sendRedirect(request.getContextPath()+"/404.jsp");
 	}
 
 	//checking to make sure there are no white spaces in the pw
@@ -42,7 +42,7 @@ public class userLogin extends HttpServlet {
 	if (spaceFlag == true) {
 	//redirect to an error page or show message
 	}
-*/
+
 
 	User user  = new backendUser().login(acctID, password);	
 	if(user == null){
