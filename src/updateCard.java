@@ -37,6 +37,7 @@ public class updateCard extends HttpServlet {
 		        HttpSession session = request.getSession(true);
 			String cardType = request.getParameter("cardType");
 			int id = (Integer) session.getAttribute("customerid");
+			String cardNumDB = (String)session.getAttribute("cardNumber");
 			String expirationDate = request.getParameter("expirationDate");
 			String cardNumber = request.getParameter("cardNum");
 			System.out.println(cardNumber);
@@ -61,14 +62,16 @@ public class updateCard extends HttpServlet {
 				System.out.println(query);
 				if(rs.next()) {
 				if(!cardNumber.equals("")){
-				query = "update payment_card set cardnumber='" + cardNumber + "', type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "';";      
-                		}else{
-				query = "update payment_card set type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "';";
+				query = "update payment_card set cardnumber='" + cardNumber + "', type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "' and cardnumber='" + cardNumDB + "';";      
+                		session.setAttribute("cardNumber", cardNumber);
+				}else{
+				query = "update payment_card set type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "' and cardnumber='" + cardNumDB + "';";
 				}
 				System.out.println(query); 
                                 int result = stmt.executeUpdate(query);	
 				}else{
 				query = "insert into payment_card (cardnumber, type, expdate, userid) values ('" + cardNumber + "','" + cardType + "','" + expirationDate + "','" + id + "');";
+				session.setAttribute("cardNumber", cardNumber);
 				int result = stmt.executeUpdate(query);
 				System.out.println("into second");
 				}

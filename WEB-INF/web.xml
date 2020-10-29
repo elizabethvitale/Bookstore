@@ -109,6 +109,21 @@
                 <url-pattern>/addCard</url-pattern>
         </servlet-mapping>
 
+       <servlet>
+                <servlet-name>updateCard2</servlet-name>
+                <servlet-class>com.ugabookstore.updateCard2</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>updateCard2</servlet-name>
+                <url-pattern>/updateCard2</url-pattern>
+        </servlet-mapping>
 
-
+       <servlet>
+                <servlet-name>updateCard3</servlet-name>
+                <servlet-class>com.ugabookstore.updateCard3</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>updateCard3</servlet-name>
+                <url-pattern>/updateCard3</url-pattern>
+        </servlet-mapping>
 </web-app>

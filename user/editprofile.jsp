@@ -24,7 +24,10 @@ String city = "";
 String state = "";
 String zipcode = "";
 int userId = -1;
-
+String cardType2="";
+String expDate2="";
+String cardType3="";
+String expDate3="";
 
 if(request.getSession(false) != null){
     HttpSession httpSession = request.getSession();
@@ -38,6 +41,12 @@ zipcode = String.valueOf(httpSession.getAttribute("zip"));
 street = String.valueOf(httpSession.getAttribute("street"));
 expDate = String.valueOf(httpSession.getAttribute("expirationDate"));
 cardType = String.valueOf(httpSession.getAttribute("cardType"));
+expDate2 = String.valueOf(httpSession.getAttribute("expirationDate2"));
+cardType2 = String.valueOf(httpSession.getAttribute("cardType2"));
+expDate3 = String.valueOf(httpSession.getAttribute("expirationDate3"));
+cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
+
+
 if(!cardType.equals("null")){
 	cardNum= "**** **** **** ****";
 }else{
@@ -185,10 +194,50 @@ if(street.equals("null")){
               <button type="submit">Update</button>
 	</form>
        <br><br>
+		<div id="second" hidden="hidden">
+		</div>
+		<div id ="third" hidden="hidden">
+		</div>
 		<div>
-                <button name="addCard" id="addCard">Add Additional Card</button>
+                <button name="addCard" id="addCard" hidden="hidden">Add Additional Card</button>
 	  	</div>
 		 </div>
+<script>
+var div = document.getElementById('second');
+div.innerHTML += '<form action="/updateCard2" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType2" value="<%=cardType2%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum2" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate2" value="<%=expDate2%>"></div><br><button type="submit">Update</button></form><br><br>';
+
+var div = document.getElementById('third');
+div.innerHTML += '<form action="/updateCard3" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType3" value="<%=cardType3%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum3" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate3" value="<%=expDate3%>"></div><br><button type="submit">Update</button></form><br><br>';
+</script>
+
+<script>
+$(document).ready(function(){
+	if("<%=cardType2%>" !== "null")
+	{
+		let x = document.getElementById('second');
+		x.removeAttribute("hidden");
+	}
+        if("<%=cardType3%>" !== "null")
+        {
+                let x = document.getElementById('third');
+                x.removeAttribute("hidden");
+        }
+
+
+
+});
+</script>
+
+<script>
+$(document).ready(function(){
+	if("<%=cardType3%>" === "null" && "<%=cardType%>" !== "")
+	{
+		console.log('enter');
+		let x = document.getElementById('addCard');
+		x.removeAttribute("hidden");
+	}
+	});
+</script>
 <script>
 $(document).ready(function() {
        
