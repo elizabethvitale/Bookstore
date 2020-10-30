@@ -30,6 +30,12 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart; 
 import java.util.Properties;
+
+import java.lang.Object;
+import java.lang.String;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.*;
  
 @WebServlet("/register")
 public class register extends HttpServlet {
@@ -74,91 +80,113 @@ public class register extends HttpServlet {
 		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, street, city, state, zip, cnum, ctype, exd);
 	}	
 
-/*
-	//missing card info
-	if ( (ctype.isBlank() == false) && (cnum.isBlank() == true) && (exd.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (ctype.isBlank() == true) && (cnum.isBlank() == false) && (exd.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (ctype.isBlank() == true) && (cnum.isBlank() == true) && (exd.isBlank() == false) ) {
-		//print error message
-	}
-	if ( (ctype.isBlank() == false) && (cnum.isBlank() == false) && (exd.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (ctype.isBlank() == false) && (cnum.isBlank() == true) && (exd.isBlank() == false) ) {
-		//print error message
-	}
-	if ( (ctype.isBlank() == true) && (cnum.isBlank() == false) && (exd.isBlank() == false) ) {
-		//print error message
-	}
-
-	//cardNum isn't 16 digits
-	if (cnum.length() != 16) {
-	//print error message
-	}
-
-	//cardType isn't a string
-	if (card.matches("[a-zA-Z]+") == false) {
-	//print error message
-	}
-
-	//card exp date format is incorrect
-	if ( (exd.charAt(2) != '/') || (exd.length() != 5) ) {
-	//PRINT ERROR MESSAGE
-	}
-	if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
-	//print error message
-	}
-
-	//missing address info
-	if ( (street.isBlank() == false) && (city.isBlank() == true) && (state.isBlank() == true) && (zip.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == false) && (city.isBlank() == false) && (state.isBlank() == true) && (zip.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == false) && (city.isBlank() == false) && (state.isBlank() == false) && (zip.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == true) && (city.isBlank() == false) && (state.isBlank() == false) && (zip.isBlank() == false) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == true) && (city.isBlank() == true) && (state.isBlank() == false) && (zip.isBlank() == false) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == true) && (city.isBlank() == true) && (state.isBlank() == true) && (zip.isBlank() == false) ) {
-		//print error message
-	}	
-	if ( (street.isBlank() == false) && (city.isBlank() == true) && (state.isBlank() == false) && (zip.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == true) && (city.isBlank() == false) && (state.isBlank() == true) && (zip.isBlank() == false) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == true) && (city.isBlank() == false) && (state.isBlank() == false) && (zip.isBlank() == true) ) {
-		//print error message
-	}
-	if ( (street.isBlank() == false) && (city.isBlank() == true) && (state.isBlank() == true) && (zip.isBlank() == false) ) {
-		//print error message
+	if (fname.equals("") || lname.equals("") || email.equals("") || number.equals("") || pwd.equals("")) {
+	response.sendRedirect("/errorpages/incorrectEmail.jsp");
+	return;
 	}
 
 	//email is incorrect
 	String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 	if (email.matches(regex) == false) {
-	//print message
+	response.sendRedirect("/errorpages/incorrectEmail.jsp");
+	return;
 	}
 
-	if (zip.length() != 5) {
-	//print error message
+	//missing card info response.sendRedirect("/user/registrationconfirm.html");
+	else if ( (ctype.equals("") == false) && (cnum.equals("") == true) && (exd.equals("") == true) ) {
+		response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
+	else if ( (ctype.equals("") == true) && (cnum.equals("") == false) && (exd.equals("") == true) ) {
+		response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
+	else if ( (ctype.equals("") == true) && (cnum.equals("") == true) && (exd.equals("") == false) ) {
+		response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
+	else if ( (ctype.equals("") == false) && (cnum.equals("") == false) && (exd.equals("") == true) ) {
+		response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
+	else if ( (ctype.equals("") == false) && (cnum.equals("") == true) && (exd.equals("") == false) ) {
+		response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
+	else if ( (ctype.equals("") == true) && (cnum.equals("") == false) && (exd.equals("") == false) ) {
+		response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
 	}
 
-	
+	//cardNum isn't 16 digits
+	else if (cnum.length() != 16) {
+	response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
 
+	//cardType isn't a string
+	else if (ctype.matches("[a-zA-Z]+") == false) {
+	response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
 
-*/	
+	//phone number has a letter
+	else if (number.matches("[a-zA-Z]+") == true) {
+	response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
+
+	//card exp date format is incorrect
+	else if ( (exd.charAt(2) != '/') || (exd.length() != 5) ) {
+	response.sendRedirect("/errorpages/paymentCard.jsp");
+		return;
+	}
+
+	else if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
+	response.sendRedirect("/errorpages/paymentCard.jsp");
+	}
+
+	//missing address info
+	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == false) && (city.equals("") == false) && (state.equals("") == true) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == false) && (city.equals("") == false) && (state.equals("") == false) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == false) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}	
+	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == false) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == true) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
+	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
+		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		return;
+	}
 
 	int register_user = new backendUser().register(new_user);	
 	String body = "Thank you for signing up for UGABOOKSTORE.COM!!!\nYour confirmation number is: " + randomNum + "\nPlease enter this on our website!!!";
@@ -167,14 +195,7 @@ public class register extends HttpServlet {
 		sendEmail(email,body);
 	}
 
-
-
-	if(fname=="" || email=="" || number =="" || pwd==""){
-	//account for other formatting issues too.
-	//throw error
-	}else{
-	
-
+	else {
 	//hash password
 	response.sendRedirect("/user/registrationconfirm.html");
 	}
