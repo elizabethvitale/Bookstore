@@ -30,7 +30,7 @@
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+            <a href="search.html"><button type="button"><img src="../image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -67,9 +67,8 @@
     <main>
       <div>
         <h1>Error page</h1>
-        <p>User has not filled in all the requirements for the payment card info.
-          Check to make sure all fields have been entered. </p>
-        <button class="button" style="margin-right: 10px;">RETURN TO PAYMENT INFO PAGE</button>
+        <p>The format is incorrect.</p>
+        <a href="../user/register.jsp"><button class="button" style="margin-right: 10px;">RETURN TO REGISTER PAGE</button></a>
       </div>
     </main>
     <footer>
