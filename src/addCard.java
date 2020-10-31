@@ -41,31 +41,30 @@ public class addCard extends HttpServlet {
 			String cardNumber = request.getParameter("cardNum");
 			
 			cardNumber = getSha1(cardNumber);
-/*
-	if (cardType.isBlank() || expirationDate.isBlank() || cardNumber.isBlank()) {
-	//print message
+
+	if (cardType.equals("") || expirationDate.equals("") || cardNumber.equals("")) {
+	response.sendRedirect("/errorpages/blankRequired2.jsp");
 	}
 
 	//cardNum isn't 16 digits
-	if (cardNumber.length() != 16) {
-	//print error message
+	else if (cardNumber.length() != 16) {
+	response.sendRedirect("/errorpages/cardInvalid2.jsp");
 	}
 
 	//cardType isn't a string
-	if (cardType.matches("[a-zA-Z]+") == false) {
-	//print error message
+	else if (cardType.matches("[a-zA-Z]+") == false) {
+	response.sendRedirect("/errorpages/cardtypeInvalid2.jsp");
 	}
 
 	//card exp date format is incorrect
-	if ( (expirationDate.charAt(2) != '/') || (expierationDate.length() != 5) ) {
-	//PRINT ERROR MESSAGE
-	}
-	if ( (Character.isDigit(expirationDate.charAt(0)) == false) || (Character.isDigit(expirationDate.charAt(1)) == false) || (Character.isDigit(expirationDate.charAt(3)) == false) ||(Character.isDigit(expirationDate.charAt(4)) == false) ) {
-	//print error message
+	else if ( (expirationDate.charAt(2) != '/') || (expirationDate.length() != 5) ) {
+	response.sendRedirect("/errorpages/cardExpirationInvalid2.jsp");
 	}
 
-copy and paste the rest of the card requirements code here
-*/
+	else if ( (Character.isDigit(expirationDate.charAt(0)) == false) || (Character.isDigit(expirationDate.charAt(1)) == false) || (Character.isDigit(expirationDate.charAt(3)) == false) ||(Character.isDigit(expirationDate.charAt(4)) == false) ) {
+	response.sendRedirect("/errorpages/cardExpirationInvalid2.jsp");
+	}
+
 
 			Connection con;
 			try{

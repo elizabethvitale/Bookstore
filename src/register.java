@@ -60,6 +60,7 @@ public class register extends HttpServlet {
 	String ctype = request.getParameter("ctype");
 	String cnum = request.getParameter("cnum");
         String exd = request.getParameter("exd");
+	boolean spaceFlag = false;
 	int min = 1000;
 	int max = 9999;
 	Random rand = new Random();
@@ -81,110 +82,126 @@ public class register extends HttpServlet {
 	}	
 
 	if (fname.equals("") || lname.equals("") || email.equals("") || number.equals("") || pwd.equals("")) {
-	response.sendRedirect("/errorpages/incorrectEmail.jsp");
+	response.sendRedirect("/errorpages/blankRequired1.jsp");
 	return;
+	}
+
+	//checking to make sure the length of password is 8+
+	if (pwd.length() < 8) {
+	response.sendRedirect("/errorpages/shortPw1.jsp");
+	}
+
+	//checking to make sure there are no white spaces in the pw
+	for (int i = 0; i < pwd.length(); i++) {
+		if (pwd.charAt(i) == ' ') {
+			spaceFlag = true;
+			break;
+		}
+	}
+	if (spaceFlag == true) {
+	response.sendRedirect("/errorpages/whitespacePw1.jsp");
 	}
 
 	//email is incorrect
 	String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 	if (email.matches(regex) == false) {
-	response.sendRedirect("/errorpages/incorrectEmail.jsp");
+	response.sendRedirect("/errorpages/emailFormat1.jsp");
 	return;
 	}
 
 	//missing card info response.sendRedirect("/user/registrationconfirm.html");
 	else if ( (ctype.equals("") == false) && (cnum.equals("") == true) && (exd.equals("") == true) ) {
-		response.sendRedirect("/errorpages/paymentCard.jsp");
+		response.sendRedirect("/errorpages/blankRequired1.jsp");
 		return;
 	}
 	else if ( (ctype.equals("") == true) && (cnum.equals("") == false) && (exd.equals("") == true) ) {
-		response.sendRedirect("/errorpages/paymentCard.jsp");
+		response.sendRedirect("/errorpages/blankRequired1.jsp");
 		return;
 	}
 	else if ( (ctype.equals("") == true) && (cnum.equals("") == true) && (exd.equals("") == false) ) {
-		response.sendRedirect("/errorpages/paymentCard.jsp");
+		response.sendRedirect("/errorpages/blankRequired11.jsp");
 		return;
 	}
 	else if ( (ctype.equals("") == false) && (cnum.equals("") == false) && (exd.equals("") == true) ) {
-		response.sendRedirect("/errorpages/paymentCard.jsp");
+		response.sendRedirect("/errorpages/blankRequired1.jsp");
 		return;
 	}
 	else if ( (ctype.equals("") == false) && (cnum.equals("") == true) && (exd.equals("") == false) ) {
-		response.sendRedirect("/errorpages/paymentCard.jsp");
+		response.sendRedirect("/errorpages/blankRequired1.jsp");
 		return;
 	}
 	else if ( (ctype.equals("") == true) && (cnum.equals("") == false) && (exd.equals("") == false) ) {
-		response.sendRedirect("/errorpages/paymentCard.jsp");
+		response.sendRedirect("/errorpages/blankRequired1.jsp");
 		return;
 	}
 
 	//cardNum isn't 16 digits
 	else if (cnum.length() != 16) {
-	response.sendRedirect("/errorpages/paymentCard.jsp");
+	response.sendRedirect("/errorpages/cardInvalid1.jsp");
 		return;
 	}
 
 	//cardType isn't a string
 	else if (ctype.matches("[a-zA-Z]+") == false) {
-	response.sendRedirect("/errorpages/paymentCard.jsp");
+	response.sendRedirect("/errorpages/cardtypeInvalid1.jsp");
 		return;
 	}
 
 	//phone number has a letter
 	else if (number.matches("[a-zA-Z]+") == true) {
-	response.sendRedirect("/errorpages/paymentCard.jsp");
+	response.sendRedirect("/errorpages/phoneIncorrect1.jsp");
 		return;
 	}
 
 	//card exp date format is incorrect
 	else if ( (exd.charAt(2) != '/') || (exd.length() != 5) ) {
-	response.sendRedirect("/errorpages/paymentCard.jsp");
+	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 		return;
 	}
 
 	else if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
-	response.sendRedirect("/errorpages/paymentCard.jsp");
+	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 	}
 
 	//missing address info
 	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == false) && (city.equals("") == false) && (state.equals("") == true) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == false) && (city.equals("") == false) && (state.equals("") == false) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == false) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}	
 	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == false) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == true) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
-		response.sendRedirect("/errorpages/shippingAdrdess.jsp");
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
 

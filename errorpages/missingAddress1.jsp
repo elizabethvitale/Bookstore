@@ -43,7 +43,7 @@
                 <a href="checkout/cart.html"><img src="../image/shoppingcart.svg"></a>
               </li>
               <li style='position: relative;'>
-                <img id="auth-dropdown-toggle" src="image/account.svg">
+                <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
                     <a href="../user/login.html">Login</a>
@@ -67,8 +67,8 @@
     <main>
       <div>
         <h1>Error page</h1>
-        <p>User has not provided username or password. </p>
-        <button class="button" style="margin-right: 10px;">RETURN TO LOGIN PAGE/button>
+        <p>There is missing address information.</p>
+        <a href="../user/register.jsp"><button class="button" style="margin-right: 10px;">RETURN TO REGISTER PAGE</button></a>
     </main>
     <footer>
       <div>

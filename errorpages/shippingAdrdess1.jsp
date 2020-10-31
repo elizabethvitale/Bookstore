@@ -46,16 +46,16 @@
                 <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="../user/login.jsp">Login</a>
+                    <a href="../user/login.html">Login</a>
                   </li>
                   <li>
-                    <a href="../user/register.jsp">Register</a>
+                    <a href="../user/register.html">Register</a>
                   </li>
                   <li>
-                    <a href="../user/editprofile.jsp">Edit Profile</a>
+                    <a href="../user/editprofile.html">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="../user/logout.jsp">Logout</a>
+                    <a href="../user/logout.html">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -67,8 +67,10 @@
     <main>
       <div>
         <h1>Error page</h1>
-        <p>You must login in order to edit profile.</p>
-        <button class="button" style="margin-right: 10px;">GO TO LOGIN PAGE</button>
+        <p>User has not filled in all the requirements for the shipping address.
+          Check to make sure all fields have been entered.</p>
+        <a href="../user/register.jsp"><button class="button" style="margin-right: 10px;">RETURN TO REGISTER PAGE</button></a>
+      </div>
     </main>
     <footer>
       <div>

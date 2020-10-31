@@ -32,15 +32,6 @@ public class confirm extends HttpServlet {
 		String email = request.getParameter("email");
 		String customerID = request.getParameter("confirmID");
 
-/*
-	if (email.isBlank() || customerId.isBlank()) {
-	//print msg
-	}
-//copy and paste code to make sure it's an email!
-*/
-
-
-
 		Connection con;
 
 	try{
