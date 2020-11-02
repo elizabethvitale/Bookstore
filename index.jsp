@@ -54,11 +54,10 @@
         if(session!=null){ 
         message="Welcome, " + (String)session.getAttribute("acctID");  
 }%>
-<p><%=message%></p>
-
 
     <main>
       <div>
+	<h4><%=message%></h4>
         <h1>Topseller Books</h1>
         <a href="bookDetail.html"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
         <a href="bookDetail.html"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>

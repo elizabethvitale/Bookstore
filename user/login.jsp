@@ -21,7 +21,7 @@
 
 
 
-    <header>
+<header>
       <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
@@ -74,7 +74,7 @@
           <div>
             <label for="pwd">Password</label>
             <br>
-            <input type="text" id="pwd" name="pwd">
+            <input type="password" id="pwd" name="pwd">
           </div>
 	<p><%=message%></p>
 

@@ -151,19 +151,19 @@ if(street.equals("null")){
               <div>
                <label>Current Password</label>
                 <br>
-                <input type="text" name="currentPwd">
+                <input type="password" name="currentPwd">
               </div>
               <br>
               <div>
                 <label>New Password</label>
                 <br>
-                <input type="text" name="newPwd1">
+                <input type="password" name="newPwd1">
               </div>
               <br>
               <div>
                 <label>Confirm New Password</label>
                 <br>
-                <input type="text" name="newPwd2">
+                <input type="password" name="newPwd2">
               </div>
               <br>
               <button type="submit">Update</button>

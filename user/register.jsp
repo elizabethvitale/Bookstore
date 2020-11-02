@@ -8,6 +8,15 @@
   </head>
   <body>
 <%@ page session="false" %>
+<%
+
+
+	String message = "";
+	HttpSession session=request.getSession(false);  
+        if(session!=null){  
+        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";  
+}%>
+
     <header>
       <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
@@ -50,8 +59,9 @@
     </header>
     <main>
       <section id='authBox'>
-        <h1>New Customer</h1>
-        <form action="/register" method="post">
+        </p><%=message%></p>
+	<h1>New Customer</h1>
+	   <form action="/register" method="post">
           <div>
             <label>First Name*</label>
             <br>
@@ -79,7 +89,7 @@
           <div>
             <label>Password*</label>
             <br>
-            <input type="text" name="password" required>
+            <input type="password" name="password" required>
           </div>
           <br>
 	  <h3>Shipping Information</h3>
@@ -129,7 +139,7 @@
 
 
 
-          <button type="submit">Register</button>
+          <button id="formsub" type="submit">Register</button>
         </form>
       </section>
     </main>
@@ -173,6 +183,13 @@
         </section>
       </div>
     </footer>
+
+    <script language="javascript">
+        var s = "<%=message%>";
+        if(s!==""){
+                document.getElementById("formsub").disabled = true;
+        }
+    </script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
