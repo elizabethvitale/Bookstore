@@ -15,7 +15,7 @@ To get this working, you need a tomcat server.
 	
 	6. It may now be a good idea to delete everything inside of the ROOT folder. It will cause merge conflicts if you try to pull otherwise.
 	
-	7. This is where you need to use the command git clone https://github.com/elizabethvitale/Bookstore.git . 
+	7. This is where you need to use the command git clone 'https://github.com/elizabethvitale/Bookstore.git .' 
 	
 		If there are issues, try making sure /ROOT is empty, and you can try using the 'git init' command.
 	
@@ -23,5 +23,9 @@ To get this working, you need a tomcat server.
 
 		THIS IS NOT A JOKE. USE THE COMMAND "git clone https://github.com/elizabethvitale/Bookstore.git ." IN IT'S ENTIRETY
 		THERE SHOULD BE TWO PERIODS IN THE COMMAND. ONE AFTER GITHUB and ONE at the END OF THE COMMAND
+	9. Go to the webapps folder and use the command 'javac -cp ROOT/WEB-INF/lib/servlet-api.jar:ROOT/WEB-INF/lib/javax.mail.jar -d ROOT/WEB-INF/classes ROOT/objects/User.java ROOT/objects/Admin.java ROOT/db_objects/backendUser.java ROOT/src/register.java ROOT/src/userLogin.java ROOT/src/confirm.java ROOT/src/reset.java ROOT/src/updatepwd.java ROOT/src/updateUserInfo.java ROOT/src/loggedUpdatePwd.java ROOT/src/adminLogin.java ROOT/src/updateCard.java ROOT/src/addCard.java ROOT/src/updateCard2.java ROOT/src/updateCard3.java '
+		
+	10. Go to the bin folder and use command './shutdown' and './startup'
 	
-	9. At this point, you should be able to access tomcat via localhost:8080 in your web browser. If you see the Bookstore, everything is set up correctly...except for some broken links here and there. If you see a "you have sucessfully created a tomcat server!"-themed webpage, you did not delete the original index.jsp page provided by tomcat, so you'll need to delete the ROOT directly (rm -rf ROOT), recreate an empty one, and pull again.
+
+	11. At this point, you should be able to access tomcat via localhost:8080 in your web browser. If you see the Bookstore, everything is set up correctly...except for some broken links here and there. If you see a "you have sucessfully created a tomcat server!"-themed webpage, you did not delete the original index.jsp page provided by tomcat, so you'll need to delete the ROOT directly (rm -rf ROOT), recreate an empty one, and pull again.
