@@ -110,7 +110,6 @@ public class register extends HttpServlet {
 	response.sendRedirect("/errorpages/emailFormat1.jsp");
 	return;
 	}
-
 	//missing card info response.sendRedirect("/user/registrationconfirm.html");
 	else if ( (ctype.equals("") == false) && (cnum.equals("") == true) && (exd.equals("") == true) ) {
 		response.sendRedirect("/errorpages/blankRequired1.jsp");
@@ -138,7 +137,7 @@ public class register extends HttpServlet {
 	}
 
 	//cardNum isn't 16 digits
-	else if (cnum.length() != 16) {
+	else if (cnum.equals("") == false && cnum.length() != 16) {
 	response.sendRedirect("/errorpages/cardInvalid1.jsp");
 		return;
 	}
