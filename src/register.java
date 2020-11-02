@@ -89,6 +89,7 @@ public class register extends HttpServlet {
 	//checking to make sure the length of password is 8+
 	if (pwd.length() < 8) {
 	response.sendRedirect("/errorpages/shortPw1.jsp");
+	return;
 	}
 
 	//checking to make sure there are no white spaces in the pw
@@ -100,6 +101,7 @@ public class register extends HttpServlet {
 	}
 	if (spaceFlag == true) {
 	response.sendRedirect("/errorpages/whitespacePw1.jsp");
+	return;
 	}
 
 	//email is incorrect
@@ -215,6 +217,7 @@ public class register extends HttpServlet {
 	else {
 	//hash password
 	response.sendRedirect("/user/registrationconfirm.html");
+	return;
 	}
 }
 	public static void sendEmail(String emailAdd,String body){
