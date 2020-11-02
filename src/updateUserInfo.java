@@ -34,23 +34,23 @@ public class updateUserInfo extends HttpServlet {
 			String phone = request.getParameter("phone");
 			Connection con;
 
-/*
 			//checks if names or phone is blank
-			if ( (firstName.isBlank()) || (lastName.isBlank()) || (phone.isBlank()) ){
-			//print error message
+			if ( firstName.equals("") || lastName.equals("") || phone.equals("") ){
+			response.sendRedirect("/errorpages/blankRequired2.jsp");
+			return;
 			}
 
 			//if phone number is a digit
 			if (phone.matches("-?\\d+(\\d+)?") == false) {
-			//print error message
+			response.sendRedirect("/errorpages/phoneIncorrect2.jsp");
+			return;
 			}
 
 			//if phone is not 10 digits
 			if (phone.length() != 10) {
-			//print error message
+			response.sendRedirect("/errorpages/passwordRequirements2.jsp");
+			return;
 			}
-
-*/
 
 			try{
 				//dont forget to update user object

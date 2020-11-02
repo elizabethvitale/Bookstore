@@ -23,27 +23,9 @@ public class userLogin extends HttpServlet {
 	boolean spaceFlag = false;
 	//i refuse to add an ajax call in here.....
 	//on failed login........rose needs to make jsp error pages w these specficiations
-	if((acctID=="") || (password=="")){
-	//response.sendRedirect("/loginError.jsp?errFlag=empty"); if a field is missing
+	if(acctID.equals("") || password.equals("")){
+	response.sendRedirect("/errorpages/blankRequired3.jsp");
 	}
-
-
-	//checking to make sure the length of password is 8+
-	if (password.length() < 8) {
-	//send message
-	}
-
-	//checking to make sure there are no white spaces in the pw
-	for (int i = 0; i < password.length(); i++) {
-		if (password.charAt(i) == ' ') {
-			spaceFlag = true;
-			break;
-		}
-	}
-	if (spaceFlag == true) {
-	//redirect to an error page or show message
-	}
-
 
 	User user  = new backendUser().login(acctID, password);	
 	if(user == null){

@@ -89,6 +89,7 @@ public class register extends HttpServlet {
 	//checking to make sure the length of password is 8+
 	if (pwd.length() < 8) {
 	response.sendRedirect("/errorpages/shortPw1.jsp");
+	return;
 	}
 
 	//checking to make sure there are no white spaces in the pw
@@ -100,6 +101,7 @@ public class register extends HttpServlet {
 	}
 	if (spaceFlag == true) {
 	response.sendRedirect("/errorpages/whitespacePw1.jsp");
+	return;
 	}
 
 	//email is incorrect
@@ -119,7 +121,7 @@ public class register extends HttpServlet {
 		return;
 	}
 	else if ( (ctype.equals("") == true) && (cnum.equals("") == true) && (exd.equals("") == false) ) {
-		response.sendRedirect("/errorpages/blankRequired11.jsp");
+		response.sendRedirect("/errorpages/blankRequired1.jsp");
 		return;
 	}
 	else if ( (ctype.equals("") == false) && (cnum.equals("") == false) && (exd.equals("") == true) ) {
@@ -158,9 +160,9 @@ public class register extends HttpServlet {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 		return;
 	}
-
 	else if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
+	return;
 	}
 
 	//missing address info
@@ -176,15 +178,15 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false) && (zip == -1) ) {
+	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false) && (zip != -1) ) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == false) && (zip == -1) ) {
+	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == false) && (zip != -1) ) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
+	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == true) && (zip != -1) ) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}	
@@ -192,7 +194,7 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == true) && (zip == -1) ) {
+	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == true) && (zip != -1) ) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
@@ -200,7 +202,7 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == true) && (zip == -1) ) {
+	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == true) && (zip != -1) ) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}

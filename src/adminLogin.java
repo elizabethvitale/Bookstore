@@ -24,10 +24,10 @@ public class adminLogin extends HttpServlet {
         String password = request.getParameter("pwd");
 	//i refuse to add an ajax call in here.....
 	//on failed login........rose needs to make jsp error pages w these specficiations
-	if(acctID.equals("") || password.equals("")){
-	//response.sendRedirect("/loginError.jsp?errFlag=empty"); if a field is missing
+	if(acctID.equals("") || password.equals("")) {
+	response.sendRedirect("/errorpages/blankRequired3.jsp");
+	return;
 	}
-
 
 	Admin admin  = new backendUser().loginAdmin(acctID, password);	
 	if(admin == null){

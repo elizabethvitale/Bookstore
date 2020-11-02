@@ -49,14 +49,35 @@ public class updateCard extends HttpServlet {
 				cardNumber = "";
 			}
 
-/*
-//card number requirements, c&p here
-if (cardType.isBlank() || expirationDate.isBlank() || cardNumber.isBlank()) {
-	//print message here
-}
-*/
 
+	//card info blank
+	if (cardType.equals("") || expirationDate.equals("") || cardNumber.equals("")) {
+	response.sendRedirect("/errorpages/blankRequired3.jsp");
+	return;
+	}
 
+	//cardNum isn't 16 digits
+	else if (cardNumber.length() != 16) {
+	response.sendRedirect("/errorpages/cardInvalid2.jsp");
+		return;
+	}
+
+	//cardType isn't a string
+	else if (cardType.matches("[a-zA-Z]+") == false) {
+	response.sendRedirect("/errorpages/cardtypeInvalid2.jsp");
+		return;
+	}
+
+	//card exp date format is incorrect
+	else if ( (expirationDate.charAt(2) != '/') || (expirationDate.length() != 5) ) {
+	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
+		return;
+	}
+	else if ( (Character.isDigit(expirationDate.charAt(0)) == false) || (Character.isDigit(expirationDate.charAt(1)) == false) || (Character.isDigit(expirationDate.charAt(3)) == false)
+||(Character.isDigit(expirationDate.charAt(4)) == false) ) {
+	response.sendRedirect("/errorpages/cardExpirationInvalid2.jsp");
+	return;
+	}
 
 
 			Connection con;

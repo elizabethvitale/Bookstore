@@ -31,17 +31,36 @@ public class updatepwd extends HttpServlet {
 		String pwd2 = request.getParameter("cpwd2");
 		String email = request.getParameter("email");
 		String code = request.getParameter("confirmID");
+		boolean spaceFlag = false;
 		if(!pwd1.equals(pwd2)){
-			response.sendRedirect("/error.jsp"); //doesnt exist...
+			response.sendRedirect("/errorpages/passwordRequirements2.jsp");
 			return;
 		}
-/*
-	if (pwd1.isBlank() || pwd2.isBlank() || email.isBlank() || code.isBlank()) {
-	//print message
+
+	//password is blank
+	if (pwd1.equals("") || pwd2.equals("")) {
+			response.sendRedirect("/errorpages/blankRequired2.jsp");
+			return;	
 	}
 
-	COPY & PASTE THE PASSWORD REQUIREMENTS INTO HERE AS WELL!!! DO NOT FORGET. THIS IS NOT A JOKE!!
-*/
+	//checking to make sure the length of password is 8+
+	if (pwd1.length() < 8 || pwd2.length() < 8) {
+	response.sendRedirect("/errorpages/shortPw2.jsp");
+	return;
+	}
+
+	//checking to make sure there are no white spaces in the pw
+	for (int i = 0; i < pwd1.length(); i++) {
+		if (pwd1.charAt(i) == ' ') {
+			spaceFlag = true;
+			break;
+		}
+	}
+	if (spaceFlag == true) {
+	response.sendRedirect("/errorpages/whitespacePw2.jsp");
+	return;
+	}
+
 		Connection con;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();

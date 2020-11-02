@@ -53,7 +53,7 @@ public class loggedUpdatePwd extends HttpServlet {
 		String userpwd = request.getParameter("currentPwd");
 		String email = (String)session.getAttribute("email");
 		if(!pwd1.equals(pwd2)){
-			response.sendRedirect("/error.jsp"); //doesnt exist...
+			response.sendRedirect("/errorpages/passwordRequirements2.jsp");
 			return;
 		}
 

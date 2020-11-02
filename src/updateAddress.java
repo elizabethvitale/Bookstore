@@ -34,12 +34,11 @@ public class updateAddress extends HttpServlet {
 			String state = request.getParameter("state");
 			Connection con;
 
-//can some of these be blank if people only have to update the zip or something??
-	/* if (zip.isBlank() || city.isBlank() || street.isBlank() || state.isBlank()) {
-		//print msg
+	if (zip.equals("") || city.equals("") || street.equals("") || state.equals("")) {
+		response.sendRedirect("/errorpages/blankRequired3.jsp");
+		return;
 	}
 
-	*/
 		try{
 				System.out.println(id);
 				//dont forget to update user object

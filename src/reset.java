@@ -47,12 +47,18 @@ public class reset extends HttpServlet{
 		String email = request.getParameter("email");	
 		String temp_code = "";
 
-/*
-	if (email.isBlank()) {
-	//print msg
-}
-//check that it is an email as well! c&p here!
-*/
+	//email is blank
+	if (email.equals("")) {
+			response.sendRedirect("/errorpages/blankRequired1.jsp");
+			return;
+	}
+	//email is incorrect
+	String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+	if (email.matches(regex) == false) {
+		response.sendRedirect("/errorpages/emailFormat1.jsp");
+		return;
+	}
+
 
 		Connection con;
 		try{
