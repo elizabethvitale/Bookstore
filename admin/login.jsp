@@ -16,7 +16,7 @@
 	String message = "";
 	HttpSession session=request.getSession(false);  
         if(session!=null){  
-        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";  
+        message="User is already logged in. <a href='../user/logout.jsp' style='color:blue'>Log out?</a>";  
 }%>
 
 
@@ -74,7 +74,7 @@
           <div>
             <label for="pwd">Password</label>
             <br>
-            <input type="text" id="pwd" name="pwd">
+            <input type="password" id="pwd" name="pwd">
           </div>
 	<p><%=message%></p>
 

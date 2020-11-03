@@ -47,7 +47,7 @@ public class updateCard3 extends HttpServlet {
 			if(!cardNumber.equals("**** **** **** ****")){
 				cardNumber = getSha1(cardNumber);
 			}else{
-			                          cardNumber = "0000000000000000";
+			        cardNumber = "0000000000000000";
                                 cardholder = "0000000000000000";			
 
 			}
@@ -91,7 +91,7 @@ public class updateCard3 extends HttpServlet {
 				ResultSet rs =stmt.executeQuery(query);
 				System.out.println(query);
 				if(rs.next()) {
-				if(!cardNumber.equals("")){
+				if(!cardNumber.equals("0000000000000000")){
 				query = "update payment_card set cardnumber='" + cardNumber + "', type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "' and cardnumber='" + cardNumDB + "';";
                 		session.setAttribute("cardNumber3", cardNumber);
 				}else{
@@ -105,7 +105,7 @@ public class updateCard3 extends HttpServlet {
 				int result = stmt.executeUpdate(query);
 				System.out.println("into second");
 				}
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("/errorpages/profilesuccess.jsp");
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}

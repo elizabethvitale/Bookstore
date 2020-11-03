@@ -27,19 +27,18 @@ public class updateAddress extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 		        HttpSession session = request.getSession(true);
-	//		int zip = Integer.parseInt(request.getParameter("zip"));
+			int zip = 0;
+			try{
+			zip = Integer.parseInt(request.getParameter("zip"));
+			}catch(Exception e){
+			  response.sendRedirect("/errorpages/blankRequired3.jsp");
+ 			 return;
+			}
 			String city = request.getParameter("city");
 			int id = (Integer) session.getAttribute("customerid");
 			String street = request.getParameter("street");
 			String state = request.getParameter("state");
-      int zip =-1;
-try{
-if(!street.equals("")){
-zip = Integer.parseInt(request.getParameter("zip"));
-}}catch(Exception e){
-  response.sendRedirect("/errorpages/blankRequired3.jsp");
-  return;
-}
+
 			Connection con;
 
 	if ( (city.equals("")) || (street.equals("")) || (state.equals("")) ) {

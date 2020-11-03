@@ -39,16 +39,15 @@ public class addCard extends HttpServlet {
 			int id = (Integer) session.getAttribute("customerid");
 			String expirationDate = request.getParameter("expirationDate");
 			String cardNumber = request.getParameter("cardNum");
-
+			String cardholder = cardNumber;
 			cardNumber = getSha1(cardNumber);
-
 	if (cardType.equals("") || expirationDate.equals("") || cardNumber.equals("")) {
 	response.sendRedirect("/errorpages/blankRequired2.jsp");
 	return;
 	}
 
 	//cardNum isn't 16 digits
-  else if (cardNumber.equals("") == false && cardNumber.length() != 16) {
+  	else if (cardholder.equals("") == false && cardholder.length() != 16) {
 	response.sendRedirect("/errorpages/cardInvalid2.jsp");
 		return;
 	}
@@ -97,7 +96,7 @@ public class addCard extends HttpServlet {
 				session.setAttribute("cardType3",cardType);
                                 session.setAttribute("expirationDate3",expirationDate);
 				}
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("/errorpages/profilesuccess.jsp");
 
 
 

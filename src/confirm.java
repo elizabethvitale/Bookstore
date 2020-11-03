@@ -62,6 +62,9 @@ public class confirm extends HttpServlet {
 				newid = ra.getInt("max(customerid)");
 			}
 			newid = newid + 1;
+			if(newid < 10000){
+				newid = 10000;
+			}
 			System.out.println(newid);
 			//INSERTS NEW UNIQUE ID AND STATUS INTO DATABASE
 			stmt = con.createStatement();
