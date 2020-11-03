@@ -67,8 +67,8 @@
     <main>
       <div>
         <h1>Error page</h1>
-        <p>This user is already registered. Please login instead of re-registering.</p>
-        <a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">GO TO LOGIN PAGE</button></a>
+        <p>Incorrect confirmation code</p>
+	<a href="../user/confirm.jsp"><button class="button" style="margin-right: 10px;">RETURN TO CONFIRMATION PAGE</button></a>
     </main>
     <footer>
       <div>

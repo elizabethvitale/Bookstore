@@ -46,16 +46,16 @@
                 <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="../user/login.html">Login</a>
+                    <a href="../user/login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="../user/register.html">Register</a>
+                    <a href="../user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="../user/editprofile.html">Edit Profile</a>
+                    <a href="../user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="../user/logout.html">Logout</a>
+                    <a href="../user/logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -66,9 +66,9 @@
     </header>
     <main>
       <div>
-        <h1>Error page</h1>
-        <p>This user is already registered. Please login instead of re-registering.</p>
-        <a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">GO TO LOGIN PAGE</button></a>
+        <h1>SUCCESS</h1>
+        <p>User has sucessfully confirmed their account! Please log in.</p>
+	<a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">GO TO LOGIN PAGE</button></a>
     </main>
     <footer>
       <div>

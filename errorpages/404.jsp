@@ -69,8 +69,8 @@
         <h1>404 error page</h1>
         <p>This page is not available. The link may be broken.
           Check to see if the link you're trying to open is correct. </p>
-          <button class="button" style="margin-right: 10px;">RETURN TO HOMEPAGE</button>
-      </div>
+      <a href="../index.jsp"><button class="button" style="margin-right: 10px;">GO TO INDEX</button></a>
+	</div>
     </main>
     <footer>
       <div>
