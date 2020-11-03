@@ -147,11 +147,7 @@ public class register extends HttpServlet {
 	}
 
 	//cardType isn't a string
-<<<<<<< HEAD
-	else if (ctype.matches("[a-zA-Z]+") == false){
-=======
 	else if ( (ctype.matches("[a-zA-Z]+") == false) && (ctype.equals("") == false) ){
->>>>>>> 6cac439b4646be26a3e7f56ea132f57801941055
 	response.sendRedirect("/errorpages/cardtypeInvalid1.jsp");
 		return;
 	}
@@ -167,12 +163,8 @@ public class register extends HttpServlet {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 		return;
 	}
-<<<<<<< HEAD
-	else if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
-=======
 
 	else if ((exd.equals("") == false) && ((Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) )) {
->>>>>>> 6cac439b4646be26a3e7f56ea132f57801941055
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 	return;
 	}
