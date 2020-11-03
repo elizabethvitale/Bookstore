@@ -43,11 +43,12 @@ public class updateCard extends HttpServlet {
 			System.out.println(cardNumber);
 			System.out.println(expirationDate);
 			System.out.println(cardType);
-      String cardholder = cardNumber;
+      			String cardholder = cardNumber;
 			if(!cardNumber.equals("**** **** **** ****")){
 				cardNumber = getSha1(cardNumber);
 			}else{
-				cardNumber = "";
+				cardNumber = "0000000000000000";
+				cardholder = "0000000000000000";
 			}
 
 
@@ -91,7 +92,7 @@ public class updateCard extends HttpServlet {
 				ResultSet rs =stmt.executeQuery(query);
 				System.out.println(query);
 				if(rs.next()) {
-				if(!cardNumber.equals("")){
+				if(!cardNumber.equals("0000000000000000")){
 				query = "update payment_card set cardnumber='" + cardNumber + "', type='" + cardType + "', expdate='" + expirationDate + "' where userid='" + id + "' and cardnumber='" + cardNumDB + "';";
                 		session.setAttribute("cardNumber", cardNumber);
 				}else{
