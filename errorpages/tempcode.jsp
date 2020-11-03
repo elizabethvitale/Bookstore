@@ -26,7 +26,7 @@
 <%@ page session="false" %>
     <header>
       <div>
-        <h2><div><a href="index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="/index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
@@ -46,16 +46,16 @@
                 <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="../user/login.html">Login</a>
+                    <a href="../user/login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="../user/register.html">Register</a>
+                    <a href="../user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="../user/editprofile.html">Edit Profile</a>
+                    <a href="../user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="../user/logout.html">Logout</a>
+                    <a href="../user/logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -66,9 +66,10 @@
     </header>
     <main>
       <div>
-        <h1>Error page</h1>
-        <p>One of the required fields is blank.</p>
-        <a href="../user/editprofile2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO FORGOT PASSWORD PAGE</button></a>
+        <h1>Temporary Code Does Not Match</h1>
+        <p>Your temporary code does not match. Please try again. </p>
+//      <a href="../index.jsp"><button class="button" style="margin-right: 10px;">GO TO INDEX</button></a>
+	</div>
     </main>
     <footer>
       <div>
