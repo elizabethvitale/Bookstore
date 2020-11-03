@@ -28,7 +28,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart; 
+import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
 
 import java.lang.Object;
@@ -36,13 +36,13 @@ import java.lang.String;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.*;
- 
+
 @WebServlet("/register")
 public class register extends HttpServlet {
- 
+
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-         
+
 
 	//add optional signup options.
         String fname = request.getParameter("fname");
@@ -71,7 +71,7 @@ public class register extends HttpServlet {
 	int randomNum = rand.nextInt((max - min) + 1) + min;
 	//would need to make sql call to ensure email is unique.
 	//would need to make sql call to get unique r id value by max(all user ids) + 1
-	//I HAVE DONE THE ABOVE..THIS NUMBER IS USED FOR EMAIL CONFIRMATION NOW 
+	//I HAVE DONE THE ABOVE..THIS NUMBER IS USED FOR EMAIL CONFIRMATION NOW
 	User new_user=null;
 	if(street.equals("") && ctype.equals("")){
 		System.out.println("first");
@@ -83,7 +83,7 @@ public class register extends HttpServlet {
 		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, cnum, ctype, exd);
 	}else if(!street.equals("") && !ctype.equals("")){
 		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, street, city, state, zip, cnum, ctype, exd);
-	}	
+	}
 
 	if (fname.equals("") || lname.equals("") || email.equals("") || number.equals("") || pwd.equals("")) {
 	response.sendRedirect("/errorpages/blankRequired1.jsp");
@@ -147,11 +147,7 @@ public class register extends HttpServlet {
 	}
 
 	//cardType isn't a string
-<<<<<<< HEAD
-	else if (ctype.matches("[a-zA-Z]+") == false){
-=======
 	else if ( (ctype.matches("[a-zA-Z]+") == false) && (ctype.equals("") == false) ){
->>>>>>> 6cac439b4646be26a3e7f56ea132f57801941055
 	response.sendRedirect("/errorpages/cardtypeInvalid1.jsp");
 		return;
 	}
@@ -167,12 +163,7 @@ public class register extends HttpServlet {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 		return;
 	}
-<<<<<<< HEAD
-	else if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
-=======
-
 	else if ((exd.equals("") == false) && ((Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) )) {
->>>>>>> 6cac439b4646be26a3e7f56ea132f57801941055
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 	return;
 	}
@@ -186,10 +177,6 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == false) && (city.equals("") == false) && (state.equals("") == false)) {
-		response.sendRedirect("/errorpages/missingAddress1.jsp");
-		return;
-	}
 	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false)) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
@@ -198,10 +185,7 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == true)) {
-		response.sendRedirect("/errorpages/missingAddress1.jsp");
-		return;
-	}	
+
 	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == false)) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
@@ -218,8 +202,12 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
+	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == false)) {
+		response.sendRedirect("/errorpages/missingAddress1.jsp");
+		return;
+	}
 
-	int register_user = new backendUser().register(new_user);	
+	int register_user = new backendUser().register(new_user);
 	String body = "Thank you for signing up for UGABOOKSTORE.COM!!!\nYour confirmation number is: " + randomNum + "\nPlease enter this on our website!!!";
 	System.out.println(register_user);
 	if(register_user == 0){
@@ -259,7 +247,7 @@ public class register extends HttpServlet {
 		msg.setSentDate(new Date());
 	      	msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAdd, false));
 	      	System.out.println("Message is ready");
-    	  	Transport.send(msg);  
+    	  	Transport.send(msg);
 
 	      	System.out.println("Email Sent Successfully!!");
 		}catch(Exception e){

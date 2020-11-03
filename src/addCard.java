@@ -28,10 +28,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
- 
+
 @WebServlet("/addCard")
 public class addCard extends HttpServlet {
- 
+
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 		        HttpSession session = request.getSession(true);
@@ -39,7 +39,7 @@ public class addCard extends HttpServlet {
 			int id = (Integer) session.getAttribute("customerid");
 			String expirationDate = request.getParameter("expirationDate");
 			String cardNumber = request.getParameter("cardNum");
-			
+
 			cardNumber = getSha1(cardNumber);
 
 	if (cardType.equals("") || expirationDate.equals("") || cardNumber.equals("")) {
@@ -48,25 +48,24 @@ public class addCard extends HttpServlet {
 	}
 
 	//cardNum isn't 16 digits
-	else if (cardNumber.length() != 16) {
+  else if (cardNumber.equals("") == false && cardNumber.length() != 16) {
 	response.sendRedirect("/errorpages/cardInvalid2.jsp");
-	return;
+		return;
 	}
 
 	//cardType isn't a string
-	else if (cardType.matches("[a-zA-Z]+") == false) {
-	response.sendRedirect("/errorpages/cardtypeInvalid2.jsp");
-	return;
+  else if ( (cardType.matches("[a-zA-Z]+") == false) && (cardType.equals("") == false) ){
+	response.sendRedirect("/errorpages/cardtypeInvalid1.jsp");
+		return;
 	}
 
 	//card exp date format is incorrect
-	else if ( (expirationDate.charAt(2) != '/') || (expirationDate.length() != 5) ) {
-	response.sendRedirect("/errorpages/cardExpirationInvalid2.jsp");
-	return;
+  else if ( (expirationDate.equals("") == false) && (expirationDate.charAt(2) != '/') || (expirationDate.equals("") == false)&&(expirationDate.length() != 5) ) {
+	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
+		return;
 	}
-
-	else if ( (Character.isDigit(expirationDate.charAt(0)) == false) || (Character.isDigit(expirationDate.charAt(1)) == false) || (Character.isDigit(expirationDate.charAt(3)) == false) ||(Character.isDigit(expirationDate.charAt(4)) == false) ) {
-	response.sendRedirect("/errorpages/cardExpirationInvalid2.jsp");
+	else if ((expirationDate.equals("") == false) && ((Character.isDigit(expirationDate.charAt(0)) == false) || (Character.isDigit(expirationDate.charAt(1)) == false) || (Character.isDigit(expirationDate.charAt(3)) == false) ||(Character.isDigit(expirationDate.charAt(4)) == false) )) {
+	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 	return;
 	}
 
@@ -99,7 +98,7 @@ public class addCard extends HttpServlet {
                                 session.setAttribute("expirationDate3",expirationDate);
 				}
 				response.sendRedirect("index.jsp");
-	
+
 
 
 	}catch(Exception e){

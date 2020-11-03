@@ -19,12 +19,9 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
- 
-
- 
 @WebServlet("/updatepwd")
 public class updatepwd extends HttpServlet {
- 
+
     public void doPost(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
 		String pwd1 = request.getParameter("cpwd1");
@@ -38,13 +35,13 @@ public class updatepwd extends HttpServlet {
 		}
 
 	//password is blank
-	if (pwd1.equals("") || pwd2.equals("")) {
+	else if (pwd1.equals("") || pwd2.equals("")) {
 			response.sendRedirect("/errorpages/blankRequired2.jsp");
-			return;	
+			return;
 	}
 
 	//checking to make sure the length of password is 8+
-	if (pwd1.length() < 8 || pwd2.length() < 8) {
+	else if (pwd1.length() < 8 || pwd2.length() < 8) {
 	response.sendRedirect("/errorpages/shortPw2.jsp");
 	return;
 	}
@@ -71,17 +68,17 @@ public class updatepwd extends HttpServlet {
 			ResultSet rs = stmt.executeQuery(query);
 			String temp_code = "";
 			if(rs.next()){
-				temp_code = rs.getString("password");		
+				temp_code = rs.getString("password");
 			}
 			System.out.println(code);
 
 			temp_code = temp_code.substring(0,6);
 			if(!temp_code.equals(code)){
                         response.sendRedirect("/error.jsp"); //doesnt exist...
-                        return;		
+                        return;
 			}
 			String password = getSha1(pwd1);
-			stmt = con.createStatement(); 
+			stmt = con.createStatement();
 			query = "update customer set password='" + password + "' where email='" + email + "';";
 			int rt = stmt.executeUpdate(query);
 		}catch(Exception e){
