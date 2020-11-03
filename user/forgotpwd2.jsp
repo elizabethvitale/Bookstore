@@ -54,7 +54,7 @@
         <h1>In order to reset your password, please enter your information below:</h1>
 	<form action="/updatepwd" method="post">
 	<label for="email">Email:</label>
-	<input type="text" name="email" id="email">
+	<input type="text" name="email" id="email" required>
 	<br><br>
 	<label for="confirmID">Temporary Code:</label>
 	<input type="text" name="confirmID" id="confirmID" required>	

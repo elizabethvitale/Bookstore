@@ -69,6 +69,9 @@ public class updatepwd extends HttpServlet {
 			String temp_code = "";
 			if(rs.next()){
 				temp_code = rs.getString("password");
+			}else{
+				response.sendRedirect("/error.jsp");
+				return;
 			}
 			System.out.println(code);
 

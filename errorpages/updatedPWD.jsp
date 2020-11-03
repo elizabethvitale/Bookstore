@@ -66,7 +66,7 @@
     </header>
     <main>
       <div>
-        <h1>SUCCESS</h1>
+        <h1>SUCCES</h1>
         <p>Password sucessfully reset! Please login below</p>
 	<a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">GO TO LOGIN PAGE</button></a>
     </main>
