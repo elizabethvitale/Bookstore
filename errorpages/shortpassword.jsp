@@ -30,7 +30,7 @@
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <a href="search.html"><button type="button"><img src="../image/search.svg"></button></a>
+            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -67,8 +67,9 @@
     <main>
       <div>
         <h1>Error page</h1>
-        <p>Your email is in the incorrect format! Try again.</p>
-        <a href="../user/forgotpwd2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO FORGOT PASSWORD PAGE</button></a>
+        <p>Password is too short</p>
+	<a href="../user/editprofile.jsp"><button class="button" style="margin-right: 10px;">RETURN TO EDIT PROFILE PAGE</button></a>
+      </div>
     </main>
     <footer>
       <div>
