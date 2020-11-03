@@ -10,11 +10,14 @@
   <body>
 <%@ page session="false" %>
 <%
-
+	String message = "";
         HttpSession session = request.getSession(false);
         if(session != null){
             session.invalidate();
-        }
+        	message = "Succesfully Logged Out";
+	}else{
+	message= "No user was logged in.";
+	}
 
 %>
 
@@ -59,8 +62,8 @@
       </div>
     </header>
     <main>
-    	<p> User has succesfully logged out.</p>
-    </main>
+    <p><%=message%></p>
+	</main>
     <footer>
       <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
