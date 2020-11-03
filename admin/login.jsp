@@ -5,6 +5,7 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/auth.css">
   </head>
@@ -14,9 +15,15 @@
 
 
 	String message = "";
+<<<<<<< HEAD
 	HttpSession session=request.getSession(false);  
         if(session!=null){  
         message="User is already logged in. <a href='../user/logout.jsp' style='color:blue'>Log out?</a>";  
+=======
+	HttpSession session=request.getSession(false);
+        if(session!=null){
+        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";
+>>>>>>> b3a96730ad72c61ee55cdc9130fdeb958ef1aa39
 }%>
 
 
@@ -122,7 +129,7 @@
             <div class="searchbox-container">
                 <div class="searchbox">
                   <input type="text" placeholder="Browse store..">
-                  <button type="button" style="background-color: #b3011c;"><img src="image/search.svg"></button>
+                  <button type="button" style="background-color: #b3011c;"><img src="../image/search.svg"></button>
                 </div>
             </div>
         </section>
