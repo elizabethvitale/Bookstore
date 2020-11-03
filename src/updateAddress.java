@@ -42,7 +42,7 @@ zip = Integer.parseInt(request.getParameter("zip"));
 }
 			Connection con;
 
-	if (city.equals("") || street.equals("") || state.equals("")) {
+	if ( (city.equals("")) || (street.equals("")) || (state.equals("")) ) {
 		response.sendRedirect("/errorpages/blankRequired3.jsp");
 		return;
 	}
