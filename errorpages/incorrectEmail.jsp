@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/errorpages.css">
+    <style>
+      main {
+        font-family: 'IBM Plex Sans', sans-serif;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+      main > div {
+        margin: 0 auto;
+        color: var(--primary-color);
+      }
+      main h1 {
+        margin-top: 0;
+      }
+    </style>
   </head>
   <body>
 <%@ page session="false" %>
     <header>
       <div>
-        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
+        <h2><div><a href="index.html">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+            <a href="search.html"><button type="button"><img src="../image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -24,22 +40,22 @@
                 BROWSE
               </li>
               <li>
-                <a href="../checkout/cart.html"><img src="../image/shoppingcartblack.svg"></a>
+                <a href="checkout/cart.html"><img src="../image/shoppingcart.svg"></a>
               </li>
               <li style='position: relative;'>
-                <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
+                <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.jsp">Login</a>
+                    <a href="../user/login.html">Login</a>
                   </li>
                   <li>
-                    <a href="register.jsp">Register</a>
+                    <a href="../user/register.html">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.jsp">Edit Profile</a>
+                    <a href="../user/editprofile.html">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.jsp">Logout</a>
+                    <a href="../user/logout.html">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -49,28 +65,13 @@
       </div>
     </header>
     <main>
-      <section id='authBox'>
-
-        <h1>In order to reset your password, please enter your information below:</h1>
-	<form action="/updatepwd" method="post">
-	<label for="email">Email:</label>
-	<input type="text" name="email" id="email" required>
-	<br><br>
-	<label for="confirmID">Temporary Code:</label>
-	<input type="text" name="confirmID" id="confirmID" required>
-	<br><br>
-	<label for="confirmPwd1">New Password:</label>
-	<input type="password" name="cpwd1" id="cpwd1" required>
-	<br><br>
-	<label for="confirmPwd2">Confirm Password:</label>
-	<input type="password" name="cpwd2" id="cpwd2" required>
-	<br><br>
-	<button id="submit" type="submit">Confirm</button>
-	</form>
-	</section>
+      <div>
+        <h1>Error page</h1>
+        <p>No user is registered with this email address. Please try again</p>
+	<a href="../user/forgotpwd.jsp"><button class="button" style="margin-right: 10px;">RETURN TO FORGOT PASSWORD</button></a>
     </main>
     <footer>
-        <div>
+      <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
@@ -103,7 +104,7 @@
             <div class="searchbox-container">
                 <div class="searchbox">
                   <input type="text" placeholder="Browse store..">
-                  <button type="button" style="background-color: #b3011c;"><img src="image/search.svg"></button>
+                  <button type="button" style="background-color: #b3011c;"><img src="../image/search.svg"></button>
                 </div>
             </div>
         </section>
