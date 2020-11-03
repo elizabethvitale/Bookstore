@@ -20,10 +20,10 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.http.HttpSession;
- 
+
 @WebServlet("/updateUserInfo")
 public class updateUserInfo extends HttpServlet {
- 
+
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 		        HttpSession session = request.getSession(true);
@@ -36,7 +36,7 @@ public class updateUserInfo extends HttpServlet {
 
 			//checks if names or phone is blank
 			if ( firstName.equals("") || lastName.equals("") || phone.equals("") ){
-			response.sendRedirect("/errorpages/blankRequired2.jsp");
+			response.sendRedirect("/errorpages/return2editprof.jsp");
 			return;
 			}
 
@@ -48,7 +48,7 @@ public class updateUserInfo extends HttpServlet {
 
 			//if phone is not 10 digits
 			if (phone.length() != 10) {
-			response.sendRedirect("/errorpages/passwordRequirements2.jsp");
+			response.sendRedirect("/errorpages/phoneIncorrect2.jsp");
 			return;
 			}
 
@@ -65,8 +65,8 @@ public class updateUserInfo extends HttpServlet {
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}
-		session.setAttribute("firstName", firstName);	
-		session.setAttribute("lastName", lastName); 
-		session.setAttribute("phone", phone); 
+		session.setAttribute("firstName", firstName);
+		session.setAttribute("lastName", lastName);
+		session.setAttribute("phone", phone);
 }
 }
