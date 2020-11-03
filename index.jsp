@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-<%@ page session="false" %>  
+<%@ page session="false" %>
   <header>
       <div>
         <h2><div><a href="index.jsp">UGA Bookshop</a></div></h2>
@@ -50,14 +51,27 @@
 
 <%
 	String message = "";
-       HttpSession session=request.getSession(false);  
-        if(session!=null){ 
-        message="Welcome, " + (String)session.getAttribute("acctID");  
+       HttpSession session=request.getSession(false);
+        if(session!=null){
+        message="Welcome, " + (String)session.getAttribute("acctID");
 }%>
 
+    <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://images.squarespace-cdn.com/content/v1/5d39be915804eb00017ab307/1597669537598-4B3ZSMGYX8B8MK5HLXBV/ke17ZwdGBToddI8pDm48kDCS9NWuBBzb3g35P34aRwRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIYvxqG26orBnNg9dHOqYbKQsNDnAkGmvIcYWp2psWtn0KMshLAGzx4R3EDFOm1kBS/Evening+and+Morning_Amazon+banners_Two+%282%29.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.panmacmillan.com.au/wp-content/uploads/2020/09/to-sleep-in-a-sea-of-stars_Web-banner.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.wattpad.com/banner?id=243484431&amp;v=378000" class="d-block w-100" alt="...">
+        </div>
+      </div>
+    </div>
     <main>
       <div>
-	<h4><%=message%></h4>
+	       <h4><%=message%></h4>
         <h1>Topseller Books</h1>
         <a href="bookDetail.html"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
         <a href="bookDetail.html"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
@@ -114,6 +128,7 @@
     </footer>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
   </body>
 </html>
