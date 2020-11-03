@@ -91,6 +91,8 @@ public class backendUser{
 			
 			System.out.println("6");
 		} catch(SQLException err){	
+			err.printStackTrace(System.out);
+                        System.out.println("ERROR: " + err.getMessage() + "gen messg");
 			return 800;
 		} catch(Exception e){
 			e.printStackTrace(System.out);	
