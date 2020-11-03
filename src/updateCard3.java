@@ -47,7 +47,9 @@ public class updateCard3 extends HttpServlet {
 			if(!cardNumber.equals("**** **** **** ****")){
 				cardNumber = getSha1(cardNumber);
 			}else{
-				cardNumber = "";
+			                          cardNumber = "0000000000000000";
+                                cardholder = "0000000000000000";			
+
 			}
 
       //card info blank

@@ -84,6 +84,7 @@ nav .auth-dropdown {
   left: -20px;
   border-radius: 5px;
   display:none;
+  z-index: 10;
 }
 
 .searchbox-container {
