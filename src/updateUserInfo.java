@@ -61,7 +61,7 @@ public class updateUserInfo extends HttpServlet {
 				String query = "update customer set firstname='" + firstName + "', lastname='" + lastName + "', phone='" + phone + "' where customerid='" + id + "';";
 		System.out.println(query);
 				int result = stmt.executeUpdate(query);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("/errorpages/profilesuccess.jsp");
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}

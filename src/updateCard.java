@@ -57,8 +57,8 @@ public class updateCard extends HttpServlet {
 	}
 
 	//cardNum isn't 16 digits
-  else if (cardNumber.equals("") == false && cardNumber.length() != 16) {
-	response.sendRedirect("/errorpages/cardInvalid1.jsp");
+  else if ( (cardNumber.equals("") == false) && (cardNumber.length() != 16) ) {
+	response.sendRedirect("/errorpages/cardInvalid2.jsp");
 		return;
 	}
 
