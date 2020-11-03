@@ -140,7 +140,7 @@
 
 
 
-          <button id="formsub" type="submit">Register</button>
+          <button id="formsub" class = "button" type="submit">Register</button>
         </form>
       </section>
     </main>

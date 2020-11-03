@@ -149,7 +149,7 @@ if(street.equals("null")){
                 <input type="text" name="phone" value="<%=phone%>">
               </div>
               <br>
-              <button type="submit">Update</button>
+              <button type="submit" class="button">Update</button>
             </div>
           </form>
           <form action="/loggedUpdatePwd" method="post">
@@ -173,7 +173,7 @@ if(street.equals("null")){
                 <input type="password" name="newPwd2">
               </div>
               <br>
-              <button type="submit">Update</button>
+              <button type="submit" class="button" >Update</button>
             </div>
           </form>
 
@@ -198,7 +198,7 @@ if(street.equals("null")){
                 <input type="text" name="expirationDate" value="<%=expDate%>">
               </div>
               <br>
-              <button type="submit">Update</button>
+              <button type="submit" class="button">Update</button>
 	</form>
        <br><br>
 		<div id="second" hidden="hidden">
@@ -211,10 +211,10 @@ if(street.equals("null")){
 		 </div>
 <script>
 var div = document.getElementById('second');
-div.innerHTML += '<form action="/updateCard2" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType2" value="<%=cardType2%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum2" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate2" value="<%=expDate2%>"></div><br><button type="submit">Update</button></form><br><br>';
+div.innerHTML += '<form action="/updateCard2" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType2" value="<%=cardType2%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum2" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate2" value="<%=expDate2%>"></div><br><button type="submit" class="button">Update</button></form><br><br>';
 
 var div = document.getElementById('third');
-div.innerHTML += '<form action="/updateCard3" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType3" value="<%=cardType3%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum3" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate3" value="<%=expDate3%>"></div><br><button type="submit">Update</button></form><br><br>';
+div.innerHTML += '<form action="/updateCard3" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType3" value="<%=cardType3%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum3" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate3" value="<%=expDate3%>"></div><br><button type="submit" class="button">Update</button></form><br><br>';
 </script>
 
 <script>
@@ -249,7 +249,7 @@ $(document).ready(function(){
 $(document).ready(function() {
 
     $("button[name='addCard']").click(function() {
-       var domElement = $('<form action="/addCard" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType" value=""></div><br><div><label>Number*</label><br><input type="text" name="cardNum" value=""></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate" value=""></div><br><button type="submit">Update</button></form><br><br>');
+       var domElement = $('<form action="/addCard" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType" value=""></div><br><div><label>Number*</label><br><input type="text" name="cardNum" value=""></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate" value=""></div><br><button type="submit" class="button">Update</button></form><br><br>');
         $(this).after(domElement);
     	var oldButton = document.getElementById("addCard");
 	oldButton.remove();
@@ -287,7 +287,7 @@ $(document).ready(function() {
                 <input type="text" name="zip" value="<%=zipcode%>">
               </div>
               <br>
-              <button type="submit">Update</button>
+              <button type="submit" class="button">Update</button>
 
 
 	</div>
@@ -313,7 +313,7 @@ $(document).ready(function() {
               <input type="text">
             </div>
             <br>
-            <button type="submit">Update</button>
+            <button type="submit" class="button">Update</button>
           </div>
         </form>
         <form action="" method="post">
@@ -323,7 +323,7 @@ $(document).ready(function() {
               <h2>Order confirmation number: 98362043</h2>
               <h2>Total Price: 31.08</h2>
               <h2>Date Purchased: 9/31/2020</h2>
-              <button type="button">Reorder</button>
+              <button type="button" class="button">Reorder</button>
             </div>
             </div>
           </div>

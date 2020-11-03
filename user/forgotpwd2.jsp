@@ -66,7 +66,7 @@
 	<label for="confirmPwd2">Confirm Password:</label>
 	<input type="password" name="cpwd2" id="cpwd2" required>
 	<br><br>
-	<button id="submit" type="submit">Confirm</button>
+	<button id="submit" class="button" type="submit">Confirm</button>
 	</form>
 	</section>
     </main>

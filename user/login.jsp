@@ -80,7 +80,7 @@
 	<p><%=message%></p>
 
 
-          <button id="formsub" type="submit">Login</button>
+          <button id="formsub" class="button" type="submit">Login</button>
         </form>
 	<br>
 	<a href="/user/forgotpwd.jsp">Forgot your password? Click here to reset it</a>
