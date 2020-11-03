@@ -54,15 +54,15 @@
 
         <h1>Thank you for registering!</h1>
         <h3>Please enter the code sent to your email to activate your account</h3>
-	<form action="/confirm" method="post">
-	<label for="email">Email:</label>
-	<input type="text" name="email" id="email">
-	<br><br>
-	<label for="confirmID">Confirmation Code:</label>
-	<input type="text" name="confirmID" id="confirmID">
-	<button id="submit" type="submit">Confirm</button>
-	</form>
-	</section>
+      	<form action="/confirm" method="post">
+      	<label for="email">Email:</label>
+      	<input type="text" name="email" id="email">
+      	<br><br>
+      	<label for="confirmID">Confirmation Code:</label>
+      	<input type="text" name="confirmID" id="confirmID">
+      	<button id="submit" type="submit">Confirm</button>
+      	</form>
+  	</section>
     </main>
     <footer>
         <div>
