@@ -70,14 +70,14 @@ public class updatepwd extends HttpServlet {
 			if(rs.next()){
 				temp_code = rs.getString("password");
 			}else{
-				response.sendRedirect("/error.jsp");
+				response.sendRedirect("/errorpages/wrongEmail.jsp");
 				return;
 			}
 			System.out.println(code);
 
 			temp_code = temp_code.substring(0,6);
 			if(!temp_code.equals(code)){
-                        response.sendRedirect("/error.jsp"); //doesnt exist...
+                        response.sendRedirect("/errorpages/tempcode.jsp"); //doesnt exist...
                         return;
 			}
 			String password = getSha1(pwd1);
