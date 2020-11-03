@@ -25,6 +25,7 @@ public class userLogin extends HttpServlet {
 	//on failed login........rose needs to make jsp error pages w these specficiations
 	if(acctID.equals("") || password.equals("")){
 	response.sendRedirect("/errorpages/blankRequired3.jsp");
+	return;
 	}
 
 	User user  = new backendUser().login(acctID, password);	
