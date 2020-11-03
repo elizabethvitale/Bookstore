@@ -52,8 +52,17 @@ public class loggedUpdatePwd extends HttpServlet {
 		String pwd2 = request.getParameter("newPwd2");
 		String userpwd = request.getParameter("currentPwd");
 		String email = (String)session.getAttribute("email");
+		
+
+		//checking to make sure the length of password is 8+
+		if (pwd1.length() < 8) {
+		response.sendRedirect("/errorpages/shortpassword.jsp");
+		return;
+		}
+
+
 		if(!pwd1.equals(pwd2)){
-			response.sendRedirect("/errorpages/passwordRequirements2.jsp");
+			response.sendRedirect("/errorpages/passwordsdontmatch.jsp");
 			return;
 		}
 
@@ -71,7 +80,8 @@ public class loggedUpdatePwd extends HttpServlet {
 			}
 
 			if(!temp_code.equals(getSha1(userpwd))){
-                        response.sendRedirect("/error.jsp"); //doesnt exist...
+			//WRONG CURRENT PWD
+                        response.sendRedirect("/errorpages/currentIncorrect.jsp"); //doesnt exist...
                         return;		
 			}
 			String password = getSha1(pwd1);
@@ -86,8 +96,8 @@ public class loggedUpdatePwd extends HttpServlet {
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-
-		response.sendRedirect("index.jsp");
+		//SEND TO SUCCESS PAGE
+		response.sendRedirect("/errorpages/profilesuccess.jsp");
 
 	}
 

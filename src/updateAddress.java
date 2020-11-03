@@ -58,7 +58,7 @@ public class updateAddress extends HttpServlet {
 				int result = stmt.executeUpdate(query);
 				System.out.println("into second");
 				}
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("/errorpages/profilesuccess.jsp");
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}
