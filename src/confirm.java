@@ -50,7 +50,7 @@ public class confirm extends HttpServlet {
 			}
 			String id = db_conf_code + "";
 			if(!(id.equals(customerID))){
-			response.sendRedirect("/user/confirm.jsp");
+			response.sendRedirect("/errorpages/codeIncorrect.jsp");
 			}
 			
 			//GENERATES NEW UNQIUE ID
@@ -73,7 +73,7 @@ public class confirm extends HttpServlet {
 			//result = stmt.executeUpdate(query);
 
 
-			response.sendRedirect("index.jsp");	
+			response.sendRedirect("/errorpages/sucess.jsp");	
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}

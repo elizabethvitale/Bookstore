@@ -30,7 +30,7 @@ public class userLogin extends HttpServlet {
 	User user  = new backendUser().login(acctID, password);	
 	if(user == null){
 		System.out.println("login has failed....");
-		response.sendRedirect("user/login.jsp");
+		response.sendRedirect("errorpages/passwordIncorrect.jsp");
 		//login fails
 		return;
 	}else{

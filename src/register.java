@@ -178,10 +178,6 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == false) && (city.equals("") == false) && (state.equals("") == false)) {
-		response.sendRedirect("/errorpages/missingAddress1.jsp");
-		return;
-	}
 	else if ( (street.equals("") == true) && (city.equals("") == false) && (state.equals("") == false)) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
@@ -190,10 +186,6 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-	else if ( (street.equals("") == true) && (city.equals("") == true) && (state.equals("") == true)) {
-		response.sendRedirect("/errorpages/missingAddress1.jsp");
-		return;
-	}	
 	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == false)) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
