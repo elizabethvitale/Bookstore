@@ -29,6 +29,12 @@ String expDate2="";
 String cardType3="";
 String expDate3="";
 
+
+
+if(request.getSession(false) == null){
+response.sendRedirect("/errorpages/405.jsp");
+System.out.println("entered");
+}
 if(request.getSession(false) != null){
     HttpSession httpSession = request.getSession();
 firstName = String.valueOf(httpSession.getAttribute("firstName"));

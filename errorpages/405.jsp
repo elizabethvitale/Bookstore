@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/errorpages.css">
+    <style>
+      main {
+        font-family: 'IBM Plex Sans', sans-serif;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+      main > div {
+        margin: 0 auto;
+        color: var(--primary-color);
+      }
+      main h1 {
+        margin-top: 0;
+      }
+    </style>
   </head>
   <body>
 <%@ page session="false" %>
-<%
-
-        HttpSession session = request.getSession(false);
-        if(session != null){
-            session.invalidate();
-        }
-
-%>
-
     <header>
       <div>
-        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
+        <h2><div><a href="/index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+            <a href="search.html"><button type="button"><img src="../image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -33,22 +40,22 @@
                 BROWSE
               </li>
               <li>
-                <a href="../checkout/cart.html"><img src="../image/shoppingcartblack.svg"></a>
+                <a href="checkout/cart.html"><img src="../image/shoppingcart.svg"></a>
               </li>
               <li style='position: relative;'>
-                <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
+                <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.jsp">Login</a>
+                    <a href="../user/login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.jsp">Register</a>
+                    <a href="../user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.jsp">Edit Profile</a>
+                    <a href="../user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.jsp">Logout</a>
+                    <a href="../user/logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -58,7 +65,11 @@
       </div>
     </header>
     <main>
-    	<p> User has succesfully logged out.</p>
+      <div>
+        <h1>Error page</h1>
+      	<p>Please log in first before attempting to edit your profile</p>
+	<a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">GO TO LOGIN</button></a>
+	</div>
     </main>
     <footer>
       <div>
@@ -94,7 +105,7 @@
             <div class="searchbox-container">
                 <div class="searchbox">
                   <input type="text" placeholder="Browse store..">
-                  <button type="button" style="background-color: #b3011c;"><img src="image/search.svg"></button>
+                  <button type="button" style="background-color: #b3011c;"><img src="../image/search.svg"></button>
                 </div>
             </div>
         </section>
