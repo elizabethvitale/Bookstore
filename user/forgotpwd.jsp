@@ -58,7 +58,7 @@
 	<label for="email">Email:</label>
 	<input type="text" name="email" id="email">
 	<br><br>
-	<button id="submit" type="submit">Send Password Reset</button>
+	<button id="submit" type="submit" class="button">Send Password Reset</button>
 	</form>
 	</section>
     </main>
