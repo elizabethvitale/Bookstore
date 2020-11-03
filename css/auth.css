@@ -34,10 +34,11 @@ main {
 }
 
 #authBox {
-  background-color: #d8d8d8;
+  background-color: white;
   padding: 10px;
   width: 350px;
   margin: 0 auto;
+  border: 1px solid lightgrey;
 }
 
 .tab {
@@ -74,4 +75,8 @@ main {
   border: 1px solid #ccc;
   border-top: none;
   animation: fadeEffect 1s;
+}
+
+body {
+  background-color: #F0F0F0;
 }
