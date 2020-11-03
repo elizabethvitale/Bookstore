@@ -43,6 +43,7 @@ public class updateCard3 extends HttpServlet {
 			System.out.println(cardNumber);
 			System.out.println(expirationDate);
 			System.out.println(cardType);
+      String cardholder = cardNumber;
 			if(!cardNumber.equals("**** **** **** ****")){
 				cardNumber = getSha1(cardNumber);
 			}else{
@@ -55,9 +56,9 @@ public class updateCard3 extends HttpServlet {
     	return;
     	}
 
-    	//cardNum isn't 16 digits
-      else if (cardNumber.equals("") == false && cardNumber.length() != 16) {
-    	response.sendRedirect("/errorpages/cardInvalid1.jsp");
+      //cardNum isn't 16 digits
+      else if ( (cardholder.equals("") == false) && (cardholder.length() != 16) ) {
+    	response.sendRedirect("/errorpages/cardInvalid2.jsp");
     		return;
     	}
 
