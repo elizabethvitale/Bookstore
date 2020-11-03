@@ -116,9 +116,9 @@ nav .auth-dropdown {
 input {
   padding: 4px;
   background-color: white;
-  border: none;
+  border: 1px solid #F0F0F0;
   flex-grow: 2;
-  margin-right: 5px;
+  margin-right: 4px;
   outline: none;
 }
 
