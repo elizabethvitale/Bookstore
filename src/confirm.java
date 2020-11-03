@@ -49,8 +49,11 @@ public class confirm extends HttpServlet {
 				db_conf_code = rs.getInt("customerid");
 			}
 			String id = db_conf_code + "";
+			System.out.println(id);
+			System.out.println(customerID);
 			if(!(id.equals(customerID))){
 			response.sendRedirect("/errorpages/codeIncorrect.jsp");
+			return;
 			}
 			
 			//GENERATES NEW UNQIUE ID
