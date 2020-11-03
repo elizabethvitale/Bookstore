@@ -54,8 +54,12 @@ public class register extends HttpServlet {
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         int zip =-1;
+	try{
 	if(!street.equals("")){
 	zip = Integer.parseInt(request.getParameter("zip"));
+	}}catch(Exception e){
+		response.sendRedirect("/errorpages/incorrectFormat.jsp");
+		return;
 	}
 	String ctype = request.getParameter("ctype");
 	String cnum = request.getParameter("cnum");

@@ -67,8 +67,9 @@
     <main>
       <div>
         <h1>Error page</h1>
-        <p>This user is already registered. Please login instead of re-registering.</p>
-        <a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">RETURN TO REGISTER PAGE</button></a>
+        <p>Please enter a valid zip code in number format</p>
+	<a href="../user/register.jsp"><button class="button" style="margin-right: 10px;">RETURN TO REGISTER PAGE</button></a>
+      </div>
     </main>
     <footer>
       <div>
