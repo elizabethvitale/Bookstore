@@ -68,7 +68,7 @@
       <div>
         <h1>Temporary Code Does Not Match</h1>
         <p>Your temporary code does not match. Please try again. </p>
-//      <a href="../index.jsp"><button class="button" style="margin-right: 10px;">GO TO INDEX</button></a>
+      <a href="../user/forgotpwd2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO FORGOT PASSWORD PAGE</button></a>
 	</div>
     </main>
     <footer>
