@@ -143,7 +143,7 @@ public class register extends HttpServlet {
 	}
 
 	//cardType isn't a string
-	else if (ctype.matches("[a-zA-Z]+") == false) {
+	else if (ctype.matches("[a-zA-Z]+") == false){
 	response.sendRedirect("/errorpages/cardtypeInvalid1.jsp");
 		return;
 	}
