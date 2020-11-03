@@ -15,15 +15,9 @@
 
 
 	String message = "";
-<<<<<<< HEAD
 	HttpSession session=request.getSession(false);  
         if(session!=null){  
         message="User is already logged in. <a href='../user/logout.jsp' style='color:blue'>Log out?</a>";  
-=======
-	HttpSession session=request.getSession(false);
-        if(session!=null){
-        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";
->>>>>>> b3a96730ad72c61ee55cdc9130fdeb958ef1aa39
 }%>
 
 
