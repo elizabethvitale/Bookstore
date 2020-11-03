@@ -32,9 +32,9 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart; 
+import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
- 
+
 
 
 @WebServlet("/reset")
@@ -42,9 +42,9 @@ public class reset extends HttpServlet{
 
     public void doPost(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
-	
 
-		String email = request.getParameter("email");	
+
+		String email = request.getParameter("email");
 		String temp_code = "";
 
 	//email is blank
@@ -59,7 +59,6 @@ public class reset extends HttpServlet{
 		return;
 	}
 
-
 		Connection con;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -69,13 +68,13 @@ public class reset extends HttpServlet{
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-				temp_code = rs.getString("password");		
+				temp_code = rs.getString("password");
 			}
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
 		temp_code = temp_code.substring(0,6);
-	
+
 		String body="We are sorry you forgot your password!\nBelow is a temporary code you can use to reset your password on our website. If you did not request this email, please ignore it.\n\nTemporary code: " + temp_code + "\n\nPlease enter this at our website forgot password portal, linked below.\n\nhttp://localhost:8080/user/forgotpwd2.jsp";
 
 		String host = "smtp.gmail.com";
@@ -98,13 +97,13 @@ public class reset extends HttpServlet{
 		msg.setSentDate(new Date());
 	      	msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false));
 	      	System.out.println("Message is ready");
-    	  	Transport.send(msg);  
+    	  	Transport.send(msg);
 
 	      	System.out.println("Email Sent Successfully!!");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	response.sendRedirect("/user/forgotpwd2.jsp");	
+	response.sendRedirect("/user/forgotpwd2.jsp");
 	}
 
 

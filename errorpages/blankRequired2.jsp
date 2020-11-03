@@ -68,7 +68,7 @@
       <div>
         <h1>Error page</h1>
         <p>One of the required fields is blank.</p>
-        <a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">RETURN TO LOGIN PAGE</button></a>
+        <a href="../user/forgotpwd2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO FORGOT PASSWORD PAGE</button></a>
     </main>
     <footer>
       <div>

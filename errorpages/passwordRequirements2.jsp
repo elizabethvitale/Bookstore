@@ -68,7 +68,7 @@
       <div>
         <h1>Error page</h1>
         <p>Password does not meet all the requirements.</p>
-        <a href="../user/editprofile.jsp"><button class="button" style="margin-right: 10px;">RETURN TO EDIT PROFILE PAGE</button></a>
+        <a href="../user/forgotpwd2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO FORGOT PASSWORD PAGE</button></a>
     </main>
     <footer>
       <div>

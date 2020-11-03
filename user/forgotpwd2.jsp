@@ -50,20 +50,20 @@
     </header>
     <main>
       <section id='authBox'>
-      
+
         <h1>In order to reset your password, please enter your information below:</h1>
 	<form action="/updatepwd" method="post">
 	<label for="email">Email:</label>
 	<input type="text" name="email" id="email">
 	<br><br>
 	<label for="confirmID">Temporary Code:</label>
-	<input type="text" name="confirmID" id="confirmID" required>	
+	<input type="text" name="confirmID" id="confirmID" required>
 	<br><br>
 	<label for="confirmPwd1">New Password:</label>
-	<input type="text" name="cpwd1" id="cpwd1" required>
+	<input type="password" name="cpwd1" id="cpwd1" required>
 	<br><br>
-	<label for="confirmPwd2">Confirm Password:</label>	
-	<input type="text" name="cpwd2" id="cpwd2" required>
+	<label for="confirmPwd2">Confirm Password:</label>
+	<input type="password" name="cpwd2" id="cpwd2" required>
 	<br><br>
 	<button id="submit" type="submit">Confirm</button>
 	</form>
