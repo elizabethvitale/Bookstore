@@ -70,7 +70,11 @@ public class updatepwd extends HttpServlet {
 			if(rs.next()){
 				temp_code = rs.getString("password");
 			}else{
+<<<<<<< HEAD
 				response.sendRedirect("/errorpages/wrongEmail.jsp");
+=======
+				response.sendRedirect("/error.jsp");//doesnt exist
+>>>>>>> bdbfdb52cdcfb34c8388b77a8482c688e90724e3
 				return;
 			}
 			System.out.println(code);
