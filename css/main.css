@@ -116,10 +116,11 @@ nav .auth-dropdown {
 input {
   padding: 4px;
   background-color: white;
-  border: 1px solid #F0F0F0;
+  border: 2px solid #F0F0F0;
   flex-grow: 2;
   margin-right: 4px;
   outline: none;
+  border-radius: 5px;
 }
 
 .searchbox button {
