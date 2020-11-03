@@ -211,6 +211,9 @@ public class register extends HttpServlet {
 	System.out.println(register_user);
 	if(register_user == 0){
 		sendEmail(email,body);
+	}else if(register_user == 800){
+		response.sendRedirect("/errorpages/alreadyRegistered.jsp");
+		return;
 	}
 
 	else {
