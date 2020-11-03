@@ -5,11 +5,12 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/auth.css">
   </head>
   <body>
-<%@ page session="false" %> 
+<%@ page session="false" %>
 <%
 //HttpSession session = request.getSession(false);
 String firstName = "";
@@ -246,18 +247,18 @@ $(document).ready(function(){
 </script>
 <script>
 $(document).ready(function() {
-       
+
     $("button[name='addCard']").click(function() {
        var domElement = $('<form action="/addCard" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType" value=""></div><br><div><label>Number*</label><br><input type="text" name="cardNum" value=""></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate" value=""></div><br><button type="submit">Update</button></form><br><br>');
         $(this).after(domElement);
     	var oldButton = document.getElementById("addCard");
 	oldButton.remove();
 	});
-    
+
 });
 
 
-</script>	
+</script>
 
           <form action="/updateAddress" method="post">
             <div id="Address" class="tabcontent">
@@ -287,8 +288,8 @@ $(document).ready(function() {
               </div>
               <br>
               <button type="submit">Update</button>
-  
-	
+
+
 	</div>
         </form>
         <form action="" method="post">

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/auth.css">
   </head>
@@ -50,7 +51,7 @@
     </header>
     <main>
       <section id='authBox'>
-      
+
         <h1>Thank you for registering!</h1>
         <h3>Please enter the code sent to your email to activate your account</h3>
 	<form action="/confirm" method="post">
@@ -58,7 +59,7 @@
 	<input type="text" name="email" id="email">
 	<br><br>
 	<label for="confirmID">Confirmation Code:</label>
-	<input type="text" name="confirmID" id="confirmID">	
+	<input type="text" name="confirmID" id="confirmID">
 	<button id="submit" type="submit">Confirm</button>
 	</form>
 	</section>

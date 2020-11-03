@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/auth.css">
   </head>
@@ -12,9 +13,9 @@
 
 
 	String message = "";
-	HttpSession session=request.getSession(false);  
-        if(session!=null){  
-        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";  
+	HttpSession session=request.getSession(false);
+        if(session!=null){
+        message="User is already logged in. <a href='logout.jsp' style='color:blue'>Log out?</a>";
 }%>
 
     <header>
