@@ -24,7 +24,7 @@ public class userLogin extends HttpServlet {
 	//i refuse to add an ajax call in here.....
 	//on failed login........rose needs to make jsp error pages w these specficiations
 	if(acctID.equals("") || password.equals("")){
-	response.sendRedirect("/errorpages/blankRequired3.jsp");
+	response.sendRedirect("/errorpages/blankRequired4.jsp");
 	return;
 	}
 
