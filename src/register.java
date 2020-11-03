@@ -147,7 +147,7 @@ public class register extends HttpServlet {
 	}
 
 	//cardType isn't a string
-	else if (ctype.matches("[a-zA-Z]+") == false) {
+	else if ( (ctype.matches("[a-zA-Z]+") == false) && (ctype.equals("") == false) ){
 	response.sendRedirect("/errorpages/cardtypeInvalid1.jsp");
 		return;
 	}
@@ -159,13 +159,14 @@ public class register extends HttpServlet {
 	}
 
 	//card exp date format is incorrect
-	else if ( (exd.charAt(2) != '/') || (exd.length() != 5) ) {
+	else if ( (exd.equals("") == false) && (exd.charAt(2) != '/') || (exd.equals("") == false)&&(exd.length() != 5) ) {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 		return;
 	}
 
-	else if ( (Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) ) {
+	else if ((exd.equals("") == false) && ((Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) )) {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
+	return;
 	}
 
 	//missing address info
@@ -218,13 +219,14 @@ public class register extends HttpServlet {
 	}else if(register_user == 800){
 		response.sendRedirect("/errorpages/alreadyRegistered.jsp");
 		return;
+	}else if(register_user == 90){
+		response.sendRedirect("/errorpages/alreadyRegistered.jsp");
+                return;
 	}
 
-	else {
 	//hash password
 	response.sendRedirect("/user/registrationconfirm.html");
 	return;
-	}
 }
 	public static void sendEmail(String emailAdd,String body){
 		String host = "smtp.gmail.com";
