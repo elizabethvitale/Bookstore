@@ -20,21 +20,29 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.http.HttpSession;
- 
+
 @WebServlet("/updateAddress")
 public class updateAddress extends HttpServlet {
- 
+
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
 		        HttpSession session = request.getSession(true);
-			int zip = Integer.parseInt(request.getParameter("zip"));
+	//		int zip = Integer.parseInt(request.getParameter("zip"));
 			String city = request.getParameter("city");
 			int id = (Integer) session.getAttribute("customerid");
 			String street = request.getParameter("street");
 			String state = request.getParameter("state");
+      int zip =-1;
+try{
+if(!street.equals("")){
+zip = Integer.parseInt(request.getParameter("zip"));
+}}catch(Exception e){
+  response.sendRedirect("/errorpages/blankRequired3.jsp");
+  return;
+}
 			Connection con;
 
-	if (zip.equals("") || city.equals("") || street.equals("") || state.equals("")) {
+	if (city.equals("") || street.equals("") || state.equals("")) {
 		response.sendRedirect("/errorpages/blankRequired3.jsp");
 		return;
 	}
@@ -50,9 +58,9 @@ public class updateAddress extends HttpServlet {
 				ResultSet rs =stmt.executeQuery(query);
 				System.out.println(query);
 				if(rs.next()) {
-				query = "update shipping_address set city='" + city + "', street='" + street + "', zipcode='" + zip + "', state='" + state + "' where shippingid='" + id + "';";      
-                		System.out.println(query); 
-                                int result = stmt.executeUpdate(query);	
+				query = "update shipping_address set city='" + city + "', street='" + street + "', zipcode='" + zip + "', state='" + state + "' where shippingid='" + id + "';";
+                		System.out.println(query);
+                                int result = stmt.executeUpdate(query);
 				}else{
 				query = "insert into shipping_address (street, state, zipcode, shippingid, city) values ('" + street + "','" + state + "','" + zip + "','" + id + "','" + city + "');";
 				int result = stmt.executeUpdate(query);
@@ -62,9 +70,9 @@ public class updateAddress extends HttpServlet {
 	}catch(Exception e){
 	System.out.println(e.getMessage());
 	}
-		session.setAttribute("zip", zip);	
-		session.setAttribute("street", street); 
-		session.setAttribute("city", city); 
-		session.setAttribute("state", state); 
+		session.setAttribute("zip", zip);
+		session.setAttribute("street", street);
+		session.setAttribute("city", city);
+		session.setAttribute("state", state);
 }
 }
