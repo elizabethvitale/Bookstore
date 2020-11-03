@@ -163,10 +163,6 @@ public class register extends HttpServlet {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 		return;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 4c9738235744b4d291aa35144d5eed67d2beb373
 	else if ((exd.equals("") == false) && ((Character.isDigit(exd.charAt(0)) == false) || (Character.isDigit(exd.charAt(1)) == false) || (Character.isDigit(exd.charAt(3)) == false) ||(Character.isDigit(exd.charAt(4)) == false) )) {
 	response.sendRedirect("/errorpages/cardExpirationInvalid1.jsp");
 	return;
@@ -189,10 +185,6 @@ public class register extends HttpServlet {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> 4c9738235744b4d291aa35144d5eed67d2beb373
 	else if ( (street.equals("") == false) && (city.equals("") == true) && (state.equals("") == false)) {
 		response.sendRedirect("/errorpages/missingAddress1.jsp");
 		return;

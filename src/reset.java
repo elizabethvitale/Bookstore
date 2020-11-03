@@ -74,8 +74,14 @@ public class reset extends HttpServlet{
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
+		try{
 		temp_code = temp_code.substring(0,6);
-	
+		}catch(Exception e){
+			response.sendRedirect("/errorpages/incorrectEmail.jsp");
+			return;
+		}
+		
+
 		String body="We are sorry you forgot your password!\nBelow is a temporary code you can use to reset your password on our website. If you did not request this email, please ignore it.\n\nTemporary code: " + temp_code + "\n\nPlease enter this at our website forgot password portal, linked below.\n\nhttp://localhost:8080/user/forgotpwd2.jsp";
 
 		String host = "smtp.gmail.com";

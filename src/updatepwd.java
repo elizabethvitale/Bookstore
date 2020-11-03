@@ -85,7 +85,7 @@ public class updatepwd extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 
-		response.sendRedirect("user/login.jsp");
+		response.sendRedirect("errorpages/updatedPWD.jsp");
 
 	}
 
