@@ -95,7 +95,7 @@
             <div class="searchbox-container">
                 <div class="searchbox">
                   <input type="text" placeholder="Browse store..">
-                  <button type="button" style="background-color: #b3011c;"><img src="image/search.svg"></button>
+                  <button type="button" style="background-color: #b3011c;"><img src="../image/search.svg"></button>
                 </div>
             </div>
         </section>
