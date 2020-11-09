@@ -60,9 +60,13 @@ if(pass.equals(null) | !pass.equals("YES")){
 <main>
     <h1>Editing "The Evening and the Morning"</h1>
     <section class="book">
-        <img class="image" src="../image/books/theEveningandtheMorning.jpg">
         <div class="details">
+            <img class="image" src="../image/books/theEveningandtheMorning.jpg">
             <form action="" method="post">
+                <div>
+                    <label for="image"></label>
+                    <input type="file"id="image" name="image" accept="image/png, image/jpeg">
+                </div>
                 <div>
                     <label>Title: </label>
                     <input type="text" value="The Evening and the Morning" />
@@ -70,6 +74,10 @@ if(pass.equals(null) | !pass.equals("YES")){
                 <div>
                     <label>Author: </label>
                     <input type="text" value="Ken Follett" />
+                </div>
+                <div>
+                    <label>ISBN: </label>
+                    <input type="text" value="2749375849" />
                 </div>
                 <div>
                     <label>Price (in USD): </label>

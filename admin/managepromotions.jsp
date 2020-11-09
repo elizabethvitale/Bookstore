@@ -1,10 +1,9 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -14,14 +13,19 @@
 <body>
 <%@ page session="false" %>
 <%
+String name="";
+String pass="";
 HttpSession session = request.getSession(false);
-
+System.out.println("here");
 if(session == null){
- response.sendRedirect("/errorpages/404.jsp");
-}else{
-String pass = String.valueOf(session.getAttribute("admin"));
+response.sendRedirect("/errorpages/404.jsp");
+System.out.println("entered");
+}
+else{
+name = (String)session.getAttribute("firstName");
+pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
-        response.sendRedirect("/errorpages/404.jsp");
+	response.sendRedirect("/errorpages/404.jsp");
 }}
 %>
 <header>
@@ -43,13 +47,13 @@ if(pass.equals(null) | !pass.equals("YES")){
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.jsp">Login</a>
+                                <a href="../user/login.html">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.jsp">Register</a>
+                                <a href="../user/register.html">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
+                                <a href="../user/editprofile.html">Edit Profile</a>
                             </li>
                             <li>
                                 <a href="../user/logout.jsp">Logout</a>
@@ -62,18 +66,42 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-    <h1>Manage Books</h1>
-    <section class="book">
-        <img class="image" src="../image/books/theEveningandtheMorning.jpg">
-        <div class="details">
-            <h3>The Evening and the Morning | Ken Follett</h3>
-            <span>ISBN: 2749375849</span><br>
-            <span>$29.99</span>
-            <p>From the #1 New York Times bestselling author, a thrilling and addictive new novel—a prequel to The Pillars of the Earth—set in England at the dawn of a new era: the Middle Ages
-                It is 997 CE, the end of the Dark Ages. England is facing attacks from the Welsh in the west and the Vikings in the east. Those in power bend justice according to their will, regardless of ordinary people and often in conflict with the king. Without a clear rule of law, chaos reigns. In these turbulent times, three characters find their lives intertwined. A young boatbuilder's life is turned upside down when the only home he's ever known is raided by Vikings, forcing him and his family to move and start their lives anew in a small hamlet where he does not fit in. . . . A Norman noblewoman marries for love, following her husband across the sea to a new land, but the customs of her husband's homeland are shockingly different, and as she begins to realize that everyone around her is engaged in a constant, brutal battle for power, it becomes clear that a single misstep could be catastrophic. . . . A monk dreams of transforming his humble abbey into a center of learning that will be admired throughout Europe. And each in turn comes into dangerous conflict with a clever and ruthless bishop who will do anything to increase his wealth and power. Thirty years ago, Ken Follett published his most popular novel, The Pillars of the Earth. Now, Follett's masterful new prequel The Evening and the Morning takes us on an epic journey into a historical past rich with ambition and rivalry, death and birth, love and hate, that will end where The Pillars of the Earth begins.</p>
-            <a href="editbook.jsp">Edit Book Details</a>
-        </div>
-    </section>
+    <h1>Manage Promotions</h1>
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Promo Code</th>
+      <th scope="col">Percentage</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Expiration Date</th>
+      <th scope="col">Emailed to Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1489</th>
+      <td>10%</td>
+      <td>November 1, 2020</td>
+      <td>November 14, 2020</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th scope="row">3749</th>
+      <td>5%</td>
+      <td>December 1, 2020</td>
+      <td>December 14, 2020</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th scope="row">9261</th>
+      <td>15%</td>
+      <td>January 1, 2020</td>
+      <td>January 14, 2020</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+<a href="editpromotions.jsp"><button class="button"> Edit Promotions</button></a>
 </main>
 <footer>
     <div>
