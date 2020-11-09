@@ -76,6 +76,7 @@ if(pass.equals(null) | !pass.equals("YES")){
       <th scope="col">Start Date</th>
       <th scope="col">Expiration Date</th>
       <th scope="col">Emailed to Users</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -94,15 +95,22 @@ if(pass.equals(null) | !pass.equals("YES")){
       <td>Yes</td>
     </tr>
     <tr>
-      <td scope="row"><input type="text" value="9261"/></td>
-      <td><input type="text" value="January 1,2020"/></td>
-      <td><input type="text" value="January 14,2020" /></td>
-      <td><input type="text" value="15%"/></td>
+      <th scope="row">9261</th>
+      <td>15%</td>
+      <td>January 1, 2020</td>
+      <td>January 14, 2020</td>
       <td>No</td>
     </tr>
+    <tr>
+      <td scope="row"><input type="text" value=""/></td>
+      <td><input type="text" value=""/></td>
+      <td><input type="text" value="" /></td>
+      <td><input type="text" value=""/></td>
+      <td>No</td>
+  </tr>
   </tbody>
 </table>
-<button class="button" type="submit">UPDATE</button>
+<button class="button" type="submit">ADD</button>
 </form>
 </main>
 <footer>

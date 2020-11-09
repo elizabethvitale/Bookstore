@@ -75,6 +75,7 @@ if(pass.equals(null) | !pass.equals("YES")){
       <th scope="col">Start Date</th>
       <th scope="col">Expiration Date</th>
       <th scope="col">Emailed to Users</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -84,6 +85,9 @@ if(pass.equals(null) | !pass.equals("YES")){
       <td>November 1, 2020</td>
       <td>November 14, 2020</td>
       <td>Yes</td>
+      <td><a href="deletepromotions.jsp">
+      <img src="../image/edit/delete.png" width="25"></button>
+      </a></td>
     </tr>
     <tr>
       <th scope="row">3749</th>
@@ -91,6 +95,11 @@ if(pass.equals(null) | !pass.equals("YES")){
       <td>December 1, 2020</td>
       <td>December 14, 2020</td>
       <td>Yes</td>
+      <td>
+        <a href="deletepromotions.jsp">
+        <img src="../image/edit/delete.png" width="25"></button>
+        </a>
+      </td>
     </tr>
     <tr>
       <th scope="row">9261</th>
@@ -98,10 +107,21 @@ if(pass.equals(null) | !pass.equals("YES")){
       <td>January 1, 2020</td>
       <td>January 14, 2020</td>
       <td>No</td>
+      <td>
+        <a href="editpromotions.jsp">
+          <img src="../image/edit/edit_pencil.png" width="25"></button>
+        </a>
+        <a href="deletepromotions.jsp">
+        <img src="../image/edit/delete.png" width="25"></button>
+        </a>
+        <a href="">
+          <img src="../image/edit/send_email.png" width="35"></button>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
-<a href="editpromotions.jsp"><button class="button"> Edit Promotions</button></a>
+<a href="addpromotions.jsp"><button class="button">Add Promotions</button></a>
 </main>
 <footer>
     <div>
