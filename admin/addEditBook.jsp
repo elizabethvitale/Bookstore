@@ -1,7 +1,6 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +13,13 @@
 <body>
 <%@ page session="false" %>
 <%
-HttpSession session = request.getSession(false);
-
-if(session == null){
- response.sendRedirect("/errorpages/404.jsp");
-}else{
+HttpSession session = request.getSession();
 String pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
         response.sendRedirect("/errorpages/404.jsp");
-}}
+}
 %>
+
 <header>
     <div>
         <h2><div><a href="../admin/index.jsp">UGA Bookshop</a></div></h2>
@@ -43,16 +39,16 @@ if(pass.equals(null) | !pass.equals("YES")){
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.jsp">Login</a>
+                                <a href="../user/login.html">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.jsp">Register</a>
+                                <a href="../user/register.html">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
+                                <a href="../user/editprofile.html">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.jsp">Logout</a>
+                                <a href="../user/logout.html">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -62,76 +58,64 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-  <h1>Manage Books</h1>
-  <table class="table">
-    <thead class="thead-dark">
-  <tr>
-    <th scope="col">Book Cover</th>
-    <th scope="col">Title</th>
-    <th scope="col">Author</th>
-    <th scope="col">ISBN</th>
-    <th scope="col">Price</th>
-    <th scope="col"></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-</tbody>
-</table>
-<a href="addEditBook.jsp"><button class="button">Add Book</button></a>
+    <h1>Add Book</h1>
+    <section class="book">
+        <div class="details">
+            <img class="image" src="">
+            <form action="" method="post">
+                <div>
+                    <label for="image"></label>
+                    <input type="file"id="image" name="image" accept="image/png, image/jpeg">
+                </div>
+                <div>
+                    <label>Title: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Author: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>ISBN: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Category: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Edition: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Publisher: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Publication Year: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Quantity in-stock: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Buying Price (in USD): </label>
+                    <input type="number" min="0" max="1000"  value="" />
+                </div>
+                <div>
+                    <label>Selling Price: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Description:</label>
+                    <textarea>
+                    </textarea>
+                </div>
+                <button class="button" type="submit">ADD</button>
+            </form>
+        </div>
+    </section>
 </main>
 <footer>
     <div>
