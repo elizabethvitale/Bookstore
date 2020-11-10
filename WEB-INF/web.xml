@@ -126,4 +126,21 @@
                 <servlet-name>updateCard3</servlet-name>
                 <url-pattern>/updateCard3</url-pattern>
         </servlet-mapping>
+	       <servlet>
+                <servlet-name>submitPromo</servlet-name>
+                <servlet-class>com.ugabookstore.submitPromo</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>submitPromo</servlet-name>
+                <url-pattern>/submitPromo</url-pattern>
+        </servlet-mapping>
+               <servlet>
+                <servlet-name>emailPromo</servlet-name>
+                <servlet-class>com.ugabookstore.emailPromo</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>emailPromo</servlet-name>
+                <url-pattern>/emailPromo</url-pattern>
+        </servlet-mapping>
+
 </web-app>
