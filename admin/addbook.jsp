@@ -1,10 +1,9 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -14,14 +13,19 @@
 <body>
 <%@ page session="false" %>
 <%
+String name="";
+String pass="";
 HttpSession session = request.getSession(false);
-
+System.out.println("here");
 if(session == null){
- response.sendRedirect("/errorpages/404.jsp");
-}else{
-String pass = String.valueOf(session.getAttribute("admin"));
+response.sendRedirect("/errorpages/404.jsp");
+System.out.println("entered");
+}
+else{
+name = (String)session.getAttribute("firstName");
+pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
-        response.sendRedirect("/errorpages/404.jsp");
+	response.sendRedirect("/errorpages/404.jsp");
 }}
 %>
 <header>
@@ -43,13 +47,13 @@ if(pass.equals(null) | !pass.equals("YES")){
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.jsp">Login</a>
+                                <a href="../user/login.html">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.jsp">Register</a>
+                                <a href="../user/register.html">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
+                                <a href="../user/editprofile.html">Edit Profile</a>
                             </li>
                             <li>
                                 <a href="../user/logout.jsp">Logout</a>
@@ -129,9 +133,19 @@ if(pass.equals(null) | !pass.equals("YES")){
       </a>
     </td>
   </tr>
+  <tr>
+    <td scope="row"><input type="text" value=""/></td>
+    <td><input type="text" value=""/></td>
+    <td><input type="text" value="" /></td>
+    <td><input type="text" value=""/></td>
+</tr>
 </tbody>
 </table>
-<a href="addEditBook.jsp"><button class="button">Add Book</button></a>
+<a href="addbook.jsp"><button class="button">Add Book</button></a>
+  </tbody>
+</table>
+<button class="button" type="submit">ADD</button>
+</form>
 </main>
 <footer>
     <div>

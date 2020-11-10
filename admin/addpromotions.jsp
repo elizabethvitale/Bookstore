@@ -1,10 +1,9 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -14,14 +13,19 @@
 <body>
 <%@ page session="false" %>
 <%
+String name="";
+String pass="";
 HttpSession session = request.getSession(false);
-
+System.out.println("here");
 if(session == null){
- response.sendRedirect("/errorpages/404.jsp");
-}else{
-String pass = String.valueOf(session.getAttribute("admin"));
+response.sendRedirect("/errorpages/404.jsp");
+System.out.println("entered");
+}
+else{
+name = (String)session.getAttribute("firstName");
+pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
-        response.sendRedirect("/errorpages/404.jsp");
+	response.sendRedirect("/errorpages/404.jsp");
 }}
 %>
 <header>
@@ -43,13 +47,13 @@ if(pass.equals(null) | !pass.equals("YES")){
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.jsp">Login</a>
+                                <a href="../user/login.html">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.jsp">Register</a>
+                                <a href="../user/register.html">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
+                                <a href="../user/editprofile.html">Edit Profile</a>
                             </li>
                             <li>
                                 <a href="../user/logout.jsp">Logout</a>
@@ -62,76 +66,52 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-  <h1>Manage Books</h1>
-  <table class="table">
-    <thead class="thead-dark">
-  <tr>
-    <th scope="col">Book Cover</th>
-    <th scope="col">Title</th>
-    <th scope="col">Author</th>
-    <th scope="col">ISBN</th>
-    <th scope="col">Price</th>
-    <th scope="col"></th>
+    <h1>Editing Manage Promotions</h1>
+    <table class="table">
+  <form>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Promo Code</th>
+      <th scope="col">Percentage</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Expiration Date</th>
+      <th scope="col">Emailed to Users</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">1489</td>
+      <td>10%</td>
+      <td>November 1, 2020</td>
+      <td>November 14, 2020</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td scope="row">3749</td>
+      <td>5%</td>
+      <td>December 1, 2020</td>
+      <td>December 14,2020</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th scope="row">9261</th>
+      <td>15%</td>
+      <td>January 1, 2020</td>
+      <td>January 14, 2020</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td scope="row"><input type="text" value=""/></td>
+      <td><input type="text" value=""/></td>
+      <td><input type="text" value="" /></td>
+      <td><input type="text" value=""/></td>
+      <td>No</td>
   </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-</tbody>
+  </tbody>
 </table>
-<a href="addEditBook.jsp"><button class="button">Add Book</button></a>
+<button class="button" type="submit">ADD</button>
+</form>
 </main>
 <footer>
     <div>
