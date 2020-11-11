@@ -1,50 +1,37 @@
-<%@ page import="com.ugabookstore.User"%>
-<%@ page import="com.ugabookstore.backendUser"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/checkout.css">
 </head>
 <body>
-<%@ page session="false" %>
 <%
-String name="";
-String pass="";
-HttpSession session = request.getSession(false);
-System.out.println("here");
-if(session == null){
-response.sendRedirect("/errorpages/404.jsp");
-System.out.println("entered");
-}
-else{
-name = (String)session.getAttribute("firstName");
-pass = String.valueOf(session.getAttribute("admin"));
-if(pass.equals(null) | !pass.equals("YES")){
-	response.sendRedirect("/errorpages/404.jsp");
-}}
+
 %>
 <header>
     <div>
-        <h2><div><a href="../admin/index.jsp">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <section class="searchbox-container">
+            <div class="searchbox">
+                <input type="text" placeholder="Browse by author, by title..">
+                <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+            </div>
+        </section>
         <section>
             <nav>
                 <ul>
                     <li>
-                        <a href="managebooks.jsp">Manage Books</a>
+                        BROWSE
                     </li>
                     <li>
-                        <a href="manageusers.jsp">Manage Users</a>
-                    </li>
-                    <li>
-                        <a href="managepromotions.jsp">Manage Promotions</a>
+                        <a href="cart.html"><img src="../image/shoppingcart.svg"></a>
                     </li>
                     <li style='position: relative;'>
-                        <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
+                        <img id="auth-dropdown-toggle" src="../image/account.svg">
                         <ul class='auth-dropdown'>
                             <li>
                                 <a href="../user/login.html">Login</a>
@@ -56,7 +43,7 @@ if(pass.equals(null) | !pass.equals("YES")){
                                 <a href="../user/editprofile.html">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.jsp">Logout</a>
+                                <a href="../user/logout.html">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -67,9 +54,18 @@ if(pass.equals(null) | !pass.equals("YES")){
 </header>
 <main>
 	<br>
-	<h1>Welcome to the Admin Panel, <%=name%></h1><br>
-	<h3>Use the tabs at the top to manage users, books, and promotions</h3><br>
-	<p>If anything goes wrong, please contact the senior site administrator at ttgiang223@ugabookshop.com</p>
+<h1> UGA Bookshop Book List</h1> 
+        <form action="/action_page.php">
+          <label for="books">Sort by:</label>
+          <select name="books" id="books">
+              <option value="title">Title</option>
+              <option value="author">Author</option>
+              <option value="priceLowHigh">Price: Low to High</option>
+              <option value="priceHighLow">Price: High to Low</option>
+          </select>
+          <br><br>
+        </form>
+
 </main>
 <footer>
     <div>
