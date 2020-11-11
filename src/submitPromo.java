@@ -51,9 +51,14 @@ public class submitPromo extends HttpServlet {
 		        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");	
 			Date begin = format.parse(start);
 			Date ending = format.parse(end);
+			Date today = new Date(); 
 			if(begin.compareTo(ending)>0){
 			response.sendRedirect("/errorpages/incorrectDate2.jsp");	
 			return;
+			}else if(today.compareTo(ending)>0){
+                        response.sendRedirect("/errorpages/incorrectDate3.jsp");
+                        return;
+
 			}
 		}catch(Exception e){
 			response.sendRedirect("/errorpages/incorrectDate.jsp");
