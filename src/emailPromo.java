@@ -68,7 +68,7 @@ public class emailPromo extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			Statement stmt=null;
-			String query = "select * from customer;";
+			String query = "select * from customer where enroll_for_promotes='1' and status='Active';";
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()){
