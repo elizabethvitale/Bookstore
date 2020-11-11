@@ -38,12 +38,12 @@ public class submitPromo extends HttpServlet {
 		try{
 			int percent2 = Integer.parseInt(percent);
 			if(percent2 >= 100 || percent2 <=0){
-			//incorrect percentage redirect
+			response.sendRedirect("/errorpages/incorrectPercentage.jsp");
 			return;
 			}
 		}catch(Exception e){
 			System.out.println(e);
-			//incorrect percentage redirect
+			response.sendRedirect("/errorpages/incorrectPercentage.jsp");
 			return;
 		}
 		
@@ -52,15 +52,11 @@ public class submitPromo extends HttpServlet {
 			Date begin = format.parse(start);
 			Date ending = format.parse(end);
 			if(begin.compareTo(ending)>0){
-				//date 2 occurs first
-				return;
-			}else if(begin.compareTo(ending) ==0){
-				//these are the same dates
-				return;
+			response.sendRedirect("/errorpages/incorrectDate2.jsp");	
+			return;
 			}
 		}catch(Exception e){
-			System.out.println(e);
-			//redirect to incorrect date error page
+			response.sendRedirect("/errorpages/incorrectDate.jsp");
 			return;
 		}
 		Connection con;
@@ -72,13 +68,13 @@ public class submitPromo extends HttpServlet {
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()){
-			//promoid code already registered
+			response.sendRedirect("/errorpages/promoCodeExists.jsp");
 			return;
 			}
 
 		}catch(Exception e){
 			System.out.println(e);
-			//redirect string id is incorrect
+			response.sendRedirect("/errorpages/promoCodeExists.jsp");
 			return;
 		}
 		HttpSession session = request.getSession(true);
@@ -88,6 +84,7 @@ public class submitPromo extends HttpServlet {
 		session.setAttribute("start", start);
 		session.setAttribute("end", end);
 		response.sendRedirect("/admin/confirmpromotion.jsp");
+		return;
 	}
 
 

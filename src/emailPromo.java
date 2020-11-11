@@ -89,7 +89,7 @@ public class emailPromo extends HttpServlet {
 		session.setAttribute(start, null);
 		session.setAttribute(end, null);
 		session.setAttribute(id,null);
-		response.sendRedirect("/admin/confirmpromotion.jsp");
+		response.sendRedirect("/errorpages/promotionSucess.jsp");
 	}
         public static void sendEmail(String emailAdd,String body){
                 String host = "smtp.gmail.com";
