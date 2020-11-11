@@ -33,7 +33,7 @@ public class updateUserInfo extends HttpServlet {
 			String lastName = request.getParameter("lastName");
 			String phone = request.getParameter("phone");
 			Connection con;
-
+			String checkbox = request.getParameter("subscribed");
 			//checks if names or phone is blank
 			if ( firstName.equals("") || lastName.equals("") || phone.equals("") ){
 			response.sendRedirect("/errorpages/return2editprof.jsp");
@@ -51,20 +51,34 @@ public class updateUserInfo extends HttpServlet {
 			response.sendRedirect("/errorpages/phoneIncorrect2.jsp");
 			return;
 			}
-
+			try{
+				boolean x =checkbox.equals("on");
+			}catch(Exception e){
+				checkbox = "off";
+			}
 			try{
 				//dont forget to update user object
 				Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 				Statement stmt=null;
 				stmt = con.createStatement();
-				String query = "update customer set firstname='" + firstName + "', lastname='" + lastName + "', phone='" + phone + "' where customerid='" + id + "';";
-		System.out.println(query);
+				String query = "";
+				if(checkbox.equals("on")){
+				query = "update customer set firstname='" + firstName + "', lastname='" + lastName + "', phone='" + phone + "', enroll_for_promotes='1'" + " where customerid='" + id + "';";
+				session.setAttribute("enroll",true);
+				}else{
+				query = "update customer set firstname='" + firstName + "', lastname='" + lastName + "', phone='" + phone + "', enroll_for_promotes='0'" + " where customerid='" + id + "';";
+				session.setAttribute("enroll",false);
+				}
+				System.out.println(query);
+				
 				int result = stmt.executeUpdate(query);
 				response.sendRedirect("/errorpages/profilesuccess.jsp");
 	}catch(Exception e){
+	System.out.println("error");
 	System.out.println(e.getMessage());
 	}
+	
 		session.setAttribute("firstName", firstName);
 		session.setAttribute("lastName", lastName);
 		session.setAttribute("phone", phone);
