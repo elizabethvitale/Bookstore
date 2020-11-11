@@ -143,7 +143,7 @@ public class backendUser{
 	public User login(String acctID_or_email, String pwd){
                 User user = new User();
                 try{
-                        
+                        int customerid; 
                         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
                         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
                         Statement stmt = null;
@@ -152,7 +152,7 @@ public class backendUser{
                        	pwd = getSha1(pwd); 
 			ResultSet rs=stmt.executeQuery(query);
                                 if(rs.next()) {
-                                        
+                                        customerid = rs.getInt("customerid");
 					user.setID(rs.getInt("customerid"));
                                         user.setFirstName(rs.getString("firstname"));
                                         user.setLastName(rs.getString("lastname"));
@@ -192,6 +192,14 @@ public class backendUser{
                                         user = null;
                                         return user;
                                 }
+				stmt = con.createStatement();
+				query = "select * from cart where customercartid='" + customerid + "';";
+				System.out.println(query);
+				rs=stmt.executeQuery(query);
+				if(rs.next()){
+					System.out.println("first" + rs.getInt("cartid"));
+					user.setCart(String.valueOf(rs.getInt("cartid")));
+				}
                                 if(user.getPassword().equals(pwd)){ 
 				return user;
 				}

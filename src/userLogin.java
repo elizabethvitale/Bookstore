@@ -69,7 +69,9 @@ public class userLogin extends HttpServlet {
 	session.setAttribute("cardNumber2", user.getCardNumber2());
 	session.setAttribute("cardNumber3", user.getCardNumber3());
 	session.setAttribute("enroll", user.getEnroll());
-	System.out.println(session.getAttribute("enroll"));	
+	session.setAttribute("cartid", user.getCart());
+	System.out.println(session.getAttribute("cartid"));
+	System.out.println("after");	
 	request.getSession(true).setAttribute("user", user);
 	response.sendRedirect("/index.jsp");
 
