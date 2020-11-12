@@ -74,11 +74,21 @@ public class confirm extends HttpServlet {
 			query = "update customer set customerid='" + newid + "', status='Active' where email='" + email +"';";	
 			System.out.println(query);
 			int result = stmt.executeUpdate(query);
-			//stmt = con.createStatement();
-			//query = "update shipping_address set shippingid='" + newid "' where shippingid=' + db_conf_code + "';";	
-			//result = stmt.executeUpdate(query);
-
-
+			//CREATE SHOPPING CART FOR USER
+			stmt = con.createStatement();
+			query = "select max(cartid) from cart;";
+			ra = stmt.executeQuery(query);
+			int cartid=0;
+			while(ra.next()){
+				cartid = ra.getInt("max(cartid)");
+			}
+			cartid = cartid + 1;
+			if(cartid < 3000){
+				cartid = 3000;
+			}
+			stmt = con.createStatement();
+			query = "insert into cart (cartid, customercartid) values('" + cartid + "','" + newid + "');";
+			int result2 = stmt.executeUpdate(query);	
 			response.sendRedirect("/errorpages/sucess.jsp");	
 	}catch(Exception e){
 	System.out.println(e.getMessage());

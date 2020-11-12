@@ -1,15 +1,9 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.SQLException"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Statement"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -19,48 +13,12 @@
 <body>
 <%@ page session="false" %>
 <%
-String name="";
-String pass="";
-HttpSession session = request.getSession(false);
-System.out.println("here");
-if(session == null){
-response.sendRedirect("/errorpages/404.jsp");
-System.out.println("entered");
-}
-else{
-name = (String)session.getAttribute("firstName");
-pass = String.valueOf(session.getAttribute("admin"));
+HttpSession session = request.getSession();
+String pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
-	response.sendRedirect("/errorpages/404.jsp");
-}}
-
-%>
-<%
-Connection con;
-String table="";
-try{
-	table= "<table class='table'> <thead class='thead-dark'> <tr> <th scope='col'>Promo Code</th> <th scope='col'>Percentage</th> <th scope='col'>Start Date</th> <th scope='col'>Expiration Date</th> </tr> </thead> <tbody> <tr>";
-	Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
-	Statement stmt=null;
-	String query = "select * from promotion where end > NOW()";
-	stmt = con.createStatement();
-	ResultSet rs = stmt.executeQuery(query);
-	while(rs.next()){
-	String id = rs.getString("promoid");
-	String percent = rs.getString("discount");
-	String start =rs.getString("start");
-	String end = rs.getString("end");
-	table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+percent+"%</td> <td>"+start+"</td> <td>"+end+"</td> </tr>";	
-	}
-	table = table + "  </tbody></table>";
-}catch(Exception e){
-	System.out.println(e.getMessage());
-
+        response.sendRedirect("/errorpages/404.jsp");
 }
-
 %>
-
 
 <header>
     <div>
@@ -90,7 +48,7 @@ try{
                                 <a href="../user/editprofile.html">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.jsp">Logout</a>
+                                <a href="../user/logout.html">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -100,9 +58,64 @@ try{
     </div>
 </header>
 <main>
-    <h1>Manage Promotions</h1>
-<%=table%>
-<a href="editpromotions.jsp"><button class="button"> Add Promotion</button></a>
+    <h1>Add Book</h1>
+    <section class="book">
+        <div class="details">
+            <img class="image" src="">
+            <form action="" method="post">
+                <div>
+                    <label for="image"></label>
+                    <input type="file"id="image" name="image" accept="image/png, image/jpeg">
+                </div>
+                <div>
+                    <label>Title: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Author: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>ISBN: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Category: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Edition: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Publisher: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Publication Year: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Quantity in-stock: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Buying Price (in USD): </label>
+                    <input type="number" min="0" max="1000"  value="" />
+                </div>
+                <div>
+                    <label>Selling Price: </label>
+                    <input type="text" value="" />
+                </div>
+                <div>
+                    <label>Description:</label>
+                    <textarea>
+                    </textarea>
+                </div>
+                <button class="button" type="submit">ADD</button>
+            </form>
+        </div>
+    </section>
 </main>
 <footer>
     <div>

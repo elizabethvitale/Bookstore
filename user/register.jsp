@@ -136,9 +136,12 @@
             <br>
             <input type="text" name="exd">
           </div>
-          <br>
-
-
+		<div>
+		<br>
+		<input type="checkbox" name="subscribed">
+		<label> Subscribe to email promotions</label>
+		</div>
+		<br>
 
           <button id="formsub" class = "button" type="submit">Register</button>
         </form>

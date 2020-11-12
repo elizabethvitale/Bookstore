@@ -1,11 +1,5 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.SQLException"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Statement"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,35 +27,7 @@ pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
 	response.sendRedirect("/errorpages/404.jsp");
 }}
-
 %>
-<%
-Connection con;
-String table="";
-try{
-	table= "<table class='table'> <thead class='thead-dark'> <tr> <th scope='col'>Promo Code</th> <th scope='col'>Percentage</th> <th scope='col'>Start Date</th> <th scope='col'>Expiration Date</th> </tr> </thead> <tbody> <tr>";
-	Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
-	Statement stmt=null;
-	String query = "select * from promotion where end > NOW()";
-	stmt = con.createStatement();
-	ResultSet rs = stmt.executeQuery(query);
-	while(rs.next()){
-	String id = rs.getString("promoid");
-	String percent = rs.getString("discount");
-	String start =rs.getString("start");
-	String end = rs.getString("end");
-	table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+percent+"%</td> <td>"+start+"</td> <td>"+end+"</td> </tr>";	
-	}
-	table = table + "  </tbody></table>";
-}catch(Exception e){
-	System.out.println(e.getMessage());
-
-}
-
-%>
-
-
 <header>
     <div>
         <h2><div><a href="../admin/index.jsp">UGA Bookshop</a></div></h2>
@@ -100,9 +66,86 @@ try{
     </div>
 </header>
 <main>
-    <h1>Manage Promotions</h1>
-<%=table%>
-<a href="editpromotions.jsp"><button class="button"> Add Promotion</button></a>
+  <h1>Manage Books</h1>
+  <table class="table">
+    <thead class="thead-dark">
+  <tr>
+    <th scope="col">Book Cover</th>
+    <th scope="col">Title</th>
+    <th scope="col">Author</th>
+    <th scope="col">ISBN</th>
+    <th scope="col">Price</th>
+    <th scope="col"></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>
+        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
+      </a>
+    </td>
+    <td>The Evening and the Morning</td>
+    <td>Ken Follett</td>
+    <td>2749375849</td>
+    <td>$29.99</td>
+    <td>
+      <a href="editbook.jsp">
+        <img src="../image/edit/edit_pencil.png" width="25"></button>
+      </a>
+      <a href="deletepromotions.jsp">
+      <img src="../image/edit/delete.png" width="25"></button>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
+      </a>
+    </td>
+    <td>The Evening and the Morning</td>
+    <td>Ken Follett</td>
+    <td>2749375849</td>
+    <td>$29.99</td>
+    <td>
+      <a href="editbook.jsp">
+        <img src="../image/edit/edit_pencil.png" width="25"></button>
+      </a>
+      <a href="deletepromotions.jsp">
+      <img src="../image/edit/delete.png" width="25"></button>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
+      </a>
+    </td>
+    <td>The Evening and the Morning</td>
+    <td>Ken Follett</td>
+    <td>2749375849</td>
+    <td>$29.99</td>
+    <td>
+      <a href="editbook.jsp">
+        <img src="../image/edit/edit_pencil.png" width="25"></button>
+      </a>
+      <a href="deletepromotions.jsp">
+      <img src="../image/edit/delete.png" width="25"></button>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td scope="row"><input type="text" value=""/></td>
+    <td><input type="text" value=""/></td>
+    <td><input type="text" value="" /></td>
+    <td><input type="text" value=""/></td>
+</tr>
+</tbody>
+</table>
+<a href="addbook.jsp"><button class="button">Add Book</button></a>
+  </tbody>
+</table>
+<button class="button" type="submit">ADD</button>
+</form>
 </main>
 <footer>
     <div>

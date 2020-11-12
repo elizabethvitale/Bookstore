@@ -29,8 +29,8 @@ String cardType2="";
 String expDate2="";
 String cardType3="";
 String expDate3="";
-
-
+String enroll="";
+String holder="";
 
 if(request.getSession(false) == null){
 response.sendRedirect("/errorpages/405.jsp");
@@ -40,6 +40,7 @@ if(request.getSession(false) != null){
     HttpSession httpSession = request.getSession();
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
+enroll = String.valueOf(httpSession.getAttribute("enroll"));
 phone = String.valueOf(httpSession.getAttribute("phone"));
 email = String.valueOf(httpSession.getAttribute("email"));
 city = String.valueOf(httpSession.getAttribute("city"));
@@ -52,7 +53,9 @@ expDate2 = String.valueOf(httpSession.getAttribute("expirationDate2"));
 cardType2 = String.valueOf(httpSession.getAttribute("cardType2"));
 expDate3 = String.valueOf(httpSession.getAttribute("expirationDate3"));
 cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
-
+if(enroll.equals("true")){
+	holder="checked";	
+}
 
 if(!cardType.equals("null")){
 	cardNum= "**** **** **** ****";
@@ -148,6 +151,11 @@ if(street.equals("null")){
                 <br>
                 <input type="text" name="phone" value="<%=phone%>">
               </div>
+		<div>
+		<br><br>
+		<input type="checkbox" name="subscribed" <%=holder%>>
+		<label> Subscribe to email promotions</label>
+		</div>
               <br>
               <button type="submit" class="button">Update</button>
             </div>

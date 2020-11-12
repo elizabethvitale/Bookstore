@@ -66,8 +66,10 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-    <h1>Welcome to the Admin Panel <%=name%></h1>
-    <p></p>
+	<br>
+	<h1>Welcome to the Admin Panel, <%=name%></h1><br>
+	<h3>Use the tabs at the top to manage users, books, and promotions</h3><br>
+	<p>If anything goes wrong, please contact the senior site administrator at ttgiang223@ugabookshop.com</p>
 </main>
 <footer>
     <div>
