@@ -143,4 +143,31 @@
                 <url-pattern>/emailPromo</url-pattern>
         </servlet-mapping>
 
+
+               <servlet>
+                <servlet-name>addBook</servlet-name>
+                <servlet-class>com.ugabookstore.addBook</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>addBook</servlet-name>
+                <url-pattern>/addBook</url-pattern>
+        </servlet-mapping>
+
+               <servlet>
+                <servlet-name>getBook</servlet-name>
+                <servlet-class>com.ugabookstore.getBook</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>getBook</servlet-name>
+                <url-pattern>/getBook</url-pattern>
+        </servlet-mapping>
+               <servlet>
+                <servlet-name>getBookList</servlet-name>
+                <servlet-class>com.ugabookstore.getBookList</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>getBookList</servlet-name>
+                <url-pattern>/getBookList</url-pattern>
+        </servlet-mapping>
+
 </web-app>
