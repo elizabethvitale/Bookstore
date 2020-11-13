@@ -10,8 +10,6 @@
   <body>
 <%@ page session="false" %>
 <%
-
-
 	String message = "";
 	HttpSession session=request.getSession(false);
         if(session!=null){

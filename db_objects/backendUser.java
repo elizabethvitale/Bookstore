@@ -50,6 +50,7 @@ public class backendUser{
 		String cardType = user.getCardType();
 		String expirationDate = user.getExpirationDate();
 		String cardNumber = user.getCardNumber();
+		boolean enroll = user.getEnroll();
 		try{
 			
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -70,7 +71,8 @@ public class backendUser{
 	
 			//customerid = customerid + 1;
 			stmt = con.createStatement();
-			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"',true)";
+			query = "insert into customer(customerid, firstname, lastname, email, password, phone, status, enroll_for_promotes) values(" + customerid + ",'" + fname + "','" +lname+"','"+email+"','"+password+"','"+phone+"','"+status+"'," + enroll + ")";
+			System.out.println(query);
 			result=stmt.executeUpdate(query);
 			if(street != null && !street.equals("")){
 			stmt = con.createStatement();
@@ -141,7 +143,7 @@ public class backendUser{
 	public User login(String acctID_or_email, String pwd){
                 User user = new User();
                 try{
-                        
+                        int customerid; 
                         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
                         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
                         Statement stmt = null;
@@ -150,7 +152,7 @@ public class backendUser{
                        	pwd = getSha1(pwd); 
 			ResultSet rs=stmt.executeQuery(query);
                                 if(rs.next()) {
-                                        
+                                        customerid = rs.getInt("customerid");
 					user.setID(rs.getInt("customerid"));
                                         user.setFirstName(rs.getString("firstname"));
                                         user.setLastName(rs.getString("lastname"));
@@ -166,7 +168,7 @@ public class backendUser{
 						user.setCity(ra.getString("city"));	
                                                 user.setStreet(ra.getString("street"));  
                                                 user.setZip(Integer.parseInt(ra.getString("zipcode")));  
-                                                user.setState(ra.getString("state"));  			
+                                                user.setState(ra.getString("state"));
 					}
 					query = "select * from payment_card where userid='" + rs.getInt("customerid") + "';";
 					ResultSet rb = stmt.executeQuery(query);
@@ -190,6 +192,14 @@ public class backendUser{
                                         user = null;
                                         return user;
                                 }
+				stmt = con.createStatement();
+				query = "select * from cart where customercartid='" + customerid + "';";
+				System.out.println(query);
+				rs=stmt.executeQuery(query);
+				if(rs.next()){
+					System.out.println("first" + rs.getInt("cartid"));
+					user.setCart(String.valueOf(rs.getInt("cartid")));
+				}
                                 if(user.getPassword().equals(pwd)){ 
 				return user;
 				}

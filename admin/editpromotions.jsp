@@ -66,44 +66,28 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-    <h1>Editing Manage Promotions</h1>
+    <h1>Add Promotions</h1>
     <table class="table">
-  <form>
+  <form action='/submitPromo' method='post'>
   <thead class="thead-dark">
     <tr>
       <th scope="col">Promo Code</th>
       <th scope="col">Percentage</th>
       <th scope="col">Start Date</th>
       <th scope="col">Expiration Date</th>
-      <th scope="col">Emailed to Users</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td scope="row"><input type="text" value="1489" /></td>
-      <td><input type="text" value="10%"/></td>
-      <td><input type="text" value="November 1, 2020" /></td>
-      <td><input type="text" value="November 14, 2020" /></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td scope="row"><input type="text" value="3749" /></td>
-      <td><input type="text" value="5%"/></td>
-      <td><input type="text" value="December 1, 2020" /></td>
-      <td><input type="text" value="December 14, 2020" /></td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td scope="row"><input type="text" value="9261" /></td>
-      <td><input type="text" value="15%"/></td>
-      <td><input type="text" value="January 1, 2020" /></td>
-      <td><input type="text" value="January 14, 2020" /></td>
-      <td>No</td>
+      <td scope="row"><input type="text" name='promocode' required/></td>
+      <td><input type="text" name='percent' required/></td>
+      <td><input type="text" name='start' required/></td>
+      <td><input type="text" name='end' required/></td>
     </tr>
   </tbody>
 </table>
+<button class="button" id='formsub' type='submit'>Add Promotion</button>
 </form>
-<button class="button">Add Promotion</button>
 </main>
 <footer>
     <div>
