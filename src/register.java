@@ -53,15 +53,7 @@ public class register extends HttpServlet {
 	String street = request.getParameter("street");
         String city = request.getParameter("city");
         String state = request.getParameter("state");
-        String checkbox = request.getParameter("subscribed");
-	boolean enroll = true;
-	try{
-		boolean x =checkbox.equals("on");
-		enroll = true;
-	}catch(Exception e){
-		enroll = false;
-	}
-	int zip =-1;
+        int zip =-1;
 	try{
 	if(!street.equals("")){
 	zip = Integer.parseInt(request.getParameter("zip"));
@@ -83,14 +75,14 @@ public class register extends HttpServlet {
 	User new_user=null;
 	if(street.equals("") && ctype.equals("")){
 		System.out.println("first");
-		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", enroll);
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false);
 	}else if(!street.equals("") && ctype.equals("")){
 		System.out.println("second");
-		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", enroll, street, city, state, zip);
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, street, city, state, zip);
 	}else if(street.equals("") && !ctype.equals("")){
-		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", enroll, cnum, ctype, exd);
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, cnum, ctype, exd);
 	}else if(!street.equals("") && !ctype.equals("")){
-		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", enroll, street, city, state, zip, cnum, ctype, exd);
+		new_user = new User(randomNum, pwd, fname, lname, email, number, "Inactive", false, street, city, state, zip, cnum, ctype, exd);
 	}
 
 	if (fname.equals("") || lname.equals("") || email.equals("") || number.equals("") || pwd.equals("")) {
