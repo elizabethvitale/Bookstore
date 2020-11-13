@@ -62,76 +62,9 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-  <h1>Manage Books</h1>
-  <table class="table">
-    <thead class="thead-dark">
-  <tr>
-    <th scope="col">Book Cover</th>
-    <th scope="col">Title</th>
-    <th scope="col">Author</th>
-    <th scope="col">ISBN</th>
-    <th scope="col">Price</th>
-    <th scope="col"></th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-        <img src="../image/books/theEveningandtheMorning.jpg" width="50"></button>
-      </a>
-    </td>
-    <td>The Evening and the Morning</td>
-    <td>Ken Follett</td>
-    <td>2749375849</td>
-    <td>$29.99</td>
-    <td>
-      <a href="editbook.jsp">
-        <img src="../image/edit/edit_pencil.png" width="25"></button>
-      </a>
-      <a href="deletepromotions.jsp">
-      <img src="../image/edit/delete.png" width="25"></button>
-      </a>
-    </td>
-  </tr>
-</tbody>
-</table>
-<a href="addEditBook.jsp"><button class="button">Add Book</button></a>
+    <h1>Manage Books</h1>
+	<h2><a href="addbook.jsp">Add Book</a></h2>
+	<h2><a href="searchbook.jsp">Edit/Delete Book</a></h2>
 </main>
 <footer>
     <div>

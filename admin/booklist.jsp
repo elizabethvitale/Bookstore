@@ -1,5 +1,7 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 
 
 <!DOCTYPE html>
@@ -62,67 +64,36 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-    <h1>Add Book</h1>
+    <h1>Search Book</h1>
 	<section class="book">
-        <div class="details">
-            <form enctype="multipart/form-data" action="/addBook" method="post">
-                <div>
-                    <label for="image"></label>
-                    <input type="file" id="image" name="image" accept="image/png, image/jpeg">
-                </div>
-                <div>
-                    <label>Title: </label>
-                    <input type="text" name="title">
-                </div>
-                <div>
-                    <label>Author: </label>
-                    <input type="text" name="author">
-                </div>
-                <div>
-                    <label>ISBN: </label>
-                    <input type="text" name="isbn">
-                </div>
-		<div>
-			<label>Category: </label>
-			<input type="text" name="category">
-		</div>
-		<div>
-			<label>Edition: </label>
-			<input type="text" name="edition">
-		</div>
-		<div>
-			<label>Publisher: </label>
-			<input type="text" name="publisher">
-		</div>
-		<div>
-			<label>Publication year: </label>
-			<input type="number" name="year">
-		</div>
-		<div>
-			<label>Initial quantity: </label>
-			<input type="number" name="quantity">
-		</div>
-		<div>
-			<label>Minimum threshold: </label>
-			<input type="number" name="m_threshold">
-		</div>
-                <div>
-                    <label>Price (Retail): </label>
-                    <input type="number" min="0" max="1000" name="r_price">
-                </div>
-		<div>
-			<label>Price (Wholesale): </label>
-			<input type="number" min="0" max="1000" name="w_price">
-		</div>
-                <div>
-                    <label>Description:</label>
-                    <textarea name="description">
-
-                    </textarea>
-                </div>
-                <button type="submit">Add Book</button>
-            </form>
-        </div>
+	<table>
+		<thead>
+		<tr>
+			<th>Title</th>
+			<th>Options</th>
+		</tr>
+		</thead>
+		<tbody>
+			<% 
+			List<String> titles = new ArrayList<>();
+			titles = (List<String>) request.getAttribute("titles");
+			List<Integer> bookIds = new ArrayList<>();
+			bookIds = (List<Integer>) request.getAttribute("book_ids");
+			try {
+				for(int i = 0; i < bookIds.size(); i++) { %>
+			<tr>
+			<form action="/getBook" method="get">
+				<td><% out.print(titles.get(i)); %>
+				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid"></td>
+				<td><input type="submit" value="Edit"></td>
+			</form>
+			</tr>
+			<% } } catch (Exception e) {
+				e.printStackTrace(System.out);
+			}
+			%>
+		</tbody>
+	</table>
     </section>
 </main>
 <footer>

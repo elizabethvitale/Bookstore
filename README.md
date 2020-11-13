@@ -42,3 +42,6 @@ To get this working, you need a tomcat server.
 
 		elizabeth.vitale@uga.edu
 		jcs93125@uga.edu
+		
+		
+	javac command for Mac based on my latest commit (11-12-2020): javac -cp ROOT/WEB-INF/lib/servlet-api.jar:ROOT/WEB-INF/lib/javax.mail.jar -d ROOT/WEB-INF/classes ROOT/objects/User.java ROOT/objects/Admin.java ROOT/db_objects/backendUser.java ROOT/src/register.java ROOT/src/userLogin.java ROOT/src/confirm.java ROOT/src/reset.java ROOT/src/updatepwd.java ROOT/src/updateUserInfo.java ROOT/src/loggedUpdatePwd.java ROOT/src/adminLogin.java ROOT/src/updateCard.java ROOT/src/addCard.java ROOT/src/updateCard2.java ROOT/src/updateCard3.java ROOT/src/addBook.java ROOT/src/getBook.java ROOT/db_objects/BookDAO.java ROOT/objects/Book.java ROOT/src/getBookList.java
