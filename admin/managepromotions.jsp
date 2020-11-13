@@ -1,11 +1,5 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.SQLException"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.Statement"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,35 +27,7 @@ pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
 	response.sendRedirect("/errorpages/404.jsp");
 }}
-
 %>
-<%
-Connection con;
-String table="";
-try{
-	table= "<table class='table'> <thead class='thead-dark'> <tr> <th scope='col'>Promo Code</th> <th scope='col'>Percentage</th> <th scope='col'>Start Date</th> <th scope='col'>Expiration Date</th> </tr> </thead> <tbody> <tr>";
-	Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
-	Statement stmt=null;
-	String query = "select * from promotion where end > NOW()";
-	stmt = con.createStatement();
-	ResultSet rs = stmt.executeQuery(query);
-	while(rs.next()){
-	String id = rs.getString("promoid");
-	String percent = rs.getString("discount");
-	String start =rs.getString("start");
-	String end = rs.getString("end");
-	table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+percent+"%</td> <td>"+start+"</td> <td>"+end+"</td> </tr>";	
-	}
-	table = table + "  </tbody></table>";
-}catch(Exception e){
-	System.out.println(e.getMessage());
-
-}
-
-%>
-
-
 <header>
     <div>
         <h2><div><a href="../admin/index.jsp">UGA Bookshop</a></div></h2>
@@ -101,8 +67,41 @@ try{
 </header>
 <main>
     <h1>Manage Promotions</h1>
-<%=table%>
-<a href="editpromotions.jsp"><button class="button"> Add Promotion</button></a>
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Promo Code</th>
+      <th scope="col">Percentage</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Expiration Date</th>
+      <th scope="col">Emailed to Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1489</th>
+      <td>10%</td>
+      <td>November 1, 2020</td>
+      <td>November 14, 2020</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th scope="row">3749</th>
+      <td>5%</td>
+      <td>December 1, 2020</td>
+      <td>December 14, 2020</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th scope="row">9261</th>
+      <td>15%</td>
+      <td>January 1, 2020</td>
+      <td>January 14, 2020</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+<a href="editpromotions.jsp"><button class="button"> Edit Promotions</button></a>
 </main>
 <footer>
     <div>

@@ -62,68 +62,9 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-    <h1>Add Book</h1>
-	<section class="book">
-        <div class="details">
-            <form enctype="multipart/form-data" action="/addBook" method="post">
-                <div>
-                    <label for="image"></label>
-                    <input type="file" id="image" name="image" accept="image/png, image/jpeg">
-                </div>
-                <div>
-                    <label>Title: </label>
-                    <input type="text" name="title">
-                </div>
-                <div>
-                    <label>Author: </label>
-                    <input type="text" name="author">
-                </div>
-                <div>
-                    <label>ISBN: </label>
-                    <input type="text" name="isbn">
-                </div>
-		<div>
-			<label>Category: </label>
-			<input type="text" name="category">
-		</div>
-		<div>
-			<label>Edition: </label>
-			<input type="text" name="edition">
-		</div>
-		<div>
-			<label>Publisher: </label>
-			<input type="text" name="publisher">
-		</div>
-		<div>
-			<label>Publication year: </label>
-			<input type="number" name="year">
-		</div>
-		<div>
-			<label>Initial quantity: </label>
-			<input type="number" name="quantity">
-		</div>
-		<div>
-			<label>Minimum threshold: </label>
-			<input type="number" name="m_threshold">
-		</div>
-                <div>
-                    <label>Price (Retail): </label>
-                    <input type="number" min="0" max="1000" name="r_price">
-                </div>
-		<div>
-			<label>Price (Wholesale): </label>
-			<input type="number" min="0" max="1000" name="w_price">
-		</div>
-                <div>
-                    <label>Description:</label>
-                    <textarea name="description">
+    <h1>An error has been detected! Please click <a href="/admin/managebooks.jsp">here</a> to go back 
+	to the 'Manage Books' view.</h1>
 
-                    </textarea>
-                </div>
-                <button type="submit">Add Book</button>
-            </form>
-        </div>
-    </section>
 </main>
 <footer>
     <div>

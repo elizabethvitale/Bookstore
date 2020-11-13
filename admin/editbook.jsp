@@ -58,62 +58,15 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-    <h1>Editing "The Evening and the Morning"</h1>
+    <h1>Edit Book</h1>
     <section class="book">
-        <div class="details">
-            <img class="image" src="../image/books/theEveningandtheMorning.jpg">
-            <form action="" method="post">
-                <div>
-                    <label for="image"></label>
-                    <input type="file"id="image" name="image" accept="image/png, image/jpeg">
-                </div>
-                <div>
-                    <label>Title: </label>
-                    <input type="text" value="The Evening and the Morning" />
-                </div>
-                <div>
-                    <label>Author: </label>
-                    <input type="text" value="Ken Follett" />
-                </div>
-                <div>
-                    <label>ISBN: </label>
-                    <input type="text" value="2749375849" />
-                </div>
-                <div>
-                    <label>Category: </label>
-                    <input type="text" value="Non Fiction" />
-                </div>
-                <div>
-                    <label>Edition: </label>
-                    <input type="text" value="2nd" />
-                </div>
-                <div>
-                    <label>Publisher: </label>
-                    <input type="text" value="" />
-                </div>
-                <div>
-                    <label>Publication Year: </label>
-                    <input type="text" value="September 15, 2020" />
-                </div>
-                <div>
-                    <label>Quantity in-stock: </label>
-                    <input type="text" value="4" />
-                </div>
-                <div>
-                    <label>Buying Price (in USD): </label>
-                    <input type="number" min="0" max="1000"  value="14.99" />
-                </div>
-                <div>
-                    <label>Selling Price: </label>
-                    <input type="text" value="29.99" />
-                </div>
-                <div>
-                    <label>Description:</label>
-                    <textarea>
-                        From the #1 New York Times bestselling author, a thrilling and addictive new novel—a prequel to The Pillars of the Earth—set in England at the dawn of a new era: the Middle Age. It is 997 CE, the end of the Dark Ages. England is facing attacks from the Welsh in the west and the Vikings in the east. Those in power bend justice according to their will, regardless of ordinary people and often in conflict with the king. Without a clear rule of law, chaos reigns. In these turbulent times, three characters find their lives intertwined. A young boatbuilder's life is turned upside down when the only home he's ever known is raided by Vikings, forcing him and his family to move and start their lives anew in a small hamlet where he does not fit in. . . . A Norman noblewoman marries for love, following her husband across the sea to a new land, but the customs of her husband's homeland are shockingly different, and as she begins to realize that everyone around her is engaged in a constant, brutal battle for power, it becomes clear that a single misstep could be catastrophic. . . . A monk dreams of transforming his humble abbey into a center of learning that will be admired throughout Europe. And each in turn comes into dangerous conflict with a clever and ruthless bishop who will do anything to increase his wealth and power. Thirty years ago, Ken Follett published his most popular novel, The Pillars of the Earth. Now, Follett's masterful new prequel The Evening and the Morning takes us on an epic journey into a historical past rich with ambition and rivalry, death and birth, love and hate, that will end where The Pillars of the Earth begins.
-                    </textarea>
-                </div>
-                <button type="submit" class="button">Edit Book</button>
+	<div class="details">
+            <form enctype="multipart/form-data" action="" method="post">
+		<div>
+			<label>Image: </label>
+			<img src="data:image/jpg;base64,${book.base64Image}"/>
+		</div>
+                <input type="submit" value="Edit Book">
             </form>
         </div>
     </section>

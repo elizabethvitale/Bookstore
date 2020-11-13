@@ -24,7 +24,6 @@ public class User{
 	private String expirationDate3;
 	private String cardNumber2;
 	private String cardNumber3;
-	private String cartid;
 	public User(){
 
 	}
@@ -37,7 +36,7 @@ public class User{
 		this.phoneNumber = phoneNumber;
 		this.status = status;
 		this.enrolled = enrolled;
-			System.out.println(firstName);
+		System.out.println(firstName);
 	}
 	        public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String street, String city, String state, int zip){
 		this.actID = actID;
@@ -51,8 +50,7 @@ public class User{
 		this.street = street;
 		this.city = city;
 		this.state=state;
-		this.zip = zip;
-						
+		this.zip = zip;			
 	}
 	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String street, String city, String state, int zip, String cardNumber, String type, String expirationDate){
 		this.actID = actID;
@@ -69,8 +67,7 @@ public class User{
                 this.zip = zip;
 		this.cardNumber = cardNumber;
 		this.type=type;
-		this.expirationDate = expirationDate;
-	
+		this.expirationDate = expirationDate;	
 	}
 	public User(int actID, String password, String firstName, String lastName, String email, String phoneNumber, String status, boolean enrolled, String cardNumber, String type, String expirationDate){
                 this.actID = actID;
@@ -81,17 +78,11 @@ public class User{
                 this.phoneNumber = phoneNumber;
                 this.status = status;
                 this.enrolled = enrolled;
-			this.cardNumber = cardNumber;
+
+		this.cardNumber = cardNumber;
                 this.type=type;
                 this.expirationDate = expirationDate;
 }
-
-	public String getCart(){
-		return cartid;
-	}
-	public void setCart(String cartid){
-		this.cartid = cartid;
-	}
 	public int getID(){
 		return actID;
 	}
