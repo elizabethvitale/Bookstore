@@ -31,7 +31,6 @@ String cardType3="";
 String expDate3="";
 String enroll="";
 String holder="";
-
 if(request.getSession(false) == null){
 response.sendRedirect("/errorpages/405.jsp");
 System.out.println("entered");
@@ -56,7 +55,6 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
 if(enroll.equals("true")){
 	holder="checked";	
 }
-
 if(!cardType.equals("null")){
 	cardNum= "**** **** **** ****";
 }else{
@@ -220,7 +218,6 @@ if(street.equals("null")){
 <script>
 var div = document.getElementById('second');
 div.innerHTML += '<form action="/updateCard2" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType2" value="<%=cardType2%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum2" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate2" value="<%=expDate2%>"></div><br><button type="submit" class="button">Update</button></form><br><br>';
-
 var div = document.getElementById('third');
 div.innerHTML += '<form action="/updateCard3" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType3" value="<%=cardType3%>"></div><br><div><label>Number*</label><br><input type="text" name="cardNum3" value="<%=cardNum%>"></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate3" value="<%=expDate3%>"></div><br><button type="submit" class="button">Update</button></form><br><br>';
 </script>
@@ -237,9 +234,6 @@ $(document).ready(function(){
                 let x = document.getElementById('third');
                 x.removeAttribute("hidden");
         }
-
-
-
 });
 </script>
 
@@ -255,17 +249,13 @@ $(document).ready(function(){
 </script>
 <script>
 $(document).ready(function() {
-
     $("button[name='addCard']").click(function() {
        var domElement = $('<form action="/addCard" method="post"><h3>Payment Info</h3><div><label>Card type*</label><br><input type="text" name="cardType" value=""></div><br><div><label>Number*</label><br><input type="text" name="cardNum" value=""></div><br><div><label>Exp date*</label><br><input type="text" name="expirationDate" value=""></div><br><button type="submit" class="button">Update</button></form><br><br>');
         $(this).after(domElement);
     	var oldButton = document.getElementById("addCard");
 	oldButton.remove();
 	});
-
 });
-
-
 </script>
 
           <form action="/updateAddress" method="post">
@@ -383,18 +373,15 @@ $(document).ready(function() {
     <script type="text/javascript">
       function editProfile(evt, authOptions) {
         var i, tabcontent, tablinks;
-
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
           tabcontent[i].style.display = "none";
         }
-
         // Get all elements with class="tablinks" and remove the class "active"
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-
         // Show the current tab, and add an "active" class to the button that opened the tab
         document.getElementById(authOptions).style.display = "block";
         evt.currentTarget.className += " active";
