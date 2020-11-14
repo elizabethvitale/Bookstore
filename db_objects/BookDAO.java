@@ -62,6 +62,9 @@ public class BookDAO {
 				query = "SELECT bookid FROM book WHERE publisher = ?";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
+			} else if(term.equals("")){
+				query = "SELECT bookid from book;";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			} else {
 				query = "SELECT bookid FROM book WHERE year = ?";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -79,6 +82,7 @@ public class BookDAO {
 			
 		}
 		return idArray;
+		
 	}
 
 	public List<String> getBookTitles(List<Integer> ids, int length) {

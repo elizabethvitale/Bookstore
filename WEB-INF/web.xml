@@ -169,5 +169,25 @@
                 <servlet-name>getBookList</servlet-name>
                 <url-pattern>/getBookList</url-pattern>
         </servlet-mapping>
+              <servlet>
+		      <servlet-name>search</servlet-name>
+                <servlet-class>com.ugabookstore.search</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>search</servlet-name>
+                <url-pattern>/search</url-pattern>
+        </servlet-mapping>
+
+		             <servlet>
+		      <servlet-name>viewBook</servlet-name>
+                <servlet-class>com.ugabookstore.viewBook</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>viewBook</servlet-name>
+                <url-pattern>/viewBook</url-pattern>
+        </servlet-mapping>
+
+
+
 
 </web-app>
