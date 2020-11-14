@@ -76,7 +76,9 @@ public class BookDAO {
 			while(rs.next()) {
 				idArray.add(rs.getInt("bookid"));
 			}
-
+			rs.close();
+			stmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
@@ -127,16 +129,19 @@ public class BookDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			PreparedStatement stmt;
+			ResultSet rs;
 			for (int i = 0; i < length; i++) {
 				String query = "SELECT title FROM book WHERE bookid = ?";
-				PreparedStatement stmt = con.prepareStatement(query);
+				stmt = con.prepareStatement(query);
 				stmt.setInt(1, ids.get(i));
-				ResultSet rs = stmt.executeQuery();
+				rs = stmt.executeQuery();
 				rs.next();
 				titleArray.add(rs.getString("title"));
 			}
-			
-
+			rs.close();
+			stmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
@@ -191,7 +196,9 @@ public class BookDAO {
 				book.setBase64Image(base64Image);
 				
 			}
-
+			result.close();
+			stmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
