@@ -62,6 +62,9 @@ public class BookDAO {
 				query = "SELECT bookid FROM book WHERE publisher = ?";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
+			} else if(term.equals("")){
+				query = "SELECT bookid from book;";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			} else {
 				query = "SELECT bookid FROM book WHERE year = ?";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -73,29 +76,72 @@ public class BookDAO {
 			while(rs.next()) {
 				idArray.add(rs.getInt("bookid"));
 			}
-
+			rs.close();
+			stmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
 		}
 		return idArray;
+		
 	}
+	public List<String> getBlobs(List<Integer> ids, int length){
+	List<String> blobArray = new ArrayList<>();
+		try { 
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			for (int i = 0; i < length; i++) {
+				String query = "SELECT * FROM book WHERE bookid = ?";
+				PreparedStatement stmt = con.prepareStatement(query);
+				stmt.setInt(1, ids.get(i));
+				ResultSet rs = stmt.executeQuery();
+				rs.next();
+				Blob blob = rs.getBlob("picture");
+				InputStream inputStream = blob.getBinaryStream();
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				byte[] buffer = new byte[4096];
+				int bytesRead = -1;
+				
+                		while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    			outputStream.write(buffer, 0, bytesRead);                  
+                		}
+                 
+                		byte[] imageBytes = outputStream.toByteArray();
+                		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
+				inputStream.close();
+				outputStream.close();
+				blobArray.add(base64Image);
+				
+			}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+			
+		}
+		return blobArray;
+
+	}
 	public List<String> getBookTitles(List<Integer> ids, int length) {
 		List<String> titleArray = new ArrayList<>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			PreparedStatement stmt;
+			ResultSet rs;
 			for (int i = 0; i < length; i++) {
 				String query = "SELECT title FROM book WHERE bookid = ?";
-				PreparedStatement stmt = con.prepareStatement(query);
+				stmt = con.prepareStatement(query);
 				stmt.setInt(1, ids.get(i));
-				ResultSet rs = stmt.executeQuery();
+				rs = stmt.executeQuery();
 				rs.next();
 				titleArray.add(rs.getString("title"));
+				rs.close();
+				stmt.close();
 			}
-			
-
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
@@ -150,7 +196,9 @@ public class BookDAO {
 				book.setBase64Image(base64Image);
 				
 			}
-
+			result.close();
+			stmt.close();
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			

@@ -108,6 +108,7 @@ public class addBook extends HttpServlet {
 		if (row > 0) {
 			response.sendRedirect("/admin/addbook_confirmation.jsp");
 		}
+		con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			response.sendRedirect("/errorpages/addbook_error.jsp");
