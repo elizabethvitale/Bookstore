@@ -9,6 +9,11 @@ header a, header a:hover {
   color: black;
 }
 
+main a, a:hover {
+  color: black;
+}
+
+
 nav > ul li:nth-child(2),
 nav > ul li:nth-child(3) {
   margin-top: 0;
