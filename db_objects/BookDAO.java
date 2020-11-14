@@ -73,7 +73,7 @@ public class BookDAO {
 			while(rs.next()) {
 				idArray.add(rs.getInt("bookid"));
 			}
-
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
@@ -95,7 +95,7 @@ public class BookDAO {
 				titleArray.add(rs.getString("title"));
 			}
 			
-
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
@@ -150,7 +150,7 @@ public class BookDAO {
 				book.setBase64Image(base64Image);
 				
 			}
-
+			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			
