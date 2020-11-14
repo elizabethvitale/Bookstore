@@ -54,7 +54,7 @@
     <h1>View Book</h1>
     <section class="book">
 	<div class="details">
-	<img src="data:image/jpg;base64,${book.base64Image}"/>
+	<img height="400" src="data:image/jpg;base64,${book.base64Image}"/>
 	
         </div>
     </section>

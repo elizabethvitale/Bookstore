@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
+	  <%@ page session="false" %>
     <header>
       <div>
         <h2><div><a href="index.jsp">UGA Bookshop</a></div></h2>
@@ -57,7 +58,7 @@
     </header>
     <main>
       <div>
-        <h1>Search for " "</h1>
+	      <h1>Search for ""</h1>
         <form action="/action_page.php">
           <label for="books">Sort by:</label>
           <select name="books" id="books">
@@ -72,14 +73,9 @@
 
 	<section class="book">
 	<table>
-		<thead>
-		<tr>
-			<th>Title</th>
-			<th>Options</th>
-		</tr>
-		</thead>
 		<tbody>
-			<% 
+			<%
+
 			List<String> titles = new ArrayList<>();
 			titles = (List<String>) request.getAttribute("titles");
 			List<Integer> bookIds = new ArrayList<>();
@@ -88,9 +84,8 @@
 				for(int i = 0; i < bookIds.size(); i++) { %>
 			<tr>
 			<form action="/viewBook" method="get">
-				<td><% out.print(titles.get(i)); %>
-				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid"></td>
-				<td><input type="submit" value="View"></td>
+				<input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=titles.get(i)%>"/>
+				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
 			</form>
 			</tr>
 			<% } } catch (Exception e) {
@@ -101,17 +96,6 @@
 	</table>
     </section>
 
-        <a href="bookDetail.html"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/totalpower.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/troubledBlood.jpg"></a>
-      </div>
-      <div>
-        <a href="bookDetail.html"><img class="books" src="image/books/theMidwifeMurders.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/thenShewasGone.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/thisTenderland.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/whatHappensinParadise.jpeg"></a>
-      </div>
     </main>
     <footer>
       <div>

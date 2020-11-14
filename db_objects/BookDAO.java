@@ -90,14 +90,14 @@ public class BookDAO {
 	List<String> blobArray = new ArrayList<>();
 		try { 
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			Connection con = DriverManager.getConnection(jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			for (int i = 0; i < length; i++) {
-				String query = "SELECT title FROM book WHERE bookid = ?";
+				String query = "SELECT * FROM book WHERE bookid = ?";
 				PreparedStatement stmt = con.prepareStatement(query);
 				stmt.setInt(1, ids.get(i));
 				ResultSet rs = stmt.executeQuery();
 				rs.next();
-				Blob blob = rs.getBlob("picture"));
+				Blob blob = rs.getBlob("picture");
 				InputStream inputStream = blob.getBinaryStream();
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 				byte[] buffer = new byte[4096];
@@ -113,7 +113,7 @@ public class BookDAO {
 				inputStream.close();
 				outputStream.close();
 				blobArray.add(base64Image);
-
+				
 			}
 			
 
@@ -138,9 +138,9 @@ public class BookDAO {
 				rs = stmt.executeQuery();
 				rs.next();
 				titleArray.add(rs.getString("title"));
+				rs.close();
+				stmt.close();
 			}
-			rs.close();
-			stmt.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
