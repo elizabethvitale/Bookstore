@@ -63,7 +63,7 @@ public class BookDAO {
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if(term.equals("")){
-				query = "SELECT bookid from book;";
+				query = "SELECT bookid from book order by title asc;";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			} else {
 				query = "SELECT bookid FROM book WHERE year = ?";
