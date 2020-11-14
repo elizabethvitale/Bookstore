@@ -59,7 +59,7 @@
     </header>
     <main>
       <div>
-	      <h1>Search for ""</h1>
+	      <h1>Search for "<%=request.getAttribute("keyword")%>"</h1>
         <form action="/action_page.php">
           <label for="books">Sort by:</label>
           <select name="books" id="books">

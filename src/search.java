@@ -18,6 +18,7 @@ public class search extends HttpServlet {
             throws ServletException, IOException {
         	String term = "";
 		String keyword = request.getParameter("keyword");
+		System.out.println(keyword);
         	BookDAO dao = new BookDAO();
          
         try {
@@ -29,9 +30,9 @@ public class search extends HttpServlet {
 		Book book = dao.get(bookIds.get(i));
 		books.add(book);
 		}
-		System.out.println(books);
 		request.setAttribute("books", books);
 		request.setAttribute("titles", blobs);
+		request.setAttribute("keyword", keyword);
             	String page = "search.jsp";
             	RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
             	requestDispatcher.forward(request, response);
