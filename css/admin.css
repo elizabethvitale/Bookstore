@@ -5,22 +5,18 @@ header {
     border-bottom: 1px solid #E0E0E0;
 }
 
-header h2 a:link, a:hover, a::after {
-    text-decoration: none;
-    color: black;
+header a, header a:hover {
+  color: black;
 }
 
-header h2 a {
-    color: black;
+main a, a:hover {
+  color: black;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
 
-a:hover {
-    color: #b3011c;
+nav > ul li:nth-child(2),
+nav > ul li:nth-child(3) {
+  margin-top: 0;
 }
 
 .book {

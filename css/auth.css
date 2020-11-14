@@ -3,15 +3,6 @@
   to {opacity: 1;}
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  color: #b3011c;
-}
-
 /* Site header */
 header {
   background-color: white;
@@ -19,12 +10,7 @@ header {
   border-bottom: 1px solid #E0E0E0;
 }
 
-header h2 a:link, a:hover, a::after {
-  text-decoration: none;
-  color: black;
-}
-
-header h2 a {
+header a, header a:hover {
   color: black;
 }
 
