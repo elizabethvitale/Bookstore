@@ -1,5 +1,9 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +31,55 @@ pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
 	response.sendRedirect("/errorpages/404.jsp");
 }}
+%>
+<%
+Connection con;
+String table="";
+
+try{
+  table = "<table class='table'> <thead class='thead-dark'> <tr> <th scope='col'>User ID</th> <th scope='col'>Email</th> <th scope='col'>First Name</th> <th scope='col'>Type</th> <th scope='col'>Suspended</th> <th scope='col'>Action</th> </tr> </thead> <tbody> <tr>";
+  Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+  Statement adminStmt= con.createStatement();
+  String query1 = "select * from admin";
+  ResultSet rs1 = adminStmt.executeQuery(query1);
+  while(rs1.next()){
+    String id = rs1.getString("adminid");
+    String email = rs1.getString("email");
+    String fn = rs1.getString("firstname");
+    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>Admin</td> <td>Not Suspendable</td> <td><form action='/promote' method='post'><input type='hidden' name='id' value='"+id+"'><input type='submit' class='button' value='Depromote'></form></td> </tr>";
+  }
+
+  Statement stmt=null;
+  String query = "select * from customer WHERE employee != -1";
+  stmt = con.createStatement();
+  ResultSet rs = stmt.executeQuery(query);
+  while(rs.next()){
+    String id = rs.getString("customerid");
+    String email = rs.getString("email");
+    String fn = rs.getString("firstname");
+    String employeeType = rs.getString("employee").equals("0") ? "Customer" : "Employee";
+    String suspended = rs.getString("suspended").equals("0") ? "No" : "Yes";
+    String promoteForm = "<input type='hidden' name='id' value='"+id+"'>";
+    String suspendForm = "<input type='hidden' name='id' value='"+id+"'>";
+
+    if (employeeType.equals("Customer")) {
+      promoteForm += "<input class='button' type='submit' value='Promote'>";
+    } else {
+      promoteForm += "<input class='button' type='submit' value='Depromote'>";
+    }
+
+    if (suspended.equals("No")) {
+      suspendForm += "<input class='button' type='submit' value='Suspend'>";
+    } else {
+      suspendForm += "<input class='button' type='submit' value='Unsuspend>";
+    }
+    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form><form action='/suspend' method='post'>"+suspendForm+"</form></td> </tr>";
+  }
+  table = table + "  </tbody></table>";
+} catch(Exception e) {
+  System.out.println(e.getMessage());
+}
 %>
 <header>
     <div>
@@ -67,33 +120,8 @@ if(pass.equals(null) | !pass.equals("YES")){
 </header>
 <main>
     <h1>Manage Users</h1>
-    <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Account ID</th>
-      <th scope="col">Authorized</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td scope="row">Tina</td>
-      <td>tinagiang@uga.edu</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td scope="row">Julia</td>
-      <td>juliascott@uga.edu</td>
-      <td>No</td>
-    </tr>
-    <tr>
-      <td scope="row">Elizabeth</td>
-      <td>elizabeth@uga.edu</td>
-      <td>Yes</td>
-    </tr>
-  </tbody>
-</table>
-<a href="editusers.jsp"><button class="button"> Edit Users</button></a>
+    <%=table%>
+    <a href="editusers.jsp"><button class="button"> Edit Users</button></a>
 </main>
 <footer>
     <div>
