@@ -60,7 +60,7 @@
 
     <div id="homeCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carous/Users/elizabethvitale/tomcat/apache-tomcat-9.0.39/webapps/ROOT el-item active">
+        <div class="carousel-item active">
             <img src="https://images.squarespace-cdn.com/content/v1/5d39be915804eb00017ab307/1597669537598-4B3ZSMGYX8B8MK5HLXBV/ke17ZwdGBToddI8pDm48kDCS9NWuBBzb3g35P34aRwRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIYvxqG26orBnNg9dHOqYbKQsNDnAkGmvIcYWp2psWtn0KMshLAGzx4R3EDFOm1kBS/Evening+and+Morning_Amazon+banners_Two+%282%29.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
