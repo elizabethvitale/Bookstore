@@ -18,7 +18,6 @@ public class search extends HttpServlet {
             throws ServletException, IOException {
         	String term = "";
 		String keyword = request.getParameter("keyword");
-		System.out.println(keyword);
         	BookDAO dao = new BookDAO();
          
         try {

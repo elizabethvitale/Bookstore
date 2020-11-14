@@ -63,7 +63,10 @@ public class BookDAO {
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if(term.equals("")){
-				query = "SELECT bookid from book order by title asc;";
+					
+				System.out.println(keyword);
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by title asc;";
+				System.out.println(query);
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			} else {
 				query = "SELECT bookid FROM book WHERE year = ?";
