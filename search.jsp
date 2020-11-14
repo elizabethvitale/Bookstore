@@ -59,7 +59,13 @@
     </header>
     <main>
       <div>
-	      <h1>Search for "<%=request.getAttribute("keyword")%>"</h1>
+	      <% String message = ""; 
+	      if(request.getAttribute("keyword").equals("")){
+	      message = "Browse Entire Collection";
+	      }else{
+	      message = "Searching for \"" + request.getAttribute("keyword") + "\'";
+	      }%>
+	      <h1><%=message%></h1>
         <form action="/action_page.php">
           <label for="books">Sort by:</label>
           <select name="books" id="books">
