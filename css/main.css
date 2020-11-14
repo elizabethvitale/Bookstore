@@ -79,6 +79,7 @@ nav > ul li:nth-child(3) {
   margin-top: -5px;
 }
 
+
 nav .auth-dropdown {
   border: 1px solid #6d6d6d;
   background-color: #fff;
@@ -102,6 +103,11 @@ nav .auth-dropdown {
   border-radius: 25px;
   width: 100%;
   display: flex;
+}
+
+.searchbox form {
+  display: flex;
+  width: 100%;
 }
 
 #homeCarousel {
