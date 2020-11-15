@@ -44,11 +44,20 @@ try{
   Statement adminStmt= con.createStatement();
   String query1 = "select * from admin";
   ResultSet rs1 = adminStmt.executeQuery(query1);
-  while(rs1.next()){
+  while(rs1.next()) {
+    Statement adminStmt2= con.createStatement();
     String id = rs1.getString("adminid");
+    String query2 = "select * from customer where customerid= " +id+ " and employee= -1";
+    ResultSet rs2 = adminStmt2.executeQuery(query2);
     String email = rs1.getString("email");
     String fn = rs1.getString("firstname");
-    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>Admin</td> <td>Not Suspendable</td> <td><form action='/promote' method='post'><input type='hidden' name='id' value='"+id+"'><input type='submit' class='button' value='Depromote'></form></td> </tr>";
+    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>Admin</td> <td>Not Suspendable</td>";
+
+    if (!rs2.next()) { // Admin was never before promoted (started out as admin)
+      table = table + "</tr>";
+    } else { // Admin used to be employee and can be depromoted.
+      table = table + "<td><form action='/demoteAdmin' method='post'><input type='hidden' name='id' value='"+id+"'><input type='submit' class='button' value='Depromote'></form></td> </tr>";
+    }
   }
 
   Statement stmt=null;
@@ -63,11 +72,13 @@ try{
     String suspended = rs.getString("suspended").equals("0") ? "No" : "Yes";
     String promoteForm = "<input type='hidden' name='id' value='"+id+"'>";
     String suspendForm = "<input type='hidden' name='id' value='"+id+"'>";
+    String adminForm = "<input type='hidden' name='id' value='"+id+"'>";
 
     if (employeeType.equals("Customer")) {
       promoteForm += "<input class='button' type='submit' value='Promote'>";
     } else {
       promoteForm += "<input class='button' type='submit' value='Depromote'>";
+      adminForm += "<input class='button' type='submit' value='Promote to Admin'>";
     }
 
     if (suspended.equals("No")) {
@@ -75,7 +86,8 @@ try{
     } else {
       suspendForm += "<input class='button' type='submit' value='Unsuspend'>";
     }
-    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form><form action='/suspend' method='post'>"+suspendForm+"</form> </td> </tr>";
+
+    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form> <form action='/suspend' method='post'>"+suspendForm+"</form><form action='/promoteToAdmin' method='post'>"+adminForm+"</form>  </td> </tr>";
   }
   table = table + "  </tbody></table>";
 } catch(Exception e) {

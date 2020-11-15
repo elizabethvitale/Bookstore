@@ -10,12 +10,12 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Cookie;
 import java.io.IOException;
 import java.io.PrintWriter;
- 
 
- 
+
+
 @WebServlet("/userLogin")
 public class userLogin extends HttpServlet {
- 
+
     public void doPost(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
         String acctID = request.getParameter("acctID");
@@ -28,27 +28,34 @@ public class userLogin extends HttpServlet {
 	return;
 	}
 
-	User user  = new backendUser().login(acctID, password);	
+
+
+
+	User user  = new backendUser().login(acctID, password);
 	if(user == null){
 		System.out.println("login has failed....");
 		response.sendRedirect("errorpages/passwordIncorrect.jsp");
 		//login fails
 		return;
 	}else{
-	if(user.getStatus().equals("Inactive")){
-	
-	response.sendRedirect("/user/confirm.jsp");
-	return;
-	}
-	
-	//ON SUCESSFUL LOGIN:REDIRECT HERE 
+    if (user.getSuspended() == true) {
+      response.sendRedirect("errorpages/suspended.jsp");
+      return;
+    }
+  	if(user.getStatus().equals("Inactive")){
+
+  	   response.sendRedirect("/user/confirm.jsp");
+  	    return;
+  	}
+
+	//ON SUCESSFUL LOGIN:REDIRECT HERE
 	HttpSession oldSession = request.getSession(false);
 	if (oldSession != null) {
 		oldSession.invalidate();
 	}
 	HttpSession session = request.getSession(true);
 	session.setMaxInactiveInterval(15*60);
-	
+
 	session.setAttribute("firstName", user.getFirstName());
 	session.setAttribute("lastName", user.getLastName());
 	session.setAttribute("email", user.getEmail());
@@ -71,10 +78,9 @@ public class userLogin extends HttpServlet {
 	session.setAttribute("enroll", user.getEnroll());
 	session.setAttribute("cartid", user.getCart());
 	System.out.println(session.getAttribute("cartid"));
-	System.out.println("after");	
+	System.out.println("after");
 	request.getSession(true).setAttribute("user", user);
 	response.sendRedirect("/index.jsp");
 
 }
 }}
-

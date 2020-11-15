@@ -129,6 +129,24 @@
         </servlet-mapping>
 
         <servlet>
+                <servlet-name>promoteToAdmin</servlet-name>
+                <servlet-class>com.ugabookstore.promoteToAdmin</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>promoteToAdmin</servlet-name>
+                <url-pattern>/promoteToAdmin</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+                <servlet-name>demoteAdmin</servlet-name>
+                <servlet-class>com.ugabookstore.demoteAdmin</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>demoteAdmin</servlet-name>
+                <url-pattern>/demoteAdmin</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
                 <servlet-name>suspend</servlet-name>
                 <servlet-class>com.ugabookstore.suspend</servlet-class>
         </servlet>
