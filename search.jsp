@@ -1,5 +1,6 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
+<%@ page import="com.ugabookstore.Book"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 
@@ -58,7 +59,13 @@
     </header>
     <main>
       <div>
-	      <h1>Search for ""</h1>
+	      <% String message = ""; 
+	      if(request.getAttribute("keyword").equals("")){
+	      message = "Browse Entire Collection";
+	      }else{
+	      message = "Searching for \"" + request.getAttribute("keyword") + "\'";
+	      }%>
+	      <h1><%=message%></h1>
         <form action="/action_page.php">
           <label for="books">Sort by:</label>
           <select name="books" id="books">
@@ -80,11 +87,18 @@
 			titles = (List<String>) request.getAttribute("titles");
 			List<Integer> bookIds = new ArrayList<>();
 			bookIds = (List<Integer>) request.getAttribute("book_ids");
+			List<Book> books = (List<Book>) request.getAttribute("books");
 			try {
 				for(int i = 0; i < bookIds.size(); i++) { %>
 			<tr>
 			<form action="/viewBook" method="get">
 				<input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=titles.get(i)%>"/>
+				<%Book book = books.get(i);
+				String title = book.getTitle();
+				String author = book.getAuthor();
+				double price = book.getRPrice();%>
+				<p><%=title%>, by <%=author%> at $<%=price%>0</p>
+				<p>Rating: Not in DB Yet</p>
 				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
 			</form>
 			</tr>

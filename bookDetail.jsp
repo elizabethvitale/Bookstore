@@ -84,7 +84,7 @@
           The Evening and the Morning takes us on an epic journey into a
           historical past rich with ambition and rivalry, death and birth, love
           and hate, that will end where The Pillars of the Earth begins.</p>
-        <button type="button">Add to cart</button>
+        <button class="button" type="button">Add to cart</button>
       </div>
     </main>
     <footer>

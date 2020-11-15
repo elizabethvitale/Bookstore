@@ -75,17 +75,17 @@
       <div>
 	       <h4><%=message%></h4>
         <h1>Topseller Books</h1>
-        <a href="bookDetail.html"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/totalpower.jpg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/troubledBlood.jpg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/totalpower.jpg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/troubledBlood.jpg"></a>
       </div>
       <div>
         <h1>Featured Books</h1>
-        <a href="bookDetail.html"><img class="books" src="image/books/theMidwifeMurders.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/thenShewasGone.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/thisTenderland.jpeg"></a>
-        <a href="bookDetail.html"><img class="books" src="image/books/whatHappensinParadise.jpeg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/theMidwifeMurders.jpeg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/thenShewasGone.jpeg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/thisTenderland.jpeg"></a>
+        <a href="bookDetail.jsp"><img class="books" src="image/books/whatHappensinParadise.jpeg"></a>
       </div>
     </main>
     <footer>

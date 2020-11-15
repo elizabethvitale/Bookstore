@@ -24,7 +24,14 @@ public class search extends HttpServlet {
         	List<Integer> bookIds = new ArrayList<Integer>(dao.getBookIds(term, keyword));
 		List<String> blobs = new ArrayList<String>(dao.getBlobs(bookIds, bookIds.size()));
             	request.setAttribute("book_ids", bookIds);
+		List<Book> books = new ArrayList<Book>();
+		for(int i =0; i < bookIds.size(); i++){
+		Book book = dao.get(bookIds.get(i));
+		books.add(book);
+		}
+		request.setAttribute("books", books);
 		request.setAttribute("titles", blobs);
+		request.setAttribute("keyword", keyword);
             	String page = "search.jsp";
             	RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
             	requestDispatcher.forward(request, response);
