@@ -32,7 +32,7 @@ public class BookDAO {
 	public List<Integer> getBookIds(String term, String keyword) {
 		List<Integer> idArray = new ArrayList<>();
 		try {
-
+			System.out.println("TERM: "  + term);
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			PreparedStatement stmt = null;
@@ -62,7 +62,27 @@ public class BookDAO {
 				query = "SELECT bookid FROM book WHERE publisher = ?";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
-			} else {
+			} else if(term.equals("")){
+					
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by title asc;";
+				System.out.println(query);
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			} else if(term.equals("Author")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by author asc;";	
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		
+			}else if(term.equals("Title")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by title asc;";
+				stmt= con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			}else if(term.equals("Subject")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by category asc;";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			}else if(term.equals("ISBN")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by isbn asc;";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			}else {
 				query = "SELECT bookid FROM book WHERE year = ?";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				int keywordInt = Integer.parseInt(keyword);
@@ -83,6 +103,45 @@ public class BookDAO {
 		return idArray;
 	}
 
+	public List<String> getBlobs(List<Integer> ids, int length){
+	List<String> blobArray = new ArrayList<>();
+		try { 
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			for (int i = 0; i < length; i++) {
+				String query = "SELECT * FROM book WHERE bookid = ?";
+				PreparedStatement stmt = con.prepareStatement(query);
+				stmt.setInt(1, ids.get(i));
+				ResultSet rs = stmt.executeQuery();
+				rs.next();
+				Blob blob = rs.getBlob("picture");
+				InputStream inputStream = blob.getBinaryStream();
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				byte[] buffer = new byte[4096];
+				int bytesRead = -1;
+
+                		while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    			outputStream.write(buffer, 0, bytesRead);                  
+                		}
+
+                		byte[] imageBytes = outputStream.toByteArray();
+                		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+				inputStream.close();
+				outputStream.close();
+				blobArray.add(base64Image);
+
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+
+		}
+		return blobArray;
+	}
+
+
 	public List<String> getBookTitles(List<Integer> ids, int length) {
 		List<String> titleArray = new ArrayList<>();
 		try {
@@ -97,8 +156,9 @@ public class BookDAO {
 				rs = stmt.executeQuery();
 				rs.next();
 				titleArray.add(rs.getString("title"));
+				rs.close();
+				stmt.close();
 			}
-			rs.close();
 			stmt.close();
 			con.close();
 		} catch (Exception e) {

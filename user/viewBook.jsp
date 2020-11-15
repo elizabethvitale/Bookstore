@@ -57,11 +57,14 @@
 	<img height="400" src="data:image/jpg;base64,${book.base64Image}"/>
 	<p>Title: ${book.title}</p>
 	<p>Author: ${book.author}</p>
-	<p>Price: $ ${book.RPrice}0</p>
+	<p>Price: $ ${book.rprice}0</p>
 	<p>Description: ${book.description}</p>
+	<p>ISBN: Broken in Book object</p>
+	<p>Quantity in Stock: Broken in Book object</p>
 	<p>Edition: ${book.edition}</p>
 	<p>Publisher: ${book.publisher}</p>
 	<p>Year: ${book.year}</p>
+	<button>Add to Cart</p>
 	</div>
     </section>
 </main>

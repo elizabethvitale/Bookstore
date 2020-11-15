@@ -119,6 +119,23 @@
                 <url-pattern>/updateAddress</url-pattern>
         </servlet-mapping>
 
+        <servlet>
+                <servlet-name>promote</servlet-name>
+                <servlet-class>com.ugabookstore.promote</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>promote</servlet-name>
+                <url-pattern>/promote</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+                <servlet-name>suspend</servlet-name>
+                <servlet-class>com.ugabookstore.suspend</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>suspend</servlet-name>
+                <url-pattern>/suspend</url-pattern>
+        </servlet-mapping>
 
        <servlet>
              	<servlet-name>updateCard</servlet-name>
@@ -154,5 +171,32 @@
         <servlet-mapping>
                 <servlet-name>updateCard3</servlet-name>
                 <url-pattern>/updateCard3</url-pattern>
+	</servlet-mapping>
+		              <servlet>
+		      <servlet-name>search</servlet-name>
+                <servlet-class>com.ugabookstore.search</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>search</servlet-name>
+                <url-pattern>/search</url-pattern>
         </servlet-mapping>
+
+		             <servlet>
+		      <servlet-name>viewBook</servlet-name>
+                <servlet-class>com.ugabookstore.viewBook</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>viewBook</servlet-name>
+                <url-pattern>/viewBook</url-pattern>
+        </servlet-mapping>
+
+            <servlet>
+		      <servlet-name>reorder</servlet-name>
+                <servlet-class>com.ugabookstore.reorder</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>reorder</servlet-name>
+                <url-pattern>/reorder</url-pattern>
+        </servlet-mapping>
+
 </web-app>
