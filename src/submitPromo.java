@@ -28,7 +28,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 @WebServlet("/submitPromo")
 public class submitPromo extends HttpServlet {
- 
+
 	public void doPost(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("promocode");
@@ -46,14 +46,14 @@ public class submitPromo extends HttpServlet {
 			response.sendRedirect("/errorpages/incorrectPercentage.jsp");
 			return;
 		}
-		
+
 		try{
-		        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");	
+		        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date begin = format.parse(start);
 			Date ending = format.parse(end);
-			Date today = new Date(); 
+			Date today = new Date();
 			if(begin.compareTo(ending)>0){
-			response.sendRedirect("/errorpages/incorrectDate2.jsp");	
+			response.sendRedirect("/errorpages/incorrectDate2.jsp");
 			return;
 			}else if(today.compareTo(ending)>0){
                         response.sendRedirect("/errorpages/incorrectDate3.jsp");

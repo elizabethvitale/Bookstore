@@ -9,6 +9,7 @@
 <head>
 <%@ page session="false" %>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
@@ -74,7 +75,7 @@ try{
     } else {
       suspendForm += "<input class='button' type='submit' value='Unsuspend>";
     }
-    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form><form action='/suspend' method='post'>"+suspendForm+"</form></td> </tr>";
+    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form> <td><form action='/suspend' method='post'>"+suspendForm+"</form> </td> </tr>";
   }
   table = table + "  </tbody></table>";
 } catch(Exception e) {
@@ -121,7 +122,6 @@ try{
 <main>
     <h1>Manage Users</h1>
     <%=table%>
-    <a href="editusers.jsp"><button class="button"> Edit Users</button></a>
 </main>
 <footer>
     <div>

@@ -50,7 +50,7 @@ try{
 	String percent = rs.getString("discount");
 	String start =rs.getString("start");
 	String end = rs.getString("end");
-	table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+percent+"%</td> <td>"+start+"</td> <td>"+end+"</td> </tr>";	
+	table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+percent+"%</td> <td>"+start+"</td> <td>"+end+"</td> </tr>";
 	}
 	table = table + "  </tbody></table>";
 }catch(Exception e){

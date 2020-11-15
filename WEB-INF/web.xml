@@ -153,6 +153,18 @@
         </servlet-mapping>
 
         <servlet>
+                <servlet-name>suspend</servlet-name>
+                <servlet-class>com.ugabookstore.suspend</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>suspend</servlet-name>
+                <url-pattern>/suspend</url-pattern>
+        </servlet-mapping>
+
+
+
+
+        <servlet>
                 <servlet-name>addBook</servlet-name>
                 <servlet-class>com.ugabookstore.addBook</servlet-class>
         </servlet>
