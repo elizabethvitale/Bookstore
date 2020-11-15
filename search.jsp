@@ -106,7 +106,7 @@
 				<%Book book = books.get(i);
 				String title = book.getTitle();
 				String author = book.getAuthor();
-				double price = book.getRPrice();%>
+				double price = book.getRprice();%>
 				<p><%=title%>, by <%=author%> at $<%=price%>0</p>
 				<p>Rating: Not in DB Yet</p>
 				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
