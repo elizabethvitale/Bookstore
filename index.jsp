@@ -26,7 +26,7 @@
 		      BROWSE
               </li>
               <li>
-                <a href="checkout/cart.html"><img src="image/shoppingcart.svg"></a>
+                <a href="checkout/cart.jsp"><img src="image/shoppingcart.svg"></a>
               </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="image/account.svg">
