@@ -27,7 +27,7 @@
 <%@ page session="false" %>
     <header>
       <div>
-        <h2><div><a href="index.jsp">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
                     		  <form action="../search" method="get">
@@ -71,7 +71,7 @@
       <div>
         <h1>Error page</h1>
         <p>You must login in order to add book to cart.</p>
-        <a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">RETURN TO LOGIN PAGE</button></a>
+        <a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">GO TO LOGIN PAGE</button></a>
     </main>
     <footer>
       <div>

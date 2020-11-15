@@ -11,12 +11,14 @@
 <body>
 <header>
     <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
             <div class="searchbox">
-                <input type="text" placeholder="Browse by author, by title..">
-                <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
-            </div>
+                      		  <form action="/search" method="get">
+		    <input type="text" name="keyword" placeholder="Browse by author, by title..">
+           	<button type="submit"><img src="../image/search.svg"></button>
+
+	    </div>
         </section>
         <section>
             <nav>
