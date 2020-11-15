@@ -33,7 +33,7 @@
                     		  <form action="../search" method="get">
 		    <input type="text" name="keyword" placeholder="Browse by author, by title..">
            	<button type="submit"><img src="../image/search.svg"></button>
-
+	</form>
 	  </div>
         </section>
         <section>
