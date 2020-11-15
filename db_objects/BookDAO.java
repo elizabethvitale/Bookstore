@@ -64,22 +64,22 @@ public class BookDAO {
 				stmt.setString(1, keyword);
 			} else if(term.equals("")){
 					
-				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by title asc;";
+				query = "select bookid from book where active='1' and (author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%') order by title asc;";
 				System.out.println(query);
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			} else if(term.equals("Author")){
-				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by author asc;";	
+				query = "select bookid from book where active='1' and (author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%') order by author asc;";	
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		
 			}else if(term.equals("Title")){
-				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by title asc;";
+				query = "select bookid from book where active='1' and (author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%') order by title asc;";
 				stmt= con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 			}else if(term.equals("Subject")){
-				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by category asc;";
+				query = "select bookid from book where active='1' and (author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%') order by category asc;";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			}else if(term.equals("ISBN")){
-				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by isbn asc;";
+				query = "select bookid from book where active='1' and (author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%') order by isbn asc;";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
 			}else {
