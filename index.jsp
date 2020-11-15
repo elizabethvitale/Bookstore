@@ -74,7 +74,8 @@
     <main>
       <div>
 	       <h4><%=message%></h4>
-        <h1>Topseller Books</h1>
+        <h1>December 2020 Topseller Books</h1>
+        <button type="button" class="button"> VIEW LIST</button>
         <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
         <a href="bookDetail.jsp"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
         <a href="bookDetail.jsp"><img class="books" src="image/books/totalpower.jpg"></a>
