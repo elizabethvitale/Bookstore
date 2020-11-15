@@ -237,5 +237,15 @@
                 <servlet-name>emailPromo</servlet-name>
                 <url-pattern>/emailPromo</url-pattern>
         </servlet-mapping>
+               <servlet>
+                <servlet-name>addToCart</servlet-name>
+                <servlet-class>com.ugabookstore.addToCart</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>addToCart</servlet-name>
+		<url-pattern>/addToCart</url-pattern>
+        </servlet-mapping>
+
+
 
 </web-app>

@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<%@ page session="false" %>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600&family=Peddana&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/errorpages.css">
+    <style>
+      main {
+        font-family: 'IBM Plex Sans', sans-serif;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
+      main > div {
+        margin: 0 auto;
+        color: var(--primary-color);
+      }
+      main h1 {
+        margin-top: 0;
+      }
+    </style>
   </head>
   <body>
 <%@ page session="false" %>
     <header>
       <div>
-        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
+        <h2><div><a href="index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
             <input type="text" placeholder="Browse by author, by title..">
-            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+            <a href="search.html"><button type="button"><img src="../image/search.svg"></button></a>
           </div>
         </section>
         <section>
@@ -25,22 +41,22 @@
                 BROWSE
               </li>
               <li>
-                <a href="../checkout/cart.html"><img src="../image/shoppingcartblack.svg"></a>
+                <a href="checkout/cart.html"><img src="../image/shoppingcart.svg"></a>
               </li>
               <li style='position: relative;'>
-                <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
+                <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.jsp">Login</a>
+                    <a href="../user/login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.jsp">Register</a>
+                    <a href="../user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.jsp">Edit Profile</a>
+                    <a href="../user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.jsp">Logout</a>
+                    <a href="../user/logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -50,28 +66,13 @@
       </div>
     </header>
     <main>
-    <h1>View Book</h1>
-	<div class="details">
-		<form action="/addToCart" method="post">
-	<img height="400" src="data:image/jpg;base64,${book.base64Image}"/>
-	<p>Title: ${book.title}</p>
-	<p>Author: ${book.author}</p>
-	<p>Price: $ ${book.rprice}0</p>
-	<p>Description: ${book.description}</p>
-	<p>ISBN: ${book.isbn}</p>
-	<p>Quantity in Stock: ${book.quantity}</p>
-	<p>Edition: ${book.edition}</p>
-	<p>Publisher: ${book.publisher}</p>
-	<p>Year: ${book.year}</p>
-	<input type="hidden" name="quantity" value=${book.quantity}>
-	<input type="hidden" name="bookid" value=${book.bookid}>
-	<button id="formsub" class="button" type="submit" value=${book.bookid}">Add to Cart</p>
-	</form>
-	</div>
-
+      <div>
+        <h1>Error page</h1>
+        <p>You must login in order to add book to cart.</p>
+        <a href="../user/login.jsp"><button class="button" style="margin-right: 10px;">RETURN TO LOGIN PAGE</button></a>
     </main>
     <footer>
-        <div>
+      <div>
         <section style="flex-grow: 2;align-items: baseline;flex-direction: column;">
           <ul>
             <li>
