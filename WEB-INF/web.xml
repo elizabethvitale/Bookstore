@@ -15,8 +15,38 @@
 		<servlet-name>userLogin</servlet-name>
 		<url-pattern>/userLogin</url-pattern>
 	</servlet-mapping>
-
-
+	<servlet>
+		<servlet-name>editBook</servlet-name>
+		<servlet-class>com.ugabookstore.editBook</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>editBook</servlet-name>
+		<url-pattern>/editBook</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>getBookList</servlet-name>
+		<servlet-class>com.ugabookstore.getBookList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getBookList</servlet-name>
+		<url-pattern>/getBookList</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>getBook</servlet-name>
+		<servlet-class>com.ugabookstore.getBook</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getBook</servlet-name>
+		<url-pattern>/getBook</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>addBook</servlet-name>
+		<servlet-class>com.ugabookstore.addBook</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addBook</servlet-name>
+		<url-pattern>/addBook</url-pattern>
+	</servlet-mapping>
         <servlet>
                 <servlet-name>register</servlet-name>
                 <servlet-class>com.ugabookstore.register</servlet-class>
@@ -25,7 +55,6 @@
                 <servlet-name>register</servlet-name>
                 <url-pattern>/register</url-pattern>
         </servlet-mapping>
-
         <servlet>
                 <servlet-name>confirm</servlet-name>
                 <servlet-class>com.ugabookstore.confirm</servlet-class>
@@ -126,68 +155,4 @@
                 <servlet-name>updateCard3</servlet-name>
                 <url-pattern>/updateCard3</url-pattern>
         </servlet-mapping>
-	       <servlet>
-                <servlet-name>submitPromo</servlet-name>
-                <servlet-class>com.ugabookstore.submitPromo</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>submitPromo</servlet-name>
-                <url-pattern>/submitPromo</url-pattern>
-        </servlet-mapping>
-               <servlet>
-                <servlet-name>emailPromo</servlet-name>
-                <servlet-class>com.ugabookstore.emailPromo</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>emailPromo</servlet-name>
-                <url-pattern>/emailPromo</url-pattern>
-        </servlet-mapping>
-
-
-               <servlet>
-                <servlet-name>addBook</servlet-name>
-                <servlet-class>com.ugabookstore.addBook</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>addBook</servlet-name>
-                <url-pattern>/addBook</url-pattern>
-        </servlet-mapping>
-
-               <servlet>
-                <servlet-name>getBook</servlet-name>
-                <servlet-class>com.ugabookstore.getBook</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>getBook</servlet-name>
-                <url-pattern>/getBook</url-pattern>
-        </servlet-mapping>
-               <servlet>
-                <servlet-name>getBookList</servlet-name>
-                <servlet-class>com.ugabookstore.getBookList</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>getBookList</servlet-name>
-                <url-pattern>/getBookList</url-pattern>
-        </servlet-mapping>
-              <servlet>
-		      <servlet-name>search</servlet-name>
-                <servlet-class>com.ugabookstore.search</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>search</servlet-name>
-                <url-pattern>/search</url-pattern>
-        </servlet-mapping>
-
-		             <servlet>
-		      <servlet-name>viewBook</servlet-name>
-                <servlet-class>com.ugabookstore.viewBook</servlet-class>
-        </servlet>
-        <servlet-mapping>
-                <servlet-name>viewBook</servlet-name>
-                <url-pattern>/viewBook</url-pattern>
-        </servlet-mapping>
-
-
-
-
 </web-app>
