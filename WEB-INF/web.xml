@@ -187,7 +187,14 @@
                 <url-pattern>/viewBook</url-pattern>
         </servlet-mapping>
 
-
+            <servlet>
+		      <servlet-name>reorder</servlet-name>
+                <servlet-class>com.ugabookstore.reorder</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>reorder</servlet-name>
+                <url-pattern>/reorder</url-pattern>
+        </servlet-mapping>
 
 
 </web-app>

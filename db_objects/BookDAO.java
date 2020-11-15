@@ -32,7 +32,7 @@ public class BookDAO {
 	public List<Integer> getBookIds(String term, String keyword) {
 		List<Integer> idArray = new ArrayList<>();
 		try {
-
+			System.out.println("TERM: "  + term);
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			PreparedStatement stmt = null;
@@ -64,11 +64,25 @@ public class BookDAO {
 				stmt.setString(1, keyword);
 			} else if(term.equals("")){
 					
-				System.out.println(keyword);
 				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by title asc;";
 				System.out.println(query);
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			} else {
+			} else if(term.equals("Author")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by author asc;";	
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		
+			}else if(term.equals("Title")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by title asc;";
+				stmt= con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			}else if(term.equals("Subject")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by category asc;";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			}else if(term.equals("ISBN")){
+				query = "select bookid from book where author like '%" + keyword + "%' or title like '%" + keyword + "%' or description like '%" + keyword + "%' or category like '%" + keyword + "%' or year like '%" + keyword + "%' or publisher like '%" + keyword + "%' or isbn like '%" + keyword + "%' order by isbn asc;";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+			}else {
 				query = "SELECT bookid FROM book WHERE year = ?";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				int keywordInt = Integer.parseInt(keyword);
