@@ -71,7 +71,7 @@
       <div>
         <h1>Error page</h1>
         <p>Your book is out of stock or doesn't exist. Please try adding another book!</p>
-        <a href="../user/forgotpwd2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO FORGOT PASSWORD PAGE</button></a>
+        <a href="../user/forgotpwd2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO BROWSING</button></a>
     </main>
     <footer>
       <div>
