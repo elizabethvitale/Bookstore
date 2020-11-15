@@ -66,7 +66,7 @@ if(pass.equals(null) | !pass.equals("YES")){
     </div>
 </header>
 <main>
-  
+
 
 	<br>
 	<h1>Welcome to the Admin Panel, <%=name%></h1><br>

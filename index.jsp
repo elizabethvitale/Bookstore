@@ -71,22 +71,101 @@
         </div>
       </div>
     </div>
+
     <main>
       <div>
-	       <h4><%=message%></h4>
-        <h1>Topseller Books</h1>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/totalpower.jpg"></a>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/troubledBlood.jpg"></a>
+	       <h4 class="welcome-name"><%=message%></h4>
+
+         <button type="button" class="view button"> VIEW LIST</button>
+        <h1 class="titles">December 2020 Topseller Books</h1>
+        <div class="slider responsive">
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/totalpower.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/troubledBlood.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+          <div>
+            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+          </div>
+        </div>
+      </div><br>
+
+    <button type="button" class="view button" style="float: right;
+    margin-top: 8px;"> VIEW LIST</button>
+     <h1 class="titles">Featured Books</h1>
+      <div class="slider responsive">
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/totalpower.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/troubledBlood.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
+        <div>
+          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+        </div>
       </div>
-      <div>
-        <h1>Featured Books</h1>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/theMidwifeMurders.jpeg"></a>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/thenShewasGone.jpeg"></a>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/thisTenderland.jpeg"></a>
-        <a href="bookDetail.jsp"><img class="books" src="image/books/whatHappensinParadise.jpeg"></a>
-      </div>
+    </div>
     </main>
     <footer>
       <div>
@@ -129,8 +208,63 @@
       </div>
     </footer>
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+  $('.responsive').slick({
+      // dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 8,
+      slidesToScroll: 1,
+      responsive: [{
+          breakpoint: 1024,
+          settings: {
+              slidesToShow: 6,
+              slidesToScroll: 1,
+              // centerMode: true,
+
+          }
+
+        }, {
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 2,
+                dots: true,
+                infinite: true,
+
+            }
+
+
+        }, {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                dots: true,
+                infinite: true,
+
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                infinite: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            }
+        }]
+    });
+
+
+  });
+    </script>
     <script type="text/javascript" src="http://livejs.com/live.js"></script>
   </body>
 </html>

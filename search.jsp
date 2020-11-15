@@ -63,16 +63,26 @@
 	      if(request.getAttribute("keyword").equals("")){
 	      message = "Browse Entire Collection";
 	      }else{
-	      message = "Searching for \"" + request.getAttribute("keyword") + "\'";
+	      message = "Searching for \"" + request.getAttribute("keyword") + "\"";
+	      }%>
+	      <%
+	      String searching = "";
+	      if(request.getAttribute("search")!=null){
+	      searching = "Sorted by " + request.getAttribute("search");
+	      }else{
+	      searching = "Sorted by Title";
 	      }%>
 	      <h1><%=message%></h1>
-        <form action="/action_page.php">
-          <label for="books">Sort by:</label>
-          <select name="books" id="books">
-              <option value="title">Title</option>
-              <option value="author">Author</option>
-              <option value="priceLowHigh">Price: Low to High</option>
-              <option value="priceHighLow">Price: High to Low</option>
+	      <h2><%=searching%></h2>
+        <form action="/reorder" method="get">
+          <input type="hidden" name="keyword" value="<%=request.getAttribute("keyword")%>">
+		<label for="books">Sort by:</label>
+          <select name="books" id="books" onchange="this.form.submit()">
+		  <option></option>
+		<option value="Title">Title</option>
+              <option value="Author">Author</option>
+              <option value="ISBN">ISBN</option>
+              <option value="Subject">Subject</option>
           </select>
           <br><br>
         </form>
@@ -96,7 +106,7 @@
 				<%Book book = books.get(i);
 				String title = book.getTitle();
 				String author = book.getAuthor();
-				double price = book.getRPrice();%>
+				double price = book.getRprice();%>
 				<p><%=title%>, by <%=author%> at $<%=price%>0</p>
 				<p>Rating: Not in DB Yet</p>
 				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">

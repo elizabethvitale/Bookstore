@@ -36,7 +36,6 @@ if(pass.equals(null) | !pass.equals("YES")){
 <%
 Connection con;
 String table="";
-
 try{
   table = "<table class='table'> <thead class='thead-dark'> <tr> <th scope='col'>User ID</th> <th scope='col'>Email</th> <th scope='col'>First Name</th> <th scope='col'>Type</th> <th scope='col'>Suspended</th> <th scope='col'>Action</th> </tr> </thead> <tbody> <tr>";
   Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -59,7 +58,6 @@ try{
       table = table + "<td><form action='/demoteAdmin' method='post'><input type='hidden' name='id' value='"+id+"'><input type='submit' class='button' value='Depromote'></form></td> </tr>";
     }
   }
-
   Statement stmt=null;
   String query = "select * from customer WHERE employee != -1";
   stmt = con.createStatement();
@@ -80,7 +78,6 @@ try{
       promoteForm += "<input class='button' type='submit' value='Depromote'>";
       adminForm += "<input class='button' type='submit' value='Promote to Admin'>";
     }
-
     if (suspended.equals("No")) {
       suspendForm += "<input class='button' type='submit' value='Suspend'>";
     } else {
@@ -89,7 +86,7 @@ try{
 
     table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form> <form action='/suspend' method='post'>"+suspendForm+"</form><form action='/promoteToAdmin' method='post'>"+adminForm+"</form>  </td> </tr>";
   }
-  table = table + "  </tbody></table>";
+  table = table + "  </tbody></table>";
 } catch(Exception e) {
   System.out.println(e.getMessage());
 }
