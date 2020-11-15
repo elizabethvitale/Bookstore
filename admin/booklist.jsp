@@ -33,13 +33,13 @@ if(pass.equals(null) | !pass.equals("YES")){
             <nav>
                 <ul>
                     <li>
-                        <a href="managebooks.jsp">Manage Books</a>
+                        <a href="../admin/managebooks.jsp">Manage Books</a>
                     </li>
                     <li>
-                        <a href="manageusers.jsp">Manage Users</a>
+                        <a href="../admin/manageusers.jsp">Manage Users</a>
                     </li>
                     <li>
-                        <a href="managepromotions.jsp">Manage Promotions</a>
+                        <a href="../admin/managepromotions.jsp">Manage Promotions</a>
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">

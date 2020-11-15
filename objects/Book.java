@@ -1,7 +1,5 @@
 package com.ugabookstore;
 
-
-
 public class Book {
 
 	private int bookId;
@@ -16,13 +14,13 @@ public class Book {
 	private int year;
 	private int quantity;
 	private int minThreshold;
-	private double wPrice;
-	private double rPrice;
+	private double wprice;
+	private double rprice;
 	
 	private byte[] image;
 	private String base64Image;
 
-	public Book(int bookId, String title, String author, String isbn, String category, String edition, String publisher, String description, int year, int quantity, int minThreshold, double wPrice, double rPrice) {
+	public Book(int bookId, String title, String author, String isbn, String category, String edition, String publisher, String description, int year, int quantity, int minThreshold, double wprice, double rprice) {
 		
 		this.bookId = bookId;
 		this.author = author;
@@ -34,8 +32,8 @@ public class Book {
 		this.year = year;
 		this.quantity = quantity;
 		this.minThreshold = minThreshold;
-		this.wPrice = wPrice;
-		this.rPrice = rPrice;
+		this.wprice = wprice;
+		this.rprice = rprice;
 		
 	}
 
@@ -43,11 +41,11 @@ public class Book {
 		this.title = "nullo";
 	}
 
-	public int getBookId() {
+	public int getBookid() {
 		return bookId;
 	}
 
-	public void setBookId(int bookId) {
+	public void setBookid(int bookId) {
 		this.bookId = bookId;
 	}
 
@@ -67,11 +65,11 @@ public class Book {
 		this.author = author;
 	}
 
-	public String getISBN() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setISBN(String isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
@@ -131,20 +129,20 @@ public class Book {
 		this.minThreshold = minThreshold;
 	}
 
-	public double getWPrice(){
-		return wPrice;
+	public double getWprice(){
+		return wprice;
 	}
 
-	public void setWPrice(double wPrice) {
-		this.wPrice = wPrice;
+	public void setWprice(double wprice) {
+		this.wprice = wprice;
 	}
 
-	public double getRPrice(){
-		return rPrice;
+	public double getRprice(){
+		return rprice;
 	}
 
-	public void setRPrice(double rPrice) {
-		this.rPrice = rPrice;
+	public void setRprice(double rprice) {
+		this.rprice = rprice;
 	}
 
 	public void setBase64Image (String base64Image) {

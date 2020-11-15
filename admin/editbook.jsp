@@ -27,13 +27,13 @@ if(pass.equals(null) | !pass.equals("YES")){
             <nav>
                 <ul>
                     <li>
-                        <a href="managebooks.jsp">Manage Books</a>
+                        <a href="../admin/managebooks.jsp">Manage Books</a>
                     </li>
                     <li>
-                        <a href="manageusers.jsp">Manage Users</a>
+                        <a href="../admin/manageusers.jsp">Manage Users</a>
                     </li>
                     <li>
-                        <a href="managepromotions.jsp">Manage Promotions</a>
+                        <a href="../admin/managepromotions.jsp">Manage Promotions</a>
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
@@ -61,11 +61,68 @@ if(pass.equals(null) | !pass.equals("YES")){
     <h1>Edit Book</h1>
     <section class="book">
 	<div class="details">
-            <form enctype="multipart/form-data" action="" method="post">
+            <form enctype="multipart/form-data" action="/editBook" method="post">
+		<div>
+			<input type="hidden" name="bookid" value="${book.bookid}">
+		</div>
 		<div>
 			<label>Image: </label>
 			<img src="data:image/jpg;base64,${book.base64Image}"/>
 		</div>
+		<div>
+			<label>New image: </label>
+                    	<input type="file" id="image" name="image" accept="image/jpeg">
+		</div>
+		<div>
+                    <label>Title: </label>
+                    <input type="text" name="title" value="${book.title}">
+                </div>
+                <div>
+                    <label>Author: </label>
+                    <input type="text" name="author" value="${book.author}">
+                </div>
+                <div>
+                    <label>ISBN: </label>
+                    <input type="text" name="isbn"  value="${book.isbn}">
+                </div>
+		<div>
+			<label>Category: </label>
+			<input type="text" name="category" value="${book.category}">
+		</div>
+		<div>
+			<label>Edition: </label>
+			<input type="text" name="edition" value="${book.edition}">
+		</div>
+		<div>
+			<label>Publisher: </label>
+			<input type="text" name="publisher" value="${book.publisher}">
+		</div>
+		<div>
+			<label>Publication year: </label>
+			<input type="number" name="year" value="${book.year}">
+		</div>
+		<div>
+			<label>Initial quantity: </label>
+			<input type="number" name="quantity" value="${book.quantity}">
+		</div>
+		<div>
+			<label>Minimum threshold: </label>
+			<input type="number" name="m_threshold" value="${book.minThreshold}">
+		</div>
+                <div>
+                    <label>Price (Retail): </label>
+                    <input type="number" min="0" max="1000" name="r_price" value="${book.rprice}">
+                </div>
+		<div>
+			<label>Price (Wholesale): </label>
+			<input type="number" min="0" max="1000" name="w_price" value="${book.wprice}">
+		</div>
+                <div>
+                    <label>Description:</label>
+                    <textarea name="description">
+			${book.description}
+                    </textarea>
+                </div>
                 <input type="submit" value="Edit Book">
             </form>
         </div>

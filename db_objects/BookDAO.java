@@ -101,53 +101,15 @@ public class BookDAO {
 			
 		}
 		return idArray;
-		
 	}
-	public List<String> getBlobs(List<Integer> ids, int length){
-	List<String> blobArray = new ArrayList<>();
-		try { 
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
-			for (int i = 0; i < length; i++) {
-				String query = "SELECT * FROM book WHERE bookid = ?";
-				PreparedStatement stmt = con.prepareStatement(query);
-				stmt.setInt(1, ids.get(i));
-				ResultSet rs = stmt.executeQuery();
-				rs.next();
-				Blob blob = rs.getBlob("picture");
-				InputStream inputStream = blob.getBinaryStream();
-				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-				byte[] buffer = new byte[4096];
-				int bytesRead = -1;
-				
-                		while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    			outputStream.write(buffer, 0, bytesRead);                  
-                		}
-                 
-                		byte[] imageBytes = outputStream.toByteArray();
-                		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
-				inputStream.close();
-				outputStream.close();
-				blobArray.add(base64Image);
-				
-			}
-			
-
-		} catch (Exception e) {
-			e.printStackTrace(System.out);
-			
-		}
-		return blobArray;
-
-	}
 	public List<String> getBookTitles(List<Integer> ids, int length) {
 		List<String> titleArray = new ArrayList<>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
-			PreparedStatement stmt;
-			ResultSet rs;
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
 			for (int i = 0; i < length; i++) {
 				String query = "SELECT title FROM book WHERE bookid = ?";
 				stmt = con.prepareStatement(query);
@@ -155,9 +117,9 @@ public class BookDAO {
 				rs = stmt.executeQuery();
 				rs.next();
 				titleArray.add(rs.getString("title"));
-				rs.close();
-				stmt.close();
 			}
+			rs.close();
+			stmt.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
@@ -180,10 +142,10 @@ public class BookDAO {
 
 			if (result.next()) {
 				book = new Book();
-				book.setBookId(bookId);
+				book.setBookid(bookId);
 				book.setTitle(result.getString("title"));
 				book.setAuthor(result.getString("author"));
-				book.setISBN(result.getString("isbn"));
+				book.setIsbn(result.getString("isbn"));
 				book.setCategory(result.getString("category"));
 				book.setEdition(result.getString("edition"));
 				book.setPublisher(result.getString("publisher"));
@@ -191,8 +153,8 @@ public class BookDAO {
 				book.setYear(result.getInt("year"));
 				book.setQuantity(result.getInt("quantity"));
 				book.setMinThreshold(result.getInt("minthreshold"));
-				book.setWPrice(result.getDouble("w_price"));
-				book.setRPrice(result.getDouble("r_price"));
+				book.setWprice(result.getDouble("w_price"));
+				book.setRprice(result.getDouble("r_price"));
 				
 				blob = result.getBlob("picture");
 				InputStream inputStream = blob.getBinaryStream();
