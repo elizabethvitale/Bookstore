@@ -119,6 +119,23 @@
                 <url-pattern>/updateAddress</url-pattern>
         </servlet-mapping>
 
+        <servlet>
+                <servlet-name>promote</servlet-name>
+                <servlet-class>com.ugabookstore.promote</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>promote</servlet-name>
+                <url-pattern>/promote</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+                <servlet-name>suspend</servlet-name>
+                <servlet-class>com.ugabookstore.suspend</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>suspend</servlet-name>
+                <url-pattern>/suspend</url-pattern>
+        </servlet-mapping>
 
        <servlet>
              	<servlet-name>updateCard</servlet-name>

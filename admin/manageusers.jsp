@@ -73,9 +73,9 @@ try{
     if (suspended.equals("No")) {
       suspendForm += "<input class='button' type='submit' value='Suspend'>";
     } else {
-      suspendForm += "<input class='button' type='submit' value='Unsuspend>";
+      suspendForm += "<input class='button' type='submit' value='Unsuspend'>";
     }
-    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form> <td><form action='/suspend' method='post'>"+suspendForm+"</form> </td> </tr>";
+    table = table + "<tr> <th scope='row'>"+id+"</th> <td>"+email+"</td> <td>"+fn+"</td> <td>"+employeeType+"</td> <td>"+suspended+"</td> <td><form action='/promote' method='post'>"+promoteForm+"</form><form action='/suspend' method='post'>"+suspendForm+"</form> </td> </tr>";
   }
   table = table + "  </tbody></table>";
 } catch(Exception e) {
