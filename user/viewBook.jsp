@@ -27,22 +27,24 @@
                 BROWSE
               </li>
               <li>
-                <a href="../checkout/cart.jsp"><img src="../image/shoppingcartblack.svg"></a>
-              </li>
+                            		<form action="/viewCart" method="get">
+		<button class="button" type="submit"><img src="../image/shoppingcart.svg"></button>
+		</form>
+	      </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.jsp">Login</a>
+                    <a href="../user/login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.jsp">Register</a>
+                    <a href="../user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.jsp">Edit Profile</a>
+                    <a href="../user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.jsp">Logout</a>
+                    <a href="../user/logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>

@@ -36,8 +36,10 @@
                 BROWSE
               </li>
               <li>
-                <a href="checkout/cart.jsp"><img src="image/shoppingcart.svg"></a>
-              </li>
+              		<form action="/viewCart" method="get">
+		<button class="button" type="submit"><img src="image/shoppingcart.svg"></button>
+		</form>
+	      </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="image/account.svg">
                 <ul class='auth-dropdown'>
