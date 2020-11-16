@@ -17,6 +17,9 @@
 </head>
 <body>
 	<%@ page session="false" %>
+			<script>if(performance.navigation.type == 2){
+	location.reload(true);
+		 }</script>
 <header>
     <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
