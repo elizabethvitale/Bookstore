@@ -16,6 +16,14 @@
 		<url-pattern>/userLogin</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>deleteBook</servlet-name>
+		<servlet-class>com.ugabookstore.deleteBook</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deleteBook</servlet-name>
+		<url-pattern>/deleteBook</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>editBook</servlet-name>
 		<servlet-class>com.ugabookstore.editBook</servlet-class>
 	</servlet>
@@ -244,9 +252,8 @@
         <servlet-mapping>
                 <servlet-name>addToCart</servlet-name>
 		<url-pattern>/addToCart</url-pattern>
-	</servlet-mapping>
-
-		               <servlet>
+        </servlet-mapping>
+	<servlet>
                 <servlet-name>viewCart</servlet-name>
                 <servlet-class>com.ugabookstore.viewCart</servlet-class>
         </servlet>
@@ -254,7 +261,6 @@
                 <servlet-name>viewCart</servlet-name>
 		<url-pattern>/viewCart</url-pattern>
         </servlet-mapping>
-
 
 
 </web-app>
