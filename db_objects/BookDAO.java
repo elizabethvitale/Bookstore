@@ -29,6 +29,29 @@ import java.io.ByteArrayOutputStream;
 
 public class BookDAO {
 
+	public List<Integer> getCart(String cartid){
+	List<Integer> idArray = new ArrayList<>();
+	try{
+		System.out.println(cartid);
+		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+		PreparedStatement stmt = null;
+		String query = "select bookid from cart_item where cartid='" + cartid + "';";
+		System.out.println(query);
+		stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		ResultSet rs = stmt.executeQuery();
+		while(rs.next()){
+		idArray.add(rs.getInt("bookid"));
+		}
+		rs.close();
+		stmt.close();
+		con.close();
+	}catch(Exception e){
+		System.out.println(e);
+
+	}
+	return idArray;
+	}
 	public List<Integer> getBookIds(String term, String keyword) {
 		List<Integer> idArray = new ArrayList<>();
 		try {
