@@ -62,7 +62,7 @@
 </header>
 <main><br>
     <h1>Shopping Cart</h1>
-	<form action="" type="get">
+	<form action="/emptyCart" type="get">
     <button class="button" type="submit"style="float:right;">Empty Cart</button>
 	</form>
     <div style="clear:right;"></div>
@@ -92,7 +92,7 @@
 				total = total + price;%>
 				
 				<td><h2><%=title%><h2><h4><%=author%></h4></td> <td>$<%=price%>0</td>
-						<td>	<form action="" method="get">
+						<td>	<form action="/removeCartItem" method="get">
 								<input type="hidden" name="holder" value=<%=id%>>
 							<button type="submit" class=button>Remove</button>
 							</form>
