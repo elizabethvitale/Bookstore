@@ -41,7 +41,7 @@ public class viewCart
 		}
 		request.setAttribute("booksCart", books);
 		request.setAttribute("imagesCart", blobs);
-            	String page = "/checkout/cart.jsp";
+            	String page = "/checkout/shoppingcart.jsp";
             	RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
             	requestDispatcher.forward(request, response);
         } catch (Exception ex) {
