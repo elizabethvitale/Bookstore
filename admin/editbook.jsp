@@ -119,12 +119,14 @@ if(pass.equals(null) | !pass.equals("YES")){
 		</div>
                 <div>
                     <label>Description:</label>
-                    <textarea name="description">
-			${book.description}
-                    </textarea>
+                    <textarea name="description">${book.description}</textarea>
                 </div>
                 <input type="submit" value="Edit Book">
             </form>
+		<form action="/deleteBook" method="post">
+		<input type="hidden" name="bookid" value="${book.bookid}">
+		<input type="submit" value="Delete Book">
+		</form>
         </div>
     </section>
 </main>
