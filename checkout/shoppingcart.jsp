@@ -60,10 +60,11 @@
         </section>
     </div>
 </header>
-<main>
+<main><br>
     <h1>Shopping Cart</h1>
-
-    <button class="button" style="float:right;">Empty Cart</button>
+	<form action="" type="get">
+    <button class="button" type="submit"style="float:right;">Empty Cart</button>
+	</form>
     <div style="clear:right;"></div>
     <br><br>
     <table>
@@ -85,11 +86,17 @@
 				<%Book book = books.get(i);
 				String title = book.getTitle();
 				String author = book.getAuthor();
+				int id = book.getBookid();
+				System.out.println(id);
 				double price = book.getRprice();
 				total = total + price;%>
 				
 				<td><h2><%=title%><h2><h4><%=author%></h4></td> <td>$<%=price%>0</td>
-						<td><button class=button>Remove</button></td>
+						<td>	<form action="" method="get">
+								<input type="hidden" name="holder" value=<%=id%>>
+							<button type="submit" class=button>Remove</button>
+							</form>
+						</td>
 			</tr>
 			<% } } catch (Exception e) {
 				e.printStackTrace(System.out);
