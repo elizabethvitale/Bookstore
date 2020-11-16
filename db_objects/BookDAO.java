@@ -36,7 +36,7 @@ public class BookDAO {
 		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 		PreparedStatement stmt = null;
-		String query = "select bookid from cart_item where cartid='" + cartid + "';";
+		String query = "select bookid from cart_item where cartid='" + cartid + "' order by bookid asc;";
 		System.out.println(query);
 		stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		ResultSet rs = stmt.executeQuery();
