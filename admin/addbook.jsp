@@ -68,57 +68,55 @@ if(pass.equals(null) | !pass.equals("YES")){
             <form enctype="multipart/form-data" action="/addBook" method="post">
                 <div>
                     <label for="image"></label>
-                    <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+                    <input type="file" id="image" name="image" accept="image/png, image/jpeg" required>
                 </div>
                 <div>
                     <label>Title: </label>
-                    <input type="text" name="title">
+                    <input type="text" name="title" required>
                 </div>
                 <div>
                     <label>Author: </label>
-                    <input type="text" name="author">
+                    <input type="text" name="author" required>
                 </div>
                 <div>
                     <label>ISBN: </label>
-                    <input type="text" name="isbn">
+                    <input type="text" name="isbn" required>
                 </div>
 		<div>
 			<label>Category: </label>
-			<input type="text" name="category">
+			<input type="text" name="category" required>
 		</div>
 		<div>
 			<label>Edition: </label>
-			<input type="text" name="edition">
+			<input type="text" name="edition" required>
 		</div>
 		<div>
 			<label>Publisher: </label>
-			<input type="text" name="publisher">
+			<input type="text" name="publisher" required>
 		</div>
 		<div>
 			<label>Publication year: </label>
-			<input type="number" name="year">
+			<input type="number" name="year" required>
 		</div>
 		<div>
 			<label>Initial quantity: </label>
-			<input type="number" name="quantity">
+			<input type="number" name="quantity" required>
 		</div>
 		<div>
 			<label>Minimum threshold: </label>
-			<input type="number" name="m_threshold">
+			<input type="number" name="m_threshold" required>
 		</div>
                 <div>
                     <label>Price (Retail): </label>
-                    <input type="number" min="0" max="1000" name="r_price">
+                    <input type="number" min="0" max="100" name="r_price" step=".01" required>
                 </div>
 		<div>
 			<label>Price (Wholesale): </label>
-			<input type="number" min="0" max="1000" name="w_price">
+			<input type="number" min="0" max="100" name="w_price" step=".01" required>
 		</div>
                 <div>
                     <label>Description:</label>
-                    <textarea name="description">
-
-                    </textarea>
+                    <textarea name="description"></textarea>
                 </div>
                 <button type="submit">Add Book</button>
             </form>

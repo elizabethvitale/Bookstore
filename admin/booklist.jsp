@@ -66,19 +66,21 @@ if(pass.equals(null) | !pass.equals("YES")){
 <main>
     <h1>Search Book</h1>
 	<section class="book">
-	<table>
-		<thead>
+<%
+List<String> titles = new ArrayList<>();
+titles = (List<String>) request.getAttribute("titles");
+List<Integer> bookIds = new ArrayList<>();
+bookIds = (List<Integer>) request.getAttribute("book_ids");
+if (bookIds.size() > 0) { %>
+	<table class="table">
+		<thead class="thead-dark">
 		<tr>
-			<th>Title</th>
-			<th>Options</th>
+			<th scope="col">Title</th>
+			<th scope="col">Options</th>
 		</tr>
 		</thead>
 		<tbody>
-			<% 
-			List<String> titles = new ArrayList<>();
-			titles = (List<String>) request.getAttribute("titles");
-			List<Integer> bookIds = new ArrayList<>();
-			bookIds = (List<Integer>) request.getAttribute("book_ids");
+			<%
 			try {
 				for(int i = 0; i < bookIds.size(); i++) { %>
 			<tr>
@@ -90,10 +92,17 @@ if(pass.equals(null) | !pass.equals("YES")){
 			</tr>
 			<% } } catch (Exception e) {
 				e.printStackTrace(System.out);
-			}
-			%>
+			} %>
 		</tbody>
 	</table>
+<%
+			} else {
+%>
+				<h2>We did not find any books with that search parameter! 
+				<a href="../admin/searchbook.jsp">Click here</a> to go back to the search menu.</h2>
+<%
+			}
+%>
     </section>
 </main>
 <footer>
