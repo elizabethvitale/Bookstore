@@ -68,7 +68,11 @@ public class emailPromo extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			Statement stmt=null;
-			String query = "select * from customer where enroll_for_promotes='1' and status='Active';";
+			stmt = con.createStatement();	
+			String query = "insert into promotion(promoid, start, end, discount) values('" + Integer.parseInt(id) + "', STR_TO_DATE('" + start + "','%m/%d/%Y'), STR_TO_DATE('" + end + "','%m/%d/%Y'),'" + Double.parseDouble(percent) + "');";
+			int result = stmt.executeUpdate(query);	
+			
+			query = "select * from customer where enroll_for_promotes='1' and status='Active';";
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()){
@@ -77,11 +81,8 @@ public class emailPromo extends HttpServlet {
 				sendEmail(email,body);
 				}
 			}
-			query = "insert into promotion(promoid, start, end, discount) values('" + Integer.parseInt(id) + "', STR_TO_DATE('" + start + "','%m/%d/%Y'), STR_TO_DATE('" + end + "','%m/%d/%Y'),'" + Double.parseDouble(percent) + "');";
-			int result = stmt.executeUpdate(query);	
 		}catch(Exception e){
-			System.out.println(e);
-			//redirect did not enter into DB
+			response.sendRedirect("/errorpages/promoCodeExists.jsp");
 			return;
 		}
 		HttpSession session = request.getSession(true);
@@ -89,7 +90,9 @@ public class emailPromo extends HttpServlet {
 		session.setAttribute(start, null);
 		session.setAttribute(end, null);
 		session.setAttribute(id,null);
+		session.setAttribute("submitted", "after");
 		response.sendRedirect("/errorpages/promotionSucess.jsp");
+		return;
 	}
         public static void sendEmail(String emailAdd,String body){
                 String host = "smtp.gmail.com";

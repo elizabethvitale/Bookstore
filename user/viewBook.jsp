@@ -14,9 +14,11 @@
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
-            <input type="text" placeholder="Browse by author, by title..">
-            <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
-          </div>
+          		  <form action="/search" method="get">
+		    <input type="text" name="keyword" placeholder="Browse by author, by title..">
+           	<button type="submit"><img src="../image/search.svg"></button>
+		  </form>
+	  </div>
         </section>
         <section>
           <nav>
@@ -25,22 +27,24 @@
                 BROWSE
               </li>
               <li>
-                <a href="../checkout/cart.html"><img src="../image/shoppingcartblack.svg"></a>
-              </li>
+                            		<form action="/viewCart" method="get">
+		<button class="button" type="submit"><img src="../image/shoppingcart.svg"></button>
+		</form>
+	      </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
                 <ul class='auth-dropdown'>
                   <li>
-                    <a href="login.jsp">Login</a>
+                    <a href="../user/login.jsp">Login</a>
                   </li>
                   <li>
-                    <a href="register.jsp">Register</a>
+                    <a href="../user/register.jsp">Register</a>
                   </li>
                   <li>
-                    <a href="editprofile.jsp">Edit Profile</a>
+                    <a href="../user/editprofile.jsp">Edit Profile</a>
                   </li>
                   <li>
-                    <a href="logout.jsp">Logout</a>
+                    <a href="../user/logout.jsp">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -52,6 +56,7 @@
     <main>
     <h1>View Book</h1>
 	<div class="details">
+		<form action="/addToCart" method="post">
 	<img height="400" src="data:image/jpg;base64,${book.base64Image}"/>
 	<p>Title: ${book.title}</p>
 	<p>Author: ${book.author}</p>
@@ -62,7 +67,10 @@
 	<p>Edition: ${book.edition}</p>
 	<p>Publisher: ${book.publisher}</p>
 	<p>Year: ${book.year}</p>
-	<button class="button">Add to Cart</p>
+	<input type="hidden" name="quantity" value=${book.quantity}>
+	<input type="hidden" name="bookid" value=${book.bookid}>
+	<button id="formsub" class="button" type="submit" value=${book.bookid}">Add to Cart</p>
+	</form>
 	</div>
 
     </main>

@@ -75,56 +75,58 @@ if(pass.equals(null) | !pass.equals("YES")){
 		</div>
 		<div>
                     <label>Title: </label>
-                    <input type="text" name="title" value="${book.title}">
+                    <input type="text" name="title" value="${book.title}" required>
                 </div>
                 <div>
                     <label>Author: </label>
-                    <input type="text" name="author" value="${book.author}">
+                    <input type="text" name="author" value="${book.author}" required>
                 </div>
                 <div>
                     <label>ISBN: </label>
-                    <input type="text" name="isbn"  value="${book.isbn}">
+                    <input type="text" name="isbn"  value="${book.isbn}" required>
                 </div>
 		<div>
 			<label>Category: </label>
-			<input type="text" name="category" value="${book.category}">
+			<input type="text" name="category" value="${book.category}" required>
 		</div>
 		<div>
 			<label>Edition: </label>
-			<input type="text" name="edition" value="${book.edition}">
+			<input type="text" name="edition" value="${book.edition}" required>
 		</div>
 		<div>
 			<label>Publisher: </label>
-			<input type="text" name="publisher" value="${book.publisher}">
+			<input type="text" name="publisher" value="${book.publisher}" required>
 		</div>
 		<div>
 			<label>Publication year: </label>
-			<input type="number" name="year" value="${book.year}">
+			<input type="number" name="year" value="${book.year}" required>
 		</div>
 		<div>
 			<label>Initial quantity: </label>
-			<input type="number" name="quantity" value="${book.quantity}">
+			<input type="number" name="quantity" value="${book.quantity}" required>
 		</div>
 		<div>
 			<label>Minimum threshold: </label>
-			<input type="number" name="m_threshold" value="${book.minThreshold}">
+			<input type="number" name="m_threshold" value="${book.minThreshold}" required>
 		</div>
                 <div>
                     <label>Price (Retail): </label>
-                    <input type="number" min="0" max="1000" name="r_price" value="${book.rprice}">
+                    <input type="number" min="0" max="100" name="r_price" step=".01" value="${book.rprice}" required>
                 </div>
 		<div>
 			<label>Price (Wholesale): </label>
-			<input type="number" min="0" max="1000" name="w_price" value="${book.wprice}">
+			<input type="number" min="0" max="100" name="w_price" step=".01" value="${book.wprice}" required>
 		</div>
                 <div>
                     <label>Description:</label>
-                    <textarea name="description">
-			${book.description}
-                    </textarea>
+                    <textarea name="description">${book.description}</textarea>
                 </div>
                 <input type="submit" value="Edit Book">
             </form>
+		<form action="/deleteBook" method="post">
+		<input type="hidden" name="bookid" value="${book.bookid}">
+		<input type="submit" value="Delete Book">
+		</form>
         </div>
     </section>
 </main>

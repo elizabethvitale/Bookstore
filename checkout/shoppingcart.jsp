@@ -1,3 +1,10 @@
+<%@ page import="com.ugabookstore.User"%>
+<%@ page import="com.ugabookstore.backendUser"%>
+<%@ page import="com.ugabookstore.Book"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +16,21 @@
     <link rel="stylesheet" href="../css/checkout.css">
 </head>
 <body>
-<%
-
-%>
+	<%@ page session="false" %>
+			<script>if(performance.navigation.type == 2){
+	location.reload(true);
+		 }</script>
 <header>
     <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
             <div class="searchbox">
-                <input type="text" placeholder="Browse by author, by title..">
-                <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
-            </div>
+                      		  <form action="/search" method="get">
+		    <input type="text" name="keyword" placeholder="Browse by author, by title..">
+           	<button type="submit"><img src="../image/search.svg"></button>
+				  </form>
+
+	    </div>
         </section>
         <section>
             <nav>
@@ -28,22 +39,24 @@
                         BROWSE
                     </li>
                     <li>
-                        <a href="cart.html"><img src="../image/shoppingcart.svg"></a>
-                    </li>
+                                  		<form action="/viewCart" method="get">
+		<button class="button" type="submit"><img src="../image/shoppingcart.svg"></button>
+		</form>
+		    </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/account.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.html">Login</a>
+                                <a href="../user/login.jsp">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.html">Register</a>
+                                <a href="../user/register.jsp">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.html">Edit Profile</a>
+                                <a href="../user/editprofile.jsp">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.html">Logout</a>
+                                <a href="../user/logout.jsp">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -52,20 +65,53 @@
         </section>
     </div>
 </header>
-<main>
-	<br>
-<h1> UGA Bookshop Book List</h1> 
-        <form action="/action_page.php">
-          <label for="books">Sort by:</label>
-          <select name="books" id="books">
-              <option value="title">Title</option>
-              <option value="author">Author</option>
-              <option value="priceLowHigh">Price: Low to High</option>
-              <option value="priceHighLow">Price: High to Low</option>
-          </select>
-          <br><br>
-        </form>
+<main><br>
+    <h1>Shopping Cart</h1>
+	<form action="/emptyCart" type="get">
+    <button class="button" type="submit"style="float:right;">Empty Cart</button>
+	</form>
+    <div style="clear:right;"></div>
+    <br><br>
+    <table>
+	    <tr>
+		    <th colspan="2">Item</th>
+		    <th>Price.</th>
+		    <th></th>
+	    </tr>
 
+	<%
+	List<String>images = new ArrayList<>();
+	double total = 0;
+	images = (List<String>) request.getAttribute("imagesCart");
+	List<Book> books = (List<Book>)request.getAttribute("booksCart");
+	try{
+	for(int i=0; i < images.size(); i++){%>
+		<tr>
+			<td><input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=images.get(i)%>"/></td>
+				<%Book book = books.get(i);
+				String title = book.getTitle();
+				String author = book.getAuthor();
+				int id = book.getBookid();
+				System.out.println(id);
+				double price = book.getRprice();
+				total = total + price;%>
+				
+				<td><h2><%=title%><h2><h4><%=author%></h4></td> <td>$<%=price%>0</td>
+						<td>	<form action="/removeCartItem" method="get">
+								<input type="hidden" name="holder" value=<%=id%>>
+							<button type="submit" class=button>Remove</button>
+							</form>
+						</td>
+			</tr>
+			<% } } catch (Exception e) {
+				e.printStackTrace(System.out);
+			}
+			%>
+
+	</table>
+    <br>
+    <input type="text" placeholder="Promo" /><button class="button">Apply</button>
+    <a href="checkout-billing.html"><button class="button" style="float: right">Checkout (Total: $<%=total%>0)</button></a>
 </main>
 <footer>
     <div>

@@ -68,13 +68,10 @@ if(pass.equals(null) | !pass.equals("YES")){
             <form action="/getBookList" method="get">
 		<div>
 			<select name="search_term">
-				<option value="bookid">Book ID</option>
 				<option value="title">Title</option>
 				<option value="author">Author</option>
 				<option value="isbn">ISBN</option>
 				<option value="category">Category</option>
-				<option value="publisher">Publisher</option>
-				<option value="year">Publication Year</option>
 			</select>
 			<label>Search term: </label>
 			<input type="text" name="keyword" >

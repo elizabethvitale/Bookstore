@@ -27,12 +27,14 @@
 <%@ page session="false" %>
     <header>
       <div>
-        <h2><div><a href="index.jsp">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
-            <input type="text" placeholder="Browse by author, by title..">
-            <a href="search.html"><button type="button"><img src="../image/search.svg"></button></a>
-          </div>
+                    		  <form action="../search" method="get">
+		    <input type="text" name="keyword" placeholder="Browse by author, by title..">
+           	<button type="submit"><img src="../image/search.svg"></button>
+		  </form>
+	  </div>
         </section>
         <section>
           <nav>
@@ -41,7 +43,7 @@
                 BROWSE
               </li>
               <li>
-                <a href="checkout/cart.html"><img src="../image/shoppingcart.svg"></a>
+                <a href="../checkout/cart.jsp"><img src="../image/shoppingcart.svg"></a>
               </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="../image/account.svg">
