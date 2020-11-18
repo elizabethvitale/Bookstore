@@ -11,11 +11,15 @@
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
+				<script>if(performance.navigation.type == 2){
+	location.reload(true);
+		 }</script>
 <%@ page session="false" %>
 <%
 String name="";
 String pass="";
 HttpSession session = request.getSession(false);
+
 String id = (String)session.getAttribute("id");
 String percent = (String)session.getAttribute("percent");
 String start = (String)session.getAttribute("start");
@@ -29,7 +33,12 @@ name = (String)session.getAttribute("firstName");
 pass = String.valueOf(session.getAttribute("admin"));
 if(pass.equals(null) | !pass.equals("YES")){
 	response.sendRedirect("/errorpages/404.jsp");
-}}
+}
+String holder = (String)session.getAttribute("submitted");
+if(holder.equals("after")){
+	response.sendRedirect("/admin/managepromotions.jsp");
+}
+}
 %>
 <header>
     <div>

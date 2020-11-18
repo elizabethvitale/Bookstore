@@ -90,6 +90,7 @@ public class emailPromo extends HttpServlet {
 		session.setAttribute(start, null);
 		session.setAttribute(end, null);
 		session.setAttribute(id,null);
+		session.setAttribute("submitted", "after");
 		response.sendRedirect("/errorpages/promotionSucess.jsp");
 		return;
 	}
