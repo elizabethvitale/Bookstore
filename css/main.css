@@ -179,6 +179,7 @@ main .titles{
   padding: 6px 18px;
   outline: none;
   font-weight: bold;
+  margin: 4px;
 }
 
 div .view{
