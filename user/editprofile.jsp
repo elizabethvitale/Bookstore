@@ -53,7 +53,7 @@ cardType2 = String.valueOf(httpSession.getAttribute("cardType2"));
 expDate3 = String.valueOf(httpSession.getAttribute("expirationDate3"));
 cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
 if(enroll.equals("true")){
-	holder="checked";	
+	holder="checked";
 }
 if(!cardType.equals("null")){
 	cardNum= "**** **** **** ****";
@@ -115,7 +115,7 @@ if(street.equals("null")){
       </div>
     </header>
     <main>
-      <section id='authBox'>
+      <section class='editauthBox'>
         <h1>Edit Profile</h1>
         <div class="tab">
           <button class="tablinks" onclick="editProfile(event, 'EditPersonalInfo')" id="defaultOpen">Edit Personal Info</button>

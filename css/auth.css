@@ -27,6 +27,14 @@ main {
   border: 1px solid lightgrey;
 }
 
+.editauthBox {
+  background-color: white;
+  padding: 10px;
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid lightgrey;
+}
+
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
