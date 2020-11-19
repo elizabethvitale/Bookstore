@@ -44,43 +44,40 @@ public class editBook extends HttpServlet {
 		try { 
 			year = Integer.parseInt(request.getParameter("year"));
 		} catch (Exception e) {
-			response.sendRedirect("/admin/editbook.jsp");
+			response.sendRedirect("/errorpages/editbook_error.jsp");
 		}
 		double rPrice = 0.0;
 		try { 
 			rPrice = Double.parseDouble(request.getParameter("r_price"));
 		} catch (Exception e) {
-			response.sendRedirect("/admin/editbook.jsp");
+			response.sendRedirect("/errorpages/editbook_error.jsp");
 		}
 		double wPrice = 0.0;
 		try { 
 			wPrice = Double.parseDouble(request.getParameter("w_price"));
 		} catch (Exception e) {
-			response.sendRedirect("/admin/editbook.jsp");
+			response.sendRedirect("/errorpages/editbook_error.jsp");
 		}
 		int quantity = 0;
 		try { 
 			quantity = Integer.parseInt(request.getParameter("quantity"));
 		} catch (Exception e) {
-			response.sendRedirect("/admin/editbook.jsp");
+			response.sendRedirect("/errorpages/editbook_error.jsp");
 		}
 		int minThreshold = 0;
 		try { 
 			minThreshold = Integer.parseInt(request.getParameter("m_threshold"));
 		} catch (Exception e) {
-			response.sendRedirect("/admin/editbook.jsp");
+			response.sendRedirect("/errorpages/editbook_error.jsp");
 		}
 		int bookid = 0;
 		try {
 			bookid = Integer.parseInt(request.getParameter("bookid"));
 		} catch (Exception e) {
-			response.sendRedirect("/admin/editbook.jsp");
+			response.sendRedirect("/errorpages/editbook_error.jsp");
 		}
 		InputStream inputStream = null;
 		Part filePart = request.getPart("image");
-		if (filePart != null) {
-			inputStream = filePart.getInputStream();
-		}
 		try {
 			Connection con;
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -106,7 +103,9 @@ public class editBook extends HttpServlet {
 			stmt.close();
 
 			String picQuery = null;
-			if (inputStream != null) {
+			String fileName = filePart.getSubmittedFileName();
+			if (!(fileName.equals(""))) {
+				inputStream = filePart.getInputStream();
 				picQuery = "UPDATE book SET picture = ? WHERE bookid = ?";
 				stmt = con.prepareStatement(picQuery);
 				stmt.setBlob(1, inputStream);
