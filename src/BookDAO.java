@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.Blob;
 import java.io.InputStream;
 import javax.servlet.http.HttpSession;
@@ -61,24 +62,28 @@ public class BookDAO {
 			PreparedStatement stmt = null;
 			String query = null;
 			if (term.equals("bookid")){ 
-				query = "SELECT bookid FROM book WHERE bookid = ? AND active = '1'";
+				query = "SELECT bookid FROM book WHERE bookid = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				int keywordInt = Integer.parseInt(keyword);
 				stmt.setInt(1, keywordInt);
 			} else if (term.equals("title")) {
-				query = "SELECT bookid FROM book WHERE title = ? AND active = '1'";
+				query = "SELECT bookid FROM book WHERE title = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if (term.equals("author")) {
-				query = "SELECT bookid FROM book WHERE author = ? AND active = '1'";
+				query = "SELECT bookid FROM book WHERE author = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if (term.equals("isbn")) {
-				query = "SELECT bookid FROM book WHERE isbn = ? AND active = '1'";
+				query = "SELECT bookid FROM book WHERE isbn = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if (term.equals("category")) {
-				query = "SELECT bookid FROM book WHERE category = ? AND active = '1'";
+				query = "SELECT bookid FROM book WHERE category = ? AND active = 1";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+				stmt.setString(1, keyword);
+			} else if (term.equals("publisher")) {
+				query = "SELECT bookid FROM book WHERE publisher = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if(term.equals("")){
@@ -173,16 +178,15 @@ public class BookDAO {
 				stmt = con.prepareStatement(query);
 				stmt.setInt(1, ids.get(i));
 				rs = stmt.executeQuery();
-				if (rs.next()) {
-					titleArray.add(rs.getString("title"));
-				}
-				rs.close();
-				stmt.close();
+				rs.next();
+				titleArray.add(rs.getString("title"));
 			}
+			rs.close();
 			stmt.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
+			
 		}
 		return titleArray;
 	}
@@ -247,5 +251,77 @@ public class BookDAO {
 	}
 
 
+	public List<Integer> getAllBookIds() {
+		List<Integer> idsArray = new ArrayList<>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection con = DriverManager.getConnection												("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			String query = "SELECT bookid FROM book WHERE active = 1 ORDER BY title";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				idsArray.add(rs.getInt("bookid"));
+			}
+			stmt.close();
+			rs.close();
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		return idsArray;
+	}
+
+	public List<String> getAllTitles(List<Integer> ids, int length) {
+		List<String> titleArray = new ArrayList<>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection con = DriverManager.getConnection												("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			PreparedStatement stmt = null;
+			ResultSet rs = null;
+			for (int i = 0; i < length; i++) {
+				String query = "SELECT title FROM book WHERE bookid = ?";
+				stmt = con.prepareStatement(query);
+				stmt.setInt(1, ids.get(i));
+				rs = stmt.executeQuery();
+				if (rs.next()) {
+					titleArray.add(rs.getString("title"));
+				}
+				rs.close();
+				stmt.close();
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		return titleArray;
+	}
+
+	public List<String> getAllAuthors(List<Integer> ids, int length) {
+		List<String> authorArray = new ArrayList<>();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Connection con = DriverManager.getConnection												("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+			PreparedStatement stmt;
+			ResultSet rs;
+			for (int i = 0; i < length; i++) {
+				stmt = null;
+				rs = null;
+				String query = "SELECT author FROM book WHERE bookid = ?";
+				stmt = con.prepareStatement(query);
+				stmt.setInt(1, ids.get(i));
+				rs = stmt.executeQuery();
+				if (rs.next()) {
+					authorArray.add(rs.getString("author"));
+				}
+				rs.close();
+				stmt.close();
+			}
+
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace(System.out);
+		}
+		return authorArray;
+	}
 
 }

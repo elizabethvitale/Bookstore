@@ -116,7 +116,7 @@ public class editBook extends HttpServlet {
 
 			con.close();
 			if (row > 0) {
-				response.sendRedirect("/admin/editbook_confirmation.jsp");
+				response.sendRedirect("/admin/managebooks.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
