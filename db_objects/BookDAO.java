@@ -61,28 +61,28 @@ public class BookDAO {
 			PreparedStatement stmt = null;
 			String query = null;
 			if (term.equals("bookid")){ 
-				query = "SELECT bookid FROM book WHERE bookid = ? AND WHERE active = 1";
+				query = "SELECT bookid FROM book WHERE bookid = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				int keywordInt = Integer.parseInt(keyword);
 				stmt.setInt(1, keywordInt);
 			} else if (term.equals("title")) {
-				query = "SELECT bookid FROM book WHERE title = ? AND WHERE active = 1";
+				query = "SELECT bookid FROM book WHERE title = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if (term.equals("author")) {
-				query = "SELECT bookid FROM book WHERE author = ? AND WHERE active = 1";
+				query = "SELECT bookid FROM book WHERE author = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if (term.equals("isbn")) {
-				query = "SELECT bookid FROM book WHERE isbn = ? AND WHERE active = 1";
+				query = "SELECT bookid FROM book WHERE isbn = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if (term.equals("category")) {
-				query = "SELECT bookid FROM book WHERE category = ? AND WHERE active = 1";
+				query = "SELECT bookid FROM book WHERE category = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if (term.equals("publisher")) {
-				query = "SELECT bookid FROM book WHERE publisher = ? AND WHERE active = 1";
+				query = "SELECT bookid FROM book WHERE publisher = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				stmt.setString(1, keyword);
 			} else if(term.equals("")){
