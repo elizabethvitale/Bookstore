@@ -67,56 +67,56 @@ if(pass.equals(null) | !pass.equals("YES")){
         <div class="details">
             <form enctype="multipart/form-data" action="/addBook" method="post">
                 <div>
-                    <label for="image"></label>
-                    <input type="file" id="image" name="image" accept="image/png, image/jpeg" required>
+                    <label class="input_label" for="image">Image: </label>
+                    <input class="book_input" type="file" id="image" name="image" accept="image/png, image/jpeg" required>
                 </div>
                 <div>
-                    <label>Title: </label>
-                    <input type="text" name="title" required>
+                    <label class="input_label">Title: </label>
+                    <input class="book_input" type="text" name="title" required>
                 </div>
                 <div>
-                    <label>Author: </label>
-                    <input type="text" name="author" required>
+                    <label class="input_label">Author: </label>
+                    <input class="book_input" type="text" name="author" required>
                 </div>
                 <div>
-                    <label>ISBN: </label>
-                    <input type="text" name="isbn" required>
+                    <label class="input_label">ISBN: </label>
+                    <input class="book_input" type="text" name="isbn" required>
                 </div>
 		<div>
-			<label>Category: </label>
-			<input type="text" name="category" required>
+			<label class="input_label">Category: </label>
+			<input class="book_input" type="text" name="category" required>
 		</div>
 		<div>
-			<label>Edition: </label>
-			<input type="text" name="edition" required>
+			<label class="input_label">Edition: </label>
+			<input class="book_input" type="text" name="edition" required>
 		</div>
 		<div>
-			<label>Publisher: </label>
-			<input type="text" name="publisher" required>
+			<label class="input_label">Publisher: </label>
+			<input class="book_input" type="text" name="publisher" required>
 		</div>
 		<div>
-			<label>Publication year: </label>
-			<input type="number" name="year" required>
+			<label class="input_label">Publication year: </label>
+			<input class="book_input" type="number" name="year" required>
 		</div>
 		<div>
-			<label>Initial quantity: </label>
-			<input type="number" name="quantity" required>
+			<label class="input_label">Initial quantity: </label>
+			<input class="book_input" type="number" name="quantity" required>
 		</div>
 		<div>
-			<label>Minimum threshold: </label>
-			<input type="number" name="m_threshold" required>
+			<label class="input_label">Minimum threshold: </label>
+			<input class="book_input" type="number" name="m_threshold" required>
 		</div>
                 <div>
-                    <label>Price (Retail): </label>
-                    <input type="number" min="0" max="100" name="r_price" step=".01" required>
+                    <label class="input_label">Price (Retail): </label>
+                    <input class="book_input" type="number" min="0" max="100" name="r_price" step=".01" required>
                 </div>
 		<div>
-			<label>Price (Wholesale): </label>
-			<input type="number" min="0" max="100" name="w_price" step=".01" required>
+			<label class="input_label">Price (Wholesale): </label>
+			<input class="book_input" type="number" min="0" max="100" name="w_price" step=".01" required>
 		</div>
                 <div>
                     <label>Description:</label>
-                    <textarea name="description"></textarea>
+                    <textarea class="desc" name="description"></textarea>
                 </div>
                 <button class="button" type="submit">Add Book</button>
             </form>

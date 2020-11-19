@@ -66,60 +66,60 @@ if(pass.equals(null) | !pass.equals("YES")){
 			<input type="hidden" name="bookid" value="${book.bookid}">
 		</div>
 		<div>
-			<label>Image: </label>
-			<img src="data:image/jpg;base64,${book.base64Image}"/>
+			<label class="input_label">Image: </label>
+			<img src="data:image/jpg;base64,${book.base64Image}" height="400" width="250"/>
 		</div>
 		<div>
-			<label>New image: </label>
-                    	<input type="file" id="image" name="image" accept="image/jpeg">
+			<label class="input_label">New image: </label>
+                    	<input class="book_input" type="file" id="image" name="image" accept="image/jpeg">
 		</div>
 		<div>
-                    <label>Title: </label>
-                    <input type="text" name="title" value="${book.title}" required>
+                    <label class="input_label">Title: </label>
+                    <input class="book_input" type="text" name="title" value="${book.title}" required>
                 </div>
                 <div>
-                    <label>Author: </label>
-                    <input type="text" name="author" value="${book.author}" required>
+                    <label class="input_label">Author: </label>
+                    <input class="book_input" type="text" name="author" value="${book.author}" required>
                 </div>
                 <div>
-                    <label>ISBN: </label>
-                    <input type="text" name="isbn"  value="${book.isbn}" required>
+                    <label class="input_label">ISBN: </label>
+                    <input class="book_input" type="text" name="isbn"  value="${book.isbn}" required>
                 </div>
 		<div>
-			<label>Category: </label>
-			<input type="text" name="category" value="${book.category}" required>
+			<label class="input_label">Category: </label>
+			<input class="book_input" type="text" name="category" value="${book.category}" required>
 		</div>
 		<div>
-			<label>Edition: </label>
-			<input type="text" name="edition" value="${book.edition}" required>
+			<label class="input_label">Edition: </label>
+			<input class="book_input" type="text" name="edition" value="${book.edition}" required>
 		</div>
 		<div>
-			<label>Publisher: </label>
-			<input type="text" name="publisher" value="${book.publisher}" required>
+			<label class="input_label">Publisher: </label>
+			<input class="book_input" type="text" name="publisher" value="${book.publisher}" required>
 		</div>
 		<div>
-			<label>Publication year: </label>
-			<input type="number" name="year" value="${book.year}" required>
+			<label class="input_label">Publication year: </label>
+			<input class="book_input" type="number" name="year" value="${book.year}" required>
 		</div>
 		<div>
-			<label>Initial quantity: </label>
-			<input type="number" name="quantity" value="${book.quantity}" required>
+			<label class="input_label">Initial quantity: </label>
+			<input class="book_input" type="number" name="quantity" value="${book.quantity}" required>
 		</div>
 		<div>
-			<label>Minimum threshold: </label>
-			<input type="number" name="m_threshold" value="${book.minThreshold}" required>
+			<label class="input_label">Minimum threshold: </label>
+			<input class="book_input" type="number" name="m_threshold" value="${book.minThreshold}" required>
 		</div>
                 <div>
-                    <label>Price (Retail): </label>
-                    <input type="number" min="0" max="100" name="r_price" step=".01" value="${book.rprice}" required>
+                    <label class="input_label">Price (Retail): </label>
+                    <input class="book_input" type="number" min="0" max="100" name="r_price" step=".01" value="${book.rprice}" required>
                 </div>
 		<div>
-			<label>Price (Wholesale): </label>
-			<input type="number" min="0" max="100" name="w_price" step=".01" value="${book.wprice}" required>
+			<label class="input_label">Price (Wholesale): </label>
+			<input class="book_input" type="number" min="0" max="100" name="w_price" step=".01" value="${book.wprice}" required>
 		</div>
                 <div>
-                    <label>Description:</label>
-                    <textarea name="description">${book.description}</textarea>
+                    <label class="input_label">Description:</label>
+                    <textarea class="desc" name="description">${book.description}</textarea>
                 </div>
                 <input type="submit" value="Edit Book">
             </form>
