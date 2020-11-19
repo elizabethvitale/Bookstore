@@ -1,6 +1,8 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
-
+<%@ page import="com.ugabookstore.BookDAO"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,8 +65,47 @@ if(pass.equals(null) | !pass.equals("YES")){
 </header>
 <main>
     <h1>Manage Books</h1>
-	<h2><a href="addbook.jsp">Add Book</a></h2>
-	<h2><a href="searchbook.jsp">Edit/Delete Book</a></h2>
+<section class="book">
+<%
+try {
+	BookDAO dao = new BookDAO();
+        List<Integer> bookIds = new ArrayList<Integer>(dao.getAllBookIds());
+	List<String> titles = new ArrayList<String>(dao.getAllTitles(bookIds, bookIds.size()));
+	List<String> authors = new ArrayList<String>(dao.getAllAuthors(bookIds, bookIds.size()));
+	if (bookIds.size() > 0) {
+%>
+	<table class="table">
+		<thead class="thead-dark">
+		<tr>
+			<th scope="col">Title</th>
+			<th scope="col">Author</th>
+			<th scope="col">Edit</th>
+		</tr>
+		</thead>
+		<tbody>
+			<%
+			for(int i = 0; i < bookIds.size(); i++) { 
+			%>
+			<tr>
+			<form action="/getBook" method="get">
+				<th scope="row"><% out.print(titles.get(i)); %>
+				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid"></th>
+				<td><% out.print(authors.get(i)); %></td>
+				<td><input type="submit" value="Edit"></td>
+			</form>
+			</tr>
+			<% } %>
+		</tbody>
+	</table>
+<%
+	}
+} catch (Exception e) {
+	e.printStackTrace(System.out);
+	response.sendRedirect("/errorpages/connection_error.jsp");
+}
+%>
+</section>
+	<a href="addbook.jsp"><button class="button">Add Book</button></a>
 </main>
 <footer>
     <div>
