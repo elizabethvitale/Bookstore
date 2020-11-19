@@ -35,6 +35,13 @@ public class submitPromo extends HttpServlet {
 		String percent = request.getParameter("percent");
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
+		Integer id2 = 0;
+		try{
+			id2 = Integer.parseInt(id);
+		}catch(Exception e){
+			response.sendRedirect("/errorpages/promoCodeIntOnly.jsp");
+			return;
+		}
 		try{
 			int percent2 = Integer.parseInt(percent);
 			if(percent2 >= 100 || percent2 <=0){
