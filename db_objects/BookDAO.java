@@ -179,9 +179,8 @@ public class BookDAO {
 				rs = stmt.executeQuery();
 				rs.next();
 				titleArray.add(rs.getString("title"));
-				rs.close();
-				stmt.close();
 			}
+			rs.close();
 			stmt.close();
 			con.close();
 		} catch (Exception e) {
