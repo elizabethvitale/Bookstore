@@ -118,7 +118,7 @@ if(pass.equals(null) | !pass.equals("YES")){
                     <label>Description:</label>
                     <textarea name="description"></textarea>
                 </div>
-                <button type="submit">Add Book</button>
+                <button class="button" type="submit">Add Book</button>
             </form>
         </div>
     </section>

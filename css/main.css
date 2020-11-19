@@ -179,6 +179,7 @@ main .titles{
   padding: 6px 18px;
   outline: none;
   font-weight: bold;
+  margin: 4px;
 }
 
 div .view{
@@ -518,4 +519,9 @@ HTML CSS JSResult
 }
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
+}
+
+.editFontcolor {
+  color: #b3011b;
+  font-weight: 600;
 }

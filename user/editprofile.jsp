@@ -53,7 +53,7 @@ cardType2 = String.valueOf(httpSession.getAttribute("cardType2"));
 expDate3 = String.valueOf(httpSession.getAttribute("expirationDate3"));
 cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
 if(enroll.equals("true")){
-	holder="checked";	
+	holder="checked";
 }
 if(!cardType.equals("null")){
 	cardNum= "**** **** **** ****";
@@ -120,7 +120,7 @@ if(street.equals("null")){
       </div>
     </header>
     <main>
-      <section id='authBox'>
+      <section class='editauthBox'>
         <h1>Edit Profile</h1>
         <div class="tab">
           <button class="tablinks" onclick="editProfile(event, 'EditPersonalInfo')" id="defaultOpen">Edit Personal Info</button>
@@ -132,25 +132,25 @@ if(street.equals("null")){
         <form action="/updateUserInfo" method="post">
           <div id="EditPersonalInfo" class="tabcontent">
             <h3>Personal Info</h3>
-		<p>Email Address</p>
+		<p class="editFontcolor">Email Address</p>
 		<p><%=email%></p>
 
 		<div>
-                <label>First Name</label>
+                <label class="editFontcolor">First Name</label>
                 <br>
                 <input type="text" name="firstName" value="<%=firstName%>">
               </div>
               <br>
 
               <div>
-                <label>Last Name</label>
+                <label class="editFontcolor">Last Name</label>
                 <br>
                 <input type="text" name="lastName" value="<%=lastName%>">
               </div>
               <br>
 
               <div>
-                <label>Phone number</label>
+                <label class="editFontcolor">Phone number</label>
                 <br>
                 <input type="text" name="phone" value="<%=phone%>">
               </div>
@@ -167,19 +167,19 @@ if(street.equals("null")){
             <div id="ChangePassword" class="tabcontent">
               <h3>Change Password</h3>
               <div>
-               <label>Current Password</label>
+               <label class="editFontcolor">Current Password</label>
                 <br>
                 <input type="password" name="currentPwd">
               </div>
               <br>
               <div>
-                <label>New Password</label>
+                <label class="editFontcolor">New Password</label>
                 <br>
                 <input type="password" name="newPwd1">
               </div>
               <br>
               <div>
-                <label>Confirm New Password</label>
+                <label class="editFontcolor">Confirm New Password</label>
                 <br>
                 <input type="password" name="newPwd2">
               </div>
@@ -192,19 +192,19 @@ if(street.equals("null")){
           <form action="/updateCard" method="post">
               <h3>Payment Info</h3>
               <div>
-                <label>Card type*</label>
+                <label class="editFontcolor">Card type*</label>
                 <br>
                 <input type="text" name="cardType" value="<%=cardType%>">
               </div>
               <br>
               <div>
-                <label>Number*</label>
+                <label class="editFontcolor">Number*</label>
                 <br>
                 <input type="text" name="cardNum" value="<%=cardNum%>">
               </div>
               <br>
               <div>
-                <label>Exp date*</label>
+                <label class="editFontcolor">Exp date*</label>
                 <br>
                 <input type="text" name="expirationDate" value="<%=expDate%>">
               </div>
@@ -267,25 +267,25 @@ $(document).ready(function() {
             <div id="Address" class="tabcontent">
               <h3>Address</h3>
               <div>
-                <label>Street*</label>
+                <label class="editFontcolor">Street*</label>
                 <br>
                 <input type="text" name="street" value="<%=street%>">
               </div>
               <br>
               <div>
-                <label>City*</label>
+                <label class="editFontcolor">City*</label>
                 <br>
                 <input type="text" name="city" value="<%=city%>">
               </div>
               <br>
               <div>
-                <label>State*</label>
+                <label class="editFontcolor">State*</label>
                 <br>
                 <input type="text" name="state" value="<%=state%>">
               </div>
               <br>
               <div>
-                <label>Zip code*</label>
+                <label class="editFontcolor">Zip code*</label>
                 <br>
                 <input type="text" name="zip" value="<%=zipcode%>">
               </div>
@@ -299,19 +299,19 @@ $(document).ready(function() {
           <div id="Personal Info" class="tabcontent">
             <h3>Personal Info</h3>
             <div>
-             <label>Name</label>
+             <label class="editFontcolor">Name</label>
               <br>
               <input type="text">
             </div>
             <br>
             <div>
-              <label>Phone number</label>
+              <label class="editFontcolor">Phone number</label>
               <br>
               <input type="text">
             </div>
             <br>
             <div>
-              <label>Email address</label>
+              <label class="editFontcolor">Email address</label>
               <br>
               <input type="text">
             </div>

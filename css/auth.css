@@ -25,6 +25,15 @@ main {
   width: 350px;
   margin: 0 auto;
   border: 1px solid lightgrey;
+  transform: translate(125px, 10px);
+}
+
+.editauthBox {
+  background-color: white;
+  padding: 10px;
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid lightgrey;
 }
 
 .tab {
