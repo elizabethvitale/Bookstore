@@ -296,6 +296,15 @@
 		<url-pattern>/displayCart</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+                <servlet-name>checkStock</servlet-name>
+                <servlet-class>com.ugabookstore.checkStock</servlet-class>
+        </servlet>
+        <servlet-mapping>
+		<servlet-name>checkStock</servlet-name>
+		<url-pattern>/checkStock</url-pattern>
+	</servlet-mapping>
+
 
 	
 

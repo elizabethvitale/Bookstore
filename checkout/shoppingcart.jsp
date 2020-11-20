@@ -130,7 +130,9 @@
     <form action="/checkPromo" method="get">
 	    <input type="text" name="code" placeholder=<%=promo%> /><button class="button" type="submit">Apply</button>
     </form>
-    <a href="/checkout/checkout-billing.jsp"><button class="button" style="float: right">Checkout (Total: $<%=formattedDouble%>)</button></a>
+    <form action="/checkStock" method="get">
+	    <button class="button" type="submit" style="float: right">Checkout (Total: $<%=formattedDouble%>)</button>
+    </form>
     <br><br><br>
 </main>
 <footer>
