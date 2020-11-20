@@ -20,6 +20,7 @@
 			<script>if(performance.navigation.type == 2){
 	location.reload(true);
 		 }</script>
+			
 <header>
     <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
@@ -94,9 +95,10 @@
 				int id = book.getBookid();
 				System.out.println(id);
 				double price = book.getRprice();
+				String formatting = String.format("%.02f", price);
 				total = total + price;%>
 				
-				<td><h2><%=title%><h2><h4><%=author%></h4></td> <td>$<%=price%>0</td>
+				<td><h2><%=title%><h2><h4><%=author%></h4></td> <td>$<%=formatting%></td>
 						<td>	<form action="/removeCartItem" method="get">
 								<input type="hidden" name="holder" value=<%=id%>>
 							<button type="submit" class=button>Remove</button>
@@ -109,9 +111,26 @@
 			%>
 
 	</table>
-    <br>
-    <input type="text" placeholder="Promo" /><button class="button">Apply</button>
-    <a href="checkout-billing.html"><button class="button" style="float: right">Checkout (Total: $<%=total%>0)</button></a>
+
+	<%
+	HttpSession session = request.getSession(false);
+	String promo = "Promo Code";
+	if(session!=null){
+	try{
+	int discount = (Integer)session.getAttribute("discount");
+	String promocode = (String)session.getAttribute("promocode");
+	total = (100-discount)*.01*total;
+	promo = promocode;
+	}catch(Exception e){
+	System.out.println(e);
+	}}
+	String formattedDouble = String.format("%.02f", total);
+	%>
+    <form action="/checkPromo" method="get">
+	    <input type="text" name="code" placeholder=<%=promo%> /><button class="button" type="submit">Apply</button>
+    </form>
+    <a href="checkout-billing.html"><button class="button" style="float: right">Checkout (Total: $<%=formattedDouble%>)</button></a>
+    <br><br><br>
 </main>
 <footer>
     <div>

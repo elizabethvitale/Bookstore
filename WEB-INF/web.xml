@@ -277,6 +277,19 @@
         <servlet-mapping>
                 <servlet-name>emptyCart</servlet-name>
 		<url-pattern>/emptyCart</url-pattern>
-        </servlet-mapping>
+	</servlet-mapping>
+
+	<servlet>
+                <servlet-name>checkPromo</servlet-name>
+                <servlet-class>com.ugabookstore.checkPromo</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>checkPromo</servlet-name>
+		<url-pattern>/checkPromo</url-pattern>
+	</servlet-mapping>
+
+
+
+	
 
 </web-app>
