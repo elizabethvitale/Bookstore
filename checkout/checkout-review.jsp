@@ -120,7 +120,7 @@
 		</div>
 	    </div>
 
-            <form action="checkout-confirmation.jsp" method="post">
+            <form action="/checkout/checkout-confirmation.jsp" method="post">
                 <button class="btn btn-success btn-lg btn-block" type="submit">Complete Order</button>
             </form>
         </div>
