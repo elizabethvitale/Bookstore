@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="mb-3">Billing</h4>
-                    <form action="checkout-shipping.html" class="needs-validation" novalidate="">
+                    <form action="checkout-shipping.jsp" class="needs-validation" novalidate="">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">First name</label>

@@ -125,11 +125,12 @@
 	System.out.println(e);
 	}}
 	String formattedDouble = String.format("%.02f", total);
+	session.setAttribute("TOTAL", formattedDouble);
 	%>
     <form action="/checkPromo" method="get">
 	    <input type="text" name="code" placeholder=<%=promo%> /><button class="button" type="submit">Apply</button>
     </form>
-    <a href="checkout-billing.html"><button class="button" style="float: right">Checkout (Total: $<%=formattedDouble%>)</button></a>
+    <a href="/checkout/checkout-billing.jsp"><button class="button" style="float: right">Checkout (Total: $<%=formattedDouble%>)</button></a>
     <br><br><br>
 </main>
 <footer>

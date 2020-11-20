@@ -287,7 +287,14 @@
                 <servlet-name>checkPromo</servlet-name>
 		<url-pattern>/checkPromo</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+                <servlet-name>displayCart</servlet-name>
+                <servlet-class>com.ugabookstore.displayCart</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>displayCart</servlet-name>
+		<url-pattern>/displayCart</url-pattern>
+	</servlet-mapping>
 
 
 	

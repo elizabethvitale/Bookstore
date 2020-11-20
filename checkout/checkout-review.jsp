@@ -1,3 +1,8 @@
+<%@ page import="com.ugabookstore.User"%>
+<%@ page import="com.ugabookstore.backendUser"%>
+<%@ page import="com.ugabookstore.Book"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +54,14 @@
     </div>
 </header>
 <main>
+
+
+
+
+
+
+
+
     <section class="tracker">
         <ul>
             <li>1. Payment</li>
@@ -63,46 +76,51 @@
                 <div class="col-md-12 mb-4">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Your cart</span>
-                        <span class="badge badge-secondary badge-pill">3</span>
                     </h4>
                     <ul class="list-group mb-3">
+	<%
+	System.out.println(session.getAttribute("TOTAL"));
+	
+	List<String>images = new ArrayList<>();
+	List<Book> books = (List<Book>)request.getAttribute("booksCart");
+	System.out.println(books);
+	double total = 0;
+	try{
+	for(int i=0; i < books.size(); i++){%>
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
-                                <h6 class="my-0">Product name</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$12</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0">Second product</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$8</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0">Third item</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$5</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between bg-light">
+				    <%Book book = books.get(i);%>
+				    <h6 class="my-0"><%=book.getTitle()%></h6>
+				    <% total = total + book.getRprice(); %>
+					<small class="text-muted"><%=book.getDescription()%></small>
+			    </div>
+			    <span class="text-muted">$<%=String.format("%.02f", book.getRprice())%></span>
+			</li>
+			<%}}catch(Exception e){
+			System.out.println(e);
+			}%>
+                                <li class="list-group-item d-flex justify-content-between bg-light">
                             <div class="text-success">
                                 <h6 class="my-0">Promo code</h6>
-                                <small>EXAMPLECODE</small>
+				<small>"<%=session.getAttribute("promocode")%>"</small>
                             </div>
-                            <span class="text-success">-$5</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span>Total (USD)</span>
-                            <strong>$20</strong>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+			    <% String discount="";
+			    	int dis = (Integer)session.getAttribute("discount");
+				total = total*dis*.01;
+				discount = String.format("%.02f", total);
 
-            <form action="checkout-confirmation.html" method="post">
+			    %>
+			    <span class="text-success">-$<%=discount%></span></li>
+				                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+
+			    <strong>$<%=session.getAttribute("TOTAL")%></strong>
+                        </li>
+		    </ul>
+		</div>
+	    </div>
+
+            <form action="checkout-confirmation.jsp" method="post">
                 <button class="btn btn-success btn-lg btn-block" type="submit">Complete Order</button>
             </form>
         </div>

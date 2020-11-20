@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
  import javax.servlet.http.HttpSession;
-@WebServlet("/viewCart")
-public class viewCart
+@WebServlet("/displayCart")
+public class displayCart
        	extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,12 +42,12 @@ public class viewCart
 		request.setAttribute("booksCart", books);
 		request.setAttribute("imagesCart", blobs);
 		session.setAttribute("booksCart", books);
-            	String page = "/checkout/shoppingcart.jsp";
+            	String page = "/checkout/checkout-review.jsp";
             	RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
             	requestDispatcher.forward(request, response);
         } catch (Exception ex) {
             	ex.printStackTrace(System.out);
-		response.sendRedirect("/errorpages/editbook_error.jsp");
+		response.sendRedirect("/errorpages/checkout_error.jsp");
         }
 
 	
