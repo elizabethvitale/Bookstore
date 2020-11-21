@@ -8,6 +8,14 @@
 
 <display-name>UGA BOOKSTORE</display-name>
 	<servlet>
+		<servlet-name>placeOrder</servlet-name>
+		<servlet-class>com.ugabookstore.placeOrder</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>placeOrder</servlet-name>
+		<url-pattern>/placeOrder</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>userLogin</servlet-name>
 		<servlet-class>com.ugabookstore.userLogin</servlet-class>
 	</servlet>
