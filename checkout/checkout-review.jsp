@@ -99,19 +99,24 @@
 			<%}}catch(Exception e){
 			System.out.println(e);
 			}%>
-                                <li class="list-group-item d-flex justify-content-between bg-light">
+			    <% String discount="";
+			    try{
+			    	int dis = (Integer)session.getAttribute("discount");
+				total = total*dis*.01;
+				discount = String.format("%.02f", total);
+				%>
+			<li class="list-group-item d-flex justify-content-between bg-light">
                             <div class="text-success">
                                 <h6 class="my-0">Promo code</h6>
 				<small>"<%=session.getAttribute("promocode")%>"</small>
                             </div>
-			    <% String discount="";
-			    	int dis = (Integer)session.getAttribute("discount");
-				total = total*dis*.01;
-				discount = String.format("%.02f", total);
-
-			    %>
-			    <span class="text-success">-$<%=discount%></span></li>
+			    			    <span class="text-success">-$<%=discount%></span></li>
 				                        <li class="list-group-item d-flex justify-content-between">
+				<%
+				}catch(Exception e){
+				
+				}
+			    %>
                             <span>Total (USD)</span>
 
 			    <strong>$<%=session.getAttribute("TOTAL")%></strong>
