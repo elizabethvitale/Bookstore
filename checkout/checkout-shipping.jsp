@@ -10,17 +10,15 @@
 <body>
 <%@ page session="false" %>
 <%
-HttpSession session = request.getSession(false);
 
-if (request.getSession(false) != null) {
-	session = request.getSession();
-	session.setAttribute("ordercard", request.getParameter("ordercard"));
-}
+HttpSession session = request.getSession(true);
+
 String firstName = String.valueOf(session.getAttribute("firstName"));
 String lastName = String.valueOf(session.getAttribute("lastName"));
 String street = String.valueOf(session.getAttribute("street"));
 String city = String.valueOf(session.getAttribute("city"));
 String zipcode = String.valueOf(session.getAttribute("zip"));
+
 %>
 <header>
     <div>

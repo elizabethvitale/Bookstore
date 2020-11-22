@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="../css/checkout.css">
 </head>
 <body>
+<%@ page session="false" %>
+<%
+HttpSession session = request.getSession();
+%>
 <header>
     <div>
         <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
@@ -124,8 +128,8 @@
 		    </ul>
 		</div>
 	    </div>
-
-            <form action="/checkout/checkout-confirmation.jsp" method="post">
+		<span><% out.print(session.getAttribute("ordercard"));%></span>
+            <form action="/placeOrder" method="post">
                 <button class="btn btn-success btn-lg btn-block" type="submit">Complete Order</button>
             </form>
         </div>

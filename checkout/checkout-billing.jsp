@@ -10,22 +10,13 @@
 <body>
 <%@ page session="false" %>
 <%
-HttpSession httpSession = request.getSession(false);
-String[] cards = null;
-if (request.getSession(false) != null) {
-	httpSession = request.getSession();
+HttpSession httpSession = request.getSession();
 	String cardNumber = String.valueOf(httpSession.getAttribute("cardNumber"));
 	String cardNumber2 = String.valueOf(httpSession.getAttribute("cardNumber2"));
 	String cardNumber3 = String.valueOf(httpSession.getAttribute("cardNumber3"));
-	cards = new String[]{cardNumber, cardNumber2, cardNumber3};
-} else {
-	response.sendRedirect("/errorpages/405.jsp");
-}
 
 String firstName = "";
 String lastName = "";
-String phone = "";
-String email="";
 String cardNum = "";
 String cardType = "";
 String expDate= "";
@@ -50,8 +41,6 @@ expDate2 = String.valueOf(httpSession.getAttribute("expirationDate2"));
 cardType2 = String.valueOf(httpSession.getAttribute("cardType2"));
 expDate3 = String.valueOf(httpSession.getAttribute("expirationDate3"));
 cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
-String[] dates = new String[]{expDate, expDate2, expDate3};
-String[] types = new String[]{cardType, cardType2, cardType3};
 
 %>
 <header>
@@ -105,20 +94,12 @@ String[] types = new String[]{cardType, cardType2, cardType3};
     </section>
     <section class="storedMethods">
         <h4>Stored Payment Methods</h4>
-	<form action="checkout-shipping.jsp" class="needs-validation" novalidate="" method="POST">
+	<form action="/setBilling" class="needs-validation" novalidate="" method="POST">
         <div class="method">
             <span style="flex-grow: 1;"></span>
 		<select class="custom-select d-block w-100" name="ordercard" required>
 		<option value="">Please select pay method:</option>
-<%
-for (int i = 0; i < 3; i++) {
-	if (cards[i].length() > 4) {
-%>
-		<option value="<%=cards[i]%>"><%out.print(types[i]);%> <%out.print(dates[i]);%></option>
-<%
-	}
-}
-%>
+		<option value=<%=cardNumber%>><%out.print(expDate);%> <%out.print(cardType);%></option>
 		</select>
         </div>
     </section>
@@ -130,14 +111,14 @@ for (int i = 0; i < 3; i++) {
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">First name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="<% out.print(firstName);%>" required>
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" value="<% out.print(firstName);%>" required>
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="lastName">Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="<% out.print(lastName);%>" required>
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" value="<% out.print(lastName);%>" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -172,7 +153,7 @@ for (int i = 0; i < 3; i++) {
                                 <label for="state">State</label>
                                 <select class="custom-select d-block w-100" name="state" id="state">
                                     <option value="">Choose...</option>
-                                    <option>California</option>
+                                    <option value="California">California</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
