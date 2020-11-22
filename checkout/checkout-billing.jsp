@@ -8,13 +8,59 @@
     <link rel="stylesheet" href="../css/checkout.css">
 </head>
 <body>
+<%@ page session="false" %>
+<%
+HttpSession httpSession = request.getSession(false);
+String[] cards = null;
+if (request.getSession(false) != null) {
+	httpSession = request.getSession();
+	String cardNumber = String.valueOf(httpSession.getAttribute("cardNumber"));
+	String cardNumber2 = String.valueOf(httpSession.getAttribute("cardNumber2"));
+	String cardNumber3 = String.valueOf(httpSession.getAttribute("cardNumber3"));
+	cards = new String[]{cardNumber, cardNumber2, cardNumber3};
+} else {
+	response.sendRedirect("/errorpages/405.jsp");
+}
+
+String firstName = "";
+String lastName = "";
+String phone = "";
+String email="";
+String cardNum = "";
+String cardType = "";
+String expDate= "";
+String street = "";
+String city = "";
+String state = "";
+String zipcode = "";
+String cardType2="";
+String expDate2="";
+String cardType3="";
+String expDate3="";
+
+firstName = String.valueOf(httpSession.getAttribute("firstName"));
+lastName = String.valueOf(httpSession.getAttribute("lastName"));
+phone = String.valueOf(httpSession.getAttribute("phone"));
+email = String.valueOf(httpSession.getAttribute("email"));
+city = String.valueOf(httpSession.getAttribute("city"));
+state = String.valueOf(httpSession.getAttribute("state"));
+zipcode = String.valueOf(httpSession.getAttribute("zip"));
+street = String.valueOf(httpSession.getAttribute("street"));
+expDate = String.valueOf(httpSession.getAttribute("expirationDate"));
+cardType = String.valueOf(httpSession.getAttribute("cardType"));
+expDate2 = String.valueOf(httpSession.getAttribute("expirationDate2"));
+cardType2 = String.valueOf(httpSession.getAttribute("cardType2"));
+expDate3 = String.valueOf(httpSession.getAttribute("expirationDate3"));
+cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
+
+%>
 <header>
     <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
             <div class="searchbox">
                 <input type="text" placeholder="Browse by author, by title..">
-                <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+                <a href="../search.jsp"><button type="button"><img src="../image/search.svg"></button></a>
             </div>
         </section>
         <section>
@@ -24,22 +70,22 @@
                         BROWSE
                     </li>
                     <li>
-                        <a href="cart.html"><img src="../image/shoppingcart.svg"></a>
+                        <a href="cart.jsp"><img src="../image/shoppingcart.svg"></a>
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/account.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.html">Login</a>
+                                <a href="../user/login.jsp">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.html">Register</a>
+                                <a href="../user/register.jsp">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.html">Edit Profile</a>
+                                <a href="../user/editprofile.jsp">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.html">Logout</a>
+                                <a href="../user/logout.jsp">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -59,9 +105,21 @@
     </section>
     <section class="storedMethods">
         <h4>Stored Payment Methods</h4>
+	<form action="checkout-shipping.jsp" class="needs-validation" novalidate="" method="POST">
         <div class="method">
-            <span style="flex-grow: 1;">Credit Card ending in 4890</span>
-            <button>Use this method</button>
+            <span style="flex-grow: 1;"></span>
+		<select class="custom-select d-block w-100" name="ordercard" required>
+<%
+for (int i = 0; i < 3; i++) {
+	if (cards[i] != null) {
+		String num = cards[i].substring(cards[i].length() - 4);
+%>
+		<option value="<%=cards[i]%>">Card Ending in <%out.print(num);%></option>
+<%
+	}
+}
+%>
+		</select>
         </div>
     </section>
     <section>
@@ -69,18 +127,17 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="mb-3">Billing</h4>
-                    <form action="checkout-shipping.jsp" class="needs-validation" novalidate="">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">First name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="<% out.print(firstName);%>" required>
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="lastName">Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="<% out.print(lastName);%>" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -89,21 +146,21 @@
 
                         <div class="mb-3">
                             <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                            <input type="text" class="form-control" value="<% out.print(street);%>" name="street" id="address" placeholder="1234 Main St" required>
                             <div class="invalid-feedback">
                                 Please enter your shipping address.
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                            <label for="address2">City</label>
+                            <input type="text" class="form-control" name="city" value="<% out.print(city);%>" id="address2" required>
                         </div>
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="country">Country</label>
-                                <select class="custom-select d-block w-100" id="country" required="">
+                                <select class="custom-select d-block w-100" id="country">
                                     <option value="">Choose...</option>
                                     <option>United States</option>
                                 </select>
@@ -113,7 +170,7 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="state">State</label>
-                                <select class="custom-select d-block w-100" id="state" required="">
+                                <select class="custom-select d-block w-100" name="state" id="state">
                                     <option value="">Choose...</option>
                                     <option>California</option>
                                 </select>
@@ -123,7 +180,7 @@
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="zip">Zip</label>
-                                <input type="text" class="form-control" id="zip" placeholder="" required="">
+                                <input type="text" class="form-control" id="zip" value="<% out.print(zipcode);%>" name="zipcode" required>
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>
