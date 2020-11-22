@@ -40,8 +40,6 @@ String expDate3="";
 
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
-phone = String.valueOf(httpSession.getAttribute("phone"));
-email = String.valueOf(httpSession.getAttribute("email"));
 city = String.valueOf(httpSession.getAttribute("city"));
 state = String.valueOf(httpSession.getAttribute("state"));
 zipcode = String.valueOf(httpSession.getAttribute("zip"));
@@ -52,6 +50,8 @@ expDate2 = String.valueOf(httpSession.getAttribute("expirationDate2"));
 cardType2 = String.valueOf(httpSession.getAttribute("cardType2"));
 expDate3 = String.valueOf(httpSession.getAttribute("expirationDate3"));
 cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
+String[] dates = new String[]{expDate, expDate2, expDate3};
+String[] types = new String[]{cardType, cardType2, cardType3};
 
 %>
 <header>
@@ -109,12 +109,12 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
         <div class="method">
             <span style="flex-grow: 1;"></span>
 		<select class="custom-select d-block w-100" name="ordercard" required>
+		<option value="">Please select pay method:</option>
 <%
 for (int i = 0; i < 3; i++) {
-	if (cards[i] != null) {
-		String num = cards[i].substring(cards[i].length() - 4);
+	if (cards[i].length() > 4) {
 %>
-		<option value="<%=cards[i]%>">Card Ending in <%out.print(num);%></option>
+		<option value="<%=cards[i]%>"><%out.print(types[i]);%> <%out.print(dates[i]);%></option>
 <%
 	}
 }
