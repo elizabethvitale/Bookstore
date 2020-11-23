@@ -19,6 +19,14 @@ public class displayCart
             throws ServletException, IOException {
         	
 	    	HttpSession session = request.getSession(false);
+		session.setAttribute("shipFName", request.getParameter("firstName"));
+		session.setAttribute("shipLName", request.getParameter("lastName"));
+		session.setAttribute("shipStreet", request.getParameter("street"));
+		session.setAttribute("shipCity", request.getParameter("city"));
+		session.setAttribute("shipState", request.getParameter("state"));
+		session.setAttribute("shipZip", request.getParameter("zipcode"));
+		System.out.println("SHIPPING INFO SET HERE IN DISPLAY CART");
+		
 		String cartid ="";
 		try{
 	    	cartid = (String)session.getAttribute("cartid");
@@ -42,6 +50,14 @@ public class displayCart
 		request.setAttribute("booksCart", books);
 		request.setAttribute("imagesCart", blobs);
 		session.setAttribute("booksCart", books);
+
+		session.setAttribute("shipFName", request.getParameter("firstName"));
+		session.setAttribute("shipLName", request.getParameter("lastName"));
+		session.setAttribute("shipStreet", request.getParameter("street"));
+		session.setAttribute("shipCity", request.getParameter("city"));
+		session.setAttribute("shipState", request.getParameter("state"));
+		session.setAttribute("shipZip", request.getParameter("zipcode"));
+
             	String page = "/checkout/checkout-review.jsp";
             	RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
             	requestDispatcher.forward(request, response);

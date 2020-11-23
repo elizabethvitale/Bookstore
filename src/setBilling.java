@@ -19,9 +19,26 @@ public class setBilling extends HttpServlet {
     public void doPost(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
+
+		String card = request.getParameter("ordercard");
+		String cardinfo = null;
+
+		if (card.equalsIgnoreCase(String.valueOf(session.getAttribute("cardNumber")))) {
+			cardinfo = String.valueOf(session.getAttribute("expirationDate")) + " " +
+					String.valueOf(session.getAttribute("cardType"));
+		} else if (card.equalsIgnoreCase(String.valueOf(session.getAttribute("cardNumber2")))) {
+			cardinfo = String.valueOf(session.getAttribute("expirationDate2")) + " " +
+					String.valueOf(session.getAttribute("cardType2"));
+		} else if (card.equalsIgnoreCase(String.valueOf(session.getAttribute("cardNumber3")))) {
+			cardinfo = String.valueOf(session.getAttribute("expirationDate3")) + " " +
+					String.valueOf(session.getAttribute("cardType3"));
+		} else if (card.equalsIgnoreCase("")) {
+			response.sendRedirect("/checkout/checkout-billing.jsp");
+		}
 
 		session.setAttribute("ordercard", request.getParameter("ordercard"));
+		session.setAttribute("cardinfo", cardinfo);
 		session.setAttribute("billFName", request.getParameter("firstName"));
 		session.setAttribute("billLName", request.getParameter("lastName"));
 		session.setAttribute("billStreet", request.getParameter("street"));

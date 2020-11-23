@@ -125,6 +125,20 @@ public class placeOrder extends HttpServlet {
 				String query2 = "delete from cart_item where cartid='" + cartId + "';";
 				stmt2.executeUpdate(query2);
 				con.close();	
+				session.removeAttribute("ordercard");
+				session.removeAttribute("cardinfo");
+				session.removeAttribute("billFName");
+				session.removeAttribute("billLName");
+				session.removeAttribute("billStreet");
+				session.removeAttribute("billCity");
+				session.removeAttribute("billState");
+				session.removeAttribute("billZip");
+				session.removeAttribute("shipFName");
+				session.removeAttribute("shipLName");
+				session.removeAttribute("shipStreet");
+				session.removeAttribute("shipCity");
+				session.removeAttribute("shipState");
+				session.removeAttribute("shipZip");
 				response.sendRedirect("/errorpages/placeorder_confirmation.jsp");
 				return;
 			} else {
@@ -139,7 +153,5 @@ public class placeOrder extends HttpServlet {
 
 
 	}
-
-
 
 }
