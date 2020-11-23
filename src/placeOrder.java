@@ -37,6 +37,7 @@ public class placeOrder extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			response.sendRedirect("/errorpages/placeorder_error.jsp");
+			return;
 		}
 
 		int userId = (int) session.getAttribute("customerid");
@@ -62,6 +63,7 @@ public class placeOrder extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			response.sendRedirect("/errorpages/placeorder_error.jsp");
+			return;
 		}
 
 		String date = null;
@@ -72,6 +74,7 @@ public class placeOrder extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace(System.out);
 			response.sendRedirect("/errorpages/placeorder_error.jsp");
+			return;
 		}
 		
 		int promoid = -1;
@@ -119,8 +122,10 @@ public class placeOrder extends HttpServlet {
 				Transaction trans = new Transaction();
 				trans.createTransaction(userId, orderId, cartId, firstName, lastName,date, grandTotal, email);
 				response.sendRedirect("/errorpages/placeorder_confirmation.jsp");
+				return;
 			} else {
 				response.sendRedirect("/errorpages/placeorder_error.jsp");
+				return;
 			}
 
 		} catch (Exception e) {

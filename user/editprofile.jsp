@@ -1,5 +1,9 @@
 <%@ page import="com.ugabookstore.User"%>
 <%@ page import="com.ugabookstore.backendUser"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Statement"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +16,6 @@
   <body>
 <%@ page session="false" %>
 <%
-//HttpSession session = request.getSession(false);
 String firstName = "";
 String lastName = "";
 String phone = "";
@@ -25,6 +28,7 @@ String city = "";
 String state = "";
 String zipcode = "";
 int userId = -1;
+String customerid= "";
 String cardType2="";
 String expDate2="";
 String cardType3="";
@@ -37,6 +41,7 @@ System.out.println("entered");
 }
 if(request.getSession(false) != null){
     HttpSession httpSession = request.getSession();
+    customerid = String.valueOf(httpSession.getAttribute("customerid"));
 firstName = String.valueOf(httpSession.getAttribute("firstName"));
 lastName = String.valueOf(httpSession.getAttribute("lastName"));
 enroll = String.valueOf(httpSession.getAttribute("enroll"));
@@ -320,14 +325,52 @@ $(document).ready(function() {
           </div>
         </form>
         <form action="" method="post">
-          <div id="OrderHistory" class="tabcontent">
-            <div>
-              <img src="../image/books/theEveningandtheMorning.jpg">
-              <h2>Order confirmation number: 98362043</h2>
-              <h2>Total Price: 31.08</h2>
-              <h2>Date Purchased: 9/31/2020</h2>
-              <button type="button" class="button">Reorder</button>
-            </div>
+         
+<%
+Connection con;
+String table="";
+String query = "select * from orders where userid = '" + customerid + "';";
+table = "<table class='table'> <thead class='thead-dark'> <tr> <th scope='col'>Order Id</th> <th scope='col'>Books Ordered</th> <th scope='col'>Confirmation Number</th> <th scope='col'>Order Status</th><th scope='col'>Reorder</th></tr> </thead>";
+Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
+Statement stmt = con.createStatement();
+ResultSet rs = stmt.executeQuery(query);
+while(rs.next()){
+	int order = rs.getInt("orderid");
+	table = table + "<tr><td>" + order + "</td>";
+		//<td>BOOKS HERE</td><td>" + order + customerid + "</td><td>Being Shipped</td><td><button>Add to cart</button></tr>";
+	String query2 = "select * from transaction where orderid='" + order+ "';";
+	stmt = con.createStatement();
+	ResultSet ra = stmt.executeQuery(query2);
+	table = table + "<td>";
+	while(ra.next()){
+	int quantity = ra.getInt("quantity");
+	int bookid = ra.getInt("bookid");
+	String query3 = "select title from book where bookid='" + bookid + "';";
+	stmt = con.createStatement();
+	ResultSet rb = stmt.executeQuery(query3);
+	String title = "";
+	if(rb.next()){
+		title = rb.getString("title");
+	}
+	if(quantity==1){
+	//table = table + "<tr><td>" + quantity + " copy of " + title + "</td></tr>";
+	table = table  + "<p>" + quantity + " copy of " + title + "</p>";
+	}else{
+	//table = table + "<tr><td>" + quantity + " copies of " + title + "</td></tr>";
+	table = table + "<p>" + quantity + " copies of " + title + "</p>";
+	}
+	}
+	table = table + "</td>";
+table = table + "<td>" + order + customerid + "</td><td>Being Shipped</td><td><button>Add Books to Cart</button></td>";
+	table = table + "</tr>";
+}
+table = table + "</table>";
+stmt.close();
+con.close();
+%>
+	<div id="OrderHistory" class="tabcontent">
+		  <%=table%>
             </div>
           </div>
         </form>
