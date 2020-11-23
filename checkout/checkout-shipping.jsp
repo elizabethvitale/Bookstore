@@ -78,14 +78,14 @@ String zipcode = String.valueOf(session.getAttribute("zip"));
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">First name</label>
-                                <input type="text" class="form-control" value="<% out.print(firstName);%>" id="firstName" placeholder="" value="" required>
+                                <input type="text" class="form-control" value="<%=firstName%>" id="firstName" name="firstName" required>
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="lastName">Last name</label>
-                                <input type="text" class="form-control" value="<% out.print(lastName);%>" id="lastName" placeholder="" value="" required>
+                                <input type="text" class="form-control" value="<%=lastName%>" id="lastName" name="lastName" required>
                                 <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div>
@@ -94,7 +94,7 @@ String zipcode = String.valueOf(session.getAttribute("zip"));
 
                         <div class="mb-3">
                             <label for="address">Address</label>
-                            <input type="text" value="<% out.print(street);%>" class="form-control" id="address" placeholder="1234 Main St" required>
+                            <input type="text" value="<%=street%>" name="street" class="form-control" id="address" required>
                             <div class="invalid-feedback">
                                 Please enter your shipping address.
                             </div>
@@ -102,7 +102,7 @@ String zipcode = String.valueOf(session.getAttribute("zip"));
 
                         <div class="mb-3">
                             <label for="address2">City</label>
-                            <input type="text" value="<% out.print(city);%>" class="form-control" id="address2" required>
+                            <input type="text" value="<%=city%>" name="city" class="form-control" id="address2" required>
                         </div>
 
                         <div class="row">
@@ -118,7 +118,7 @@ String zipcode = String.valueOf(session.getAttribute("zip"));
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="state">State</label>
-                                <select class="custom-select d-block w-100" id="state" required>
+                                <select class="custom-select d-block w-100" name="state" id="state" required>
                                     <option value="">Choose...</option>
                                     <option>California</option>
                                 </select>
@@ -128,7 +128,7 @@ String zipcode = String.valueOf(session.getAttribute("zip"));
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="zip">Zip</label>
-                                <input type="text" value="<% out.print(zipcode);%>" class="form-control" id="zip" placeholder="" required="">
+                                <input type="text" value="<%=zipcode%>" class="form-control" id="zip" name="zipcode">
                                 <div class="invalid-feedback">
                                     Zip code required.
                                 </div>

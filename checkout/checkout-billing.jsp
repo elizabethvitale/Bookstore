@@ -99,7 +99,18 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
             <span style="flex-grow: 1;"></span>
 		<select class="custom-select d-block w-100" name="ordercard" required>
 		<option value="">Please select pay method:</option>
+<% if (!(cardNumber.equalsIgnoreCase("null"))) { %>
 		<option value=<%=cardNumber%>><%out.print(expDate);%> <%out.print(cardType);%></option>
+<%
+} %>
+<% if (!(cardNumber2.equalsIgnoreCase("null"))) { %>
+		<option value=<%=cardNumber2%>><%out.print(expDate2);%> <%out.print(cardType2);%></option>
+<%
+} %>
+<% if (!(cardNumber3.equalsIgnoreCase("null"))) { %>
+		<option value=<%=cardNumber3%>><%out.print(expDate3);%> <%out.print(cardType3);%></option>
+<%
+} %>
 		</select>
         </div>
     </section>

@@ -16,14 +16,22 @@
 <%@ page session="false" %>
 <%
 HttpSession session = request.getSession();
+
+String billName = String.valueOf(session.getAttribute("billFName")) + " " + String.valueOf(session.getAttribute("billLName"));
+String billAddress = String.valueOf(session.getAttribute("billStreet")) + ", " + String.valueOf(session.getAttribute("billCity")) + ", " + String.valueOf(session.getAttribute("billState")) + ", " + String.valueOf(session.getAttribute("billZip"));
+String cardinfo = String.valueOf(session.getAttribute("cardinfo"));
+
+String shipName = String.valueOf(session.getAttribute("shipFName")) + " " + String.valueOf(session.getAttribute("shipLName"));
+String shipAddress = String.valueOf(session.getAttribute("shipStreet")) + ", " + String.valueOf(session.getAttribute("shipCity")) + ", " + String.valueOf(session.getAttribute("shipState")) + ", " + String.valueOf(session.getAttribute("shipZip"));
+
 %>
 <header>
     <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
             <div class="searchbox">
                 <input type="text" placeholder="Browse by author, by title..">
-                <a href="../search.html"><button type="button"><img src="../image/search.svg"></button></a>
+                <a href="../search.jsp"><button type="button"><img src="../image/search.svg"></button></a>
             </div>
         </section>
         <section>
@@ -33,22 +41,22 @@ HttpSession session = request.getSession();
                         BROWSE
                     </li>
                     <li>
-                        <a href="cart.html"><img src="../image/shoppingcart.svg"></a>
+                        <a href="cart.jsp"><img src="../image/shoppingcart.svg"></a>
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/account.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.html">Login</a>
+                                <a href="../user/login.jsp">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.html">Register</a>
+                                <a href="../user/register.jsp">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.html">Edit Profile</a>
+                                <a href="../user/editprofile.jsp">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.html">Logout</a>
+                                <a href="../user/logout.jsp">Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -58,14 +66,6 @@ HttpSession session = request.getSession();
     </div>
 </header>
 <main>
-
-
-
-
-
-
-
-
     <section class="tracker">
         <ul>
             <li>1. Payment</li>
@@ -128,11 +128,54 @@ HttpSession session = request.getSession();
 		    </ul>
 		</div>
 	    </div>
-		<span><% out.print(session.getAttribute("ordercard"));%></span>
+        </div>
+	<div class="container">
+            	<div class="row">
+                	<div class="col-md-12 mb-4">
+                    	<h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Billing Info</span>
+                    	</h4>
+                    	<ul class="list-group mb-3">
+				<li class="list-group-item d-flex justify-content-between lh-condensed">
+                            		<div>
+				    	<h6 class="my-0">Name: <% out.print(billName); %></h6>
+			    		</div>
+                            		<div>
+				    	<h6 class="my-0">Card: <% out.print(cardinfo); %></h6>
+			    		</div>
+                            		<div>
+				    	<h6 class="my-0">Address: <% out.print(billAddress); %></h6>
+			    		</div>
+			    <span class="text-muted"></span>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+            	<div class="row">
+                	<div class="col-md-12 mb-4">
+                    	<h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Shipping Info</span>
+                    	</h4>
+                    	<ul class="list-group mb-3">
+				<li class="list-group-item d-flex justify-content-between lh-condensed">
+                            		<div>
+				    	<h6 class="my-0">Name: <% out.print(shipName); %></h6>
+			    		</div>
+                            		<div>
+				    	<h6 class="my-0">Address: <% out.print(shipAddress); %></h6>
+			    		</div>
+			    <span class="text-muted"></span>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+
             <form action="/placeOrder" method="post">
                 <button class="btn btn-success btn-lg btn-block" type="submit">Complete Order</button>
             </form>
-        </div>
     </section>
 </main>
 <footer>
