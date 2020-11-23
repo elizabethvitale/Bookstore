@@ -40,7 +40,10 @@ public class placeOrder extends HttpServlet {
 		}
 
 		int userId = (int) session.getAttribute("customerid");
-/*
+		String firstName = (String)session.getAttribute("firstName");
+		String lastName = (String)session.getAttribute("lastName");
+		String email = (String)session.getAttribute("email");
+		/*
 		try {
 			String temp = (String) session.getAttribute("customerid");
 			userId = Integer.parseInt(temp);
@@ -114,7 +117,7 @@ public class placeOrder extends HttpServlet {
 				}
 				con.close();
 				Transaction trans = new Transaction();
-				trans.createTransaction(userId, orderId, cartId);
+				trans.createTransaction(userId, orderId, cartId, firstName, lastName,date, grandTotal, email);
 				response.sendRedirect("/errorpages/placeorder_confirmation.jsp");
 			} else {
 				response.sendRedirect("/errorpages/placeorder_error.jsp");
