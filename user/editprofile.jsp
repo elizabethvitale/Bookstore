@@ -324,7 +324,6 @@ $(document).ready(function() {
             <button type="submit" class="button">Update</button>
           </div>
         </form>
-        <form action="" method="post">
          
 <%
 Connection con;
@@ -337,7 +336,7 @@ Statement stmt = con.createStatement();
 ResultSet rs = stmt.executeQuery(query);
 while(rs.next()){
 	int order = rs.getInt("orderid");
-	table = table + "<tr><td>" + order + "</td>";
+	table = table + "<form action='/reorderBooks' method='post'><tr><td><input type='hidden' name='orderid' value='" + order + "'>" + order + "</td>";
 		//<td>BOOKS HERE</td><td>" + order + customerid + "</td><td>Being Shipped</td><td><button>Add to cart</button></tr>";
 	String query2 = "select * from transaction where orderid='" + order+ "';";
 	stmt = con.createStatement();
@@ -362,7 +361,7 @@ while(rs.next()){
 	}
 	}
 	table = table + "</td>";
-table = table + "<td>" + order + customerid + "</td><td>Being Shipped</td><td><button>Add Books to Cart</button></td>";
+table = table + "<td>" + order + customerid + "</td><td>Being Shipped</td><td><button type='submit'>Add Books to Cart</button></td></form>";
 	table = table + "</tr>";
 }
 table = table + "</table>";
@@ -373,7 +372,6 @@ con.close();
 		  <%=table%>
             </div>
           </div>
-        </form>
       </section>
     </main>
     <footer>
