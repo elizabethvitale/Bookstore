@@ -8,6 +8,22 @@
 
 <display-name>UGA BOOKSTORE</display-name>
 	<servlet>
+		<servlet-name>reorderBooks</servlet-name>
+		<servlet-class>com.ugabookstore.reorderBooks</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reorderBooks</servlet-name>
+		<url-pattern>/reorderBooks</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>setShipping</servlet-name>
+		<servlet-class>com.ugabookstore.setShipping</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>setShipping</servlet-name>
+		<url-pattern>/setShipping</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>setBilling</servlet-name>
 		<servlet-class>com.ugabookstore.setBilling</servlet-class>
 	</servlet>
