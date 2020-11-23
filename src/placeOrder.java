@@ -23,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import javax.servlet.http.HttpSession;
+import java.sql.Connection;
 
 @WebServlet("/placeOrder")
 public class placeOrder extends HttpServlet {
@@ -118,9 +119,12 @@ public class placeOrder extends HttpServlet {
 				while (rs.next()) {
 					orderId = rs.getInt("orderid");
 				}
-				con.close();
 				Transaction trans = new Transaction();
 				trans.createTransaction(userId, orderId, cartId, firstName, lastName,date, grandTotal, email);
+				Statement stmt2 = con.createStatement();
+				String query2 = "delete from cart_item where cartid='" + cartId + "';";
+				stmt2.executeUpdate(query2);
+				con.close();	
 				response.sendRedirect("/errorpages/placeorder_confirmation.jsp");
 				return;
 			} else {

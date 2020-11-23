@@ -79,7 +79,7 @@
 	       <h4 class="welcome-name"><%=message%></h4>
 
          <button type="button" class="view button"> VIEW LIST</button>
-        <h1 class="titles">December 2020 Topseller Books</h1>
+        <h1 class="titles">Highest Rated Books</h1>
         <div class="slider responsive">
           <div>
             <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>

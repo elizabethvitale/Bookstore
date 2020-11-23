@@ -32,7 +32,7 @@ public class search extends HttpServlet {
 		request.setAttribute("books", books);
 		request.setAttribute("titles", blobs);
 		request.setAttribute("keyword", keyword);
-            	String page = "search.jsp";
+            	String page = "/user/search.jsp";
             	RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
             	requestDispatcher.forward(request, response);
         } catch (Exception ex) {

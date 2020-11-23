@@ -134,6 +134,7 @@ public class BookDAO {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			for (int i = 0; i < length; i++) {
 				String query = "SELECT * FROM book WHERE bookid = ?";
+				System.out.println("IMG ARERO");
 				PreparedStatement stmt = con.prepareStatement(query);
 				stmt.setInt(1, ids.get(i));
 				ResultSet rs = stmt.executeQuery();
@@ -170,6 +171,7 @@ public class BookDAO {
 		List<String> titleArray = new ArrayList<>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			System.out.println("Another..");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore","root","rootroot");
 			PreparedStatement stmt = null;
 			ResultSet rs = null;

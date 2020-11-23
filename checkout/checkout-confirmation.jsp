@@ -10,7 +10,7 @@
 <body>
 <header>
     <div>
-        <h2><div><a href="../index.html">UGA Bookshop</a></div></h2>
+        <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
             <div class="searchbox">
                 <input type="text" placeholder="Browse by author, by title..">
@@ -30,16 +30,16 @@
                         <img id="auth-dropdown-toggle" src="../image/account.svg">
                         <ul class='auth-dropdown'>
                             <li>
-                                <a href="../user/login.html">Login</a>
+                                <a href="../user/login.jsp">Login</a>
                             </li>
                             <li>
-                                <a href="../user/register.html">Register</a>
+                                <a href="../user/register.jsp">Register</a>
                             </li>
                             <li>
-                                <a href="../user/editprofile.html">Edit Profile</a>
+                                <a href="../user/editprofile.jsp">Edit Profile</a>
                             </li>
                             <li>
-                                <a href="../user/logout.html">Logout</a>
+                                <a href="../user/logout.jsp">Logout</a>
                             </li>
                         </ul>
                     </li>
