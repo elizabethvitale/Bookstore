@@ -1,3 +1,10 @@
+<%@ page import="com.ugabookstore.User"%>
+<%@ page import="com.ugabookstore.backendUser"%>
+<%@ page import="com.ugabookstore.Book"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.ugabookstore.BookDAO"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,99 +82,63 @@
     </div>
 
     <main>
+	<h4 class="welcome-name"><%=message%></h4>
+	<br>
       <div>
-	       <h4 class="welcome-name"><%=message%></h4>
-
-         <button type="button" class="view button"> VIEW LIST</button>
-        <h1 class="titles">Highest Rated Books</h1>
+	<h1 class="titles">Highest Rated Books</h1>
         <div class="slider responsive">
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/totalpower.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/troubledBlood.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
-          <div>
-            <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-          </div>
+<%
+	try{
+		BookDAO dao = new BookDAO();
+		List<Integer> bookIds = new ArrayList<Integer>(dao.getBookIds("index1", ""));
+		List<String> blobs = new ArrayList<String>(dao.getBlobs(bookIds, bookIds.size()));
+		List<Book> books = new ArrayList<Book>();
+		for(int i =0; i < bookIds.size(); i++){
+		Book book = dao.get(bookIds.get(i));
+		books.add(book);
+		%>
+		<form action="/viewBook" method="get">
+		<input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=blobs.get(i)%>"/>
+		<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
+		</form>
+		<%
+		}
+
+	}catch(Exception e){
+	System.out.println(e);
+	}
+%>
         </div>
       </div><br>
 
-    <button type="button" class="view button" style="float: right;
-    margin-top: 8px;"> VIEW LIST</button>
-     <h1 class="titles">Featured Books</h1>
-      <div class="slider responsive">
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
+	<h1 class="titles">Featured Books</h1>
+        <div class="slider responsive">
+<%
+	try{
+		BookDAO dao = new BookDAO();
+		List<Integer> bookIds2 = new ArrayList<Integer>(dao.getBookIds("index2", ""));
+		List<String> blobs2 = new ArrayList<String>(dao.getBlobs(bookIds2, bookIds2.size()));
+		List<Book> books2 = new ArrayList<Book>();
+		for(int i =0; i < bookIds2.size(); i++){
+		Book book = dao.get(bookIds2.get(i));
+		books2.add(book);
+		%>
+		<form action="/viewBook" method="get">
+		<input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=blobs2.get(i)%>"/>
+		<input type="hidden" value="<%=bookIds2.get(i)%>" name="bookid">
+		</form>
+		<%
+		}
+
+	}catch(Exception e){
+	System.out.println(e);
+	}
+%>
         </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/toSleepinAseaOfstars.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/totalpower.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/troubledBlood.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-        <div>
-          <a href="bookDetail.jsp"><img class="books" src="image/books/theEveningandtheMorning.jpg"></a>
-        </div>
-      </div>
-    </div>
+      </div><br>
+
+
+
     </main>
     <footer>
       <div>

@@ -66,6 +66,12 @@ public class BookDAO {
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				int keywordInt = Integer.parseInt(keyword);
 				stmt.setInt(1, keywordInt);
+			} else if (term.equals("index1")){
+				query = "SELECT * from book order by rating desc limit 10";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			} else if (term.equals("index2")){
+				query = "select * from book order by rand() limit 10;";
+				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			} else if (term.equals("title")) {
 				query = "SELECT bookid FROM book WHERE title = ? AND active = 1";
 				stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);

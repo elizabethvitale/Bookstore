@@ -67,7 +67,7 @@
 	<p>Edition: ${book.edition}</p>
 	<p>Publisher: ${book.publisher}</p>
 	<p>Year: ${book.year}</p>
-	<p>Rating: ${book.rating}/5</p>
+	<p>Rating: ${book.rating}/5.0</p>
 	<input type="hidden" name="quantity" value=${book.quantity}>
 	<input type="hidden" name="bookid" value=${book.bookid}>
 	<button id="formsub" class="button" type="submit" value=${book.bookid}">Add to Cart</p>

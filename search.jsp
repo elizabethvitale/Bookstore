@@ -115,7 +115,7 @@
 				double rating = book.getRating();
 				String format = String.format("%.02f", price);%>
 				<p><%=title%>, by <%=author%> at $<%=format%></p>
-				<p>Rating: <%=rating%>/5</p>
+				<p>Rating: <%=rating%>/5.0</p>
 				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
 			</form>
 			</tr>
