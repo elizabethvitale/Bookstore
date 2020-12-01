@@ -18,6 +18,7 @@ String lastName = String.valueOf(session.getAttribute("lastName"));
 String street = String.valueOf(session.getAttribute("street"));
 String city = String.valueOf(session.getAttribute("city"));
 String zipcode = String.valueOf(session.getAttribute("zip"));
+String state = String.valueOf(session.getAttribute("state"));
 
 %>
 <header>
@@ -106,22 +107,9 @@ String zipcode = String.valueOf(session.getAttribute("zip"));
                         </div>
 
                         <div class="row">
-                            <div class="col-md-5 mb-3">
-                                <label for="country">Country</label>
-                                <select class="custom-select d-block w-100" id="country" required>
-                                    <option value="">Choose...</option>
-                                    <option>United States</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid country.
-                                </div>
-                            </div>
                             <div class="col-md-4 mb-3">
                                 <label for="state">State</label>
-                                <select class="custom-select d-block w-100" name="state" id="state" required>
-                                    <option value="">Choose...</option>
-                                    <option>California</option>
-                                </select>
+                                <input type="text" class="form-control" id="state" value="<% out.print(state);%>" name="state" required>
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
