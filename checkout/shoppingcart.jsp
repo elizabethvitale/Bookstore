@@ -105,7 +105,31 @@
 							</form>
 						</td>
 			</tr>
-			<% } } catch (Exception e) {
+			<% } 
+			%>
+				<%
+	HttpSession session = request.getSession(false);
+	String promo = "Promo Code";
+	double totaldisc = 0;
+	if(session!=null){
+	try{
+	int discount = (Integer)session.getAttribute("discount");
+	String promocode = (String)session.getAttribute("promocode");
+	totaldisc = discount*.01*total;
+	promo = promocode;
+	
+	}catch(Exception e){
+	System.out.println(e);
+	}}
+	String formattedDouble = String.format("%.02f", total);
+	String formattedDouble2 = String.format("%.02f", totaldisc);
+	session.setAttribute("TOTAL", formattedDouble);
+	if(!promo.equals("Promo Code")){
+	%>
+			
+	<br><tr><td style="color:#03AC13">Promo Code Applied</td><td style="color:#03AC13">"<%=promo%>"</td><td style="color:#03aC13">-$<%=formattedDouble2%></td></tr>
+	<% }
+			} catch (Exception e) {
 				e.printStackTrace(System.out);
 			}
 			%>
@@ -119,6 +143,7 @@
 	try{
 	int discount = (Integer)session.getAttribute("discount");
 	String promocode = (String)session.getAttribute("promocode");
+	System.out.println(total);
 	total = (100-discount)*.01*total;
 	promo = promocode;
 	}catch(Exception e){
