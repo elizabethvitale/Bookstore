@@ -208,6 +208,7 @@ public class BookDAO {
 			if (result.next()) {
 				book = new Book();
 				book.setBookid(bookId);
+				book.setRating(result.getDouble("rating"));
 				book.setTitle(result.getString("title"));
 				book.setAuthor(result.getString("author"));
 				book.setIsbn(result.getString("isbn"));

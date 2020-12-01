@@ -109,12 +109,13 @@
 			<form action="/viewBook" method="get">
 				<input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=titles.get(i)%>"/>
 				<%Book book = books.get(i);
+				double rating = book.getRating();
 				String title = book.getTitle();
 				String author = book.getAuthor();
 				double price = book.getRprice();
 				String format = String.format("%.02f", price);%>
 				<p><%=title%>, by <%=author%> at $<%=format%></p>
-				<p>Rating: Not in DB Yet</p>
+				<p>Rating: <%=rating%>/5</p>
 				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
 			</form>
 			</tr>
