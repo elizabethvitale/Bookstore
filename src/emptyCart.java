@@ -25,6 +25,8 @@ public class emptyCart
             throws ServletException, IOException {
 		String cartid ="";
 		HttpSession session = request.getSession(false);
+		session.removeAttribute("discount");
+		session.removeAttribute("promocode");
 		try{
 	    	cartid = (String)session.getAttribute("cartid");
 		}catch(Exception e){
