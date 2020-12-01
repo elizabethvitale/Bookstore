@@ -60,13 +60,14 @@
 	<img height="400" src="data:image/jpg;base64,${book.base64Image}"/>
 	<p>Title: ${book.title}</p>
 	<p>Author: ${book.author}</p>
-	<p>Price: $ ${book.rprice}0</p>
+	<p>Price: $ ${book.rprice}</p>
 	<p>Description: ${book.description}</p>
 	<p>ISBN: ${book.isbn}</p>
 	<p>Quantity in Stock: ${book.quantity}</p>
 	<p>Edition: ${book.edition}</p>
 	<p>Publisher: ${book.publisher}</p>
 	<p>Year: ${book.year}</p>
+	<p>Rating: ${book.rating}/5</p>
 	<input type="hidden" name="quantity" value=${book.quantity}>
 	<input type="hidden" name="bookid" value=${book.bookid}>
 	<button id="formsub" class="button" type="submit" value=${book.bookid}">Add to Cart</p>
