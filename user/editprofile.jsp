@@ -336,6 +336,7 @@ Statement stmt = con.createStatement();
 ResultSet rs = stmt.executeQuery(query);
 while(rs.next()){
 	int order = rs.getInt("orderid");
+	String status = rs.getString("status");
 	table = table + "<form action='/reorderBooks' method='post'><tr><td><input type='hidden' name='orderid' value='" + order + "'>" + order + "</td>";
 		//<td>BOOKS HERE</td><td>" + order + customerid + "</td><td>Being Shipped</td><td><button>Add to cart</button></tr>";
 	String query2 = "select * from transaction where orderid='" + order+ "';";
@@ -361,7 +362,7 @@ while(rs.next()){
 	}
 	}
 	table = table + "</td>";
-table = table + "<td>" + order + customerid + "</td><td>Being Shipped</td><td><button type='submit'>Add Books to Cart</button></td></form>";
+table = table + "<td>" + order + customerid + "</td><td>" + status + "</td><td><button type='submit'>Add Books to Cart</button></td></form>";
 	table = table + "</tr>";
 }
 table = table + "</table>";
