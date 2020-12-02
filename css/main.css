@@ -115,6 +115,7 @@ nav .auth-dropdown {
   width: 100%;
 }
 
+
 #homeCarousel {
   margin-top: 15px;
 }
@@ -131,6 +132,7 @@ input {
   margin-right: 4px;
   outline: none;
   border-radius: 5px;
+  border: none;
 }
 
 .searchbox button {

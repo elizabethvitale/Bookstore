@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/viewBook.css">
   </head>
   <body>
 <%@ page session="false" %>
@@ -54,23 +55,26 @@
       </div>
     </header>
     <main>
-    <h1>View Book</h1>
 	<div class="details">
 		<form action="/addToCart" method="post">
-	<img height="400" src="data:image/jpg;base64,${book.base64Image}"/>
-	<p>Title: ${book.title}</p>
-	<p>Author: ${book.author}</p>
-	<p>Price: $ ${book.rprice}</p>
-	<p>Description: ${book.description}</p>
-	<p>ISBN: ${book.isbn}</p>
-	<p>Quantity in Stock: ${book.quantity}</p>
-	<p>Edition: ${book.edition}</p>
-	<p>Publisher: ${book.publisher}</p>
-	<p>Year: ${book.year}</p>
-	<p>Rating: ${book.rating}/5.0</p>
+      <h2>Title: ${book.title}</h2>
+      <h4>Author: ${book.author}</h4>
+	<img class="book" height="400" src="data:image/jpg;base64,${book.base64Image}"/>
+  <div class="bookInfo">
+    <p>Price: $ ${book.rprice}</p>
+    <p>Description: ${book.description}</p>
+    <p>ISBN: ${book.isbn}</p>
+    <p>Quantity in Stock: ${book.quantity}</p>
+    <p>Edition: ${book.edition}</p>
+    <p>Publisher: ${book.publisher}</p>
+    <p>Year: ${book.year}</p>
+    <p>Rating: ${book.rating}/5.0</p>
+  </div>
+  <div>
 	<input type="hidden" name="quantity" value=${book.quantity}>
 	<input type="hidden" name="bookid" value=${book.bookid}>
-	<button id="formsub" class="button" type="submit" value=${book.bookid}">Add to Cart</p>
+	<button id="formsub" class="button" type="submit" value=${book.bookid}>Add to Cart</button>
+</div>
 	</form>
 	</div>
 
