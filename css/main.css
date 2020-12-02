@@ -239,8 +239,17 @@ footer h4 {
   display: flex;
 }
 
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 25%;
+}
 .column {
   flex: 50%;
+}
+
+.bookStyle {
+  text-align: center;
 }
 
 HTML CSS JSResult
