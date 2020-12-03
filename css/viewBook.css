@@ -1,7 +1,8 @@
 .bookInfo {
   float: right;
   text-align: left;
-  margin-left: 100px;
+  margin-left: 25px;
+  width: 500px;
 }
 
 .details {
