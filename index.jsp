@@ -64,7 +64,8 @@
 	String message = "";
        HttpSession session=request.getSession(false);
         if(session!=null){
-        message="Welcome, " + (String)session.getAttribute("acctID");
+        message="Welcome, " + (String)session.getAttribute("firstName")
+         + " " + (String)session.getAttribute("lastName");
 }%>
 
     <div id="homeCarousel" class="carousel slide" data-ride="carousel">

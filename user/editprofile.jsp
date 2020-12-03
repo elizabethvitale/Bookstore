@@ -324,7 +324,7 @@ $(document).ready(function() {
             <button type="submit" class="button">Update</button>
           </div>
         </form>
-         
+
 <%
 Connection con;
 String table="";
@@ -362,7 +362,7 @@ while(rs.next()){
 	}
 	}
 	table = table + "</td>";
-table = table + "<td>" + order + customerid + "</td><td>" + status + "</td><td><button type='submit'>Add Books to Cart</button></td></form>";
+table = table + "<td>" + order + customerid + "</td><td>" + status + "</td><td><button type='submit' class='button'>Add Books to Cart</button></td></form>";
 	table = table + "</tr>";
 }
 table = table + "</table>";
