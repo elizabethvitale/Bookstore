@@ -16,6 +16,14 @@
 		<url-pattern>/reorderBooks</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>checkCart</servlet-name>
+		<servlet-class>com.ugabookstore.checkCart</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>checkCart</servlet-name>
+		<url-pattern>/checkCart</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>setShipping</servlet-name>
 		<servlet-class>com.ugabookstore.setShipping</servlet-class>
 	</servlet>
