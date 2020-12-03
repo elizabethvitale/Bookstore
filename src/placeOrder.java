@@ -139,9 +139,13 @@ public class placeOrder extends HttpServlet {
 				session.removeAttribute("shipCity");
 				session.removeAttribute("shipState");
 				session.removeAttribute("shipZip");
+				session.removeAttribute("discount");
+				session.removeAttribute("promocode");
 				response.sendRedirect("/errorpages/placeorder_confirmation.jsp");
 				return;
 			} else {
+				session.removeAttribute("discount");
+				session.removeAttribute("promocode");
 				response.sendRedirect("/errorpages/placeorder_error.jsp");
 				return;
 			}
