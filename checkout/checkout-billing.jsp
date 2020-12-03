@@ -98,7 +98,7 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
         <div class="method">
             <span style="flex-grow: 1;"></span>
 		<select class="custom-select d-block w-100" name="ordercard" required>
-		<option value="" disabled>Please select pay method:</option>
+		<option value="">Please select pay method or enter one:</option>
 <% if (!(cardNumber.equalsIgnoreCase("null"))) { %>
 		<option value=<%=cardNumber%>><%out.print(expDate);%> <%out.print(cardType);%></option>
 <%
@@ -166,13 +166,64 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
                             </div>
                         </div>
                         <hr class="mb-4">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="sameshipping" value="same" id="same-address">
-                            <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-                        </div>
-                        <hr class="mb-4">
                         <button class="btn btn-dark btn-lg btn-block" type="submit">Continue</button>
 
+                </div>
+		<div class="col-md-6">
+                    <h4 class="mb-3">Payment</h4>
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
+                            <label class="custom-control-label" for="credit">Credit card</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                            <label class="custom-control-label" for="debit">Debit card</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
+                            <label class="custom-control-label" for="paypal">Paypal</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Name on card</label>
+                            <input type="text" class="form-control" id="cc-name" name="ccname" placeholder="" required>
+                            <small class="text-muted">Full name as displayed on card</small>
+                            <div class="invalid-feedback">
+                                Name on card is required
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Credit card number</label>
+                            <input type="text" name="ccnumber" class="form-control" id="cc-number" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Credit card number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Expiration</label>
+                            <input type="text" name="ccexpdate" class="form-control" id="cc-expiration" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-type">Card Type</label>
+                            	<select class="form-control" id="cc-type" name="cctype"> 
+					<option value="" disabled>Please select card type: </option>
+					<option value="Visa">Visa</option>
+					<option value="Mastercard">Mastercard</option>
+					<option value="American Express">American Express</option>
+					<option value="Discovery">Discovery</option>
+				</select>
+                            <div class="invalid-feedback">
+                                Card type required
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
             </div>
