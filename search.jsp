@@ -22,7 +22,7 @@
         <h2><div><a href="index.jsp">UGA Bookshop</a></div></h2>
         <section class="searchbox-container">
           <div class="searchbox">
-          
+
           		  <form action="/search" method="get">
 		    <input type="text" name="keyword" placeholder="Browse by author, by title..">
            	<button type="submit"><img src="/image/search.svg"></button>
@@ -64,7 +64,7 @@
     </header>
     <main>
       <div>
-	      <% String message = ""; 
+	      <% String message = "";
 	      if(request.getAttribute("keyword").equals("")){
 	      message = "Browse Entire Collection";
 	      }else{
@@ -94,37 +94,43 @@
 
 
 	<section class="book">
-	<table>
-		<tbody>
-			<%
 
-			List<String> titles = new ArrayList<>();
-			titles = (List<String>) request.getAttribute("titles");
-			List<Integer> bookIds = new ArrayList<>();
-			bookIds = (List<Integer>) request.getAttribute("book_ids");
-			List<Book> books = (List<Book>) request.getAttribute("books");
-			try {
-				for(int i = 0; i < bookIds.size(); i++) { %>
-			<tr>
-			<form action="/viewBook" method="get">
-				<input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=titles.get(i)%>"/>
-				<%Book book = books.get(i);
-				String title = book.getTitle();
-				String author = book.getAuthor();
-				double price = book.getRprice();
-				double rating = book.getRating();
-				String format = String.format("%.02f", price);%>
-				<p><%=title%>, by <%=author%> at $<%=format%></p>
-				<p>Rating: <%=rating%>/5.0</p>
-				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
-			</form>
-			</tr>
-			<% } } catch (Exception e) {
-				e.printStackTrace(System.out);
-			}
-			%>
-		</tbody>
-	</table>
+    <%
+
+    List<String> titles = new ArrayList<>();
+    titles = (List<String>) request.getAttribute("titles");
+    List<Integer> bookIds = new ArrayList<>();
+    bookIds = (List<Integer>) request.getAttribute("book_ids");
+    List<Book> books = (List<Book>) request.getAttribute("books");
+
+
+    try {
+      for(int i = 0; i < bookIds.size(); i++) {
+        if(i % 4 == 0){
+          %></div><div class="row"> <%
+        }
+        %> <div class="col">
+          <form action="/viewBook" class="bookStyle" method="get">
+    				<input type="image" alt="submit" height='200' src="data:image/jpg;base64, <%=titles.get(i)%>"/>
+    				<%Book book = books.get(i);
+    				double rating = book.getRating();
+    				String title = book.getTitle();
+    				String author = book.getAuthor();
+    				double price = book.getRprice();
+    				String format = String.format("%.02f", price);%>
+    				<p><%=title%></p>
+            <p>By: <%=author%> </p>
+            <p>Price: $<%=format%></p>
+    				<p>Rating: <%=rating%>/5.0</p>
+    				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid">
+    			</form>
+          </div>
+        <%
+      }
+    } catch (Exception e) {
+        e.printStackTrace(System.out);
+    }
+    %>
     </section>
 
     </main>
