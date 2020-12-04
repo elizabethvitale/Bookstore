@@ -201,7 +201,7 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="cc-number">Credit card number</label>
-                            <input type="text" name="ccnumber" class="form-control" id="cc-number" placeholder="" required>
+                            <input type="number" name="ccnumber" minlength="16" maxlength="16" class="form-control" id="cc-number" placeholder="" required>
                             <div class="invalid-feedback">
                                 Credit card number is required
                             </div>
