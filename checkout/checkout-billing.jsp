@@ -208,14 +208,45 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="cc-expiration">Expiration</label>
-                            <input type="text" name="ccexpdate" class="form-control" id="cc-expiration" placeholder="" required>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-expirationmonth">Expiration Month</label>
+                            	<select class="form-control" id="cc-expmonth" name="ccexpmonth">
+					<option value="" disabled>Please select exp. month: </option>
+					<option value="01">01</option>
+					<option value="02">02</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+					<option value="05">05</option>
+					<option value="06">06</option>
+					<option value="07">07</option>
+					<option value="08">08</option>
+					<option value="09">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
                             <div class="invalid-feedback">
                                 Expiration date required
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-expirationyear">Expiration Year</label>
+                            	<select class="form-control" id="cc-expirationyear" name="ccexpyear" >
+					<option value="" disabled>Please select exp. year: </option>
+					<option value="2021">2021</option>
+					<option value="2022">2022</option>
+					<option value="2023">2023</option>
+					<option value="2024">2024</option>
+					<option value="2025">2025</option>
+				</select>
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+
+                    </div>
+		    <div class="row">
+                        <div class="col-md-6 mb-3">
                             <label for="cc-type">Card Type</label>
                             	<select class="form-control" id="cc-type" name="cctype">
 					<option value="" disabled>Please select card type: </option>
@@ -228,7 +259,7 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
                                 Card type required
                             </div>
                         </div>
-                    </div>
+		    </div>
                 </div>
 
             </div>
