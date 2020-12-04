@@ -57,20 +57,22 @@ if(holder.equals("after")){
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.html">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.html">Register</a>
-                            </li>
-                            <li>
-                                <a href="../user/editprofile.html">Edit Profile</a>
-                            </li>
-                            <li>
+                          <ul class='auth-dropdown'>
+                            <%
+                            session = request.getSession(false);
+                            if(session!=null){ %>
+                              <li>
                                 <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>
@@ -85,7 +87,7 @@ if(holder.equals("after")){
 	<br>
 	<p>We don't want you to miss out!
 	<br><br>From <%=start%> to <%=end%>, we will be running a discount of <%=percent%>% on every book at UGA Bookshop! Feel free to log in and browse books at this discount. Enter the promo code "<%=id%>" at checkout to make sure you recieve your discount. <br><br>Thanks,<br>UGA Bookshop </p>
-	<br>	
+	<br>
 <a href="editpromotions.jsp" class=button>Edit Promotion</a>
 <br><br>
 <form action="/emailPromo" method="post">

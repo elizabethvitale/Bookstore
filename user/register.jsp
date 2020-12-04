@@ -40,20 +40,24 @@
               </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
-                <ul class='auth-dropdown'>
-                  <li>
-                    <a href="login.jsp">Login</a>
-                  </li>
-                  <li>
-                    <a href="register.jsp">Register</a>
-                  </li>
-                  <li>
-                    <a href="editprofile.jsp">Edit Profile</a>
-                  </li>
-                  <li>
-                    <a href="logout.jsp">Logout</a>
-                  </li>
-                </ul>
+                  <ul class='auth-dropdown'>
+                    <%
+                    if(session!=null){ %>
+                      <li>
+                        <a href="editprofile.jsp">Edit Profile</a>
+                      </li>
+                      <li>
+                        <a href="logout.jsp">Logout</a>
+                      </li>
+                    <%} else { %>
+                      <li>
+                        <a href="login.jsp">Login</a>
+                      </li>
+                      <li>
+                        <a href="register.jsp">Register</a>
+                      </li>
+                    <%}%>
+                  </ul>
               </li>
             </ul>
           </nav>
@@ -64,62 +68,68 @@
       <section id='authBox'>
         </p><%=message%></p>
 	<h1>New Customer</h1>
+
 	   <form action="/register" method="post">
-          <div>
-            <label>First Name*</label>
-            <br>
-            <input type="text" name="fname" required>
+       <div class="one">
+        <div>
+          <label>First Name*</label>
+          <br>
+          <input type="text" name="fname" required>
+        </div>
+        <br>
+	      <div>
+	         <label>Last Name*</label>
+	          <br>
+	             <input type="text" name="lname" required>
+	      </div>
+	       <br>
+        <div>
+          <label>Phone number*</label>
+          <br>
+          <input type="text" name="number" required>
+        </div>
+          <br>
+        <div>
+          <label>Email Address*</label>
+          <br>
+          <input type="text" name="email" required>
+        </div>
+        <br>
+        <div>
+          <label>Password*</label>
+          <br>
+          <input type="password" name="password" required>
+        </div>
+        <br>
+    </div>
+    <div class="two">
+  <h3>Shipping Information</h3>
+        <div>
+          <label>Street</label>
+          <br>
+          <input type="text" name="street">
+        </div>
+        <br>
+        <div>
+          <label>City</label>
+          <br>
+          <input type="text" name="city">
+        </div>
+        <br>
+        <div>
+          <label>State</label>
+          <br>
+          <input type="text" name="state">
+        </div>
+        <br>
+        <div>
+          <label>Zip Code</label>
+          <br>
+	<input type="text" name="zip">
           </div>
           <br>
-	  <div>
-	    <label>Last Name*</label>
-	<br>
-	<input type="text" name="lname" required>
-	</div>
-	<br>
-          <div>
-            <label>Phone number*</label>
-            <br>
-            <input type="text" name="number" required>
-          </div>
-          <br>
-          <div>
-            <label>Email Address*</label>
-            <br>
-            <input type="text" name="email" required>
-          </div>
-          <br>
-          <div>
-            <label>Password*</label>
-            <br>
-            <input type="password" name="password" required>
-          </div>
-          <br>
-	  <h3>Shipping Information</h3>
-          <div>
-            <label>Street</label>
-            <br>
-            <input type="text" name="street">
-          </div>
-          <br>
-          <div>
-            <label>City</label>
-            <br>
-            <input type="text" name="city">
-          </div>
-          <br>
-          <div>
-            <label>State</label>
-            <br>
-            <input type="text" name="state">
-          </div>
-          <br>
-          <div>
-            <label>Zip Code</label>
-            <br>
-		<input type="text" name="zip">
-          </div>
-          <br>
+    </div>
+  <div class="three">
 	<h3>Payment Info</h3>
           <div>
             <label>Card Type</label>
@@ -147,6 +157,7 @@
 
           <button id="formsub" class = "button" type="submit">Register</button>
         </form>
+      </div>
       </section>
     </main>
     <footer>

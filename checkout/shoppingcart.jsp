@@ -20,7 +20,7 @@
 			<script>if(performance.navigation.type == 2){
 	location.reload(true);
 		 }</script>
-			
+
 <header>
     <div>
         <h2><div><a href="../index.jsp">UGA Bookshop</a></div></h2>
@@ -40,26 +40,31 @@
                         BROWSE
                     </li>
                     <li>
-                                  		<form action="/viewCart" method="get">
+                      <form action="/viewCart" method="get">
 		<button class="button" type="submit"><img src="../image/shoppingcart.svg"></button>
 		</form>
 		    </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/account.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.jsp">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.jsp">Register</a>
-                            </li>
-                            <li>
+                          <ul class='auth-dropdown'>
+                            <%
+                            HttpSession session=request.getSession(false);
+                            if(session!=null){ %>
+                              <li>
                                 <a href="../user/editprofile.jsp">Edit Profile</a>
-                            </li>
-                            <li>
+                              </li>
+                              <li>
                                 <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="../user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="../user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>
@@ -97,7 +102,7 @@
 				double price = book.getRprice();
 				String formatting = String.format("%.02f", price);
 				total = total + price;%>
-				
+
 				<td><h2><%=title%><h2><h4><%=author%></h4></td> <td>$<%=formatting%></td>
 						<td>	<form action="/removeCartItem" method="get">
 								<input type="hidden" name="holder" value=<%=id%>>
@@ -105,10 +110,10 @@
 							</form>
 						</td>
 			</tr>
-			<% } 
+			<% }
 			%>
 				<%
-	HttpSession session = request.getSession(false);
+	session = request.getSession(false);
 	String promo = "Promo Code";
 	double totaldisc = 0;
 	if(session!=null){
@@ -117,7 +122,7 @@
 	String promocode = (String)session.getAttribute("promocode");
 	totaldisc = discount*.01*total;
 	promo = promocode;
-	
+
 	}catch(Exception e){
 	System.out.println(e);
 	}}
@@ -126,7 +131,7 @@
 	session.setAttribute("TOTAL", formattedDouble);
 	if(!promo.equals("Promo Code")){
 	%>
-			
+
 	<br><tr><td style="color:#03AC13">Promo Code Applied</td><td style="color:#03AC13">"<%=promo%>"</td><td style="color:#03aC13">-$<%=formattedDouble2%></td></tr>
 	<% }
 			} catch (Exception e) {
@@ -137,7 +142,7 @@
 	</table>
 
 	<%
-	HttpSession session = request.getSession(false);
+	session = request.getSession(false);
 	String promo = "Promo Code";
 	if(session!=null){
 	try{

@@ -228,7 +228,7 @@ public class register extends HttpServlet {
 	}
 
 	//hash password
-	response.sendRedirect("/user/registrationconfirm.html");
+	response.sendRedirect("/user/registrationconfirm.jsp");
 	return;
 }
 	public static void sendEmail(String emailAdd,String body){

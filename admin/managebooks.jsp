@@ -43,20 +43,21 @@ if(pass.equals(null) | !pass.equals("YES")){
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.jsp">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.jsp">Register</a>
-                            </li>
-                            <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
-                            </li>
-                            <li>
+                          <ul class='auth-dropdown'>
+                            <%
+                            if(session!=null){ %>
+                              <li>
                                 <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>
@@ -84,14 +85,14 @@ try {
 		</thead>
 		<tbody>
 			<%
-			for(int i = 0; i < bookIds.size(); i++) { 
+			for(int i = 0; i < bookIds.size(); i++) {
 			%>
 			<tr>
 			<form action="/getBook" method="get">
 				<th scope="row"><% out.print(titles.get(i)); %>
 				<input type="hidden" value="<%=bookIds.get(i)%>" name="bookid"></th>
 				<td><% out.print(authors.get(i)); %></td>
-				<td><input type="submit" value="Edit"></td>
+				<td><input type="submit" class="button" value="Edit"></td>
 			</form>
 			</tr>
 			<% } %>

@@ -132,7 +132,6 @@ input {
   margin-right: 4px;
   outline: none;
   border-radius: 5px;
-  border: none;
 }
 
 .searchbox button {
@@ -163,7 +162,7 @@ main .welcome-name {
 
 main .titles{
   font-family: 'Peddana', serif;
-  color: #606060;
+  color: black;
   font-size: 40px;
 }
 

@@ -45,23 +45,27 @@
               <li>
                            	<form action="/viewCart" method="get">
 		<button class="button" type="submit"><img src="../image/shoppingcart.svg"></button>
-				</form> 
+				</form>
 	      </li>
               <li style='position: relative;'>
-                <img id="auth-dropdown-toggle" src="../image/account.svg">
                 <ul class='auth-dropdown'>
-                  <li>
-                    <a href="../user/login.jsp">Login</a>
-                  </li>
-                  <li>
-                    <a href="../user/register.jsp">Register</a>
-                  </li>
-                  <li>
-                    <a href="../user/editprofile.jsp">Edit Profile</a>
-                  </li>
-                  <li>
-                    <a href="../user/logout.jsp">Logout</a>
-                  </li>
+                  <%
+                  HttpSession session=request.getSession(false);
+                  if(session!=null){ %>
+                    <li>
+                      <a href="/user/editprofile.jsp">Edit Profile</a>
+                    </li>
+                    <li>
+                      <a href="/user/logout.jsp">Logout</a>
+                    </li>
+                  <%} else { %>
+                    <li>
+                      <a href="/user/login.jsp">Login</a>
+                    </li>
+                    <li>
+                      <a href="/user/register.jsp">Register</a>
+                    </li>
+                  <%}%>
                 </ul>
               </li>
             </ul>

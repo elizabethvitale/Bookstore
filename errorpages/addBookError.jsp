@@ -49,20 +49,25 @@
 	      </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="../image/account.svg">
-                <ul class='auth-dropdown'>
-                  <li>
-                    <a href="../user/login.jsp">Login</a>
-                  </li>
-                  <li>
-                    <a href="../user/register.jsp">Register</a>
-                  </li>
-                  <li>
-                    <a href="../user/editprofile.jsp">Edit Profile</a>
-                  </li>
-                  <li>
-                    <a href="../user/logout.jsp">Logout</a>
-                  </li>
-                </ul>
+                  <ul class='auth-dropdown'>
+                    <%
+                    HttpSession session=request.getSession(false);
+                    if(session!=null){ %>
+                      <li>
+                        <a href="../user/editprofile.jsp">Edit Profile</a>
+                      </li>
+                      <li>
+                        <a href="../user/logout.jsp">Logout</a>
+                      </li>
+                    <%} else { %>
+                      <li>
+                        <a href="user/login.jsp">Login</a>
+                      </li>
+                      <li>
+                        <a href="user/register.jsp">Register</a>
+                      </li>
+                    <%}%>
+                  </ul>
               </li>
             </ul>
           </nav>
@@ -73,7 +78,7 @@
       <div>
         <h1>Error page</h1>
         <p>Your book is out of stock or doesn't exist. Please try adding another book!</p>
-        <a href="../user/forgotpwd2.jsp"><button class="button" style="margin-right: 10px;">RETURN TO BROWSING</button></a>
+        <a href="/search?keyword="><button class="button" style="margin-right: 10px;">RETURN TO BROWSING</button></a>
     </main>
     <footer>
       <div>

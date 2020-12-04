@@ -33,20 +33,25 @@
 	      </li>
               <li style='position: relative;'>
                 <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
-                <ul class='auth-dropdown'>
-                  <li>
-                    <a href="login.jsp">Login</a>
-                  </li>
-                  <li>
-                    <a href="register.jsp">Register</a>
-                  </li>
-                  <li>
-                    <a href="editprofile.jsp">Edit Profile</a>
-                  </li>
-                  <li>
-                    <a href="logout.jsp">Logout</a>
-                  </li>
-                </ul>
+                  <ul class='auth-dropdown'>
+                    <%
+                    HttpSession session=request.getSession(false);
+                    if(session!=null){ %>
+                      <li>
+                        <a href="editprofile.jsp">Edit Profile</a>
+                      </li>
+                      <li>
+                        <a href="logout.jsp">Logout</a>
+                      </li>
+                    <%} else { %>
+                      <li>
+                        <a href="login.jsp">Login</a>
+                      </li>
+                      <li>
+                        <a href="register.jsp">Register</a>
+                      </li>
+                    <%}%>
+                  </ul>
               </li>
             </ul>
           </nav>

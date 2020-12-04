@@ -45,20 +45,24 @@ String shipAddress = String.valueOf(session.getAttribute("shipStreet")) + ", " +
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/account.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.jsp">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.jsp">Register</a>
-                            </li>
-                            <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
-                            </li>
-                            <li>
-                                <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                          <ul class='auth-dropdown'>
+                            <%
+                            if(session!=null){ %>
+                              <li>
+                                <a href="/user/editprofile.jsp">Edit Profile</a>
+                              </li>
+                              <li>
+                                <a href="/user/logout.jsp">Logout</a>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="/user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="/user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>
@@ -84,7 +88,7 @@ String shipAddress = String.valueOf(session.getAttribute("shipStreet")) + ", " +
                     <ul class="list-group mb-3">
 	<%
 	System.out.println(session.getAttribute("TOTAL"));
-	
+
 	List<String>images = new ArrayList<>();
 	List<Book> books = (List<Book>)request.getAttribute("booksCart");
 	System.out.println(books);
@@ -118,7 +122,7 @@ String shipAddress = String.valueOf(session.getAttribute("shipStreet")) + ", " +
 				                        <li class="list-group-item d-flex justify-content-between">
 				<%
 				}catch(Exception e){
-				
+
 				}
 			    %>
                             <span>Total (USD)</span>

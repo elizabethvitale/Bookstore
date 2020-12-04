@@ -2,7 +2,7 @@ package com.ugabookstore;
 
 import java.io.IOException;
 import java.sql.SQLException;
- 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ public class viewCart
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        	
+
 	    	HttpSession session = request.getSession(false);
 		String cartid ="";
 		try{
@@ -26,9 +26,9 @@ public class viewCart
 			response.sendRedirect("/errorpages/loginfirst.jsp");
 			return;
 		}
-		
+
 		BookDAO dao = new BookDAO();
-         
+
         try {
 
 		List<Integer>bookIds = new ArrayList<Integer>(dao.getCart(cartid));
@@ -50,7 +50,7 @@ public class viewCart
 		response.sendRedirect("/errorpages/editbook_error.jsp");
         }
 
-	
-         
+
+
     }
 }

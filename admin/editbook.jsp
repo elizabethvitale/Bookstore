@@ -37,20 +37,21 @@ if(pass.equals(null) | !pass.equals("YES")){
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.jsp">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.jsp">Register</a>
-                            </li>
-                            <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
-                            </li>
-                            <li>
+                          <ul class='auth-dropdown'>
+                            <%
+                            if(session!=null){ %>
+                              <li>
                                 <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>
@@ -121,11 +122,11 @@ if(pass.equals(null) | !pass.equals("YES")){
                     <label class="input_label">Description:</label>
                     <textarea class="desc" name="description">${book.description}</textarea>
                 </div>
-                <input type="submit" value="Edit Book">
+                <input type="submit" value="Edit Book" class="button">
             </form>
 		<form action="/deleteBook" method="post">
 		<input type="hidden" name="bookid" value="${book.bookid}">
-		<input type="submit" value="Delete Book">
+		<input type="submit" class="button" value="Delete Book">
 		</form>
         </div>
     </section>

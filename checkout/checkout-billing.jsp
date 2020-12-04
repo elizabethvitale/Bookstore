@@ -63,20 +63,25 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/account.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.jsp">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.jsp">Register</a>
-                            </li>
-                            <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
-                            </li>
-                            <li>
-                                <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                          <ul class='auth-dropdown'>
+                            <%
+                            HttpSession session=request.getSession(false);
+                            if(session!=null){ %>
+                              <li>
+                                <a href="/user/editprofile.jsp">Edit Profile</a>
+                              </li>
+                              <li>
+                                <a href="/user/logout.jsp">Logout</a>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="/user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="/user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>
@@ -212,7 +217,7 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cc-type">Card Type</label>
-                            	<select class="form-control" id="cc-type" name="cctype"> 
+                            	<select class="form-control" id="cc-type" name="cctype">
 					<option value="" disabled>Please select card type: </option>
 					<option value="Visa">Visa</option>
 					<option value="Mastercard">Mastercard</option>
@@ -225,7 +230,7 @@ cardType3 = String.valueOf(httpSession.getAttribute("cardType3"));
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
                     </form>

@@ -43,20 +43,21 @@ if(pass.equals(null) | !pass.equals("YES")){
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.jsp">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.jsp">Register</a>
-                            </li>
-                            <li>
-                                <a href="../user/editprofile.jsp">Edit Profile</a>
-                            </li>
-                            <li>
+                          <ul class='auth-dropdown'>
+                            <%
+                            if(session!=null){ %>
+                              <li>
                                 <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>
@@ -98,7 +99,7 @@ if (bookIds.size() > 0) { %>
 <%
 			} else {
 %>
-				<h2>We did not find any books with that search parameter! 
+				<h2>We did not find any books with that search parameter!
 				<a href="../admin/searchbook.jsp">Click here</a> to go back to the search menu.</h2>
 <%
 			}

@@ -45,20 +45,21 @@ if(pass.equals(null) | !pass.equals("YES")){
                     </li>
                     <li style='position: relative;'>
                         <img id="auth-dropdown-toggle" src="../image/accountblack.svg">
-                        <ul class='auth-dropdown'>
-                            <li>
-                                <a href="../user/login.html">Login</a>
-                            </li>
-                            <li>
-                                <a href="../user/register.html">Register</a>
-                            </li>
-                            <li>
-                                <a href="../user/editprofile.html">Edit Profile</a>
-                            </li>
-                            <li>
+                          <ul class='auth-dropdown'>
+                            <%
+                            if(session!=null){ %>
+                              <li>
                                 <a href="../user/logout.jsp">Logout</a>
-                            </li>
-                        </ul>
+                              </li>
+                            <%} else { %>
+                              <li>
+                                <a href="../user/login.jsp">Login</a>
+                              </li>
+                              <li>
+                                <a href="../user/register.jsp">Register</a>
+                              </li>
+                            <%}%>
+                          </ul>
                     </li>
                 </ul>
             </nav>

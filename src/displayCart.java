@@ -2,7 +2,7 @@ package com.ugabookstore;
 
 import java.io.IOException;
 import java.sql.SQLException;
- 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ public class displayCart
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        	
+
 	    	HttpSession session = request.getSession(false);
 		session.setAttribute("shipFName", request.getParameter("firstName"));
 		session.setAttribute("shipLName", request.getParameter("lastName"));
@@ -26,7 +26,7 @@ public class displayCart
 		session.setAttribute("shipState", request.getParameter("state"));
 		session.setAttribute("shipZip", request.getParameter("zipcode"));
 		System.out.println("SHIPPING INFO SET HERE IN DISPLAY CART");
-		
+
 		String cartid ="";
 		try{
 	    	cartid = (String)session.getAttribute("cartid");
@@ -34,9 +34,9 @@ public class displayCart
 			response.sendRedirect("/errorpages/loginfirst.jsp");
 			return;
 		}
-		
+
 		BookDAO dao = new BookDAO();
-         
+
         try {
 
 		List<Integer>bookIds = new ArrayList<Integer>(dao.getCart(cartid));
@@ -63,10 +63,10 @@ public class displayCart
             	requestDispatcher.forward(request, response);
         } catch (Exception ex) {
             	ex.printStackTrace(System.out);
-		response.sendRedirect("/errorpages/checkout_error.jsp");
+		response.sendRedirect("/errorpages/checkoutError.jsp");
         }
 
-	
-         
+
+
     }
 }
