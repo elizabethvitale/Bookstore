@@ -50,12 +50,14 @@ public class setBilling extends HttpServlet {
 			response.sendRedirect("/checkout/checkout-shipping.jsp");
 
 		} else {
-			if ((!request.getParameter("ccname").equalsIgnoreCase("")) && (!request.getParameter			("ccnumber").equalsIgnoreCase("")) && (!request.getParameter("cctype").equalsIgnoreCase(""))) {
+			String ccnumber = request.getParameter("ccnumber");
+			if ((!request.getParameter("ccname").equalsIgnoreCase("")) && (!request.getParameter("ccnumber").equalsIgnoreCase("")) && 
+			(!request.getParameter("cctype").equalsIgnoreCase("")) && (ccnumber.length() == 16)) {
 				
-				cardinfo = request.getParameter("ccexpmonth") + "/" + request.getParameter("ccexpyear") + " " 					+ request.getParameter("cctype");
-
-				int checkCard = Integer.parseInt(request.getParameter("ccnumber"));
-				String ccnumber = getSha1(request.getParameter("ccnumber"));
+				cardinfo = request.getParameter("ccexpmonth") + "/" + request.getParameter("ccexpyear") 
+				+ " " + request.getParameter("cctype");
+				
+				ccnumber = getSha1(request.getParameter("ccnumber"));
 
 				session.setAttribute("ordercard", ccnumber);
 				session.setAttribute("cardinfo", cardinfo);
@@ -73,6 +75,7 @@ public class setBilling extends HttpServlet {
 			}
 		} 
 		} catch (Exception e) {
+			e.printStackTrace(System.out);
 			response.sendRedirect("/errorpages/checkoutError.jsp");
 		}
 
