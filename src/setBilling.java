@@ -26,7 +26,7 @@ public class setBilling extends HttpServlet {
 
 		String card = request.getParameter("ordercard");
 		String cardinfo = "";
-
+		try {
 		if (!card.equalsIgnoreCase("")) {
 			if (card.equalsIgnoreCase(String.valueOf(session.getAttribute("cardNumber")))) {
 				cardinfo = String.valueOf(session.getAttribute("expirationDate")) + " " +
@@ -50,12 +50,11 @@ public class setBilling extends HttpServlet {
 			response.sendRedirect("/checkout/checkout-shipping.jsp");
 
 		} else {
-			if ((!request.getParameter("ccname").equalsIgnoreCase("")) && (!request.getParameter("ccnumber").equalsIgnoreCase(""))
-				&& (!request.getParameter("ccexpdate").equalsIgnoreCase("")) && (!request.getParameter("cctype").equalsIgnoreCase(""))) {
+			if ((!request.getParameter("ccname").equalsIgnoreCase("")) && (!request.getParameter			("ccnumber").equalsIgnoreCase("")) && (!request.getParameter("cctype").equalsIgnoreCase(""))) {
 				
-				cardinfo = request.getParameter("ccexpdate") + " " +
-					request.getParameter("cctype");
+				cardinfo = request.getParameter("ccexpmonth") + "/" + request.getParameter("ccexpyear") + " " 					+ request.getParameter("cctype");
 
+				int checkCard = Integer.parseInt(request.getParameter("ccnumber"));
 				String ccnumber = getSha1(request.getParameter("ccnumber"));
 
 				session.setAttribute("ordercard", ccnumber);
@@ -72,6 +71,9 @@ public class setBilling extends HttpServlet {
 			} else {
 				response.sendRedirect("/errorpages/checkoutError.jsp");
 			}
+		} 
+		} catch (Exception e) {
+			response.sendRedirect("/errorpages/checkoutError.jsp");
 		}
 
 
